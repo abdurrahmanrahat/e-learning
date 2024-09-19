@@ -1,38 +1,34 @@
 import PrimaryTitle from "../../../UI/PrimaryTitle/PrimaryTitle";
-import feature_1 from "../../../../public/feature_1.png";
-import feature_2 from "../../../../public/feature_2.png";
-import featureIcon_1 from "../../../../public/Feature_icon_1.png";
-import featureIcon_2 from "../../../../public/Feature_icon_2.png";
-import featureIcon_3 from "../../../../public/Feature_icon_3.png";
+import {HOMEImages} from "../../../image-data/home";
 
 // features_1
 const features_1 = [
     {
         title: "Teachers don’t get lost in the grid view and have a dedicated Podium space.",
-        icon: featureIcon_1
+        icon: HOMEImages.feature_3
     },
     {
         title: "TA’s and presenters can be moved to the front of the class.",
-        icon: featureIcon_2
+        icon: HOMEImages.feature_4
     },
     {
         title: "Teachers can easily see all students and class data at one time.",
-        icon: featureIcon_3
+        icon: HOMEImages.feature_5
     },
 ]
 
 export default function Features() {
   return (
-    <div className="flex flex-col gap-16">
+    <div className="flex flex-col gap-16 px-10">
       <PrimaryTitle
         headingPart1={"Our"}
         headingPart2={"Features"}
         style={'text-center'}
       />
-      <div className="flex items-center gap-10">
+      <div className="flex flex-col lg:flex-row items-center gap-20">
         <div className="w-full lg:w-1/2">
           <figure>
-            <img src={feature_1} alt="" />
+            <img src={HOMEImages.feature_1} alt="" />
           </figure>
         </div>
         <div className="w-full lg:w-1/2 px-8">
@@ -53,7 +49,7 @@ export default function Features() {
           </ul>
         </div>
       </div>
-      <div className="flex items-center gap-20">
+      <div className="flex flex-col lg:flex-row items-center gap-20">
         <div className="w-full lg:w-[60%] pr-8">
           <PrimaryTitle
             headingPart1={"Tools For"}
@@ -64,9 +60,9 @@ export default function Features() {
             }
           />
         </div>
-        <div className="w-full lg:w-[40%] flex justify-center">
+        <div className="w-full lg:w-[40%] hidden lg:flex justify-center">
           <figure>
-            <img src={feature_2} alt="" />
+            <img src={HOMEImages.feature_2} alt="" />
           </figure>
         </div>
       </div>
