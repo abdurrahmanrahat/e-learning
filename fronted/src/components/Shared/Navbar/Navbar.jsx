@@ -45,6 +45,7 @@ const Navbar = () => {
       </li>
     </>
   );
+
   return (
     <div className="">
       <div className="max-w-7xl mx-auto flex items-center justify-between py-4">
