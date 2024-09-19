@@ -2,7 +2,7 @@ import { GoArrowRight } from "react-icons/go";
 
 const Testimonial = () => {
       return (
-            <div className="max-w-[1300px] mx-auto p-4 lg:p-0 my-10 lg:my-20 flex flex-col lg:flex-row gap-10">
+            <div className="max-w-[1500px] mx-auto p-4 lg:p-0 my-10 lg:my-20 flex flex-col lg:flex-row gap-10">
                   <div className="w-full lg:w-1/2">
                         <span className="font-nunito text-[#525596] text-xl">----- TESTIMONIAL</span>
 
