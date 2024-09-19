@@ -1,4 +1,5 @@
 import Features from "../../components/Home/Features/Features";
+import LastestNews from "../../components/Home/LastestNews/LastestNews";
 import Totc from "../../components/Home/Totc/Totc";
 
 const Home = () => {
@@ -9,6 +10,8 @@ const Home = () => {
 
       {/* features */}
       <Features />
+
+      <LastestNews />
     </div>
   );
 };
