@@ -1,11 +1,17 @@
+import Banner from "../../components/Banner/Banner";
+import Footer from "../../components/Shared/Footer/Footer";
+import Navbar from "../../components/Shared/Navbar/Navbar";
+
 const Home = () => {
-  return <div>Home
-
+  return (
     <div>
-      <h2>this is a new project</h2>
+      <div className="bg-[#49BBBD]">
+        <Navbar></Navbar>
+        <Banner></Banner>
+      </div>
+      <Footer></Footer>
     </div>
-  </div>;
-
+  );
 };
 
 export default Home;
