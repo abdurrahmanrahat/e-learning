@@ -1,15 +1,22 @@
+
 import Banner from "../../components/Banner/Banner";
-import Footer from "../../components/Shared/Footer/Footer";
-import Navbar from "../../components/Shared/Navbar/Navbar";
+import Features from "../../components/Home/Features/Features";
+import LastestNews from "../../components/Home/LastestNews/LastestNews";
+import Totc from "../../components/Home/Totc/Totc";
 
 const Home = () => {
   return (
-    <div>
-      <div className="bg-[#49BBBD]">
-        <Navbar></Navbar>
-        <Banner></Banner>
-      </div>
-      <Footer></Footer>
+    <div className="max-w-full lg:max-w-7xl mx-auto">
+      <Banner></Banner>
+    
+      {/* TOTC */}
+      <Totc />
+
+      {/* features */}
+      <Features />
+
+      <LastestNews />
+
     </div>
   );
 };
