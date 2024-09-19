@@ -3,13 +3,22 @@ import Banner from "../../components/Banner/Banner";
 import LastestNews from "../../components/Home/LastestNews/LastestNews";
 import Totc from "../../components/Home/Totc/Totc";
 import Features from "../../components/Home/Features/Features";
+import Success from "../../components/Home/Success/Success";
+import AllInOne from "../../components/Home/AllInOne/AllInOne";
 
 const Home = () => {
   return (
     <div className="max-w-full lg:max-w-7xl mx-auto">
       <Banner></Banner>
 
-      {/* TOTC */}
+      <div className="py-24">
+        <Success />
+      </div>
+
+      <div className="py-24">
+        <AllInOne />
+      </div>
+
       <div className="py-24">
         <Totc />
       </div>
