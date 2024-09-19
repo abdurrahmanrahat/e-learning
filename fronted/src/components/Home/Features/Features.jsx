@@ -49,8 +49,8 @@ export default function Features() {
           </ul>
         </div>
       </div>
-      <div className="flex flex-col lg:flex-row items-center gap-20">
-        <div className="w-full lg:w-[60%] pr-8">
+      <div className="flex flex-col-reverse lg:flex-row items-center gap-20">
+        <div className="w-full lg:w-1/2 pr-8">
           <PrimaryTitle
             headingPart1={"Tools For"}
             headingPart2={"Teachers And Learners"}
@@ -60,7 +60,7 @@ export default function Features() {
             }
           />
         </div>
-        <div className="w-full lg:w-[40%] hidden lg:flex justify-center">
+        <div className="w-full lg:w-1/2 flex justify-center">
           <figure>
             <img src={HOMEImages.feature_2} alt="" />
           </figure>
