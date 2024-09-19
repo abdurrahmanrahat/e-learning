@@ -1,4 +1,8 @@
 
+import Testimonial from "../../components/Shared/Testimonial/Testimonial";
+
+
+
 import Banner from "../../components/Banner/Banner";
 import Features from "../../components/Home/Features/Features";
 import LastestNews from "../../components/Home/LastestNews/LastestNews";
@@ -17,6 +21,7 @@ const Home = () => {
 
       <LastestNews />
 
+      <Testimonial />
     </div>
   );
 };
