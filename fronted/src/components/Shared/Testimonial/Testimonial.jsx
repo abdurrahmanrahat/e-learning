@@ -1,4 +1,3 @@
-import { GoArrowRight } from "react-icons/go";
 
 const Testimonial = () => {
       return (
@@ -20,7 +19,6 @@ const Testimonial = () => {
                               <p className="font-poppins text-[#49BBBD] text-xl border border-[#49BBBD] h-12 flex items-center justify-center pl-8 pr-12 w-fit rounded-full">Write your assessment</p>
 
                               <img className="h-12 border rounded-full -ml-[42px] bg-white" src="https://i.ibb.co.com/Yydfsdv/Group-32.png" alt="" />
-                              {/* <span className="text-[#49BBBD] border border-[#49BBBD] h-12 w-12 flex items-center justify-center rounded-full absolute right-[49%]"><GoArrowRight /></span> */}
                         </div>
                   </div>
                   <div className="lg:w-1/2 relative">
@@ -30,7 +28,7 @@ const Testimonial = () => {
 
                         {/* card over image */}
                         <div className="px-10 py-6 lg:w-[500px] border-l-[14px] border-[#F67766] rounded-2xl lg:absolute left-20 -bottom-20 bg-white shadow-xl">
-                              <p className="font-nunito text-xl text-[#5F5F7E] mb-5 border-l border-[#BDBDD1] pl-6">Thank you so much for your help. It's exactly what I've been looking for. You won't regret it. It really saves me time and effort. TOTC is exactly what our business has been lacking.</p>
+                              <p className="font-nunito text-xl text-[#5F5F7E] mb-5 border-l border-[#BDBDD1] pl-6">Thank you so much for your help. Its exactly what Ive been looking for. You wont regret it. It really saves me time and effort. TOTC is exactly what our business has been lacking.</p>
 
                               <div className="flex items-center justify-between pl-6">
                                     <span className="text-[#5F5F7E] text-2xl font-semibold font-nunito">Gloria Rose</span>
