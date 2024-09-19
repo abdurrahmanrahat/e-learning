@@ -5,10 +5,14 @@ const Home = () => {
   return (
     <div className="max-w-full lg:max-w-7xl mx-auto">
       {/* TOTC */}
-      <Totc />
+      <div className="py-24">
+        <Totc />
+      </div>
 
       {/* features */}
-      <Features />
+      <div className="py-24">
+        <Features />
+      </div>
     </div>
   );
 };
