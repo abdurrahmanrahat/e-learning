@@ -27,12 +27,13 @@ const Home = () => {
         <Features />
       </div>
 
-      <div className="py-24">
-        <LastestNews />
-      </div>
 
       <div className="py-24">
         <Testimonial />
+      </div>
+      
+      <div className="py-24">
+        <LastestNews />
       </div>
     </div>
   );
