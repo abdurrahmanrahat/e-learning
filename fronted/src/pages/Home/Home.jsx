@@ -1,5 +1,11 @@
+import LastestNews from "../../components/Home/LastestNews/LastestNews";
+
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <div>
+      <LastestNews />
+    </div>
+  );
 };
 
 export default Home;
