@@ -1,5 +1,5 @@
 const AllInOne = () => {
-    return <div>All In One</div>;
+    return <div>this is a all in one</div>;
   };
   
   export default AllInOne;
