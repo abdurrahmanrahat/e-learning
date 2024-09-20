@@ -51,7 +51,7 @@ const ExploreCourse = () => {
       ];
 
       const handleExpandCourse = (i) => {
-            setActiveCard(activeCard === i ? null : i);
+            setActiveCard(activeCard === i ? 4 : i);
       };
 
 
@@ -76,7 +76,7 @@ const ExploreCourse = () => {
                                           </p>
                                     </div>
 
-                                    <div className="lg:flex items-center gap-6">
+                                    <div className="lg:flex grid grid-cols-1 md:grid-cols-2 items-center gap-6">
                                           {courses?.map((course, i) => (
                                                 <div key={i} className="my-10 relative w-fit">
 
