@@ -1,6 +1,8 @@
 const Banner = () => {
   return (
-    <div className="bg-primary">
+    <div style={{
+      
+    }} className="bg-primary">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:gap-10 mt-0 lg:mt-0 ">
         <div className="w-full lg:w-[50%] text-center lg:text-left  text-white">
           <h1 className="lg:text-[54px] md:text-6xl text-4xl font-bold">

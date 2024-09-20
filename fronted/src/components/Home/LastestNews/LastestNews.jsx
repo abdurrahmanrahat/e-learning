@@ -26,13 +26,13 @@ const LastestNews = () => {
   ];
 
   return (
-    <div className="container-class mt-[100px]">
+    <div className="mt-10">
       {/* title section */}
-      <div className="flex flex-col justify-center items-center gap-1 text-center">
-        <h2 className="text-[36px] font-bold leading-[50px]">
+      <div className="flex flex-col justify-center items-center gap-0 text-center">
+        <h2 className="text-[28px] font-medium leading-[50px]">
           Lastest News and Resources
         </h2>
-        <p className="text-myGray text-[22px] md:text-[24px]">
+        <p className="text-myGray text-[16px] md:text-[18px]">
           See the developments that have occurred to TOTC in the world
         </p>
       </div>
