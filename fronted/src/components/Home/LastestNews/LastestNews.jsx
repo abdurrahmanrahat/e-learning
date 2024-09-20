@@ -26,11 +26,7 @@ const LastestNews = () => {
   ];
 
   return (
-<<<<<<< HEAD
-    <div className="container-class">
-=======
     <div className="mt-10">
->>>>>>> ebf0ae3127f58d75a59d2130d3d5a62f3bec74d0
       {/* title section */}
       <div className="flex flex-col justify-center items-center gap-0 text-center">
         <h2 className="text-[28px] font-medium leading-[50px]">

@@ -16,7 +16,7 @@ export default function Navbar() {
             // role="navigation"
           >
             {/*      <!-- Brand logo --> */}
-            <Link>
+            <Link to="/">
               <h2 className="text-[24px] md:text-[28px] font-semibold text-primary">
                 BrainWave
               </h2>
@@ -90,7 +90,7 @@ export default function Navbar() {
                 </ActiveLink>
               </li>
               <li role="none" className="flex items-stretch">
-                <ActiveLink to={"/dashboard"}>
+                <ActiveLink to={"/dashboard/admin"}>
                   <span className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-primary lg:px-4">
                     Dashboard
                   </span>
