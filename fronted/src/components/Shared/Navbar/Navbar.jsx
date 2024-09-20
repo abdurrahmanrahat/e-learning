@@ -47,7 +47,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="">
+    <div className="bg-primary">
       <div className="max-w-7xl mx-auto flex items-center justify-between py-4">
         <div className="hidden lg:block md:block">
           <img src="https://i.ibb.co.com/1Ln4Pr4/Group-112.png" alt="" />
