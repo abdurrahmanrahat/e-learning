@@ -36,7 +36,7 @@ const Courses = () => {
               placeholder="Search your favourite course"
             />
             <div className="absolute lg:end-[330px] end-[30px] md:end-[90px] top-2">
-              <button className="px-8 py-3 rounded-xl text-xl font-bold text-white bg-[#49BBBD]">
+              <button className="px-8 py-3 rounded-xl text-xl font-bold text-white bg-[#49BBBD] hover:bg-emerald-600 ">
                 Search
               </button>
             </div>

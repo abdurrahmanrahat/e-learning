@@ -38,7 +38,7 @@ const CourseDetail = () => {
             >
               11 hour left at this price
             </h2>
-            <button className="text-xl font-bold text-center text-white bg-[#49BBBD] w-full lg:w-full md:w-[50%] rounded-xl py-3">
+            <button className="text-xl font-bold text-center text-white bg-[#49BBBD] w-full lg:w-full md:w-[50%] rounded-xl py-3 hover:bg-emerald-600 ">
               Buy Now
             </button>
           </div>
