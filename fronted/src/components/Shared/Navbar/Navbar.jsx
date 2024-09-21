@@ -67,21 +67,21 @@ export default function Navbar() {
                 </ActiveLink>
               </li>
               <li role="none" className="flex items-stretch">
-                <ActiveLink to={"/courses"}>
+                <ActiveLink to={"courses"}>
                   <span className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-primary lg:px-4">
                     Courses
                   </span>
                 </ActiveLink>
               </li>
               <li role="none" className="flex items-stretch">
-                <ActiveLink to={"/instructors"}>
+                <ActiveLink to={"instructors"}>
                   <span className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-primary lg:px-4">
                     Instructors
                   </span>
                 </ActiveLink>
               </li>
               <li role="none" className="flex items-stretch">
-                <ActiveLink to={"/about-us"}>
+                <ActiveLink to={"about-us"}>
                   <span className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-primary lg:px-4">
                     About
                   </span>
