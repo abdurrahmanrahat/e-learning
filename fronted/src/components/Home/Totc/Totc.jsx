@@ -16,7 +16,7 @@ export default function Totc() {
         <div className="rounded-xl relative">
           <div className="relative">
             <div className="w-full h-full bg-[#000] bg-opacity-40 absolute inset-0 rounded-xl"></div>
-            <figure className=" rounded-xl">
+            <figure className="rounded-xl">
               <img className=" w-full" src={HOMEImages.totc_1} alt="" />
             </figure>
           </div>
