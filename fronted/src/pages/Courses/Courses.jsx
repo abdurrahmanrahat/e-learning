@@ -11,9 +11,9 @@ import LanguageDropdown from "../../components/Dropdown/LanguageDropdown";
 import AbaliabilityDrop from "../../components/Dropdown/AbaliabilityDrop";
 import LearningTypeDrop from "../../components/Dropdown/LearningTypeDrop";
 
-
 const Courses = () => {
   const [courses, SetCourses] = useState([]);
+  const [dataLength,setDataLength]=useState(6);
 
   useEffect(() => {
     fetch("coursesData.json")
@@ -25,7 +25,7 @@ const Courses = () => {
     <div className="">
       {/* courses banner  */}
       <div className="courses-bg-img ">
-        <div className="text-center pt-16 mb-20">
+        <div className="text-center pt-28 mb-10">
           <div className="relative">
             <input
               className="bg-[#FFFFFF] border lg:w-[60%] w-[90%] md:w-[80%] p-5 rounded-2xl
@@ -65,18 +65,25 @@ const Courses = () => {
         </div>
       </div>
       {/* courses map section  */}
+      <div className="max-w-7xl mx-auto  mt-10">
+        <div className="text-right mb-6">
+        <div className={dataLength===courses.length ?"hidden":""}>
+          <button onClick={()=>setDataLength(courses.length)} className="px-6 py-3 rounded-lg font-bold bg-[#49BBBD] hover:bg-emerald-500 text-white">See All Course</button>
+        </div>
+        </div>
       <div
-        className="mx-12  mt-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 
+        className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 
 "
       >
-        {courses.map((course) => (
+        {courses.slice(0,dataLength).map((course) => (
           <Course course={course} key={course._id}></Course>
         ))}
       </div>
+      </div>
       {/* Know about learning learning platform section  */}
-      <div className="lg:mx-12 md:mx-12  lg:my-20 my-20">
+      <div className="lg:max-w-7xl mx-auto  lg:my-20 my-20 md:px-5 lg:px-0 ">
         <div
-          className="flex flex-col lg:flex-row  lg:py-10 bg-[#e0f2fe]
+          className="flex flex-col lg:flex-row md:flex-row lg:py-10 md:py-10 bg-[#e0f2fe]
  items-center lg:gap-32 rounded-3xl"
         >
           <div className="w-full lg:w-[40%] mt-5 lg:mt-0 flex items-center justify-center">
@@ -129,11 +136,11 @@ const Courses = () => {
         </div>
       </div>
       {/* Classes tought by real creators section  */}
-      <div className="mb-20  lg:mt-24">
+      <div className="max-w-7xl mx-auto">
         <Creators></Creators>
       </div>
       {/* Top Education offers and deals are listed here */}
-      <div className="lg:mx-12 md:mx-12 mx-4  lg:my-20 my-20">
+      <div className="max-w-7xl mx-auto  lg:my-20 my-20">
         <OfferCourse></OfferCourse>
       </div>
     </div>

@@ -1,7 +1,7 @@
 const OfferCourse = () => {
     return (
       <div>
-        <div className="flex flex-col lg:flex-row md:flex-row items-center justify-between my-10 lg:mt-24">
+        <div className="flex flex-col lg:flex-row mx-4 lg:mx-0 md:lx-0 items-center lg:justify-between my-10 lg:mt-24">
           <h2 className="lg:text-2xl md:text-2xl text-xl font-bold  mb-5 text-gray-600">
             Top Education offers and deals are listed here
           </h2>
@@ -12,17 +12,17 @@ const OfferCourse = () => {
             See all
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mx-5 lg:mx-0">
           <div className="relative">
             <img src="https://i.ibb.co.com/9NDXSFf/Rectangle-187.png" alt="" />
-            <div className="absolute lg:top-28 md:top-9 top-10 text-white lg:left-10 left-10">
+            <div className="absolute lg:top-16 md:top-9 top-10 text-white lg:left-10 left-10">
               <button
                 className="text-5xl font-bold px-3 text-center py-6 rounded-lg text-white bg-[#49BBBD]
   "
               >
                 50%
               </button>
-              <h3 className="lg:text-3xl text-3xl md:text-xl font-bold mt-5">Full Stack Web developer</h3>
+              <h3 className="lg:text-2xl text-3xl md:text-xl font-bold mt-5">Full Stack Web developer</h3>
               <p className="mt-2 font-bold "> 1. Front  end</p>
               <p className=" font-bold my-2"> 2. Back end developer</p>
               <p className=" font-bold "> 3. DataBase management</p>
@@ -32,7 +32,7 @@ const OfferCourse = () => {
           </div>
           <div className="relative">
             <img src="https://i.ibb.co.com/zGJ2YYC/Rectangle-188.png" alt="" />
-            <div className="absolute lg:top-28 md:top-9 top-10 text-white lg:left-10 left-10">
+            <div className="absolute lg:top-16 md:top-9 top-10 text-white lg:left-10 left-10">
               <button
                 className="text-5xl font-bold px-3 text-center py-6 rounded-lg text-white bg-[#49BBBD]
   "
@@ -49,7 +49,7 @@ const OfferCourse = () => {
           </div>
           <div className="relative">
             <img src="https://i.ibb.co.com/yy221sb/Rectangle-189.png" alt="" />
-            <div className="absolute lg:top-28 md:top-9 top-10 text-white lg:left-10 left-10">
+            <div className="absolute lg:top-16 md:top-9 top-10 text-white lg:left-10 left-10">
               <button
                 className="text-5xl font-bold px-3 text-center py-6 rounded-lg text-white bg-[#49BBBD]
   "

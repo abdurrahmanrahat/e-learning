@@ -117,7 +117,7 @@ export default function TabsLgBasic() {
               className={`-mb-px inline-flex h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded px-6 text-xl font-bold tracking-wide transition duration-300 hover:bg-[#49BBBD] hover:stroke-[#49BBBD] focus:bg-[#49BBBD] focus-visible:outline-none disabled:cursor-not-allowed ${
                 tabSelected.currentTab === 3
                   ? "bg-[#49BBBD] stroke-emerald-500 text-white hover:border-emerald-600  hover:text-emerald-600 focus:border-emerald-700 focus:stroke-emerald-700 focus:text-white disabled:border-slate-500"
-                  : "justify-self-center border-transparent stroke-slate-700 text-slate-700 hover:border-emerald-500 hover:text-white focus:border-emerald-600 focus:stroke-emerald-600 focus:text-white disabled:text-slate-500"
+                  : "justify-self-center border-transparent stroke-slate-700 text-slate-700 hover:border-[#49BBBD] hover:text-white focus:border-[#49BBBD] focus:stroke-[#49BBBD] focus:text-white disabled:text-slate-500"
               }`}
               id="tab-label-3a"
               role="tab"
