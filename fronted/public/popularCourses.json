@@ -1,0 +1,62 @@
+[
+      {
+            "id": 1,
+            "courseTitle": "Introduction to JavaScript",
+            "instructor": "John Doe",
+            "rating": 4.8,
+            "enrollment": 15000,
+            "thumbnail": "https://i.ibb.co.com/QPJvBjh/2149901774.jpg",
+            "price": 49.99,
+            "description": "Learn the fundamentals of JavaScript, the language of the web."
+      },
+      {
+            "id": 2,
+            "courseTitle": "Python for Data Science",
+            "instructor": "Jane Smith",
+            "rating": 4.9,
+            "enrollment": 20000,
+            "thumbnail": "https://i.ibb.co.com/MNRCqVm/2150010130.jpg",
+            "price": 59.99,
+            "description": "Master Python and start analyzing data like a pro."
+      },
+      {
+            "id": 3,
+            "courseTitle": "Full Stack Development",
+            "instructor": "Mark Johnson",
+            "rating": 4.7,
+            "enrollment": 12000,
+            "thumbnail": "https://i.ibb.co.com/b7cyNGG/2150062002.jpg",
+            "price": 69.99,
+            "description": "Become a full-stack developer with this comprehensive course."
+      },
+      {
+            "id": 4,
+            "courseTitle": "Machine Learning",
+            "instructor": "Emily Davis",
+            "rating": 4.9,
+            "enrollment": 18000,
+            "thumbnail": "https://i.ibb.co.com/QPJvBjh/2149901774.jpg",
+            "price": 79.99,
+            "description": "Dive deep into machine learning algorithms and their applications."
+      },
+      {
+            "id": 5,
+            "courseTitle": "Cybersecurity",
+            "instructor": "Michael Lee",
+            "rating": 4.6,
+            "enrollment": 9000,
+            "thumbnail": "https://i.ibb.co.com/b7cyNGG/2150062002.jpg",
+            "price": 89.99,
+            "description": "Learn how to protect systems and data from cyber threats."
+      },
+      {
+            "id": 6,
+            "courseTitle": "React.js Masterclass",
+            "instructor": "Sarah Miller",
+            "rating": 4.8,
+            "enrollment": 11000,
+            "thumbnail": "https://i.ibb.co.com/MNRCqVm/2150010130.jpg",
+            "price": 39.99,
+            "description": "Become a React.js expert with this hands-on masterclass."
+      }
+]
