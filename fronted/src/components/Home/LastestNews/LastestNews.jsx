@@ -26,17 +26,20 @@ const LastestNews = () => {
   ];
 
   return (
+<<<<<<< HEAD
     <div className="container-class">
-      <div className="mt-10">
-        {/* title section */}
-        <div className="flex flex-col justify-center items-center gap-0 text-center">
-          <h2 className="text-[28px] font-medium leading-[50px]">
-            Lastest News and Resources
-          </h2>
-          <p className="text-myGray text-[16px] md:text-[18px]">
-            See the developments that have occurred to TOTC in the world
-          </p>
-        </div>
+=======
+    <div className="mt-10">
+>>>>>>> ebf0ae3127f58d75a59d2130d3d5a62f3bec74d0
+      {/* title section */}
+      <div className="flex flex-col justify-center items-center gap-0 text-center">
+        <h2 className="text-[28px] font-medium leading-[50px]">
+          Lastest News and Resources
+        </h2>
+        <p className="text-myGray text-[16px] md:text-[18px]">
+          See the developments that have occurred to TOTC in the world
+        </p>
+      </div>
 
         {/* blogs */}
         <div className="grid grid-cols-12 mt-[40px] md:mt-[60px]">
