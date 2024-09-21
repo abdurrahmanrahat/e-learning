@@ -7,9 +7,14 @@ import AdminDashboardHome from "../pages/Dashboard/Admin/AdminDashboardHome/Admi
 import AllCourses from "../pages/Dashboard/Admin/AllCourses/AllCourses";
 import UsersManagement from "../pages/Dashboard/Admin/UsersManagement/UsersManagement";
 import Home from "../pages/Home/Home";
+
+import Courses from "../pages/Courses/Courses";
+import CourseDetail from "../components/CourseDetails/CourseDetail/CourseDetail";
+
 import Instructors from "../pages/Instructors/Instructors";
 import Registration from "../pages/Registration/Registration";
 import Login from "../pages/Login/Login";
+
 
 const router = createBrowserRouter([
   {
@@ -24,6 +29,15 @@ const router = createBrowserRouter([
       {
         path: "about-us",
         element: <About />,
+      },
+      {
+        path: "courses",
+        element: <Courses></Courses>,
+      },
+      {
+        path: "courseDetails/:id",
+        element: <CourseDetail></CourseDetail>,
+        loader:()=>fetch("../coursesData.json")
       },
       {
         path: "instructors",
