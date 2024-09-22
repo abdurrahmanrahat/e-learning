@@ -52,7 +52,7 @@ export default function Instructors() {
           headingPart2={"Instructors"}
           style={"text-start"}
         />
-        <div className="grid grid-cols-3 gap-x-8 gap-y-14 my-10">
+        <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-3 gap-x-8 gap-y-14 py-10">
             {
                 instructorData?.map(item => <InstructorCard key={item.id} item={item}>
                 </InstructorCard>)

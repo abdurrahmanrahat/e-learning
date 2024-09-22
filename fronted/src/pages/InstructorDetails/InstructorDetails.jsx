@@ -93,7 +93,7 @@ export default function InstructorDetails() {
   const tabs = ["About", "Courses", "Reviews"];
   const tabItems = [
     {
-      title: 'About',
+      title: "About",
       content: (
         <p>
           A seasoned JavaScript developer with over 10 years of experience. John
@@ -104,9 +104,9 @@ export default function InstructorDetails() {
       ),
     },
     {
-      title: 'Published Courses',
+      title: "Published Courses",
       content: (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 mt-6">
           {instructCourses.map((item) => (
             <CourseCard key={item?.id} popularCourse={item}></CourseCard>
           ))}
@@ -114,7 +114,7 @@ export default function InstructorDetails() {
       ),
     },
     {
-      title: 'Students Review',
+      title: "Students Review",
       content: (
         <div className="flex flex-col gap-10">
           {reviews.map((item) => (
@@ -128,9 +128,9 @@ export default function InstructorDetails() {
   return (
     <div>
       <PageBanner>
-        <div className="flex gap-10 container-class h-[80%]">
-          <div className="w-[30%] flex justify-center items-center">
-            <figure className="rounded-full border-[6px] border-[#FFF] w-60">
+        <div className="flex justify-center items-center gap-10 container-class h-[80%]">
+          <div className="w-[30vh] hidden xl:flex lg:flex justify-center items-center">
+            <figure className="rounded-full border-[6px] border-[#FFF] w-full">
               <img
                 className="w-full rounded-full"
                 src={currInstructor.image}
@@ -139,9 +139,19 @@ export default function InstructorDetails() {
             </figure>
           </div>
           <div className="bg-white text-slate-500 shadow-md rounded-xl w-[70%] p-6 flex flex-col justify-between">
+            <div className="w-full flex justify-center">
+            <figure className="rounded-full border-[6px] border-[#FFF] w-[20%] flex  xl:hidden lg:hidden justify-center items-center">
+              <img
+                className="w-full rounded-full"
+                src={currInstructor.image}
+                alt=""
+              />
+            </figure>
+
+            </div>
             {/*  <!-- Body--> */}
             <div className="">
-              <header className="mb-4 flex justify-between gap-4">
+              <header className="mb-4 flex justify-center xl:justify-between lg:justify-between gap-4">
                 <div className="text-center">
                   <h3 className="text-xl font-medium text-slate-700">
                     {currInstructor.name}
@@ -150,17 +160,17 @@ export default function InstructorDetails() {
                     {currInstructor.title}
                   </p>
                 </div>
-                <button className="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded bg-primary px-5 text-sm font-medium tracking-wide text-white shadow-md shadow-emerald-200 transition duration-300 hover:bg-emerald-600 hover:shadow-sm hover:shadow-emerald-200">
+                <button className="hidden xl:inline-flex lg:inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded bg-primary px-5 text-sm font-medium tracking-wide text-white shadow-md shadow-emerald-200 transition duration-300 hover:bg-emerald-600 hover:shadow-sm hover:shadow-emerald-200">
                   <span>Enroll Now</span>
                 </button>
               </header>
-              <p className="text-start text-sm">{currInstructor.about}</p>
+              <p className="text-center lg:text-start xl:text-start text-sm">{currInstructor.about}</p>
             </div>
             {/*  <!-- Action base sized link button --> */}
-            <div className="flex justify-between items-center gap-2 pt-0">
+            <div className="flex flex-col lg:flex-row xl:flex-row justify-between items-center gap-2 pt-6">
               <div className="flex gap-2 items-center justify-center text-base">
                 <span>
-                  <Rating value={currInstructor.ratings}/>
+                  <Rating value={currInstructor.ratings} />
                 </span>
                 <span>Student Rating</span>
               </div>
@@ -174,7 +184,7 @@ export default function InstructorDetails() {
           </div>
         </div>
       </PageBanner>
-      <div className="my-10 container-class">
+      <div className="py-10 container-class px-10">
         <Tabs tabs={tabs} tabItems={tabItems} />
       </div>
     </div>

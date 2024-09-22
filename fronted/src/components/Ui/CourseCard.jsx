@@ -14,7 +14,7 @@ const CourseCard = ({ popularCourse }) => {
   } = popularCourse || {};
 
   return (
-    <div className="border">
+    <div className="border flex flex-col justify-between">
       <figure className="overflow-hidden relative">
         <img
           className="hover:scale-110 transition delay-100"
