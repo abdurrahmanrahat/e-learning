@@ -1,0 +1,44 @@
+[
+      {
+            "id": 1,
+            "name": "John Doe",
+            "title": "Senior JavaScript Developer",
+            "profilePic": "https://randomuser.me/api/portraits/men/32.jpg",
+            "shortBio": "JavaScript expert with 10+ years of experience in web development."
+      },
+      {
+            "id": 2,
+            "name": "Jane Smith",
+            "title": "Data Scientist",
+            "profilePic": "https://randomuser.me/api/portraits/women/44.jpg",
+            "shortBio": "Data scientist specializing in machine learning and big data."
+      },
+      {
+            "id": 3,
+            "name": "Mark Johnson",
+            "title": "Full Stack Developer",
+            "profilePic": "https://randomuser.me/api/portraits/men/34.jpg",
+            "shortBio": "Experienced full stack developer in front-end and back-end technologies."
+      },
+      {
+            "id": 4,
+            "name": "Emily Davis",
+            "title": "AI Engineer",
+            "profilePic": "https://randomuser.me/api/portraits/women/47.jpg",
+            "shortBio": "AI specialist with expertise in neural networks and deep learning."
+      },
+      {
+            "id": 5,
+            "name": "Michael Lee",
+            "title": "Cybersecurity Specialist",
+            "profilePic": "https://randomuser.me/api/portraits/men/45.jpg",
+            "shortBio": "Cybersecurity expert focused on ethical hacking and data protection."
+      },
+      {
+            "id": 6,
+            "name": "Sarah Miller",
+            "title": "React.js Developer",
+            "profilePic": "https://randomuser.me/api/portraits/women/42.jpg",
+            "shortBio": "React.js developer building dynamic and responsive web apps."
+      }
+]
