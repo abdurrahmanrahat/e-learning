@@ -1,0 +1,69 @@
+[
+    {
+      "id": 1,
+      "courseTitle": "JavaScript Essentials",
+      "instructorName": "John Doe",
+      "instructorEmail": "john.doe@example.com",
+      "rating": 4.8,
+      "enrollment": 1200,
+      "thumbnail": "https://i.ibb.co.com/QPJvBjh/2149901774.jpg",
+      "price": 49.99,
+      "description": "Learn the fundamentals of JavaScript, the language of the web. This course covers everything from basic syntax to advanced features."
+    },
+    {
+      "id": 2,
+      "courseTitle": "React for Beginners",
+      "instructorName": "Jane Smith",
+      "instructorEmail": "jane.smith@example.com",
+      "rating": 4.9,
+      "enrollment": 1500,
+      "thumbnail": "https://i.ibb.co.com/MNRCqVm/2150010130.jpg",
+      "price": 59.99,
+      "description": "Get started with React.js, the popular JavaScript library for building dynamic web applications."
+    },
+    {
+      "id": 3,
+      "courseTitle": "Node.js Masterclass",
+      "instructorName": "Emily Johnson",
+      "instructorEmail": "emily.johnson@example.com",
+      "rating": 4.7,
+      "enrollment": 900,
+      "thumbnail": "https://i.ibb.co.com/b7cyNGG/2150062002.jpg",
+      "price": 69.99,
+      "description": "Master backend development with Node.js. Learn how to create server-side applications and APIs."
+    },
+    {
+      "id": 4,
+      "courseTitle": "Fullstack Web Development",
+      "instructorName": "Michael Brown",
+      "instructorEmail": "michael.brown@example.com",
+      "rating": 4.6,
+      "enrollment": 2000,
+      "thumbnail": "https://i.ibb.co.com/QPJvBjh/2149901774.jpgjpg",
+      "price": 79.99,
+      "description": "Become a fullstack web developer by learning both frontend and backend technologies, including React, Node.js, and MongoDB."
+    },
+    {
+      "id": 5,
+      "courseTitle": "Advanced CSS Techniques",
+      "instructorName": "Sarah White",
+      "instructorEmail": "sarah.white@example.com",
+      "rating": 4.5,
+      "enrollment": 800,
+      "thumbnail": "https://i.ibb.co.com/b7cyNGG/2150062002.jpg",
+      "price": 39.99,
+      "description": "Take your CSS skills to the next level with this advanced course, covering animations, grid, flexbox, and more."
+    },
+    {
+      "id": 6,
+      "courseTitle": "SEO for Developers",
+      "instructorName": "David Lee",
+      "instructorEmail": "david.lee@example.com",
+      "rating": 4.4,
+      "enrollment": 600,
+      "thumbnail": "https://i.ibb.co.com/MNRCqVm/2150010130.jpg",
+      "price": 29.99,
+      "description": "Learn how to optimize your websites for search engines, with a focus on best practices for web developers."
+    }
+  ]
+  

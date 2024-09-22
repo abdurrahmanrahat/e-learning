@@ -45,7 +45,7 @@ const instructorData = [
 export default function Instructors() {
   return (
     <div className="w-full">
-      <PageBanner>Instructors</PageBanner>
+      <PageBanner><h2>Instructors</h2></PageBanner>
       <div className="py-16 container-class px-10">
         <PrimaryTitle
           headingPart1={"Our Expert"}

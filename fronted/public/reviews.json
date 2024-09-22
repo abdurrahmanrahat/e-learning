@@ -1,0 +1,53 @@
+[
+    {
+      "id": 1,
+      "name": "Alice Johnson",
+      "email": "alice.johnson@example.com",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTSKbCFe_QYSVH-4FpaszXvakr2Eti9eAJpQ&s",
+      "instructorEmail": "john.doe@example.com",
+      "comment": "John's JavaScript Essentials course was incredibly helpful. The content was clear and easy to follow.",
+      "rating": 5,
+      "date": "2024-09-01"
+    },
+    {
+      "id": 2,
+      "name": "Bob Smith",
+      "email": "bob.smith@example.com",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTSKbCFe_QYSVH-4FpaszXvakr2Eti9eAJpQ&s",
+      "instructorEmail": "jane.smith@example.com",
+      "comment": "Jane is an amazing instructor. I learned React from scratch and now feel confident building apps.",
+      "rating": 4.9,
+      "date": "2024-08-15"
+    },
+    {
+      "id": 3,
+      "name": "Catherine Lee",
+      "email": "catherine.lee@example.com",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTSKbCFe_QYSVH-4FpaszXvakr2Eti9eAJpQ&s",
+      "instructorEmail": "emily.johnson@example.com",
+      "comment": "Emily's Node.js Masterclass is thorough and engaging. I now have a solid understanding of backend development.",
+      "rating": 4.8,
+      "date": "2024-09-05"
+    },
+    {
+      "id": 4,
+      "name": "Daniel Martinez",
+      "email": "daniel.martinez@example.com",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTSKbCFe_QYSVH-4FpaszXvakr2Eti9eAJpQ&s",
+      "instructorEmail": "michael.brown@example.com",
+      "comment": "Michael's Fullstack Web Development course was exactly what I needed to become a fullstack developer.",
+      "rating": 4.7,
+      "date": "2024-08-30"
+    },
+    {
+      "id": 5,
+      "name": "Eve Taylor",
+      "email": "eve.taylor@example.com",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTSKbCFe_QYSVH-4FpaszXvakr2Eti9eAJpQ&s",
+      "instructorEmail": "sarah.white@example.com",
+      "comment": "Sarah's Advanced CSS Techniques course was fantastic. I learned so many new tricks to improve my designs.",
+      "rating": 4.6,
+      "date": "2024-08-20"
+    }
+  ]
+  
