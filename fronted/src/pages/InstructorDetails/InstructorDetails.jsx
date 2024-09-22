@@ -1,10 +1,13 @@
-import { FaCirclePlay, FaStar } from "react-icons/fa6";
+import { FaCirclePlay } from "react-icons/fa6";
 import PageBanner from "../../components/Ui/PageBanner";
 import { INSTRUCTORImages } from "../../image-data/Instructors";
 import { useParams } from "react-router-dom";
 import Tabs from "../../components/Ui/Tabs";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import ReviewCard from "../../components/Ui/ReviewCard";
+import CourseCard from "../../components/Ui/CourseCard";
+import Rating from "../../components/Ui/Rating";
 
 const instructorData = [
   {
@@ -84,16 +87,43 @@ export default function InstructorDetails() {
     fetchReviews();
   }, []);
 
-  console.log(`courses`, instructCourses);
-  console.log(`reviews`, reviews);
+  // console.log(`courses`, instructCourses);
+  // console.log(`reviews`, reviews);
 
   const tabs = ["About", "Courses", "Reviews"];
-  const tabItems = {
-      about:
-        "A seasoned JavaScript developer with over 10 years of experience. John specializes in teaching beginners the core concepts of JavaScript through interactive, hands-on learning. His course, has received high praise for its clarity and depth.", //instructor profile will be provided thi about data
-      instructCourses, //fetch in data base
-      reviews, //fetch in data base
-    }
+  const tabItems = [
+    {
+      title: 'About',
+      content: (
+        <p>
+          A seasoned JavaScript developer with over 10 years of experience. John
+          specializes in teaching beginners the core concepts of JavaScript
+          through interactive, hands-on learning. His course, has received high
+          praise for its clarity and depth.
+        </p>
+      ),
+    },
+    {
+      title: 'Published Courses',
+      content: (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+          {instructCourses.map((item) => (
+            <CourseCard key={item?.id} popularCourse={item}></CourseCard>
+          ))}
+        </div>
+      ),
+    },
+    {
+      title: 'Students Review',
+      content: (
+        <div className="flex flex-col gap-10">
+          {reviews.map((item) => (
+            <ReviewCard key={item?.id} review={item}></ReviewCard>
+          ))}
+        </div>
+      ),
+    },
+  ];
 
   return (
     <div>
@@ -130,9 +160,9 @@ export default function InstructorDetails() {
             <div className="flex justify-between items-center gap-2 pt-0">
               <div className="flex gap-2 items-center justify-center text-base">
                 <span>
-                  <FaStar />
+                  <Rating value={currInstructor.ratings}/>
                 </span>
-                <span>{currInstructor.ratings} Student Rating</span>
+                <span>Student Rating</span>
               </div>
               <div className="flex gap-2 items-center justify-center text-base">
                 <span>
@@ -140,14 +170,6 @@ export default function InstructorDetails() {
                 </span>
                 <span>{currInstructor.numOfCourses} published Courses</span>
               </div>
-              {/* <Link to={`/instructor-details/${id}`}>
-                <button className="inline-flex h-10 items-center justify-center gap-2 hover:text-[#00CBB8]">
-                  <span>Details</span>
-                  <span>
-                    <FaArrowRightLong />
-                  </span>
-                </button>
-              </Link> */}
             </div>
           </div>
         </div>
