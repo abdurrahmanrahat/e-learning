@@ -1,11 +1,19 @@
 import { Link } from "react-router-dom";
 
 const Course = ({ course }) => {
-    const { title, image, authorName, authorImg, price, HowMonth, description,_id } =
-      course;
-    return (
-      <div className="">
-        <Link to={`/courseDetails/${_id}`}>
+  const {
+    title,
+    image,
+    authorName,
+    authorImg,
+    price,
+    courseDuration,
+    description,
+    _id,
+  } = course;
+  return (
+    <div className="">
+      <Link to={`/courseDetails/${_id}`}>
         <div
           className="overflow-hidden bg-[#FFFFFF]
    rounded-[20px] shadow-xl text-slate-500 shadow-slate-200 h-[600px] p-5 border"
@@ -23,7 +31,10 @@ const Course = ({ course }) => {
             <header>
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-3">
-                  <img src="https://i.ibb.co.com/jMcqBLR/Group-259.png" alt="" />
+                  <img
+                    src="https://i.ibb.co.com/jMcqBLR/Group-259.png"
+                    alt=""
+                  />
                   <p
                     className="text-[#696984] text-[14px] font-semibold
   "
@@ -37,7 +48,7 @@ const Course = ({ course }) => {
                     className="text-[#696984] text-[14px] font-semibold
   "
                   >
-                    {HowMonth}
+                    {courseDuration}
                   </p>
                 </div>
               </div>
@@ -47,7 +58,11 @@ const Course = ({ course }) => {
               <p className="text-[18px] text-[#696984]">{description}</p>
               <div className="mt-10 flex items-center justify-between ">
                 <div className="flex items-center gap-3 ">
-                  <img className="w-[50px] h-[50px] rounded-full" src={authorImg} alt="" />
+                  <img
+                    className="w-[50px] h-[50px] rounded-full"
+                    src={authorImg}
+                    alt=""
+                  />
                   <h2 className="text-black font-bold">{authorName}</h2>
                 </div>
                 <div className="flex items-center gap-2 ">
@@ -63,11 +78,9 @@ const Course = ({ course }) => {
             </header>
           </div>
         </div>
-        </Link>
-        
-      </div>
-    );
-  };
-  
-  export default Course;
-  
+      </Link>
+    </div>
+  );
+};
+
+export default Course;
