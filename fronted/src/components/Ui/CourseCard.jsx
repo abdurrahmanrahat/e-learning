@@ -1,7 +1,6 @@
 import { GoPerson } from "react-icons/go";
 import { HiUserGroup } from "react-icons/hi2";
 import { Rating } from '@smastrom/react-rating'
-
 import '@smastrom/react-rating/style.css'
 
 

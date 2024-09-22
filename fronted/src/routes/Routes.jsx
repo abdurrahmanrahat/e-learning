@@ -14,6 +14,7 @@ import CourseDetail from "../components/CourseDetails/CourseDetail/CourseDetail"
 import Instructors from "../pages/Instructors/Instructors";
 import Registration from "../pages/Registration/Registration";
 import Login from "../pages/Login/Login";
+import InstructorDetails from "../pages/InstructorDetails/InstructorDetails";
 
 
 const router = createBrowserRouter([
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "instructors",
         element: <Instructors />,
+      },
+      {
+        path: "instructor-details/:id",
+        element: <InstructorDetails />,
       },
     ],
   },

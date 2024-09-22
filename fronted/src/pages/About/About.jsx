@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import Totc from "../../components/Home/Totc/Totc";
 import axios from 'axios';
-import CourseCard from "./CourseCard";
 import PrimaryTitle from "../../components/Ui/PrimaryTitle";
+import CourseCard from "../../components/Ui/CourseCard";
 
 const About = () => {
 

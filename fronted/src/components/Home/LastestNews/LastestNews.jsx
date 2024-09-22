@@ -87,6 +87,7 @@ const LastestNews = () => {
           </div>
         </div>
       </div>
+    </div>
   );
 };
 
