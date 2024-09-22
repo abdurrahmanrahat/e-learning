@@ -5,8 +5,8 @@ export default function ReviewCard({ review }) {
   const { name, image, email, comment, date, rating } = review;
 
   return (
-    <div className="bg-white text-slate-500 shadow-md rounded-xl w-[70%] p-6 flex flex-col gap-6 justify-between">
-      <header className="mb-4 flex justify-between gap-4">
+    <div className="bg-white text-slate-500 shadow-md rounded-xl w-full p-6 flex flex-col gap-6 justify-between">
+      <header className="mb-4 flex flex-col lg:flex-row xl:flex-row justify-center lg:justify-between xl:justify-between gap-4">
         <div className="flex gap-4 items-center justify-center">
           <figure className="w-20 rounded-full">
             <img className="w-full rounded-full" src={image} alt="" />
