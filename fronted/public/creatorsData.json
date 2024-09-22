@@ -1,0 +1,32 @@
+[
+    {
+      "titleName": "Jane Cooper",
+      "image": "https://i.ibb.co.com/ySXFdrd/image-10.png",
+      "description":"Jane Cooper is a seasoned software developer and UI/UX designer with over 10 years of experience in the tech industry. She brings real-world expertise to her classes, helping students master web development and design."
+    },
+    {
+       "titleName": "Adam",
+      "image": "https://i.ibb.co.com/QN7Hbjb/image-10-1.png",
+      "description":"Adam is a full-stack developer and tech educator with a passion for teaching modern programming languages. With a focus on hands-on learning, he empowers students to build real-world applications from scratch." 
+    },
+    {
+        "titleName": "Tomara",
+       "image": "https://i.ibb.co.com/8zkqdyM/image-10-2.png",
+       "description":"Tomara is a digital marketing strategist and content creator with extensive experience in brand building and online engagement. She leverages her expertise to teach students effective marketing techniques in the digital landscape." 
+     },
+     {
+        "titleName": "Brendan Eich",
+       "image": "https://i.ibb.co.com/KFJ67LW/download-8.jpg",
+       "description":"Brendan Eich is a renowned computer programmer and co-founder of Mozilla, best known for creating JavaScript. With his deep knowledge of web technologies, he inspires students to innovate and excel in programming." 
+     },
+     {
+        "titleName": "Guido van Rossum",
+       "image": "https://i.ibb.co.com/kyTT0S5/download-9.jpg",
+       "description":"Guido van Rossum is the creator of Python, a widely used programming language known for its simplicity and versatility. As an influential figure in the tech community, he shares his insights and expertise to help students " 
+     },
+     {
+        "titleName": "James Gosling",
+       "image": "https://i.ibb.co.com/KGtDFnR/download-10.jpg",
+       "description":"James Gosling is the creator of Java, a foundational programming language that powers countless applications and systems. With his extensive experience, he teaches students how to develop robust, scalable software solutions." 
+     }
+]

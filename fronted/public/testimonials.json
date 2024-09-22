@@ -1,0 +1,37 @@
+[
+      {
+            "id": 1,
+            "name": "Liam Brown",
+            "title": "Web Development Student",
+            "profilePic": "https://randomuser.me/api/portraits/men/32.jpg",
+            "testimonial": "The web development courses on this platform are amazing! The lessons are easy to follow, and the projects really helped me understand the concepts. I'm now confident in building websites from scratch."
+      },
+      {
+            "id": 2,
+            "name": "Olivia Adams",
+            "title": "Data Science Enthusiast",
+            "profilePic": "https://randomuser.me/api/portraits/women/36.jpg",
+            "testimonial": "I've taken multiple data science courses here, and I must say, the content quality is excellent. The instructors explain everything in a way that's easy to grasp, and the community is super supportive."
+      },
+      {
+            "id": 3,
+            "name": "Noah Smith",
+            "title": "Cybersecurity Student",
+            "profilePic": "https://randomuser.me/api/portraits/men/45.jpg",
+            "testimonial": "This platform's cybersecurity program has been a game-changer for me. The real-world scenarios and hands-on labs make the learning process engaging and effective. I highly recommend it!"
+      },
+      {
+            "id": 4,
+            "name": "Emma Davis",
+            "title": "Full Stack Developer Trainee",
+            "profilePic": "https://randomuser.me/api/portraits/women/23.jpg",
+            "testimonial": "The Full Stack Development track is top-tier! The course content is well-organized, and the instructors provide great feedback. This website helped me build my portfolio and land internships."
+      },
+      {
+            "id": 5,
+            "name": "James Miller",
+            "title": "Machine Learning Student",
+            "profilePic": "https://randomuser.me/api/portraits/men/51.jpg",
+            "testimonial": "The machine learning courses on this platform are extremely thorough and insightful. I’ve learned to apply algorithms and data models, and it’s truly boosted my confidence in the field."
+      }
+]
