@@ -27,7 +27,7 @@ export default function Tabs({ tabs, tabItems }) {
           </li>
         ))}
       </ul>
-      <div className={`px-6 py-4`} role="tabpanel">
+      <div className="py-4" role="tabpanel">
         <div className="flex flex-col gap-6 py-10">
           <PrimaryTitle
             headingPart1={tabItems[tabSelected]?.title}
