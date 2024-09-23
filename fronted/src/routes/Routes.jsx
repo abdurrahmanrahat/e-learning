@@ -15,13 +15,14 @@ import Instructors from "../pages/Instructors/Instructors";
 import Registration from "../pages/Registration/Registration";
 import Login from "../pages/Login/Login";
 import InstructorDetails from "../pages/InstructorDetails/InstructorDetails";
+import ErrorPage from "../components/ErrorPage/ErrorPage";
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
-    // errorElement: <div>Error page</div>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         index: true,
