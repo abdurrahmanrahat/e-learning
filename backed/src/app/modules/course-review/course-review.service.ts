@@ -14,15 +14,25 @@ const createReviewIntoDB = async (
     throw new AppError(httpStatus.NOT_FOUND, 'Course not found.');
   }
 
+  // start session
+  const session = await CourseReview.startSession();
+
   try {
-    const review = await CourseReview.create({
-      course: course._id,
-      ...payload,
-    });
+    session.startTransaction();
+
+    const review = await CourseReview.create(
+      [
+        {
+          course: course._id,
+          ...payload,
+        },
+      ],
+      { session },
+    );
 
     const reviewsCount = await CourseReview.countDocuments({
       course: course._id,
-    });
+    }).session(session);
 
     // for average ratings
     const averageRatings = await CourseReview.aggregate([
@@ -32,7 +42,7 @@ const createReviewIntoDB = async (
       {
         $group: { _id: '$course', averageRating: { $avg: '$rating' } },
       },
-    ]);
+    ]).session(session);
 
     if (averageRatings.length > 0) {
       const avgRating = averageRatings[0].averageRating;
@@ -42,16 +52,20 @@ const createReviewIntoDB = async (
       await Course.findByIdAndUpdate(
         { _id: courseId },
         { totalRatings: reviewsCount, averageRatings: avgRatingWithTwoDecimal },
-      );
-    } else {
-      await Course.findByIdAndUpdate(
-        { _id: courseId },
-        { totalRatings: reviewsCount },
+        { session },
       );
     }
 
-    return review;
+    // end session
+    await session.commitTransaction();
+    session.endSession();
+
+    return review[0];
   } catch (error) {
+    // end session
+    await session.commitTransaction();
+    session.endSession();
+
     throw new AppError(httpStatus.BAD_REQUEST, 'Error found');
   }
 };
