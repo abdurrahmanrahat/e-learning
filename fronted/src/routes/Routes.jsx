@@ -16,6 +16,7 @@ import Registration from "../pages/Registration/Registration";
 import Login from "../pages/Login/Login";
 import InstructorDetails from "../pages/InstructorDetails/InstructorDetails";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
+import Checkout from "../pages/Checkout/Checkout";
 
 
 const router = createBrowserRouter([
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
       {
         path: "courseDetails/:id",
         element: <CourseDetail></CourseDetail>,
-        loader:()=>fetch("../coursesData.json")
+        loader:()=>fetch("../../public/InstructorCourses.json")
       },
       {
         path: "instructors",
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: "instructor-details/:id",
         element: <InstructorDetails />,
+      },
+      {
+        path: "checkout/:id",
+        element: <Checkout />,
       },
     ],
   },

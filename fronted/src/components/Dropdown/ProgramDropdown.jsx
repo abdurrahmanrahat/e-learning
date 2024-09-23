@@ -7,7 +7,7 @@ const ProgramDropdown = () => {
     <div>
       <button
         onClick={() => setIsOpen((prev) => !prev)}
-        className="flex items-center gap-3 text-xl font-bold px-5 py-3 rounded-xl bg-white text-gray-600 tracking-wider "
+        className="flex items-center gap-3 text-base font-medium px-4 py-2 rounded-xl bg-white text-gray-600 tracking-wider "
       >
         Program
         {!isOpen ? (
