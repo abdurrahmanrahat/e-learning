@@ -20,7 +20,7 @@ const ReviewTabs = () => {
   }, []);
 
   return (
-    <div>
+    <div className="flex flex-col gap-6">
       {
         reviews?.map(item => <ReviewCard key={item.id} review={item}/>)
       }
