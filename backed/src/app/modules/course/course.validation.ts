@@ -39,7 +39,7 @@ const updateCourseValidationSchema = z.object({
   }),
 });
 
-export const CourseValidation = {
+export const CourseValidations = {
   createCourseValidationSchema,
   updateCourseValidationSchema,
 };
