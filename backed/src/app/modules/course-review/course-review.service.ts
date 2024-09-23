@@ -81,19 +81,47 @@ const getReviewByIdFromDB = async (reviewId: string) => {
 };
 
 const updateReviewByIdFromDB = async (
+  courseId: string,
   reviewId: string,
   payload: Partial<TCourseReview>,
 ) => {
-  const result = await CourseReview.findByIdAndUpdate(
-    { _id: reviewId },
-    payload,
-    {
-      new: true,
-    },
-  );
-  console.log(result);
+  const course = await Course.findById(courseId);
 
-  return result;
+  if (!course) {
+    throw new AppError(httpStatus.NOT_FOUND, 'Course not found.');
+  }
+
+  try {
+    // update the review
+    const result = await CourseReview.findByIdAndUpdate(
+      { _id: reviewId },
+      payload,
+      {
+        new: true,
+      },
+    );
+
+    // Recalculate the average rating
+    const averageRatings = await CourseReview.aggregate([
+      { $match: { course: course._id } },
+      { $group: { _id: '$course', averageRating: { $avg: '$rating' } } },
+    ]);
+
+    // Update the course's  average ratings
+    if (averageRatings.length > 0) {
+      const avgRating = averageRatings[0].averageRating;
+      const avgRatingWithTwoDecimal = parseFloat(avgRating.toFixed(2));
+
+      await Course.findByIdAndUpdate(
+        { _id: courseId },
+        { averageRatings: avgRatingWithTwoDecimal },
+      );
+    }
+
+    return result;
+  } catch (error) {
+    throw new AppError(httpStatus.BAD_REQUEST, 'Error while updating review');
+  }
 };
 
 const deleteReviewByIdFromDB = async (courseId: string, reviewId: string) => {
@@ -103,34 +131,63 @@ const deleteReviewByIdFromDB = async (courseId: string, reviewId: string) => {
     throw new AppError(httpStatus.NOT_FOUND, 'Course not found.');
   }
 
-  const result = await CourseReview.findByIdAndDelete({ _id: reviewId });
+  // Start session
+  const session = await CourseReview.startSession();
 
-  const reviewsCount = await CourseReview.countDocuments({
-    course: course._id,
-  });
+  try {
+    session.startTransaction();
 
-  // for average ratings
-  const averageRatings = await CourseReview.aggregate([
-    {
-      $match: { course: course._id },
-    },
-    {
-      $group: { _id: '$course', averageRating: { $avg: '$rating' } },
-    },
-  ]);
+    // Delete the review
+    const result = await CourseReview.findByIdAndDelete({
+      _id: reviewId,
+    }).session(session);
 
-  if (averageRatings.length > 0) {
-    const avgRating = averageRatings[0].averageRating;
+    if (!result) {
+      throw new AppError(httpStatus.NOT_FOUND, 'Review not found.');
+    }
 
-    const avgRatingWithTwoDecimal = parseFloat(avgRating.toFixed(2));
+    // Update review count
+    const reviewsCount = await CourseReview.countDocuments({
+      course: course._id,
+    }).session(session);
 
-    await Course.findByIdAndUpdate(
-      { _id: courseId },
-      { totalRatings: reviewsCount, averageRatings: avgRatingWithTwoDecimal },
-    );
+    // Recalculate the average rating
+    const averageRatings = await CourseReview.aggregate([
+      { $match: { course: course._id } },
+      { $group: { _id: '$course', averageRating: { $avg: '$rating' } } },
+    ]).session(session);
+
+    // Update the course's total ratings and average ratings
+    if (averageRatings.length > 0) {
+      const avgRating = averageRatings[0].averageRating;
+      const avgRatingWithTwoDecimal = parseFloat(avgRating.toFixed(2));
+
+      await Course.findByIdAndUpdate(
+        { _id: courseId },
+        { totalRatings: reviewsCount, averageRatings: avgRatingWithTwoDecimal },
+        { session },
+      );
+    } else {
+      // If no ratings left, set averageRatings to 0
+      await Course.findByIdAndUpdate(
+        { _id: courseId },
+        { totalRatings: reviewsCount, averageRatings: 0 },
+        { session },
+      );
+    }
+
+    // Commit the transaction if everything succeeds
+    await session.commitTransaction();
+    session.endSession();
+
+    return result;
+  } catch (error) {
+    // Rollback the transaction in case of any error
+    await session.abortTransaction();
+    session.endSession();
+
+    throw new AppError(httpStatus.BAD_REQUEST, 'Error while deleting review');
   }
-
-  return result;
 };
 
 export const CourseReviewServices = {

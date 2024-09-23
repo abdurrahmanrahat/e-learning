@@ -46,10 +46,11 @@ const getReviewById = catchAsync(async (req, res) => {
 });
 
 const updateReviewById = catchAsync(async (req, res) => {
-  const { reviewId } = req.params;
+  const { courseId, reviewId } = req.params;
   const updatedData = req.body;
 
   const result = await CourseReviewServices.updateReviewByIdFromDB(
+    courseId,
     reviewId,
     updatedData,
   );
