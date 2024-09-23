@@ -1,5 +1,6 @@
 import express from 'express';
 import validateRequest from '../../middlewares/validateRequest';
+import { CourseReviewControllers } from '../course-review/course-review.controller';
 import { CourseControllers } from './course.controller';
 import { CourseValidation } from './course.validation';
 
@@ -22,5 +23,11 @@ router.patch(
 );
 
 router.delete('/:courseId', CourseControllers.deleteCourse);
+
+// course review route
+router.post(
+  '/:courseId/reviews/create-review',
+  CourseReviewControllers.createReview,
+);
 
 export const CourseRoutes = router;
