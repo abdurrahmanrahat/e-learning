@@ -74,7 +74,7 @@ export default function SearchForm({ onSubmit }) {
               Select Subjects
             </option>
             {subjects?.map((item, index) => (
-              <option defaultValue={item[0]} key={index} value={item}>
+              <option key={index} value={item}>
                 {item}
               </option>
             ))}
@@ -88,11 +88,11 @@ export default function SearchForm({ onSubmit }) {
             className="w-full px-6 py-3 border focus:outline-none text-[#000] focus:border-[#49BBBD] border-[#D9D9D9] placeholder:text-[#9D9B9B] placeholder:text-base placeholder:font-light outline-none rounded-xl"
           >
             {/* Placeholder option */}
-            <option value="" disabled selected>
+            <option disabled selected>
               Select Programs
             </option>
             {programs?.map((item, index) => (
-              <option defaultValue={item[0]} key={index} value={item}>
+              <option key={index} value={item}>
                 {item}
               </option>
             ))}
@@ -110,7 +110,7 @@ export default function SearchForm({ onSubmit }) {
               Select Languages
             </option>
             {languages?.map((item, index) => (
-              <option defaultValue={item[0]} key={index} value={item}>
+              <option key={index} value={item}>
                 {item}
               </option>
             ))}
