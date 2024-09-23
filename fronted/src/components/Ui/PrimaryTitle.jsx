@@ -5,7 +5,7 @@ export default function PrimaryTitle({
   style,
 }) {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-2">
       <h2 className={`text-[28px] font-medium ${style}`}>
         <span className="text-[#2F327D]">{headingPart1}</span>{" "}
         <span className="text-[#00CBB8]">{headingPart2}</span>
