@@ -1,9 +1,11 @@
 import { GoPerson } from "react-icons/go";
 import { HiUserGroup } from "react-icons/hi2";
 import Rating from "./Rating";
+import {Link} from "react-router-dom";
 
 const CourseCard = ({ popularCourse }) => {
   const {
+    id,
     courseTitle,
     description,
     instructor,
@@ -45,9 +47,11 @@ const CourseCard = ({ popularCourse }) => {
             <HiUserGroup className="text-xl" /> {enrollment}
           </span>
         </div>
-        <button className="mt-6 border-[2px] w-full text-[#2F327D] hover:text-white px-7 py-3 hover:bg-[#23BDEE] hover:border-[#23BDEE] transition-colors duration-300">
-          View Details
-        </button>
+        <Link to={`/courseDetails/${id}`}>
+          <button className="mt-6 border-[2px] w-full text-[#2F327D] hover:text-white px-7 py-3 hover:bg-[#23BDEE] hover:border-[#23BDEE] transition-colors duration-300">
+            View Details
+          </button>
+        </Link>
       </div>
     </div>
   );
