@@ -1,14 +1,15 @@
 import express from 'express';
 import validateRequest from '../../middlewares/validateRequest';
 import { CourseReviewControllers } from '../course-review/course-review.controller';
+import { CourseReviewValidations } from '../course-review/course-review.validation';
 import { CourseControllers } from './course.controller';
-import { CourseValidation } from './course.validation';
+import { CourseValidations } from './course.validation';
 
 const router = express.Router();
 
 router.post(
   '/create-course',
-  validateRequest(CourseValidation.createCourseValidationSchema),
+  validateRequest(CourseValidations.createCourseValidationSchema),
   CourseControllers.createCourse,
 );
 
@@ -18,7 +19,7 @@ router.get('/:courseId', CourseControllers.getSingleCourse);
 
 router.patch(
   '/:courseId',
-  validateRequest(CourseValidation.updateCourseValidationSchema),
+  validateRequest(CourseValidations.updateCourseValidationSchema),
   CourseControllers.updateCourse,
 );
 
@@ -27,6 +28,7 @@ router.delete('/:courseId', CourseControllers.deleteCourse);
 // course review route
 router.post(
   '/:courseId/reviews/create-review',
+  validateRequest(CourseReviewValidations.createCourseReviewValidationSchema),
   CourseReviewControllers.createReview,
 );
 
@@ -39,6 +41,7 @@ router.get(
 
 router.patch(
   '/:courseId/reviews/:reviewId',
+  validateRequest(CourseReviewValidations.updateCourseReviewValidationSchema),
   CourseReviewControllers.updateReviewById,
 );
 
