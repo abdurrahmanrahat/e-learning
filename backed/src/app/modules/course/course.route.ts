@@ -30,4 +30,21 @@ router.post(
   CourseReviewControllers.createReview,
 );
 
+router.get('/:courseId/reviews', CourseReviewControllers.getAllReviews);
+
+router.get(
+  '/:courseId/reviews/:reviewId',
+  CourseReviewControllers.getReviewById,
+);
+
+router.patch(
+  '/:courseId/reviews/:reviewId',
+  CourseReviewControllers.updateReviewById,
+);
+
+router.delete(
+  '/:courseId/reviews/:reviewId',
+  CourseReviewControllers.deleteReviewById,
+);
+
 export const CourseRoutes = router;
