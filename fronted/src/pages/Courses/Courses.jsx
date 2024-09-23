@@ -5,16 +5,30 @@ import OfferCourse from "./OfferCourse/OfferCourse";
 import PageBanner from "../../components/Ui/PageBanner";
 import CourseCard from "../../components/Ui/CourseCard";
 import PrimaryTitle from "../../components/Ui/PrimaryTitle";
-import {SHAREDImages} from "../../image-data/shared"
-import SubjectDropdown from "../../components/Dropdown/SubjectDropdown";
-import ProgramDropdown from "../../components/Dropdown/ProgramDropdown";
-import LanguageDropdown from "../../components/Dropdown/LanguageDropdown";
+import { SHAREDImages } from "../../image-data/shared";
+import SearchForm from "../../components/Course/SearchForm/SearchForm";
+import toast from "react-hot-toast";
 
 // TODO: dropdown manue will be fixed
 
 const Courses = () => {
   const [courses, SetCourses] = useState([]);
-  // const [dataLength, setDataLength] = useState(6);
+  // Form submission handler
+  const onSubmit = (data) => {
+    const { searchKeyword, country, language, program } = data;
+
+    // apiHandler
+    //   .post("/users/register", data)
+    //   .then((res) => {
+    //     console.log("Register user:", res.data?.data);
+    //     toast.success("User Created Successfully");
+    //     navigate("/login");
+    //   })
+    //   .catch((err) => {
+    //     console.log(err?.message);
+    //     toast.error(err?.message);
+    //   });
+  };
 
   useEffect(() => {
     fetch("../../../public/InstructorCourses.json")
@@ -26,30 +40,15 @@ const Courses = () => {
     <div className="">
       {/* courses banner  */}
       <PageBanner image={SHAREDImages.banner_2}>
-       <div className="w-[60%] h-full flex flex-col justify-center gap-10">
-        <div className="bg-[#FFF] px-2 text-[#000] rounded-xl">
-          <input type="text" name="search" className="py-3 px-6 w-[80%] outline-none rounded-xl" placeholder="Search your favorite course"/>
-          <button className="py-3 px-6 w-[20%] inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-primary text-sm font-medium tracking-wide text-white shadow-md transition duration-300 hover:bg-emerald-600">Search</button>
+        <div className="w-full lg:w-[60%] xl:w-[60%] h-full flex flex-col justify-center gap-10 px-4">
+          <SearchForm onSubmit={onSubmit}/>
         </div>
-        <div className="flex justify-center gap-10">
-          <div>
-            <SubjectDropdown/>
-          </div>
-          <div>
-            <ProgramDropdown/>
-          </div>
-          <div>
-            <LanguageDropdown/>
-          </div>
-        </div>
-       </div>
       </PageBanner>
-
 
       {/* courses map section  */}
       <div className="container-class px-10 flex flex-col gap-10 py-10">
         <PrimaryTitle headingPart1={"All"} headingPart2={"Courses"} />
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {courses?.map((item) => (
             <CourseCard popularCourse={item} key={item.id}></CourseCard>
