@@ -1,10 +1,14 @@
-import { FaCirclePlay, FaStar } from "react-icons/fa6";
+import { FaCirclePlay } from "react-icons/fa6";
 import PageBanner from "../../components/Ui/PageBanner";
 import { INSTRUCTORImages } from "../../image-data/Instructors";
 import { useParams } from "react-router-dom";
 import Tabs from "../../components/Ui/Tabs";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import ReviewCard from "../../components/Ui/ReviewCard";
+import CourseCard from "../../components/Ui/CourseCard";
+import Rating from "../../components/Ui/Rating";
+import {SHAREDImages} from "../../image-data/shared"
 
 const instructorData = [
   {
@@ -84,23 +88,50 @@ export default function InstructorDetails() {
     fetchReviews();
   }, []);
 
-  console.log(`courses`, instructCourses);
-  console.log(`reviews`, reviews);
+  // console.log(`courses`, instructCourses);
+  // console.log(`reviews`, reviews);
 
   const tabs = ["About", "Courses", "Reviews"];
-  const tabItems = {
-      about:
-        "A seasoned JavaScript developer with over 10 years of experience. John specializes in teaching beginners the core concepts of JavaScript through interactive, hands-on learning. His course, has received high praise for its clarity and depth.", //instructor profile will be provided thi about data
-      instructCourses, //fetch in data base
-      reviews, //fetch in data base
-    }
+  const tabItems = [
+    {
+      title: "About",
+      content: (
+        <p>
+          A seasoned JavaScript developer with over 10 years of experience. John
+          specializes in teaching beginners the core concepts of JavaScript
+          through interactive, hands-on learning. His course, has received high
+          praise for its clarity and depth.
+        </p>
+      ),
+    },
+    {
+      title: "Published Courses",
+      content: (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 mt-6">
+          {instructCourses.map((item) => (
+            <CourseCard key={item?.id} popularCourse={item}></CourseCard>
+          ))}
+        </div>
+      ),
+    },
+    {
+      title: "Students Review",
+      content: (
+        <div className="flex flex-col gap-10">
+          {reviews.map((item) => (
+            <ReviewCard key={item?.id} review={item}></ReviewCard>
+          ))}
+        </div>
+      ),
+    },
+  ];
 
   return (
     <div>
-      <PageBanner>
-        <div className="flex gap-10 container-class h-[80%]">
-          <div className="w-[30%] flex justify-center items-center">
-            <figure className="rounded-full border-[6px] border-[#FFF] w-60">
+      <PageBanner image={SHAREDImages.banner_1}>
+        <div className="flex justify-center items-center gap-10 w-full lg:container-class xl:container-class h-[80%]">
+          <div className="w-[30vh] hidden xl:flex lg:flex justify-center items-center">
+            <figure className="rounded-full border-[6px] border-[#FFF] w-full">
               <img
                 className="w-full rounded-full"
                 src={currInstructor.image}
@@ -108,10 +139,20 @@ export default function InstructorDetails() {
               />
             </figure>
           </div>
-          <div className="bg-white text-slate-500 shadow-md rounded-xl w-[70%] p-6 flex flex-col justify-between">
+          <div className="bg-white text-slate-500 shadow-md rounded-xl w-11/12 xl:w-[70%] lg:w-[70%] p-6 flex flex-col justify-between">
+            <div className="w-full flex justify-center">
+            <figure className="rounded-full border-[6px] border-[#FFF] w-[40%] flex  xl:hidden lg:hidden justify-center items-center">
+              <img
+                className="w-full rounded-full"
+                src={currInstructor.image}
+                alt=""
+              />
+            </figure>
+
+            </div>
             {/*  <!-- Body--> */}
             <div className="">
-              <header className="mb-4 flex justify-between gap-4">
+              <header className="mb-4 flex justify-center xl:justify-between lg:justify-between gap-4">
                 <div className="text-center">
                   <h3 className="text-xl font-medium text-slate-700">
                     {currInstructor.name}
@@ -120,19 +161,19 @@ export default function InstructorDetails() {
                     {currInstructor.title}
                   </p>
                 </div>
-                <button className="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded bg-primary px-5 text-sm font-medium tracking-wide text-white shadow-md shadow-emerald-200 transition duration-300 hover:bg-emerald-600 hover:shadow-sm hover:shadow-emerald-200">
+                <button className="hidden xl:inline-flex lg:inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded bg-primary px-5 text-sm font-medium tracking-wide text-white shadow-md shadow-emerald-200 transition duration-300 hover:bg-emerald-600 hover:shadow-sm hover:shadow-emerald-200">
                   <span>Enroll Now</span>
                 </button>
               </header>
-              <p className="text-start text-sm">{currInstructor.about}</p>
+              <p className="text-center lg:text-start xl:text-start text-sm">{currInstructor.about}</p>
             </div>
             {/*  <!-- Action base sized link button --> */}
-            <div className="flex justify-between items-center gap-2 pt-0">
+            <div className="flex flex-col lg:flex-row xl:flex-row justify-between items-center gap-2 pt-6">
               <div className="flex gap-2 items-center justify-center text-base">
                 <span>
-                  <FaStar />
+                  <Rating value={currInstructor.ratings} />
                 </span>
-                <span>{currInstructor.ratings} Student Rating</span>
+                <span>Student Rating</span>
               </div>
               <div className="flex gap-2 items-center justify-center text-base">
                 <span>
@@ -140,19 +181,11 @@ export default function InstructorDetails() {
                 </span>
                 <span>{currInstructor.numOfCourses} published Courses</span>
               </div>
-              {/* <Link to={`/instructor-details/${id}`}>
-                <button className="inline-flex h-10 items-center justify-center gap-2 hover:text-[#00CBB8]">
-                  <span>Details</span>
-                  <span>
-                    <FaArrowRightLong />
-                  </span>
-                </button>
-              </Link> */}
             </div>
           </div>
         </div>
       </PageBanner>
-      <div className="my-10 container-class">
+      <div className="py-10 container-class px-10">
         <Tabs tabs={tabs} tabItems={tabItems} />
       </div>
     </div>

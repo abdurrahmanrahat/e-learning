@@ -2,6 +2,7 @@ import InstructorCard from "../../components/Ui/InstructorCard";
 import PageBanner from "../../components/Ui/PageBanner";
 import PrimaryTitle from "../../components/Ui/PrimaryTitle";
 import { INSTRUCTORImages } from "../../image-data/Instructors";
+import {SHAREDImages} from "../../image-data/shared"
 
 const instructorData = [
   {
@@ -45,14 +46,15 @@ const instructorData = [
 export default function Instructors() {
   return (
     <div className="w-full">
-      <PageBanner><h2>Instructors</h2></PageBanner>
+      <PageBanner image={SHAREDImages.banner_1}><h2 className="text-5xl">Instructors</h2></PageBanner>
+
       <div className="py-16 container-class px-10">
         <PrimaryTitle
           headingPart1={"Our Expert"}
           headingPart2={"Instructors"}
           style={"text-start"}
         />
-        <div className="grid grid-cols-3 gap-x-8 gap-y-14 my-10">
+        <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-3 gap-x-8 gap-y-14 py-10">
             {
                 instructorData?.map(item => <InstructorCard key={item.id} item={item}>
                 </InstructorCard>)
