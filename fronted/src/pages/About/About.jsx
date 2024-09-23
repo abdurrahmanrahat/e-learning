@@ -4,6 +4,7 @@ import axios from "axios";
 import PrimaryTitle from "../../components/Ui/PrimaryTitle";
 import CourseCard from "../../components/Ui/CourseCard";
 import PageBanner from "../../components/Ui/PageBanner";
+import {SHAREDImages} from "../../image-data/shared"
 
 const About = () => {
   const [popularCourses, setPopularCourses] = useState([]);
@@ -23,8 +24,8 @@ const About = () => {
 
   return (
     <div>
-      <PageBanner>
-        <h1 className="">About Us</h1>
+      <PageBanner image={SHAREDImages.banner_1}>
+        <h1 className="text-5xl">About Us</h1>
       </PageBanner>
 
       <div className="lg:my-20 my-10 container-class md:p-4">

@@ -8,6 +8,7 @@ import axios from "axios";
 import ReviewCard from "../../components/Ui/ReviewCard";
 import CourseCard from "../../components/Ui/CourseCard";
 import Rating from "../../components/Ui/Rating";
+import {SHAREDImages} from "../../image-data/shared"
 
 const instructorData = [
   {
@@ -127,8 +128,8 @@ export default function InstructorDetails() {
 
   return (
     <div>
-      <PageBanner>
-        <div className="flex justify-center items-center gap-10 container-class h-[80%]">
+      <PageBanner image={SHAREDImages.banner_1}>
+        <div className="flex justify-center items-center gap-10 w-full lg:container-class xl:container-class h-[80%]">
           <div className="w-[30vh] hidden xl:flex lg:flex justify-center items-center">
             <figure className="rounded-full border-[6px] border-[#FFF] w-full">
               <img
@@ -138,9 +139,9 @@ export default function InstructorDetails() {
               />
             </figure>
           </div>
-          <div className="bg-white text-slate-500 shadow-md rounded-xl w-[70%] p-6 flex flex-col justify-between">
+          <div className="bg-white text-slate-500 shadow-md rounded-xl w-11/12 xl:w-[70%] lg:w-[70%] p-6 flex flex-col justify-between">
             <div className="w-full flex justify-center">
-            <figure className="rounded-full border-[6px] border-[#FFF] w-[20%] flex  xl:hidden lg:hidden justify-center items-center">
+            <figure className="rounded-full border-[6px] border-[#FFF] w-[40%] flex  xl:hidden lg:hidden justify-center items-center">
               <img
                 className="w-full rounded-full"
                 src={currInstructor.image}
