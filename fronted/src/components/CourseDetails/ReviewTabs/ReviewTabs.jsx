@@ -6,12 +6,17 @@ const ReviewTabs = () => {
   const idInt = parseInt(id);
   const course = courses.find((course) => course._id === idInt);
   console.log(course);
+
   return (
     <div>
-        <div className="">
+      <div className="">
         <div className="flex items-center justify-between flex-col lg:flex-row md:flex-row mt-20">
           <div className="flex items-center gap-3">
-            <img className="w-[60px] h-[60px] rounded-full" src={course.authorImg} alt="" />
+            <img
+              className="w-[60px] h-[60px] rounded-full"
+              src={course.authorImg}
+              alt=""
+            />
             <div>
               <h2 className="font-bold text-xl">{course.authorName}</h2>
               <div className="mt-3">
@@ -106,7 +111,7 @@ const ReviewTabs = () => {
             <img src="https://i.ibb.co.com/SxVRz04/image.png" alt="" />
             <div>
               <h2 className="font-bold text-xl text-gray-500">
-                {course.HowMonth}
+                {course.courseDuration}
               </h2>
             </div>
             <div>
@@ -116,7 +121,11 @@ const ReviewTabs = () => {
         </div>
         <p className="mt-4 text-gray-500">{course.bigDescription}</p>
       </div>
-      <img className="my-10 w-full" src="https://i.ibb.co.com/bBQYCWx/Line-18.png" alt="" />
+      <img
+        className="my-10 w-full"
+        src="https://i.ibb.co.com/bBQYCWx/Line-18.png"
+        alt=""
+      />
       <div>
         <div className="flex flex-col lg:flex-row md:flex-row  items-center justify-between ">
           <div className="flex items-center gap-3">
@@ -136,7 +145,7 @@ const ReviewTabs = () => {
             <img src="https://i.ibb.co.com/SxVRz04/image.png" alt="" />
             <div>
               <h2 className="font-bold text-xl text-gray-500">
-                {course.HowMonth}
+                {course.courseDuration}
               </h2>
             </div>
             <div>

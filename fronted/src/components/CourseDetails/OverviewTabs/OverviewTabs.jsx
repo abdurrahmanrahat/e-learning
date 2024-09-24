@@ -103,7 +103,7 @@ const OverviewTabs = () => {
               <span className="flex w-full items-center gap-2">
                 <label
                   id="p03e-label"
-                  for="p03e"
+                  htmlFor="p03e"
                   className="mb-0 w-9 shrink-0 text-center text-xs text-slate-500"
                 >
                   5 star
@@ -121,7 +121,7 @@ const OverviewTabs = () => {
               <span className="flex w-full items-center gap-2">
                 <label
                   id="p03e-label"
-                  for="p03e"
+                  htmlFor="p03e"
                   className="mb-0 w-9 shrink-0 text-center text-xs text-slate-500"
                 >
                   4 star
@@ -139,7 +139,7 @@ const OverviewTabs = () => {
               <span className="flex w-full items-center gap-2">
                 <label
                   id="p03e-label"
-                  for="p03e"
+                  htmlFor="p03e"
                   className="mb-0 w-9 shrink-0 text-center text-xs text-slate-500"
                 >
                   3 star
@@ -157,7 +157,7 @@ const OverviewTabs = () => {
               <span className="flex w-full items-center gap-2">
                 <label
                   id="p03e-label"
-                  for="p03e"
+                  htmlFor="p03e"
                   className="mb-0 w-9 shrink-0 text-center text-xs text-slate-500"
                 >
                   2 star
@@ -175,7 +175,7 @@ const OverviewTabs = () => {
               <span className="flex w-full items-center gap-2">
                 <label
                   id="p03e-label"
-                  for="p03e"
+                  htmlFor="p03e"
                   className="mb-0 w-9 shrink-0 text-center text-xs text-slate-500"
                 >
                   1 star
@@ -197,7 +197,11 @@ const OverviewTabs = () => {
       <div className="">
         <div className="flex items-center justify-between flex-col lg:flex-row md:flex-row mt-20">
           <div className="flex items-center gap-3">
-            <img className="w-[60px] h-[60px] rounded-full" src={course.authorImg} alt="" />
+            <img
+              className="w-[60px] h-[60px] rounded-full"
+              src={course.authorImg}
+              alt=""
+            />
             <div>
               <h2 className="font-bold text-xl">{course.authorName}</h2>
               <div className="mt-3">
@@ -292,7 +296,7 @@ const OverviewTabs = () => {
             <img src="https://i.ibb.co.com/SxVRz04/image.png" alt="" />
             <div>
               <h2 className="font-bold text-xl text-gray-500">
-                {course.HowMonth}
+                {course.courseDuration}
               </h2>
             </div>
             <div>
@@ -302,14 +306,21 @@ const OverviewTabs = () => {
         </div>
         <p className="mt-4 text-gray-500">{course.bigDescription}</p>
       </div>
-<img className="my-10 w-full" src="https://i.ibb.co.com/bBQYCWx/Line-18.png" alt="" />
+      <img
+        className="my-10 w-full"
+        src="https://i.ibb.co.com/bBQYCWx/Line-18.png"
+        alt=""
+      />
       <div className="">
         <div className="flex flex-col lg:flex-row md:flex-row  items-center justify-between ">
           <div className="flex items-center gap-3">
-            <img className="w-[60px] h-[60px] rounded-full" src={course.authorImg} alt="" />
+            <img
+              className="w-[60px] h-[60px] rounded-full"
+              src={course.authorImg}
+              alt=""
+            />
             <div>
               <h2 className="font-bold text-xl">{course.authorName}</h2>
-              
             </div>
             <div>
               <h2></h2>
@@ -319,7 +330,7 @@ const OverviewTabs = () => {
             <img src="https://i.ibb.co.com/SxVRz04/image.png" alt="" />
             <div>
               <h2 className="font-bold text-xl text-gray-500">
-                {course.HowMonth}
+                {course.courseDuration}
               </h2>
             </div>
             <div>

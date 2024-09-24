@@ -6,7 +6,7 @@ export default function PageBanner({ children }) {
       <div>
         <div className="w-full h-full bg-[#000] bg-opacity-40 absolute inset-0"></div>
       </div>
-      <div className="absolute top-0 w-full h-full flex justify-center items-center text-3xl text-[#FFF]">
+      <div className="absolute top-0 w-full h-full flex justify-center items-center text-5xl text-[#FFF]">
         {children}
       </div>
     </div>

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import CreatorCard from "../CreatorCard/CreatorCard";
 
-
 const Creators = () => {
   const [creators, SetCreators] = useState([]);
   useEffect(() => {
@@ -9,6 +8,7 @@ const Creators = () => {
       .then((res) => res.json())
       .then((data) => SetCreators(data));
   }, []);
+
   return (
     <div className="">
       <div className="flex flex-col lg:flex-row items-center lg:justify-between mb-24 mt-10 lg:mt-24 mx-5 lg:mx-0 md:mx-0">
