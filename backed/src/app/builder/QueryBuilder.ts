@@ -81,7 +81,7 @@ export class QueryBuilder<T> {
     // Transform queryObj to apply case-insensitive filtering
     for (const key in queryObj) {
       if (typeof queryObj[key] === 'string') {
-        queryObj[key] = { $regex: new RegExp(queryObj[key], 'i') }; // Make case-insensitive
+        queryObj[key] = { $regex: new RegExp(queryObj[key] as string, 'i') }; // Make case-insensitive
       }
     }
 

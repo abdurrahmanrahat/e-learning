@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { TUser } from './user.interface';
 import { User } from './user.model';
 
@@ -15,9 +17,15 @@ const getAllUsersFromDB = async () => {
 };
 
 const getSingleUserFromDB = async (userId: string) => {
-  const result = await User.findById(userId).lean();
+  const result = await User.findById(userId);
 
-  const { password, ...user } = result;
+  if (!result) {
+    throw new Error('User not found');
+  }
+
+  // Convert the Mongoose document to a plain object and safely remove password
+  const userObject = result.toObject(); // Ensure it's a plain object
+  const { password, ...user } = userObject;
 
   return user;
 };
