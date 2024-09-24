@@ -25,7 +25,13 @@ const loginUserIntoDb = async (payload: TLoginUser) => {
   }
 
   // Generate JWT token
-  const jwtPayload = { email: existingUser?.email, role: existingUser.role };
+  const jwtPayload = {
+    name: existingUser.name,
+    email: existingUser?.email,
+    role: existingUser.role,
+    photoUrl: existingUser.photoUrl,
+    gender: existingUser.gender,
+  };
 
   const accessToken = createJwtToken(
     jwtPayload,
