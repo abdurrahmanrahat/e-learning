@@ -73,11 +73,11 @@ userSchema.pre('find', function (next) {
   next();
 });
 
-userSchema.pre('findOne', function (next) {
-  this.select('-password');
+// userSchema.pre('findOne', function (next) {
+//   this.select('-password');
 
-  next();
-});
+//   next();
+// });
 
 // model
 export const User = model<TUser, UserStaticModel>('User', userSchema);
