@@ -15,9 +15,14 @@ import './Instructor.css';
 // Import required modules
 import { Navigation } from 'swiper/modules';
 import CourseCard from "../../components/Ui/CourseCard";
+<<<<<<< HEAD
+import PageBanner from "../../components/Ui/PageBanner";
+import Testimonials from "../../components/Ui/Testimonials/Testimonials";
+=======
 import Testimonials from "../../components/Ui/Testimonials/Testimonials";
 import PageBanner from "../../components/Ui/PageBanner";
 import {SHAREDImages} from "../../image-data/shared"
+>>>>>>> 8a2982de09483356bed58bacafa4a038695000b6
 
 const About = () => {
   const [popularCourses, setPopularCourses] = useState([]);
@@ -57,6 +62,25 @@ const About = () => {
           <Totc />
         </div>
 
+        {/* Mission And Vission */}
+        <div className="container-class md:p-4 mt-10 lg:mt-20">
+          <div className="flex flex-col lg:flex-row justify-between">
+            <div className="lg:w-[50%]">
+              <img className="rounded-xl" src="https://i.ibb.co.com/VJMKM9s/122864.jpg" alt="" />
+            </div>
+            <div className="lg:w-[40%] mt-8 lg:mt-0">
+              <PrimaryTitle
+                headingPart1={"Our"}
+                headingPart2={"Mission & Vision"}
+                style={""}
+              />
+              <p className="text-[#696984] mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit suscipit, repudiandae similique accusantium eius nulla quam laudantium sequi.</p>
+              <p className="text-[#696984] mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit suscipit, repudiandae similique accusantium eius nulla quam laudantium sequi.</p>
+              <p className="text-[#696984]">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit suscipit, repudiandae similique accusantium eius nulla quam laudantium sequi.</p>
+            </div>
+          </div>
+        </div>
+
         {/* popular courses */}
         <div className="my-10 lg:my-20 container-class md:p-4">
           <PrimaryTitle
@@ -74,6 +98,12 @@ const About = () => {
             ))}
           </div>
         </div>
+<<<<<<< HEAD
+
+        {/* Testimonials */}
+        <Testimonials />
+=======
+>>>>>>> 8a2982de09483356bed58bacafa4a038695000b6
 
         {/* Swiper Slider for Instructors */}
         <div className="my-10 lg:my-20 container-class md:p-4">
@@ -131,6 +161,8 @@ const About = () => {
           </div>
         </div>
 
+<<<<<<< HEAD
+=======
         {/* Testimonials */}
         <Testimonials />
 
@@ -153,6 +185,7 @@ const About = () => {
             </div>
           </div>
         </div>
+>>>>>>> 8a2982de09483356bed58bacafa4a038695000b6
       </div>
     </div>
   );

@@ -17,6 +17,8 @@ const Registration = () => {
       const onSubmit = (data) => {
             const { name, email, photoUrl, password, gender } = data;
 
+            const registrationInfo = { name, email, photoUrl, password, gender }
+
             // Password validation
             if (password.length < 6) {
                   return toast.error('Password must have at least 6 characters!');
@@ -44,7 +46,7 @@ const Registration = () => {
       };
 
       return (
-            <div className="max-w-[1300px] mx-auto p-4 lg:p-0 flex items-center justify-between my-10 lg:my-20">
+            <div className="max-w-[1300px] mx-auto px-4 lg:px-0 flex items-center justify-between my-10 lg:my-20 pb-20">
                   <div className="lg:w-[45%] hidden lg:flex">
                         <img className="w-full h-full" src="https://i.ibb.co.com/Y8fsDkv/Rectangle-77.png" alt="Registration" />
                   </div>
@@ -52,12 +54,12 @@ const Registration = () => {
                         <h1 className="text-center mb-5 text-2xl">Create Your Account!</h1>
 
                         {/* Form toggler */}
-                        <div className="bg-[#49BBBD99] px-5 py-4 w-fit mx-auto flex justify-between rounded-full">
+                        <div className="bg-[#49BBBD99] px-5 py-4 w-fit mx-auto flex justify-between rounded-xl">
                               <Link to='/registration'>
-                                    <button className="bg-[#49BBBD] text-white font-medium rounded-full px-7 py-3">Register</button>
+                                    <button className="bg-[#49BBBD] text-white font-medium rounded-xl px-7 py-3">Register</button>
                               </Link>
                               <Link to='/login'>
-                                    <button className=" text-white font-medium rounded-full px-7 py-3">Login</button>
+                                    <button className=" text-white font-medium rounded-xl px-7 py-3">Login</button>
                               </Link>
                         </div>
 
@@ -75,7 +77,7 @@ const Registration = () => {
                                                 name="name"
                                                 id="name"
                                                 placeholder="Your name"
-                                                className="w-full px-6 py-3 border border-[#49BBBD] placeholder:text-[#ACACAC] placeholder:text-base placeholder:font-light outline-none rounded-full"
+                                                className="w-full px-6 py-3 border border-[#49BBBD] placeholder:text-[#ACACAC] placeholder:text-base placeholder:font-light outline-none  rounded-xl focus:ring-2 focus:ring-[#49BBBD] focus:border-[#49BBBD] focus:bg-[#E8F9F9]"
                                                 {...register("name", { required: true })}
                                           />
                                           {errors.name && <span className="text-red-600">This field is required</span>}
@@ -89,7 +91,7 @@ const Registration = () => {
                                                 name="email"
                                                 id="email"
                                                 placeholder="Your Email"
-                                                className="w-full px-6 py-3 border border-[#49BBBD] placeholder:text-[#ACACAC] placeholder:text-base placeholder:font-light outline-none rounded-full"
+                                                className="w-full px-6 py-3 border border-[#49BBBD] placeholder:text-[#ACACAC] placeholder:text-base placeholder:font-light outline-none  rounded-xl focus:ring-2 focus:ring-[#49BBBD] focus:border-[#49BBBD] focus:bg-[#E8F9F9]"
                                                 {...register("email", { required: true })}
                                           />
                                           {errors.email && <span className="text-red-600">This field is required</span>}
@@ -117,15 +119,7 @@ const Registration = () => {
                                                       />
                                                       <span className="ml-2">Female</span>
                                                 </label>
-                                                <label className="flex items-center">
-                                                      <input
-                                                            type="radio"
-                                                            value="other"
-                                                            {...register("gender", { required: true })}
-                                                            className="form-radio text-[#49BBBD]"
-                                                      />
-                                                      <span className="ml-2">Other</span>
-                                                </label>
+
                                           </div>
                                           {errors.gender && <span className="text-red-600">This field is required</span>}
                                     </div>
@@ -138,7 +132,7 @@ const Registration = () => {
                                                 name="photoUrl"
                                                 id="photoUrl"
                                                 placeholder="Your Profile Photo URL"
-                                                className="w-full px-6 py-3 border border-[#49BBBD] placeholder:text-[#ACACAC] placeholder:text-base placeholder:font-light outline-none rounded-full"
+                                                className="w-full px-6 py-3 border border-[#49BBBD] placeholder:text-[#ACACAC] placeholder:text-base placeholder:font-light outline-none  rounded-xl focus:ring-2 focus:ring-[#49BBBD] focus:border-[#49BBBD] focus:bg-[#E8F9F9]"
                                                 {...register("photoUrl", { required: true })}
                                           />
                                           {errors.photoUrl && <span className="text-red-600">This field is required</span>}
@@ -152,7 +146,7 @@ const Registration = () => {
                                                 name="password"
                                                 id="password"
                                                 placeholder="Password"
-                                                className="w-full px-6 py-3 border border-[#49BBBD] placeholder:text-[#ACACAC] placeholder:text-base placeholder:font-light outline-none rounded-full"
+                                                className="w-full px-6 py-3 border border-[#49BBBD] placeholder:text-[#ACACAC] placeholder:text-base placeholder:font-light outline-none  rounded-xl focus:ring-2 focus:ring-[#49BBBD] focus:border-[#49BBBD] focus:bg-[#E8F9F9]"
                                                 {...register("password", { required: true })}
                                           />
                                           <span
@@ -171,7 +165,7 @@ const Registration = () => {
 
                               <div className="flex justify-end">
                                     <input
-                                          className="bg-[#49BBBD] px-12 py-4 w-fit rounded-full text-white cursor-pointer"
+                                          className="bg-[#49BBBD] px-12 py-4 w-fit  rounded-xl text-white cursor-pointer"
                                           type="submit"
                                           value="Register"
                                     />
