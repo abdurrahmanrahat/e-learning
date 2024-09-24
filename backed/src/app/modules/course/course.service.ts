@@ -14,7 +14,8 @@ const getAllCoursesFromDB = async (payload: Record<string, unknown>) => {
   const courseQuery = new QueryBuilder(Course.find(), payload)
     .search(['title', 'category'])
     .paginate()
-    .filter();
+    .filter()
+    .sort();
 
   const result = await courseQuery.modelQuery;
 
