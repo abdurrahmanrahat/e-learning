@@ -66,5 +66,18 @@ userSchema.post('save', function (doc, next) {
   next();
 });
 
+// remove password field when users get the endpoint
+userSchema.pre('find', function (next) {
+  this.select('-password');
+
+  next();
+});
+
+userSchema.pre('findOne', function (next) {
+  this.select('-password');
+
+  next();
+});
+
 // model
 export const User = model<TUser, UserStaticModel>('User', userSchema);
