@@ -2,7 +2,9 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAxios from "../../Hooks/useAxios";
+import { setUserInfo } from "../../utils/setUserInfo";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -12,32 +14,37 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const apiHandler = useAxios();
+  const navigate = useNavigate();
 
   // Form submission handler
   const onSubmit = (data) => {
-    const { email, password, rememberMe } = data;
+    const { email, password } = data;
 
-    // Password validation
-    if (password.length < 6) {
-      return toast.error("Password must have at least 6 characters!");
-    }
-    if (!/[A-Z]/.test(password)) {
-      return toast.error(
-        "Password must contain at least one uppercase letter!"
-      );
-    }
-    if (!/[a-z]/.test(password)) {
-      return toast.error(
-        "Password must contain at least one lowercase letter!"
-      );
-    }
+    // Sending login request
+    apiHandler
+      .post("/auth/login", { email, password })
+      .then((res) => {
+        const { accessToken, refreshToken } = res?.data?.data || {};
 
-    console.log(data); // Log form data including "rememberMe"
-    toast.success("Login successful!");
+        if (accessToken && refreshToken) {
+          setUserInfo(accessToken, refreshToken);
+
+          toast.success("Successfully logged In");
+
+          navigate("/");
+        } else {
+          throw new Error("Invalid response from the server");
+        }
+      })
+      .catch((err) => {
+        console.log(err?.message);
+        toast.error(err?.message || "Login failed. Please try again.");
+      });
   };
 
   return (
-    <div className="max-w-[1300px] mx-auto p-4 lg:p-0 flex items-center justify-between my-10 lg:my-20">
+    <div className="max-w-[1300px] mx-auto px-4 lg:px-0 flex items-center justify-between my-10 lg:my-20 pb-20">
       <div className="lg:w-[45%] hidden lg:flex">
         <img src="https://i.ibb.co.com/Tv98QzM/3094352.jpg" alt="Login" />
       </div>
@@ -45,14 +52,14 @@ const Login = () => {
         <h1 className="text-center mb-5 text-2xl">Welcome Back!</h1>
 
         {/* Form toggler */}
-        <div className="bg-[#49BBBD99] px-5 py-4 w-fit mx-auto flex justify-between rounded-full">
+        <div className="bg-[#49BBBD99] px-5 py-4 w-fit mx-auto flex justify-between rounded-xl">
           <Link to="/registration">
-            <button className="text-white font-medium rounded-full px-7 py-3">
+            <button className="text-white font-medium rounded-xl px-7 py-3">
               Register
             </button>
           </Link>
           <Link to="/login">
-            <button className="bg-[#49BBBD] text-white font-medium rounded-full px-7 py-3">
+            <button className="bg-[#49BBBD] text-white font-medium rounded-xl px-7 py-3">
               Login
             </button>
           </Link>
@@ -73,7 +80,7 @@ const Login = () => {
                 name="email"
                 id="email"
                 placeholder="Your Email"
-                className="w-full px-6 py-3 border border-[#49BBBD] placeholder:text-[#ACACAC] placeholder:text-base placeholder:font-light outline-none rounded-full"
+                className="w-full px-6 py-3 border border-[#49BBBD] placeholder:text-[#ACACAC] placeholder:text-base placeholder:font-light outline-none rounded-xl focus:ring-2 focus:ring-[#49BBBD] focus:border-[#49BBBD] focus:bg-[#E8F9F9]"
                 {...register("email", { required: true })}
               />
               {errors.email && (
@@ -89,7 +96,7 @@ const Login = () => {
                 name="password"
                 id="password"
                 placeholder="Password"
-                className="w-full px-6 py-3 border border-[#49BBBD] placeholder:text-[#ACACAC] placeholder:text-base placeholder:font-light outline-none rounded-full"
+                className="w-full px-6 py-3 border border-[#49BBBD] placeholder:text-[#ACACAC] placeholder:text-base placeholder:font-light outline-none rounded-xl focus:ring-2 focus:ring-[#49BBBD] focus:border-[#49BBBD] focus:bg-[#E8F9F9]"
                 {...register("password", { required: true })}
               />
               <span
@@ -130,7 +137,7 @@ const Login = () => {
 
           <div className="flex justify-end">
             <input
-              className="bg-[#49BBBD] px-12 py-4 w-fit rounded-full text-white cursor-pointer"
+              className="bg-[#49BBBD] px-12 py-4 w-fit rounded-xl text-white cursor-pointer"
               type="submit"
               value="Login"
             />

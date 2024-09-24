@@ -16,38 +16,40 @@ const CourseDetail = () => {
   const tabs = ["Overview", "Reviews", "Description"];
   const tabsItem = [
     {
-      content: <OverviewTabs/>
+      content: <OverviewTabs />,
     },
     {
-      content: <ReviewTabs/>
+      content: <ReviewTabs />,
     },
     {
-      content: <DescriptionTabs/>
+      content: <DescriptionTabs />,
     },
-  ]
+  ];
 
   return (
     <div className="">
       <PageBanner image={course.thumbnail}>
-          <div className="hidden lg:flex xl:flex justify-end items-end lg:w-[1240px] xl:w-[1240px] h-full">
-            <img
-              className="w-[330px] border-[16px] h-[220px] rounded-2xl"
-              src={course.thumbnail}
-              alt=""
-            />
-          </div>
-          <h2 className="text-5xl lg:hidden xl:hidden flex justify-center items-center">Course Details</h2>
+        <div className="hidden lg:flex xl:flex justify-end items-end lg:w-[1240px] xl:w-[1240px] h-full">
+          <img
+            className="w-[330px] border-[16px] h-[220px] rounded-2xl"
+            src={course.thumbnail}
+            alt=""
+          />
+        </div>
+        <h2 className="text-5xl lg:hidden xl:hidden flex justify-center items-center">
+          Course Details
+        </h2>
       </PageBanner>
 
       {/* course details */}
       <div className="container-class py-20 px-10">
-        <div className="flex flex-col lg:flex-row xl:flex-row justify-between">
+        <div className="flex flex-col lg:flex-row xl:flex-row justify-between gap-20">
+          {/* left-side */}
           <div className="w-full lg:w-[70%] xl:w-[70%]">
-            <Tabs tabs={tabs} tabItems={tabsItem}/>
+            <Tabs tabs={tabs} tabItems={tabsItem} />
           </div>
-
+          {/* right-side */}
           <div className="w-full lg:w-[30%]">
-            
             <div className="mb-10">
               <div className=""></div>
               <h2
@@ -57,10 +59,9 @@ const CourseDetail = () => {
                 11 hour left at this price
               </h2>
               <Link to={`/checkout/${course.id}`}>
-              <button 
-              className="text-xl font-bold text-center text-white bg-[#49BBBD] w-full lg:w-full md:w-[50%] rounded-xl py-3 hover:bg-emerald-600 ">
-                Buy Now
-              </button>
+                <button className="text-xl font-bold text-center text-white bg-[#49BBBD] w-full lg:w-full md:w-[50%] rounded-xl py-3 hover:bg-emerald-600 ">
+                  Buy Now
+                </button>
               </Link>
             </div>
             <div className="mb-10 mt-10">
@@ -137,7 +138,7 @@ const CourseDetail = () => {
             </div>
           </div>
         </div>
-
+        {/* section */}
         <div className="flex flex-col lg:flex-row items-center gap-10 mt-16">
           <div className="w-full lg:w-1/2">
             <PrimaryTitle

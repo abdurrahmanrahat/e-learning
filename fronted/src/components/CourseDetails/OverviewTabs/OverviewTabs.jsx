@@ -1,14 +1,53 @@
 import { useLoaderData, useParams } from "react-router-dom";
+import ReviewTabs from "../ReviewTabs/ReviewTabs";
+import { useForm } from "react-hook-form";
+import Rating from "../../Ui/Rating";
+import { useState } from "react";
 
 const OverviewTabs = () => {
+  const [rating, setRating] = useState(0);
   const courses = useLoaderData();
   const { id } = useParams();
   const course = courses?.find((item) => item.id === Number(id));
   console.log(course);
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = (data) => {
+    const { comments } = data;
+    // Get the current date
+    const currentDate = new Date();
+
+    // convert day, month and year
+    const day = String(currentDate.getDate()).padStart(2, "0");
+    const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+    const year = currentDate.getFullYear();
+
+    // Format the date as MM/DD/YYYY
+    const formattedDate = `${month}/${day}/${year}`;
+
+    const commentsInfo = {
+      comments: comments,
+      date: formattedDate,
+      ratings: rating
+    };
+    console.log(commentsInfo);
+
+    // apiHandler
+    //   .post("/users/register", data)
+    //   .then((res) => {
+    //     console.log("Register user:", res.data?.data);
+    //     toast.success("User Created Successfully");
+    //     navigate("/login");
+    //   })
+    //   .catch((err) => {
+    //     console.log(err?.message);
+    //     toast.error(err?.message);
+    //   });
+  };
 
   return (
-    <div className="bg-[#e0f2fe] p-8 rounded-2xl lg:m-0 md:m-5">
-      <div className="flex flex-col lg:flex-row md:flex-row items-center gap-5 lg:gap-20">
+    <div className="flex flex-col justify-between gap-20">
+      <div className="bg-[#e0f2fe] p-4 flex flex-col lg:flex-row md:flex-row items-center gap-5">
         <div className="bg-white p-7 rounded-xl lg:w-[25%]">
           <h2 className="text-2xl font-bold text-gray-400">4 out of 5</h2>
           <div className="my-4">
@@ -101,9 +140,7 @@ const OverviewTabs = () => {
             {/*          <!-- Detailed rating --> */}
             <span className="flex w-full flex-col gap-4 ">
               <span className="flex w-full items-center gap-2">
-                <label
-                  className="mb-0 w-9 shrink-0 text-center text-xs text-slate-500"
-                >
+                <label className="mb-0 w-9 shrink-0 text-center text-xs text-slate-500">
                   5 star
                 </label>
                 <progress
@@ -134,9 +171,7 @@ const OverviewTabs = () => {
                 </progress>
               </span>
               <span className="flex w-full items-center gap-2">
-                <label
-                  className="mb-0 w-9 shrink-0 text-center text-xs text-slate-500"
-                >
+                <label className="mb-0 w-9 shrink-0 text-center text-xs text-slate-500">
                   3 star
                 </label>
                 <progress
@@ -150,9 +185,7 @@ const OverviewTabs = () => {
                 </progress>
               </span>
               <span className="flex w-full items-center gap-2">
-                <label
-                  className="mb-0 w-9 shrink-0 text-center text-xs text-slate-500"
-                >
+                <label className="mb-0 w-9 shrink-0 text-center text-xs text-slate-500">
                   2 star
                 </label>
                 <progress
@@ -166,9 +199,7 @@ const OverviewTabs = () => {
                 </progress>
               </span>
               <span className="flex w-full items-center gap-2">
-                <label
-                  className="mb-0 w-9 shrink-0 text-center text-xs text-slate-500"
-                >
+                <label className="mb-0 w-9 shrink-0 text-center text-xs text-slate-500">
                   1 star
                 </label>
                 <progress
@@ -187,6 +218,38 @@ const OverviewTabs = () => {
       </div>
 
       {/* Review cards */}
+      <div>
+        <form className="space-y-8 py-10" onSubmit={handleSubmit(onSubmit)}>
+          <div className="w-full bg-white p-2 text-[#000] flex flex-col gap-2 items-end">
+            <input
+              type="text"
+              name="comments"
+              id="comments"
+              placeholder="Add a comment..."
+              className="w-11/12 px-6 py-3 border-b-[2px] focus:outline-none focus:border-[#49BBBD] border-[#D9D9D9] placeholder:text-[#9D9B9B] placeholder:text-base placeholder:font-light outline-none"
+              {...register("comments", { required: true })}
+            />
+            <div className="flex justify-between w-11/12 items-center">
+              <Rating
+                value={rating}
+                onChange={(newRating) => setRating(newRating)}
+                readOnly={false}
+              />
+              <div>
+                <button
+                  className="bg-[#49BBBD] px-4 py-2 rounded-xl text-white cursor-pointer w-full text-sm"
+                  type="submit"
+                >
+                  Comment
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div>
+          <ReviewTabs />
+        </div>
+      </div>
     </div>
   );
 };
