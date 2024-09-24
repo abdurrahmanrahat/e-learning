@@ -17,11 +17,15 @@ import { Navigation } from "swiper/modules";
 import CourseCard from "../../components/Ui/CourseCard";
 import PageBanner from "../../components/Ui/PageBanner";
 import Testimonials from "../../components/Ui/Testimonials/Testimonials";
+import { useCourses } from "../../Hooks/api/useCourses";
 import { SHAREDImages } from "../../image-data/shared";
 
 const About = () => {
   const [popularCourses, setPopularCourses] = useState([]);
   const [instructors, setInstructors] = useState([]);
+
+  const courses = useCourses();
+  console.log(courses);
 
   useEffect(() => {
     const fetchCourses = async () => {

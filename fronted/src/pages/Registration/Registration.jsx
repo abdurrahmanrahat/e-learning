@@ -19,36 +19,17 @@ const Registration = () => {
 
   // Form submission handler
   const onSubmit = (data) => {
-    const { name, email, photoUrl, password, gender } = data;
-
-    const registrationInfo = { name, email, photoUrl, password, gender };
-
-    // Password validation
-    if (password.length < 6) {
-      return toast.error("Password must have at least 6 characters!");
-    }
-    if (!/[A-Z]/.test(password)) {
-      return toast.error(
-        "Password must contain at least one uppercase letter!"
-      );
-    }
-    if (!/[a-z]/.test(password)) {
-      return toast.error(
-        "Password must contain at least one lowercase letter!"
-      );
-    }
-
-    console.log(data);
-
     apiHandler
       .post("/users/register", data)
       .then((res) => {
         console.log("Register user:", res.data?.data);
         toast.success("User Created Successfully");
-        navigate("/login");
+
+        if (res.data) {
+          navigate("/role-change");
+        }
       })
       .catch((err) => {
-        console.log(err?.message);
         toast.error(err?.message);
       });
   };
