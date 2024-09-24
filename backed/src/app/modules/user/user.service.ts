@@ -15,8 +15,11 @@ const getAllUsersFromDB = async () => {
 };
 
 const getSingleUserFromDB = async (userId: string) => {
-  const result = await User.findById(userId);
-  return result;
+  const result = await User.findById(userId).lean();
+
+  const { password, ...user } = result;
+
+  return user;
 };
 
 export const UserServices = {

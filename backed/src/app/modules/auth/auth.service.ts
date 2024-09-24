@@ -9,6 +9,7 @@ import { createJwtToken } from './auth.utils';
 const loginUserIntoDb = async (payload: TLoginUser) => {
   // check if user already exists or not
   const existingUser = await User.isUserExistsByEmail(payload.email);
+
   if (!existingUser) {
     throw new AppError(httpStatus.NOT_FOUND, 'User not found.');
   }
@@ -18,6 +19,7 @@ const loginUserIntoDb = async (payload: TLoginUser) => {
     payload.password,
     existingUser.password,
   );
+
   if (!isPasswordValid) {
     throw new AppError(httpStatus.UNAUTHORIZED, 'Password is not match.');
   }
