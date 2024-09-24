@@ -15,13 +15,13 @@ import InstructorDetails from "../pages/InstructorDetails/InstructorDetails";
 import Instructors from "../pages/Instructors/Instructors";
 import Login from "../pages/Login/Login";
 import Registration from "../pages/Registration/Registration";
-
+import RoleChange from "../pages/RoleChange/RoleChange";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
-    errorElement:<ErrorPage></ErrorPage>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         index: true,
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
       {
         path: "courseDetails/:id",
         element: <CourseDetail></CourseDetail>,
-        loader:()=>fetch("../../public/InstructorCourses.json")
+        loader: () => fetch("../../public/InstructorCourses.json"),
       },
       {
         path: "instructors",
@@ -52,15 +52,19 @@ const router = createBrowserRouter([
         path: "checkout/:id",
         element: <Checkout />,
       },
+      {
+        path: "role-change",
+        element: <RoleChange />,
+      },
     ],
   },
   {
     path: "registration",
-    element: <Registration />
+    element: <Registration />,
   },
   {
     path: "login",
-    element: <Login />
+    element: <Login />,
   },
   {
     path: "/dashboard/admin/",

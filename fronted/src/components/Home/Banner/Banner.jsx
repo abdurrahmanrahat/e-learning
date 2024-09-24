@@ -9,7 +9,7 @@ const Banner = () => {
   "
             >
               Studying
-            </span>
+            </span>{" "}
             Online is now much easier
           </h1>
           <p className="lg:text-[24px] md:text-[24px] lg:mt-8 md:mt-6 mt-4 lg:mb-10 md:mb-10 mb-5">
