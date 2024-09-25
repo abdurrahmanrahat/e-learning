@@ -5,7 +5,11 @@ import toast from "react-hot-toast";
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import useAxios from "../../Hooks/useAxios";
+<<<<<<< HEAD
+import axios from "axios";
+=======
 import { setUserInfo } from "../../utils/setUserInfo";
+>>>>>>> 987bfc4afeee57e5fc3d4e01b9a10c69c7f1efe9
 
 const Registration = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -59,20 +63,8 @@ const Registration = () => {
       .then((res) => {
         toast.success("User Created Successfully");
 
-        // auto login
-        if (res?.data) {
-          apiHandler
-            .post("/auth/login", { email: data.email, password: data.password })
-            .then((res) => {
-              const { accessToken, refreshToken } = res?.data?.data || {};
-
-              if (accessToken && refreshToken) {
-                setUserInfo(accessToken, refreshToken);
-                navigate("/role-change");
-              } else {
-                throw new Error("Invalid response from the server");
-              }
-            });
+        if (res.data) {
+          navigate("/role-change");
         }
       })
       .catch((err) => {
@@ -124,9 +116,7 @@ const Registration = () => {
                 className="w-full px-6 py-3 border border-[#49BBBD] placeholder:text-[#ACACAC] placeholder:text-base placeholder:font-light outline-none  rounded-xl focus:ring-2 focus:ring-[#49BBBD] focus:border-[#49BBBD] focus:bg-[#E8F9F9]"
                 {...register("name", { required: true })}
               />
-              {errors.name && (
-                <span className="text-red-600">This field is required</span>
-              )}
+              {errors.name && <span className="text-red-600">This field is required</span>}
             </div>
 
             {/* Email input */}

@@ -8,8 +8,8 @@ import CourseCard from "../../components/Ui/CourseCard";
 import InstructorCard from "../../components/Ui/InstructorCard";
 import PageBanner from "../../components/Ui/PageBanner";
 import Testimonials from "../../components/Ui/Testimonials/Testimonials";
+import { SHAREDImages } from "../../image-data/shared"
 import { INSTRUCTORImages } from "../../image-data/Instructors";
-import { SHAREDImages } from "../../image-data/shared";
 
 const About = () => {
   const [popularCourses, setPopularCourses] = useState([]);
