@@ -1,27 +1,35 @@
-import { useEffect, useState } from "react";
-import Totc from "../../components/Home/Totc/Totc";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import Totc from "../../components/Home/Totc/Totc";
 import PrimaryTitle from "../../components/Ui/PrimaryTitle";
-import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 // Custom css
-import './Instructor.css';
+import "./Instructor.css";
 
 // Import required modules
-import { Navigation } from 'swiper/modules';
+import { Navigation } from "swiper/modules";
 import CourseCard from "../../components/Ui/CourseCard";
 import PageBanner from "../../components/Ui/PageBanner";
 import Testimonials from "../../components/Ui/Testimonials/Testimonials";
+<<<<<<< HEAD
 import {SHAREDImages} from "../../image-data/shared"
+=======
+import { useCourses } from "../../Hooks/api/useCourses";
+import { SHAREDImages } from "../../image-data/shared";
+>>>>>>> 9954b345b6ddc86c4fc621cc5cf9d155cfc92542
 
 const About = () => {
   const [popularCourses, setPopularCourses] = useState([]);
   const [instructors, setInstructors] = useState([]);
+
+  const courses = useCourses();
+  console.log(courses);
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -35,7 +43,7 @@ const About = () => {
 
     const fetchInstructors = async () => {
       try {
-        const response = await axios.get('/instructors.json');
+        const response = await axios.get("/instructors.json");
         setInstructors(response?.data);
       } catch (err) {
         console.log(err.message);
@@ -61,7 +69,11 @@ const About = () => {
         <div className="container-class md:p-4 mt-10 lg:mt-20">
           <div className="flex flex-col lg:flex-row justify-between">
             <div className="lg:w-[50%]">
-              <img className="rounded-xl" src="https://i.ibb.co.com/VJMKM9s/122864.jpg" alt="" />
+              <img
+                className="rounded-xl"
+                src="https://i.ibb.co.com/VJMKM9s/122864.jpg"
+                alt=""
+              />
             </div>
             <div className="lg:w-[40%] mt-8 lg:mt-0">
               <PrimaryTitle
@@ -69,9 +81,21 @@ const About = () => {
                 headingPart2={"Mission & Vision"}
                 style={""}
               />
-              <p className="text-[#696984] mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit suscipit, repudiandae similique accusantium eius nulla quam laudantium sequi.</p>
-              <p className="text-[#696984] mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit suscipit, repudiandae similique accusantium eius nulla quam laudantium sequi.</p>
-              <p className="text-[#696984]">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit suscipit, repudiandae similique accusantium eius nulla quam laudantium sequi.</p>
+              <p className="text-[#696984] mb-10">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit
+                suscipit, repudiandae similique accusantium eius nulla quam
+                laudantium sequi.
+              </p>
+              <p className="text-[#696984] mb-10">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit
+                suscipit, repudiandae similique accusantium eius nulla quam
+                laudantium sequi.
+              </p>
+              <p className="text-[#696984]">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit
+                suscipit, repudiandae similique accusantium eius nulla quam
+                laudantium sequi.
+              </p>
             </div>
           </div>
         </div>
@@ -103,7 +127,9 @@ const About = () => {
             headingPart1={"Certified"}
             headingPart2={"Instructors"}
             style={"text-center lg:w-[60%] mx-auto"}
-            subtext={'Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country'}
+            subtext={
+              "Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country"
+            }
           />
 
           <div className="mt-16 relative">
@@ -131,20 +157,29 @@ const About = () => {
               modules={[Navigation]}
               className="mySwiper"
             >
-              {
-                instructors?.map(instructor => (
-                  <SwiperSlide key={instructor?.id}>
-                    <div className="flex flex-col text-center items-center justify-center">
-                      <figure className="mb-5">
-                        <img className="rounded-full w-48 h-48 border p-3 bg-gray-100" src={instructor?.profilePic} alt="" />
-                      </figure>
-                      <h2 className="text-2xl text-[#2F327D] font-semibold font-nunito transition delay-100 cursor-pointer">{instructor?.title}</h2>
-                      <span className="text-[#6E7697] flex items-center gap-2"> Data Scientist</span>
-                      <p className="mt-4 text-[#6E7697] text-center">{instructor?.shortBio}</p>
-                    </div>
-                  </SwiperSlide>
-                ))
-              }
+              {instructors?.map((instructor) => (
+                <SwiperSlide key={instructor?.id}>
+                  <div className="flex flex-col text-center items-center justify-center">
+                    <figure className="mb-5">
+                      <img
+                        className="rounded-full w-48 h-48 border p-3 bg-gray-100"
+                        src={instructor?.profilePic}
+                        alt=""
+                      />
+                    </figure>
+                    <h2 className="text-2xl text-[#2F327D] font-semibold font-nunito transition delay-100 cursor-pointer">
+                      {instructor?.title}
+                    </h2>
+                    <span className="text-[#6E7697] flex items-center gap-2">
+                      {" "}
+                      Data Scientist
+                    </span>
+                    <p className="mt-4 text-[#6E7697] text-center">
+                      {instructor?.shortBio}
+                    </p>
+                  </div>
+                </SwiperSlide>
+              ))}
             </Swiper>
 
             {/* Navigation Buttons */}
@@ -156,12 +191,15 @@ const About = () => {
         {/* Testimonials */}
         <Testimonials />
 
-
         {/* Mission And Vission */}
         <div className="container-class md:p-4">
           <div className="flex flex-col lg:flex-row mt-20 justify-between">
             <div className="lg:w-[50%]">
-              <img className="rounded-xl" src="https://i.ibb.co.com/VJMKM9s/122864.jpg" alt="" />
+              <img
+                className="rounded-xl"
+                src="https://i.ibb.co.com/VJMKM9s/122864.jpg"
+                alt=""
+              />
             </div>
             <div className="lg:w-[40%] mt-8 lg:mt-0">
               <PrimaryTitle
@@ -169,9 +207,21 @@ const About = () => {
                 headingPart2={"Mission & Vision"}
                 style={""}
               />
-              <p className="text-[#696984] mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit suscipit, repudiandae similique accusantium eius nulla quam laudantium sequi.</p>
-              <p className="text-[#696984] mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit suscipit, repudiandae similique accusantium eius nulla quam laudantium sequi.</p>
-              <p className="text-[#696984]">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit suscipit, repudiandae similique accusantium eius nulla quam laudantium sequi.</p>
+              <p className="text-[#696984] mb-10">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit
+                suscipit, repudiandae similique accusantium eius nulla quam
+                laudantium sequi.
+              </p>
+              <p className="text-[#696984] mb-10">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit
+                suscipit, repudiandae similique accusantium eius nulla quam
+                laudantium sequi.
+              </p>
+              <p className="text-[#696984]">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit
+                suscipit, repudiandae similique accusantium eius nulla quam
+                laudantium sequi.
+              </p>
             </div>
           </div>
         </div>

@@ -5,6 +5,8 @@ import { useState } from "react";
 import PaypalCardForm from "../PaypalCardForm/PaypalCardForm";
 import SSLCommerceForm from "../SSLCommerceForm/SSLCommerceForm";
 import VisaCardForm from "../VisaCardForm/VisaCardForm";
+import axios from "axios";
+// import useAxios from "../../../Hooks/useAxios";
 
 const cards = [
   {
@@ -21,43 +23,35 @@ const cards = [
   },
 ];
 
-export default function CheckoutForm() {
+export default function CheckoutForm({course}) {
   const [clickedCard, setClickedCard] = useState("paypal");
-
-  console.log(clickedCard);
+  // const apiHandler = useAxios();
 
   // Form submission handler
   const onSubmit = (data) => {
-    const { name, email, photoUrl, password, gender } = data;
 
-    // Password validation
-    if (password.length < 6) {
-      return toast.error("Password must have at least 6 characters!");
+    const paymentInfo = {
+      name: data.name,
+      email: data.email,
+      address: data.address,
+      country: data.country,
+      phone: data.phone,
+      productName: course.courseTitle,
+      amount: course.price,
     }
-    if (!/[A-Z]/.test(password)) {
-      return toast.error(
-        "Password must contain at least one uppercase letter!"
-      );
-    }
-    if (!/[a-z]/.test(password)) {
-      return toast.error(
-        "Password must contain at least one lowercase letter!"
-      );
-    }
+    console.log(paymentInfo)
 
-    console.log(data);
-
-    // apiHandler
-    //   .post("/users/register", data)
-    //   .then((res) => {
-    //     console.log("Register user:", res.data?.data);
-    //     toast.success("User Created Successfully");
-    //     navigate("/login");
-    //   })
-    //   .catch((err) => {
-    //     console.log(err?.message);
-    //     toast.error(err?.message);
-    //   });
+    //apiHandler
+      axios.post("http://localhost:5000/paymentGataway/sslCommerce", paymentInfo)
+      .then((res) => {
+        console.log("url:", res.data.redirect_url);
+        window.location.replace(res.data.redirect_url)
+        // toast.success("User Created Successfully");
+      })
+      .catch((err) => {
+        console.log(err?.message);
+        toast.error(err?.message);
+      });
   };
 
   return (
