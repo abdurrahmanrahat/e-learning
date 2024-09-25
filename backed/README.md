@@ -5,7 +5,7 @@
 1. Clone the repository.
 2. Install dependencies using `npm install`.
 3. Rename `.env.example` to `.env`.
-4. Run the server using `npm run dev`.
+4. Run the server using `npm run start:dev`.
 
 ## Configuration:
 
