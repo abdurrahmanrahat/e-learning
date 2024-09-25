@@ -71,12 +71,16 @@ const createReviewIntoDB = async (
 };
 
 const getAllReviewsFromDB = async (courseId: string) => {
-  const result = await CourseReview.find({ course: courseId });
+  const result = await CourseReview.find({ course: courseId }).populate(
+    'course',
+  );
   return result;
 };
 
 const getReviewByIdFromDB = async (reviewId: string) => {
-  const result = await CourseReview.findOne({ _id: reviewId });
+  const result = await CourseReview.findOne({ _id: reviewId }).populate(
+    'course',
+  );
   return result;
 };
 
