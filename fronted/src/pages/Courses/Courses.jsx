@@ -1,13 +1,11 @@
-import { useState } from "react";
-import "../../css/coursesBgImg.css";
-import { useEffect } from "react";
-import OfferCourse from "./OfferCourse/OfferCourse";
-import PageBanner from "../../components/Ui/PageBanner";
-import CourseCard from "../../components/Ui/CourseCard";
-import PrimaryTitle from "../../components/Ui/PrimaryTitle";
-import { SHAREDImages } from "../../image-data/shared";
+import { useEffect, useState } from "react";
 import SearchForm from "../../components/Course/SearchForm/SearchForm";
-import toast from "react-hot-toast";
+import CourseCard from "../../components/Ui/CourseCard";
+import PageBanner from "../../components/Ui/PageBanner";
+import PrimaryTitle from "../../components/Ui/PrimaryTitle";
+import "../../css/coursesBgImg.css";
+import { SHAREDImages } from "../../image-data/shared";
+import OfferCourse from "./OfferCourse/OfferCourse";
 
 // TODO: dropdown manue will be fixed
 
@@ -41,7 +39,7 @@ const Courses = () => {
       {/* courses banner  */}
       <PageBanner image={SHAREDImages.banner_2}>
         <div className="w-full lg:w-[60%] xl:w-[60%] h-full flex flex-col justify-center gap-10 px-4">
-          <SearchForm onSubmit={onSubmit}/>
+          <SearchForm onSubmit={onSubmit} />
         </div>
       </PageBanner>
 
