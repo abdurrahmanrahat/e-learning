@@ -1,7 +1,7 @@
 import { GoPerson } from "react-icons/go";
 import { HiUserGroup } from "react-icons/hi2";
+import { Link } from "react-router-dom";
 import Rating from "./Rating";
-import {Link} from "react-router-dom";
 
 const CourseCard = ({ popularCourse }) => {
   const {
@@ -19,7 +19,7 @@ const CourseCard = ({ popularCourse }) => {
     <div className="border flex flex-col justify-between">
       <figure className="overflow-hidden relative">
         <img
-          className="hover:scale-110 transition delay-100"
+          className="hover:scale-110 transition-all duration-500"
           src={thumbnail}
           alt=""
         />
