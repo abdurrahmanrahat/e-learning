@@ -1,9 +1,16 @@
 const Banner = () => {
   return (
-    <div style={{}} className="bg-primary">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:gap-10 mt-0 lg:mt-0 ">
-        <div className="w-full lg:w-[50%] text-center lg:text-left  text-white">
-          <h1 className="lg:text-[54px] md:text-6xl text-4xl font-bold">
+    <div
+      className="bg-primary"
+      style={
+        {
+          // clipPath: "polygon(0 0, 100% 0, 100% 92%, 50% 100%, 0 92%)",
+        }
+      }
+    >
+      <div className="container-class flex flex-col lg:flex-row items-center lg:gap-10 mt-0 lg:mt-0 ">
+        <div className="w-full lg:w-[50%] text-center lg:text-left text-white mt-16 md:mt-20 lg:mt-0">
+          <h1 className="lg:text-[50px] md:text-6xl text-4xl max-w-[18ch] font-bold capitalize leading-[48px] lg:leading-[60px]">
             <span
               className="text-[#F48C06] ;
   "
@@ -12,32 +19,38 @@ const Banner = () => {
             </span>{" "}
             Online is now much easier
           </h1>
-          <p className="lg:text-[24px] md:text-[24px] lg:mt-8 md:mt-6 mt-4 lg:mb-10 md:mb-10 mb-5">
-            TOTC is an interesting platform that will teach <br /> you in more
-            an interactive way
-          </p>
-          <div className="flex flex-col lg:flex-row md:flex-row items-center justify-center lg:justify-start lg:gap-10 md:gap-8">
+
+          <div className="flex justify-center lg:justify-start">
+            <p className="lg:text-[22px] md:text-[20px] lg:mt-8 md:mt-6 mt-4 lg:mb-10 md:mb-10 mb-5 max-w-[38ch] ">
+              TOTC is an interesting platform that will teach you in more an
+              interactive way
+            </p>
+          </div>
+
+          <div className="flex flex-col lg:flex-row md:flex-row items-center justify-center lg:justify-start gap-2 lg:gap-10 md:gap-8">
             <div>
               <button
                 className="px-8 py-2 rounded-full bg-[#FFFFFF4D]
-   text-white text-[20px] "
+   text-white text-[18px] "
               >
                 Join for free
               </button>
             </div>
-            <div className="flex items-center gap-4">
+
+            <div className="flex items-center gap-3">
               <img
-                className="bg-white px-5 py-4 rounded-full"
+                className="bg-white px-4 py-3 rounded-[50%] w-[50px]"
                 src="https://i.ibb.co.com/479qrfX/Polygon-2-1.png"
                 alt=""
               />
-              <h2 className="text-[24px] text-black font-bold">
+              <h2 className="text-[20px] text-secondary font-semibold capitalize">
                 Watch how it works
               </h2>
             </div>
           </div>
         </div>
-        <div className="w-full lg:w-[50%] ">
+
+        <div className="w-full lg:w-[50%]">
           <div className="relative">
             <div className="flex items-center justify-center">
               <img
@@ -46,35 +59,30 @@ const Banner = () => {
                 alt=""
               />
             </div>
-            {/* <img
-              className="absolute lg:top-32 top-48 md:top-28 md:w-[500px] md:left-32 lg:left-7 left-0"
-              src="https://i.ibb.co.com/tBMfF3b/Group-451.png"
-              alt=""
-            /> */}
+
             <div className="absolute lg:top-40 md:top-44 lg:-left-10 md:left-20 top-48 ">
-              <div
-                className="rounded-2xl flex items-center lg:gap-3 md:gap-3 gap-1 bg-[#FFFFFFCC] p-3 text-left
-  "
-              >
+              <div className="rounded-2xl flex items-center lg:gap-3 md:gap-3 gap-1 bg-[#FFFFFFCC] p-3 text-left">
                 <img
                   className="w-[30px] lg:w-[50px] "
                   src="https://i.ibb.co.com/jV0Lcdf/Group-6.png"
                   alt=""
                 />
                 <div className="">
-                  <h2 className="text-gray-700  lg:text-[24px] font-bold ">
+                  <h2 className="text-gray-700 lg:text-[22px] 2xl:text-[24px] font-semibold ">
                     250k
                   </h2>
-                  <p className="text-gray-400 lg:text-[20px] font-semibold pt-0">
+                  <p className="text-gray-400 lg:text-[18px] font-medium pt-0">
                     Assisted Student
                   </p>
                 </div>
               </div>
             </div>
+
             <div className="absolute lg:top-24 md:top-16 top-28 lg:end-0 md:end-28 end-4">
               <img src="https://i.ibb.co.com/FhbnnPM/Group-9.png" alt="" />
             </div>
-            <div className="absolute lg:top-[320px] md:top-[350px] top-[350px] lg:-end-16 end-4 md:end-[70px]">
+
+            <div className="absolute lg:top-[320px] md:top-[350px] top-[350px] right-0">
               <div
                 className="rounded-2xl flex items-center gap-3 bg-[#FFFFFFCC] lg:p-4 md:p-4 p-2 text-left
   "
@@ -86,24 +94,21 @@ const Banner = () => {
                   alt=""
                 />
                 <div className="">
-                  <h2 className="text-gray-700 lg:text-[24px] font-bold ">
+                  <h2 className="text-gray-700 lg:text-[22px] 2xl:text-[24px] font-semibold ">
                     Congratulations
                   </h2>
-                  <p className="text-gray-400 lg:text-[20px] font-semibold">
-                    Your admission completed
+                  <p className="text-gray-400 lg:text-[20px] font-medium">
+                    Admission completed
                   </p>
                 </div>
               </div>
             </div>
+
             <div className="absolute lg:bottom-20 md:bottom-28 bottom-12  lg:-left-20 md:left-20">
-              <div
-                className="rounded-2xl flex  lg:gap-3 gap-2 bg-[#FFFFFFCC] lg:p-4 p-2 text-left
-  "
-              >
+              <div className="rounded-2xl flex  lg:gap-3 gap-2 bg-[#FFFFFFCC] lg:p-4 p-2 text-left">
                 <div className="relative">
                   <img
-                    className="
-  "
+                    className=""
                     src="https://i.ibb.co.com/8PjQYJh/Ellipse.png"
                     alt=""
                   />
@@ -113,16 +118,18 @@ const Banner = () => {
                     alt=""
                   />
                 </div>
+
+                {/* user experienced class */}
                 <div className="">
-                  <h2 className="text-gray-700 lg:text-[24px] font-bold ">
+                  <h2 className="text-gray-700 lg:text-[22px] 2xl:text-[24px] font-semibold ">
                     User Experience Class
                   </h2>
-                  <p className="text-gray-400 lg:text-[20px] font-semibold lg:mb-4">
+                  <p className="text-gray-400 lg:text-[20px] font-medium lg:mb-4">
                     Today at 12.00 PM
                   </p>
                   <button
-                    className="px-8 py-2 bg-[#D8587E]
-   rounded-full lg:text-[20px]  font-semibold text-white text-[12px]"
+                    className="px-6 py-2 bg-[#D8587E]
+   rounded-full lg:text-[17px]  font-medium text-white text-[12px]"
                   >
                     Join Now
                   </button>
