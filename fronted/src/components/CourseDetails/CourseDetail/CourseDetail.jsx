@@ -11,7 +11,7 @@ const CourseDetail = () => {
   const courses = useLoaderData();
   const { id } = useParams();
   const course = courses.find((course) => course.id === Number(id));
-  console.log(course);
+  // console.log(course);
 
   const tabs = ["Overview", "Reviews", "Description"];
   const tabsItem = [

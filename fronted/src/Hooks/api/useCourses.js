@@ -8,7 +8,7 @@ export const useCourses = () => {
     useEffect(() => {
         apiHandler.get("/users").then(res => {
             console.log(res);
-            setCourses(res.data)
+            setCourses(res?.data.data)
         })
     }, [apiHandler])
 

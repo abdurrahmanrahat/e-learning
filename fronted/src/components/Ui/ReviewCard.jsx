@@ -6,7 +6,7 @@ export default function ReviewCard({ review }) {
 
   return (
     <div className="text-slate-500 rounded-xl w-full p-6 flex justify-between gap-2">
-      <figure className="w-20 rounded-full">
+      <figure className="w-16 rounded-full">
         <img className="w-full rounded-full" src={image} alt="" />
       </figure>
       <div>
