@@ -28,7 +28,7 @@ export default function Checkout() {
   return (
     <div className="flex flex-col-reverse lg:flex-row xl:flex-row justify-between items-start gap-10 container-class my-20">
       <div className="w-full lg:w-[60%] xl:w-[60%] shadow-myCustomShadow p-10 rounded-xl">
-        <CheckoutForm />
+        <CheckoutForm course={course}/>
       </div>
       <div className="w-full lg:w-[40%] xl:w-[40%] bg-[#EBF5FF] p-10 rounded-xl">
         <PrimaryTitle headingPart1={"Summery"} />

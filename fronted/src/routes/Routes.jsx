@@ -15,6 +15,8 @@ import InstructorDetails from "../pages/InstructorDetails/InstructorDetails";
 import Instructors from "../pages/Instructors/Instructors";
 import Login from "../pages/Login/Login";
 import Registration from "../pages/Registration/Registration";
+import PaymentSuccess from "../components/Checkout/AfterPayment/PaymentSuccess";
+import PaymentFailed from "../components/Checkout/AfterPayment/PaymentFailed";
 import RoleChange from "../pages/RoleChange/RoleChange";
 
 const router = createBrowserRouter([
@@ -53,9 +55,17 @@ const router = createBrowserRouter([
         element: <Checkout />,
       },
       {
+        path: "payment/success/:trans_id",
+        element: <PaymentSuccess />,
+      },
+      {
+        path: "payment/failed/:trans_id",
+        element: <PaymentFailed />,
+      },
+      {
         path: "role-change",
         element: <RoleChange />,
-      },
+      }
     ],
   },
   {
