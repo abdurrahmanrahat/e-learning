@@ -17,8 +17,12 @@ import { Navigation } from "swiper/modules";
 import CourseCard from "../../components/Ui/CourseCard";
 import PageBanner from "../../components/Ui/PageBanner";
 import Testimonials from "../../components/Ui/Testimonials/Testimonials";
+<<<<<<< HEAD
+import {SHAREDImages} from "../../image-data/shared"
+=======
 import { useCourses } from "../../Hooks/api/useCourses";
 import { SHAREDImages } from "../../image-data/shared";
+>>>>>>> 9954b345b6ddc86c4fc621cc5cf9d155cfc92542
 
 const About = () => {
   const [popularCourses, setPopularCourses] = useState([]);
