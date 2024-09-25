@@ -12,9 +12,6 @@ const AllCourses = () => {
         <TableCourseCard></TableCourseCard>
       </div>
 
-      {/* testing Modals */}
-      <Modal />
-
     </div>
   );
 };
