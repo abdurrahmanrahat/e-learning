@@ -1,16 +1,24 @@
-import { useLoaderData, useParams } from "react-router-dom";
+// import { useLoaderData, useParams } from "react-router-dom";
 import ReviewTabs from "../ReviewTabs/ReviewTabs";
 import { useForm } from "react-hook-form";
 import Rating from "../../Ui/Rating";
-import { useState } from "react";
+import {useState } from "react";
+// import useAxios from "../../../Hooks/useAxios";
+
 
 const OverviewTabs = () => {
   const [rating, setRating] = useState(0);
-  const courses = useLoaderData();
-  const { id } = useParams();
-  const course = courses?.find((item) => item.id === Number(id));
-  console.log(course);
-  const { register, handleSubmit } = useForm();
+  // const apiHandler = useAxios();
+  // const courses = useLoaderData();
+  // const { id } = useParams();
+  // const course = courses?.find((item) => item.id === Number(id));
+  // console.log(course);
+  const {
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm();
+  const [clickedInput, setClickedInput] = useState("");
 
   const onSubmit = (data) => {
     const { comments } = data;
@@ -28,7 +36,7 @@ const OverviewTabs = () => {
     const commentsInfo = {
       comments: comments,
       date: formattedDate,
-      ratings: rating
+      ratings: rating,
     };
     console.log(commentsInfo);
 
@@ -44,6 +52,28 @@ const OverviewTabs = () => {
     //     toast.error(err?.message);
     //   });
   };
+
+  const handleInputChange = (e) => {
+    setClickedInput(e.target.value); // Update local state
+    setValue("comments", e.target.value); // Update React Hook Form state
+  };
+
+  // useEffect(() => {
+  //   const id = 
+  //   const getUser = () => {
+  //     apiHandler
+  //       .get(`/users/${}`)
+  //       .then((res) => {
+  //         console.log("Register user:", res.data?.data);
+  //         toast.success("User Created Successfully");
+  //       })
+  //       .catch((err) => {
+  //         console.log(err?.message);
+  //         toast.error(err?.message);
+  //       });
+  //   };
+  //   getUser();
+  // }, [apiHandler]);
 
   return (
     <div className="flex flex-col justify-between gap-20">
@@ -227,17 +257,31 @@ const OverviewTabs = () => {
               id="comments"
               placeholder="Add a comment..."
               className="w-11/12 px-6 py-3 border-b-[2px] focus:outline-none focus:border-[#49BBBD] border-[#D9D9D9] placeholder:text-[#9D9B9B] placeholder:text-base placeholder:font-light outline-none"
-              {...register("comments", { required: true })}
+              value={clickedInput}
+              onChange={handleInputChange} // Handle onChange manually
             />
+            {errors.comments && (
+              <p className="text-red-500">Comment is required.</p>
+            )}
             <div className="flex justify-between w-11/12 items-center">
               <Rating
                 value={rating}
                 onChange={(newRating) => setRating(newRating)}
                 readOnly={false}
               />
-              <div>
+              <div className="flex gap-4">
                 <button
-                  className="bg-[#49BBBD] px-4 py-2 rounded-xl text-white cursor-pointer w-full text-sm"
+                  onClick={() => setClickedInput("")}
+                  type="button"
+                  className="px-4 py-2 rounded-xl text-[#000] cursor-pointer w-full text-sm"
+                >
+                  Cancel
+                </button>
+                <button
+                  disabled={!clickedInput}
+                  className={`${
+                    clickedInput ? "bg-[#49BBBD]" : "bg-[#9d9b9bbb]"
+                  }  px-4 py-2 rounded-xl text-white cursor-pointer w-full text-sm`}
                   type="submit"
                 >
                   Comment

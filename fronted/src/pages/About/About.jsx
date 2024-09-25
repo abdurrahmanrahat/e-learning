@@ -15,14 +15,9 @@ import './Instructor.css';
 // Import required modules
 import { Navigation } from 'swiper/modules';
 import CourseCard from "../../components/Ui/CourseCard";
-<<<<<<< HEAD
-import PageBanner from "../../components/Ui/PageBanner";
-import Testimonials from "../../components/Ui/Testimonials/Testimonials";
-=======
 import Testimonials from "../../components/Ui/Testimonials/Testimonials";
 import PageBanner from "../../components/Ui/PageBanner";
 import {SHAREDImages} from "../../image-data/shared"
->>>>>>> 8a2982de09483356bed58bacafa4a038695000b6
 
 const About = () => {
   const [popularCourses, setPopularCourses] = useState([]);
@@ -98,12 +93,6 @@ const About = () => {
             ))}
           </div>
         </div>
-<<<<<<< HEAD
-
-        {/* Testimonials */}
-        <Testimonials />
-=======
->>>>>>> 8a2982de09483356bed58bacafa4a038695000b6
 
         {/* Swiper Slider for Instructors */}
         <div className="my-10 lg:my-20 container-class md:p-4">
@@ -161,8 +150,6 @@ const About = () => {
           </div>
         </div>
 
-<<<<<<< HEAD
-=======
         {/* Testimonials */}
         <Testimonials />
 
@@ -185,7 +172,6 @@ const About = () => {
             </div>
           </div>
         </div>
->>>>>>> 8a2982de09483356bed58bacafa4a038695000b6
       </div>
     </div>
   );
