@@ -13,6 +13,8 @@ router.post(
 
 router.get('/', UserControllers.getAllUsers);
 
-router.get('/:userId', UserControllers.getSingleUser);
+router.get('/:email', UserControllers.getSingleUser);
+
+router.patch('/:email', UserControllers.updateUser);
 
 export const UserRoutes = router;

@@ -16,8 +16,8 @@ const getAllUsersFromDB = async () => {
   return result;
 };
 
-const getSingleUserFromDB = async (userId: string) => {
-  const result = await User.findById(userId);
+const getSingleUserFromDB = async (email: string) => {
+  const result = await User.findOne({ email: email });
 
   if (!result) {
     throw new Error('User not found');
@@ -30,8 +30,16 @@ const getSingleUserFromDB = async (userId: string) => {
   return user;
 };
 
+const updateUserIntoDB = async (email: string, payload: Partial<TUser>) => {
+  const result = await User.findOneAndUpdate({ email: email }, payload, {
+    new: true,
+  });
+  return result;
+};
+
 export const UserServices = {
   createUserInfoDb,
   getAllUsersFromDB,
   getSingleUserFromDB,
+  updateUserIntoDB,
 };
