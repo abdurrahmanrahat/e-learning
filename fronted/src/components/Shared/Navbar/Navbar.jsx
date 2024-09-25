@@ -98,10 +98,15 @@ export default function Navbar() {
               </li>
             </ul>
 
-            <div className="ml-auto flex items-center px-6 lg:ml-0 lg:p-0">
+            <div className="ml-auto flex items-center px-6 lg:ml-0 lg:p-0 gap-8">
               <Link to="/login">
                 <button className="inline-flex h-10 items-center justify-center gap-2 rounded  px-5 text-sm font-medium tracking-wide text-white shadow-md transition duration-300 bg-primary hover:bg-hover hover:shadow-sm">
                   <span>Login</span>
+                </button>
+              </Link>
+              <Link to="/registration" className="hidden lg:flex xl:flex">
+                <button className="inline-flex h-10 items-center justify-center gap-2 rounded  px-5 text-sm font-medium tracking-wide text-white shadow-md transition duration-300 bg-primary hover:bg-hover hover:shadow-sm">
+                  <span>Sign Up</span>
                 </button>
               </Link>
             </div>
