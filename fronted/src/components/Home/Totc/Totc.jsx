@@ -12,6 +12,7 @@ export default function Totc() {
           "TOTC is a platform that allows educators to create online classes whereby they can store the course materials online; manage assignments, quizzes and exams; monitor due dates; grade results and provide students with feedback all in one place."
         }
       />
+
       <div className="flex flex-col lg:flex-row gap-10">
         <div className="rounded-xl relative">
           <div className="relative">
@@ -47,6 +48,7 @@ export default function Totc() {
           </div>
         </div>
       </div>
+
       <div className="flex flex-col lg:flex-row items-center gap-10 mt-16">
         <div className="w-full lg:w-1/2">
           <PrimaryTitle

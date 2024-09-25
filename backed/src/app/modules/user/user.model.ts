@@ -6,7 +6,11 @@ import { TUser, UserStaticModel } from './user.interface';
 const userSchema = new Schema<TUser, UserStaticModel>(
   {
     name: { type: String, required: true },
-    email: { type: String, required: true },
+    email: {
+      type: String,
+      required: [true, 'Email is required.'],
+      unique: true,
+    },
     photoUrl: { type: String, required: true },
     gender: {
       type: String,
@@ -65,6 +69,19 @@ userSchema.post('save', function (doc, next) {
   doc.password = '';
   next();
 });
+
+// remove password field when users get the endpoint
+userSchema.pre('find', function (next) {
+  this.select('-password');
+
+  next();
+});
+
+// userSchema.pre('findOne', function (next) {
+//   this.select('-password');
+
+//   next();
+// });
 
 // model
 export const User = model<TUser, UserStaticModel>('User', userSchema);

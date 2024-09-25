@@ -17,14 +17,13 @@ import Login from "../pages/Login/Login";
 import Registration from "../pages/Registration/Registration";
 import PaymentSuccess from "../components/Checkout/AfterPayment/PaymentSuccess";
 import PaymentFailed from "../components/Checkout/AfterPayment/PaymentFailed";
-
-
+import RoleChange from "../pages/RoleChange/RoleChange";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
-    errorElement:<ErrorPage></ErrorPage>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         index: true,
@@ -41,7 +40,7 @@ const router = createBrowserRouter([
       {
         path: "courseDetails/:id",
         element: <CourseDetail></CourseDetail>,
-        loader:()=>fetch("../../public/InstructorCourses.json")
+        loader: () => fetch("../../public/InstructorCourses.json"),
       },
       {
         path: "instructors",
@@ -63,15 +62,19 @@ const router = createBrowserRouter([
         path: "payment/failed/:trans_id",
         element: <PaymentFailed />,
       },
+      {
+        path: "role-change",
+        element: <RoleChange />,
+      }
     ],
   },
   {
     path: "registration",
-    element: <Registration />
+    element: <Registration />,
   },
   {
     path: "login",
-    element: <Login />
+    element: <Login />,
   },
   {
     path: "/dashboard/admin/",

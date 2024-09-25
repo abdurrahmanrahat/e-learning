@@ -4,8 +4,7 @@ import toast from "react-hot-toast";
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import useAxios from "../../Hooks/useAxios";
-import Cookies from "js-cookie";
-import { jwtDecode } from "jwt-decode";
+import { setUserInfo } from "../../utils/setUserInfo";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -22,21 +21,6 @@ const Login = () => {
   const onSubmit = (data) => {
     const { email, password } = data;
 
-    // Password validation (you can adjust this as per your needs)
-    if (password.length < 6) {
-      return toast.error("Password must have at least 6 characters!");
-    }
-    if (!/[A-Z]/.test(password)) {
-      return toast.error(
-        "Password must contain at least one uppercase letter!"
-      );
-    }
-    if (!/[a-z]/.test(password)) {
-      return toast.error(
-        "Password must contain at least one lowercase letter!"
-      );
-    }
-
     // Sending login request
     apiHandler
       .post("/auth/login", { email, password })
@@ -44,24 +28,11 @@ const Login = () => {
         const { accessToken, refreshToken } = res?.data?.data || {};
 
         if (accessToken && refreshToken) {
-          // Store Access token in browser cookies
-          Cookies.set("accessToken", accessToken, { expires: 1 });
+          setUserInfo(accessToken, refreshToken);
 
-          // Store refresh token in local storage
-          localStorage.setItem("refreshToken", refreshToken);
-
-          // decode accessToken and get user info
-          const decode = jwtDecode(accessToken);
-          console.log("Decoded Logged In User:", decode);
-
-          const userInfo = { email: decode?.email, role: decode?.role };
-
-          localStorage.setItem("userInfo", JSON.stringify(userInfo));
-
-          navigate('/')
           toast.success("Successfully logged In");
 
-          // navigate('/dashboard');
+          navigate("/");
         } else {
           throw new Error("Invalid response from the server");
         }
