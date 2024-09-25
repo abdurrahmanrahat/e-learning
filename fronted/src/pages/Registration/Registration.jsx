@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import useAxios from "../../Hooks/useAxios";
+import { setUserInfo } from "../../utils/setUserInfo";
 
 const Registration = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -22,11 +23,22 @@ const Registration = () => {
     apiHandler
       .post("/users/register", data)
       .then((res) => {
-        console.log("Register user:", res.data?.data);
         toast.success("User Created Successfully");
 
-        if (res.data) {
-          navigate("/role-change");
+        // auto login
+        if (res?.data) {
+          apiHandler
+            .post("/auth/login", { email: data.email, password: data.password })
+            .then((res) => {
+              const { accessToken, refreshToken } = res?.data?.data || {};
+
+              if (accessToken && refreshToken) {
+                setUserInfo(accessToken, refreshToken);
+                navigate("/role-change");
+              } else {
+                throw new Error("Invalid response from the server");
+              }
+            });
         }
       })
       .catch((err) => {

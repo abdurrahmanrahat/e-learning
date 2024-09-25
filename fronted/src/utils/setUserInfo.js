@@ -2,11 +2,11 @@ import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 
 export const setUserInfo = (accessToken, refreshToken) => {
-    // Store Access token in browser cookies
-    Cookies.set("accessToken", accessToken);
+    // Store refresh token in browser cookies
+    Cookies.set("refreshToken", refreshToken);
 
-    // Store refresh token in local storage
-    localStorage.setItem("refreshToken", refreshToken);
+    // Store access token in local storage
+    localStorage.setItem("accessToken", accessToken);
 
     // decode accessToken and get user info
     const userInfo = jwtDecode(accessToken);
