@@ -1,3 +1,4 @@
+import { useForm } from "react-hook-form";
 import Select from "react-select";
 
 const AddCourse = () => {
@@ -20,15 +21,21 @@ const AddCourse = () => {
     { value: "5 Months", label: "5 Months" },
   ];
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const handleAddCourse = (data) => {
+    console.log(data);
+  };
+
   return (
     <div>
       <h1 className="text-center text-4xl font-bold my-5 ">Add Course</h1>
       <div className="border bg-[#e0f2fe] mb-20 rounded-lg max-w-4xl mx-auto p-8">
-        <form
-          // onSubmit={ handleSubmit(handleAddCourse)}
-
-          className="card-body"
-        >
+        <form onSubmit={handleSubmit(handleAddCourse)} className="card-body">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-5">
             {/* title  */}
             <div className="form-control">
@@ -133,6 +140,7 @@ const AddCourse = () => {
               id=""
               cols="30"
               rows="4"
+              {...register("description", { required: true })}
             ></textarea>
           </div>
           <div className="form-control mt-5 w-[200px]">
