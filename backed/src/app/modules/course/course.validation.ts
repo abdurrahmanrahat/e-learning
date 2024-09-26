@@ -9,6 +9,7 @@ const createCourseValidationSchema = z.object({
       .string()
       .url('Please provide a valid instructor image URL'),
     instructorName: z.string(),
+    instructorEmail: z.string().email(),
     price: z.number().positive('Price must be a positive number'),
     description: z.string(),
     bigDescription: z.string(),
@@ -29,6 +30,7 @@ const updateCourseValidationSchema = z.object({
       .url('Please provide a valid instructor image URL')
       .optional(),
     instructorName: z.string().optional(),
+    instructorEmail: z.string().email().optional(),
     price: z.number().positive('Price must be a positive number').optional(),
     description: z.string().optional(),
     bigDescription: z.string().optional(),
