@@ -13,6 +13,7 @@ const category = [
   "programming",
   "Management",
   "Skill Development",
+  "Creative Arts",
   "Languages",
   "computer",
   "Science",
@@ -30,7 +31,6 @@ const duration = [
   "9 Months",
   "12 Months",
 ];
-
 
 const AddCourse = () => {
   const { user } = useUser();

@@ -1,20 +1,19 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { getUser } from "../../../utils/getUser";
+import { removeUserInfo } from "../../../utils/removeUserInfo";
 import ActiveLink from "../../Ui/ActiveLink";
-import { useUser } from "../../../Hooks/api/useUser";
 
 export default function Navbar() {
   const [isToggleOpen, setIsToggleOpen] = useState(false);
-  const {user, setUser} = useUser();
-  const navigate = useNavigate();
+
+  const user = getUser();
 
   // handle logout button
   const handleLogoutBtn = () => {
-    localStorage.removeItem('userInfo');
-    setUser(null);
-    navigate('/login')
-  }
- 
+    removeUserInfo();
+  };
+
   return (
     <div className="container-class">
       {/*<!-- Component: Navbar with CTA --> */}
@@ -116,11 +115,6 @@ export default function Navbar() {
                       <span>Login</span>
                     </button>
                   </Link>
-                  <Link to="/registration" className="hidden lg:flex xl:flex">
-                    <button className="inline-flex h-10 items-center justify-center gap-2 rounded  px-5 text-sm font-medium tracking-wide text-white shadow-md transition duration-300 bg-primary hover:bg-hover hover:shadow-sm">
-                      <span>Sign Up</span>
-                    </button>
-                  </Link>
                 </>
               ) : (
                 <>
@@ -131,7 +125,10 @@ export default function Navbar() {
                       alt=""
                     />
                   </figure>
-                  <button onClick={handleLogoutBtn} className="inline-flex h-10 items-center justify-center gap-2 rounded  px-5 text-sm font-medium tracking-wide text-white shadow-md transition duration-300 bg-primary hover:bg-hover hover:shadow-sm">
+                  <button
+                    onClick={handleLogoutBtn}
+                    className="inline-flex h-10 items-center justify-center gap-2 rounded  px-5 text-sm font-medium tracking-wide text-white shadow-md transition duration-300 bg-primary hover:bg-hover hover:shadow-sm"
+                  >
                     <span>Log out</span>
                   </button>
                 </>
