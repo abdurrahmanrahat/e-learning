@@ -1,10 +1,20 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ActiveLink from "../../Ui/ActiveLink";
+import { useUser } from "../../../Hooks/api/useUser";
 
 export default function Navbar() {
   const [isToggleOpen, setIsToggleOpen] = useState(false);
+  const {user, setUser} = useUser();
+  const navigate = useNavigate();
 
+  // handle logout button
+  const handleLogoutBtn = () => {
+    localStorage.removeItem('userInfo');
+    setUser(null);
+    navigate('/login')
+  }
+ 
   return (
     <div className="container-class">
       {/*<!-- Component: Navbar with CTA --> */}
@@ -99,16 +109,33 @@ export default function Navbar() {
             </ul>
 
             <div className="ml-auto flex items-center px-6 lg:ml-0 lg:p-0 gap-8">
-              <Link to="/login">
-                <button className="inline-flex h-10 items-center justify-center gap-2 rounded  px-5 text-sm font-medium tracking-wide text-white shadow-md transition duration-300 bg-primary hover:bg-hover hover:shadow-sm">
-                  <span>Login</span>
-                </button>
-              </Link>
-              <Link to="/registration" className="hidden lg:flex xl:flex">
-                <button className="inline-flex h-10 items-center justify-center gap-2 rounded  px-5 text-sm font-medium tracking-wide text-white shadow-md transition duration-300 bg-primary hover:bg-hover hover:shadow-sm">
-                  <span>Sign Up</span>
-                </button>
-              </Link>
+              {!user ? (
+                <>
+                  <Link to="/login">
+                    <button className="inline-flex h-10 items-center justify-center gap-2 rounded  px-5 text-sm font-medium tracking-wide text-white shadow-md transition duration-300 bg-primary hover:bg-hover hover:shadow-sm">
+                      <span>Login</span>
+                    </button>
+                  </Link>
+                  <Link to="/registration" className="hidden lg:flex xl:flex">
+                    <button className="inline-flex h-10 items-center justify-center gap-2 rounded  px-5 text-sm font-medium tracking-wide text-white shadow-md transition duration-300 bg-primary hover:bg-hover hover:shadow-sm">
+                      <span>Sign Up</span>
+                    </button>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <figure className="w-12 rounded-full overflow-hidden">
+                    <img
+                      className="w-full h-full rounded-full object-cover"
+                      src={user?.photoUrl}
+                      alt=""
+                    />
+                  </figure>
+                  <button onClick={handleLogoutBtn} className="inline-flex h-10 items-center justify-center gap-2 rounded  px-5 text-sm font-medium tracking-wide text-white shadow-md transition duration-300 bg-primary hover:bg-hover hover:shadow-sm">
+                    <span>Log out</span>
+                  </button>
+                </>
+              )}
             </div>
           </nav>
         </div>
