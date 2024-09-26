@@ -21,6 +21,7 @@ const category = [
   "Health & Fitness",
 ];
 // duration data
+
 const duration = [
   "1 Months",
   "2 Months",
@@ -29,6 +30,7 @@ const duration = [
   "9 Months",
   "12 Months",
 ];
+
 
 const AddCourse = () => {
   const { user } = useUser();
