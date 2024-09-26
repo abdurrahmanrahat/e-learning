@@ -44,30 +44,29 @@ const Login = () => {
   };
 
   return (
-    <div className="max-w-[1300px] mx-auto px-4 lg:px-0 flex items-center justify-between my-10 lg:my-20 pb-20">
-      <div className="lg:w-[45%] hidden lg:flex">
+    <div className="container-class flex justify-center items-center gap-10 py-6">
+      <figure className="w-1/2 hidden lg:flex xl:flex">
         <img src="https://i.ibb.co.com/Tv98QzM/3094352.jpg" alt="Login" />
-      </div>
-      <div className="lg:w-[45%] w-full">
-        <h1 className="text-center mb-5 text-2xl">Welcome Back!</h1>
+      </figure>
+      <div className="w-full lg:w-1/2 xl:w-1/2 px-4 lg:px-10 xl:px-10">
+        <h1 className="text-center mb-5 text-xl">Welcome Back!</h1>
 
         {/* Form toggler */}
-        <div className="bg-[#49BBBD99] px-5 py-4 w-fit mx-auto flex justify-between rounded-xl">
+        <div className="bg-[#49BBBD99] px-4 py-2 w-fit mx-auto flex justify-between rounded-full gap-10">
           <Link to="/registration">
-            <button className="text-white font-medium rounded-xl px-7 py-3">
+            <button className="text-white font-medium rounded-full px-6 py-2">
               Register
             </button>
           </Link>
           <Link to="/login">
-            <button className="bg-[#49BBBD] text-white font-medium rounded-xl px-7 py-3">
+            <button className="bg-[#49BBBD] text-white font-medium rounded-full px-6 py-2">
               Login
             </button>
           </Link>
         </div>
 
         <p className="text-[#5B5B5B] my-8">
-          Join our platform and unlock exclusive benefits. Fill in the details
-          below to get started.
+          Please login your account and explore your favorite courses
         </p>
 
         <form className="space-y-8" onSubmit={handleSubmit(onSubmit)}>

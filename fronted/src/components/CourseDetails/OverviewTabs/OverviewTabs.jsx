@@ -1,16 +1,28 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ReviewTabs from "../ReviewTabs/ReviewTabs";
 import { useForm } from "react-hook-form";
 import Rating from "../../Ui/Rating";
 import { useState } from "react";
+import { useUser } from "../../../Hooks/api/useUser";
+import useAxios from "../../../Hooks/useAxios";
+import { useCourses } from "../../../Hooks/api/useCourses";
+import toast from "react-hot-toast";
+
 
 const OverviewTabs = () => {
   const [rating, setRating] = useState(0);
-  const courses = useLoaderData();
+  const user = useUser();
+  const courses = useCourses();
+  const apiHandler = useAxios();
   const { id } = useParams();
-  const course = courses?.find((item) => item.id === Number(id));
+  const course = courses?.find((item) => item._id === Number(id));
   console.log(course);
-  const { register, handleSubmit } = useForm();
+  const {
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm();
+  const [clickedInput, setClickedInput] = useState("");
 
   const onSubmit = (data) => {
     const { comments } = data;
@@ -26,24 +38,32 @@ const OverviewTabs = () => {
     const formattedDate = `${month}/${day}/${year}`;
 
     const commentsInfo = {
-      comments: comments,
+      name: user?.name,
+      email: user?.email,
+      photoUrl: user?.photoUrl,
+      comment: comments,
       date: formattedDate,
-      ratings: rating
+      rating: rating,
     };
     console.log(commentsInfo);
 
-    // apiHandler
-    //   .post("/users/register", data)
-    //   .then((res) => {
-    //     console.log("Register user:", res.data?.data);
-    //     toast.success("User Created Successfully");
-    //     navigate("/login");
-    //   })
-    //   .catch((err) => {
-    //     console.log(err?.message);
-    //     toast.error(err?.message);
-    //   });
+    apiHandler
+      .post(`/courses/${course?.id}/reviews`, data)
+      .then((res) => {
+        console.log("review:", res);
+        toast.success("User Created Successfully");
+      })
+      .catch((err) => {
+        console.log(err?.message);
+        toast.error(err?.message);
+      });
   };
+
+  const handleInputChange = (e) => {
+    setClickedInput(e.target.value); 
+    setValue("comments", e.target.value);
+  };
+
 
   return (
     <div className="flex flex-col justify-between gap-20">
@@ -219,25 +239,49 @@ const OverviewTabs = () => {
 
       {/* Review cards */}
       <div>
-        <form className="space-y-8 py-10" onSubmit={handleSubmit(onSubmit)}>
+        <form
+          className="space-y-8 px-6 pb-16 flex gap-2 justify-between items-center"
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <figure className="w-16 rounded-full overflow-hidden aspect-square">
+            <img
+              className="w-[180px] h-[180px] object-cover rounded-full"
+              src={user?.photoUrl}
+              alt=""
+            />
+          </figure>
           <div className="w-full bg-white p-2 text-[#000] flex flex-col gap-2 items-end">
             <input
               type="text"
               name="comments"
               id="comments"
               placeholder="Add a comment..."
-              className="w-11/12 px-6 py-3 border-b-[2px] focus:outline-none focus:border-[#49BBBD] border-[#D9D9D9] placeholder:text-[#9D9B9B] placeholder:text-base placeholder:font-light outline-none"
-              {...register("comments", { required: true })}
+              className="w-full px-6 py-3 border-b-[2px] focus:outline-none focus:border-[#49BBBD] border-[#D9D9D9] placeholder:text-[#9D9B9B] placeholder:text-base placeholder:font-light outline-none"
+              value={clickedInput}
+              onChange={handleInputChange} // Handle onChange manually
             />
-            <div className="flex justify-between w-11/12 items-center">
+            {errors.comments && (
+              <p className="text-red-500">Comment is required.</p>
+            )}
+            <div className="flex justify-between w-full items-center">
               <Rating
                 value={rating}
                 onChange={(newRating) => setRating(newRating)}
                 readOnly={false}
               />
-              <div>
+              <div className="flex gap-4">
                 <button
-                  className="bg-[#49BBBD] px-4 py-2 rounded-xl text-white cursor-pointer w-full text-sm"
+                  onClick={() => setClickedInput("")}
+                  type="button"
+                  className="px-4 py-2 rounded-xl text-[#000] cursor-pointer w-full text-sm"
+                >
+                  Cancel
+                </button>
+                <button
+                  disabled={!clickedInput}
+                  className={`${
+                    clickedInput ? "bg-[#49BBBD]" : "bg-[#9d9b9bbb]"
+                  }  px-4 py-2 rounded-xl text-white cursor-pointer w-full text-sm`}
                   type="submit"
                 >
                   Comment

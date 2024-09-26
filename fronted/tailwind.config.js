@@ -8,13 +8,16 @@ export default {
     extend: {
       colors: {
         primary: "#49BBBD",
+        hover: "#42a8aa",
         secondary: "#252641",
         myGray: "#696984"
       },
       boxShadow: {
         myCustomShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
-      }
+      },
+      
     },
+    
   },
   plugins: [],
 }

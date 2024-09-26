@@ -1,31 +1,18 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import Totc from "../../components/Home/Totc/Totc";
 import PrimaryTitle from "../../components/Ui/PrimaryTitle";
 
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-
-// Custom css
-import "./Instructor.css";
-
 // Import required modules
-import { Navigation } from "swiper/modules";
 import CourseCard from "../../components/Ui/CourseCard";
+import InstructorCard from "../../components/Ui/InstructorCard";
 import PageBanner from "../../components/Ui/PageBanner";
 import Testimonials from "../../components/Ui/Testimonials/Testimonials";
-import { useCourses } from "../../Hooks/api/useCourses";
-import { SHAREDImages } from "../../image-data/shared";
+import { SHAREDImages } from "../../image-data/shared"
+import { INSTRUCTORImages } from "../../image-data/Instructors";
 
 const About = () => {
   const [popularCourses, setPopularCourses] = useState([]);
-  const [instructors, setInstructors] = useState([]);
-
-  const courses = useCourses();
-  console.log(courses);
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -37,18 +24,51 @@ const About = () => {
       }
     };
 
-    const fetchInstructors = async () => {
-      try {
-        const response = await axios.get("/instructors.json");
-        setInstructors(response?.data);
-      } catch (err) {
-        console.log(err.message);
-      }
-    };
-
     fetchCourses();
-    fetchInstructors();
   }, []);
+
+  const instructorData = [
+    {
+      id: 1,
+      name: "John Doe",
+      title: "Web Developer",
+      image: INSTRUCTORImages.instructor_1,
+      ratings: 4,
+      numOfCourses: 12,
+      about:
+        "John is a highly skilled web developer with over 5 years of experience in building responsive websites and web applications.",
+    },
+    {
+      id: 2,
+      name: "Jane Smith",
+      title: "SEO Expert",
+      image: INSTRUCTORImages.instructor_2,
+      ratings: 3,
+      numOfCourses: 8,
+      about:
+        "Jane is an expert in search engine optimization, helping businesses rank higher on search engines and boost organic traffic.",
+    },
+    {
+      id: 3,
+      name: "Michael Johnson",
+      title: "Mobile App Developer",
+      image: INSTRUCTORImages.instructor_3,
+      ratings: 5,
+      numOfCourses: 15,
+      about:
+        "Michael specializes in mobile app development, creating user-friendly and innovative mobile applications for Android and iOS.",
+    },
+    {
+      id: 4,
+      name: "Emily Davis",
+      title: "UI/UX Designer",
+      image: INSTRUCTORImages.instructor_1,
+      ratings: 2,
+      numOfCourses: 10,
+      about:
+        "Emily is a creative UI/UX designer with a passion for designing intuitive and visually appealing user interfaces.",
+    },
+  ];
 
   return (
     <div>
@@ -117,10 +137,10 @@ const About = () => {
         {/* Testimonials */}
         <Testimonials />
 
-        {/* Swiper Slider for Instructors */}
+        {/* Popular Instructors */}
         <div className="my-10 lg:my-20 container-class md:p-4">
           <PrimaryTitle
-            headingPart1={"Certified"}
+            headingPart1={"Most Popular"}
             headingPart2={"Instructors"}
             style={"text-center lg:w-[60%] mx-auto"}
             subtext={
@@ -128,97 +148,11 @@ const About = () => {
             }
           />
 
-          <div className="mt-16 relative">
-            <Swiper
-              slidesPerView={3}
-              spaceBetween={40}
-              navigation={{
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-              }}
-              breakpoints={{
-                0: {
-                  slidesPerView: 1,
-                  spaceBetween: 10,
-                },
-                768: {
-                  slidesPerView: 2,
-                  spaceBetween: 20,
-                },
-                1024: {
-                  slidesPerView: 3,
-                  spaceBetween: 40,
-                },
-              }}
-              modules={[Navigation]}
-              className="mySwiper"
-            >
-              {instructors?.map((instructor) => (
-                <SwiperSlide key={instructor?.id}>
-                  <div className="flex flex-col text-center items-center justify-center">
-                    <figure className="mb-5">
-                      <img
-                        className="rounded-full w-48 h-48 border p-3 bg-gray-100"
-                        src={instructor?.profilePic}
-                        alt=""
-                      />
-                    </figure>
-                    <h2 className="text-2xl text-[#2F327D] font-semibold font-nunito transition delay-100 cursor-pointer">
-                      {instructor?.title}
-                    </h2>
-                    <span className="text-[#6E7697] flex items-center gap-2">
-                      {" "}
-                      Data Scientist
-                    </span>
-                    <p className="mt-4 text-[#6E7697] text-center">
-                      {instructor?.shortBio}
-                    </p>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-
-            {/* Navigation Buttons */}
-            <div className="swiper-button-next right-0 top-1/2 -translate-y-1/2 absolute text-white w-10 h-10 flex items-center justify-center rounded-full cursor-pointer"></div>
-            <div className="swiper-button-prev left-0 top-1/2 -translate-y-1/2 absolute text-white w-10 h-10 flex items-center justify-center rounded-full cursor-pointer"></div>
-          </div>
-        </div>
-
-        {/* Testimonials */}
-        <Testimonials />
-
-        {/* Mission And Vission */}
-        <div className="container-class md:p-4">
-          <div className="flex flex-col lg:flex-row mt-20 justify-between">
-            <div className="lg:w-[50%]">
-              <img
-                className="rounded-xl"
-                src="https://i.ibb.co.com/VJMKM9s/122864.jpg"
-                alt=""
-              />
-            </div>
-            <div className="lg:w-[40%] mt-8 lg:mt-0">
-              <PrimaryTitle
-                headingPart1={"Our"}
-                headingPart2={"Mission & Vision"}
-                style={""}
-              />
-              <p className="text-[#696984] mb-10">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit
-                suscipit, repudiandae similique accusantium eius nulla quam
-                laudantium sequi.
-              </p>
-              <p className="text-[#696984] mb-10">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit
-                suscipit, repudiandae similique accusantium eius nulla quam
-                laudantium sequi.
-              </p>
-              <p className="text-[#696984]">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit
-                suscipit, repudiandae similique accusantium eius nulla quam
-                laudantium sequi.
-              </p>
-            </div>
+          {/* Instructors cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-3 gap-x-8 gap-y-14 py-10">
+            {instructorData?.map((item) => (
+              <InstructorCard key={item.id} item={item}></InstructorCard>
+            ))}
           </div>
         </div>
       </div>

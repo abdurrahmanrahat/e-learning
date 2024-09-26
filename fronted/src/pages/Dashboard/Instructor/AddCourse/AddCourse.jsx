@@ -1,10 +1,10 @@
-import Select from "react-select";
 import { useForm } from "react-hook-form";
+import Select from "react-select";
 import { useState } from "react";
 const AddCourse = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedDuration, setSelectedDuration] = useState(null);
-  const { register, handleSubmit, reset } =useForm();
+  const { register, handleSubmit, reset,formState: { errors } } =useForm();
 // category 
   const handleCategoryChange = (selectedOption) => {
     setSelectedCategory(selectedOption);
@@ -53,11 +53,7 @@ const AddCourse = () => {
     <div>
       <h1 className="text-center text-3xl font-bold mb-5 ">Add Course</h1>
       <div className="border bg-[#e0f2fe] mb-20 rounded-lg max-w-4xl mx-auto p-8">
-        <form
-          onSubmit={ handleSubmit(handleAddCourse)}
-
-          className="card-body"
-        >
+        <form onSubmit={handleSubmit(handleAddCourse)} className="card-body">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-5">
             {/* title  */}
             <div className="form-control">
@@ -165,8 +161,8 @@ const AddCourse = () => {
               className="w-full rounded p-5 mt-3"
               id=""
               cols="30"
-              rows="3"
-              {...register('description')}
+              rows="4"
+              {...register("description", { required: true })}
             ></textarea>
           </div>
           <div className="form-control mt-5 w-[200px]">

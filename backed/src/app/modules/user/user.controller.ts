@@ -28,9 +28,9 @@ const getAllUsers = catchAsync(async (req, res) => {
 });
 
 const getSingleUser = catchAsync(async (req, res) => {
-  const { userId } = req.params;
+  const { email } = req.params;
 
-  const result = await UserServices.getSingleUserFromDB(userId);
+  const result = await UserServices.getSingleUserFromDB(email);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -40,8 +40,23 @@ const getSingleUser = catchAsync(async (req, res) => {
   });
 });
 
+const updateUser = catchAsync(async (req, res) => {
+  const { email } = req.params;
+  const updatedUser = req.body;
+
+  const result = await UserServices.updateUserIntoDB(email, updatedUser);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Role updated successfully',
+    data: result,
+  });
+});
+
 export const UserControllers = {
   createUser,
   getAllUsers,
   getSingleUser,
+  updateUser,
 };
