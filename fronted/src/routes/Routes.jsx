@@ -41,7 +41,6 @@ const router = createBrowserRouter([
       {
         path: "courseDetails/:id",
         element: <CourseDetail></CourseDetail>,
-        loader: () => fetch("../../public/InstructorCourses.json"),
       },
       {
         path: "instructors",

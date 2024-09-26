@@ -1,4 +1,4 @@
-import { useLoaderData, useParams, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { HOMEImages } from "../../../image-data/home";
 import PrimaryTitle from "../../Ui/PrimaryTitle";
 import PageBanner from "../../Ui/PageBanner";
@@ -6,12 +6,14 @@ import Tabs from "../../Ui/Tabs";
 import OverviewTabs from "../OverviewTabs/OverviewTabs";
 import ReviewTabs from "../ReviewTabs/ReviewTabs";
 import DescriptionTabs from "../DescriptionTabs/DescriptionTabs";
+import { useCourses } from "../../../Hooks/api/useCourses";
 
 const CourseDetail = () => {
-  const courses = useLoaderData();
+  const courses = useCourses();
   const { id } = useParams();
-  const course = courses.find((course) => course.id === Number(id));
-  // console.log(course);
+  const course = courses?.find((course) => course._id === id);
+  console.log(courses);
+  console.log(course);
 
   const tabs = ["Overview", "Reviews", "Description"];
   const tabsItem = [
@@ -22,17 +24,17 @@ const CourseDetail = () => {
       content: <ReviewTabs />,
     },
     {
-      content: <DescriptionTabs />,
+      content: <DescriptionTabs value={course?.bigDescription}/>,
     },
   ];
 
   return (
     <div className="">
-      <PageBanner image={course.thumbnail}>
+      <PageBanner image={course?.image}>
         <div className="hidden lg:flex xl:flex justify-end items-end lg:w-[1240px] xl:w-[1240px] h-full">
           <img
             className="w-[330px] border-[16px] h-[220px] rounded-2xl"
-            src={course.thumbnail}
+            src={course?.image}
             alt=""
           />
         </div>
