@@ -1,10 +1,10 @@
+import axios from "axios";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { FaPlus } from "react-icons/fa6";
 import PrimaryTitle from "../../../../components/Ui/PrimaryTitle";
 import { useUser } from "../../../../Hooks/api/useUser";
-import { useState } from "react";
-import axios from "axios";
-import toast from "react-hot-toast";
 import useAxios from "../../../../Hooks/useAxios";
 
 // category data
@@ -13,6 +13,7 @@ const category = [
   "programming",
   "Management",
   "Skill Development",
+  "Creative Arts",
   "Languages",
   "computer",
   "Science",
@@ -21,7 +22,15 @@ const category = [
   "Health & Fitness",
 ];
 // duration data
-const duration = ["1 Months", "2 Months", "3 Months", "6 Months","9 Months", "12 Months"];
+
+const duration = [
+  "1 Months",
+  "2 Months",
+  "3 Months",
+  "6 Months",
+  "9 Months",
+  "12 Months",
+];
 
 const AddCourse = () => {
   const { user } = useUser();
@@ -68,7 +77,7 @@ const AddCourse = () => {
       price: Number(data?.price),
       image: imageUrl,
       description: data?.shortDescription,
- bigDescription: data?.description,
+      bigDescription: data?.description,
       courseDuration: data?.duration,
       category: data?.category,
     };
