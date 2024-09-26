@@ -1,10 +1,10 @@
+import axios from "axios";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { FaPlus } from "react-icons/fa6";
 import PrimaryTitle from "../../../../components/Ui/PrimaryTitle";
 import { useUser } from "../../../../Hooks/api/useUser";
-import { useState } from "react";
-import axios from "axios";
-import toast from "react-hot-toast";
 import useAxios from "../../../../Hooks/useAxios";
 
 // category data
@@ -21,7 +21,14 @@ const category = [
   "Health & Fitness",
 ];
 // duration data
-const duration = ["1 Months", "2 Months", "3 Months", "4 Months", "5 Months"];
+const duration = [
+  "1 Months",
+  "2 Months",
+  "3 Months",
+  "6 Months",
+  "9 Months",
+  "12 Months",
+];
 
 const AddCourse = () => {
   const { user } = useUser();
@@ -63,16 +70,16 @@ const AddCourse = () => {
     const newCourse = {
       instructorName: user?.name,
       instructorEmail: user?.email,
-      instructorImage: user?.photoUrl,
+      instructorImg: user?.photoUrl,
       title: data?.title,
-      price: data?.price,
+      price: Number(data?.price),
       image: imageUrl,
-      shortDescription: data?.shortDescription,
-      description: data?.description,
-      duration: data?.duration,
+      description: data?.shortDescription,
+      bigDescription: data?.description,
+      courseDuration: data?.duration,
       category: data?.category,
     };
-    // console.log(newCourse);
+    console.log(newCourse);
 
     apiHandler
       .post("/courses/create-course", newCourse)
@@ -83,7 +90,7 @@ const AddCourse = () => {
         }
       })
       .catch((err) => {
-        console.log(err?.message);
+        console.log(err);
         toast.error(err?.message || "Please try again.");
       });
   };

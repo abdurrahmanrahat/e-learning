@@ -24,6 +24,10 @@ const courseSchema = new Schema<TCourse>(
       type: String,
       required: [true, 'Instructor name is required'],
     },
+    instructorEmail: {
+      type: String,
+      required: [true, 'Instructor email is required'],
+    },
     price: {
       type: Number,
       required: [true, 'Price is required'],
