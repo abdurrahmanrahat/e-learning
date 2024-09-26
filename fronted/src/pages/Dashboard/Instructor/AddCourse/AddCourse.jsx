@@ -1,16 +1,44 @@
 import { useForm } from "react-hook-form";
 import Select from "react-select";
-
+import { useState } from "react";
 const AddCourse = () => {
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedDuration, setSelectedDuration] = useState(null);
+  const { register, handleSubmit, reset,formState: { errors } } =useForm();
+// category 
+  const handleCategoryChange = (selectedOption) => {
+    setSelectedCategory(selectedOption);
+  };
+  // duration 
+  const handleDurationChange = (selectedOption) => {
+    setSelectedDuration(selectedOption);
+  };
+
+  const handleAddCourse=async(data)=>{
+    const title =data.title;
+    const price = data.price;
+    const shortDescription =data.shortDescription;
+    const image =data.image;
+    const description =data.description;
+    const categoryOptions = selectedCategory ? selectedCategory.value : null;
+    const durationOptions = selectedDuration ? selectedDuration.value : null;
+
+    const newCourse={title,price,shortDescription,image,description,categoryOptions,durationOptions}
+    console.log(newCourse);
+  }
+
   // category data
   const categoryOptions = [
-    { value: "education", label: "education" },
+    { value: "Digital Technology", label: "Digital Technology" },
     { value: "programming", label: "programming" },
-    { value: "webDevelopment", label: "webDevelopment" },
-    { value: "general", label: "general" },
-    { value: "softwareDevelopment", label: "softwareDevelopment" },
+    { value: "Management", label: "Management" },
+    { value: "Skill Development", label: "Skill Development" },
+    { value: "Languages", label: "Languages" },
     { value: "computer", label: "computer" },
-    { value: "technology", label: "technology" },
+    { value: "Science", label: "Science" },
+    { value: "Academic Studies", label: "Academic Studies" },
+    { value: "Basic Computer", label: "Basic Computer" },
+    { value: "Health & Fitness", label: "Health & Fitness" },
   ];
   // duration data
   const durationOptions = [
@@ -21,19 +49,9 @@ const AddCourse = () => {
     { value: "5 Months", label: "5 Months" },
   ];
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
-  const handleAddCourse = (data) => {
-    console.log(data);
-  };
-
   return (
     <div>
-      <h1 className="text-center text-4xl font-bold my-5 ">Add Course</h1>
+      <h1 className="text-center text-3xl font-bold mb-5 ">Add Course</h1>
       <div className="border bg-[#e0f2fe] mb-20 rounded-lg max-w-4xl mx-auto p-8">
         <form onSubmit={handleSubmit(handleAddCourse)} className="card-body">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-5">
@@ -41,7 +59,7 @@ const AddCourse = () => {
             <div className="form-control">
               <label className="label">
                 <span className="label-text font-semibold text-xl text-gray-600">
-                  Course Title
+                  Title
                 </span>
               </label>
               <input
@@ -49,6 +67,7 @@ const AddCourse = () => {
                 placeholder="Title"
                 className="text-left w-full rounded py-3 px-5 mt-3 text-sm"
                 required
+                {...register('title')}
               />
             </div>
             {/* price  */}
@@ -61,22 +80,23 @@ const AddCourse = () => {
               <input
                 type="number"
                 placeholder="price"
-                className=" text-left w-full rounded py-3 px-5 mt-3 text-sm "
+                className=" text-left w-full rounded py-3 px-5 mt-3 text-sm"
                 required
+                {...register('price')}
               />
             </div>
             {/* select category */}
             <div className="form-control ">
               <label className="label">
                 <span className="label-text font-semibold text-xl text-gray-600">
-                  Select Category:
+                  Category
                 </span>
               </label>
               <Select
                 options={categoryOptions}
-                //   value={selectedTag}
-                //   onChange={handleTagChange}
-                className="text-left w-full rounded py-3 px-5 mt-2 text-sm "
+                value={selectedCategory}
+                onChange={handleCategoryChange}
+                className="text-left w-full rounded py-3  mt-2 text-sm "
                 placeholder="Select category"
                 required
               />
@@ -85,14 +105,14 @@ const AddCourse = () => {
             <div className="form-control ">
               <label className="label">
                 <span className="label-text font-semibold text-xl text-gray-600">
-                  select Duration
+                  Duration
                 </span>
               </label>
               <Select
                 options={durationOptions}
-                //   value={selectedTag}
-                //   onChange={handleTagChange}
-                className="text-left w-full rounded py-3 px-5 mt-2 text-sm"
+                value={selectedDuration}
+                onChange={handleDurationChange}
+                className="text-left w-full rounded py-3  mt-2 text-sm"
                 placeholder="Select duration"
                 required
               />
@@ -110,6 +130,7 @@ const AddCourse = () => {
                 id=""
                 cols="30"
                 rows="2"
+                {...register('shortDescription')}
               ></textarea>
             </div>
             {/* choice img  */}
@@ -124,6 +145,7 @@ const AddCourse = () => {
                 placeholder="image file"
                 className="w-full rounded p-4 mt-3 bg-white"
                 required
+                {...register('image')}
               />
             </div>
           </div>
