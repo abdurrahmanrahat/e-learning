@@ -17,8 +17,8 @@ const Courses = () => {
   // Pagination logic
   const indexOfLastCourse = currentPage * coursesPerPage;
   const indexOfFirstCourse = indexOfLastCourse - coursesPerPage;
-  const currentCourses = courses?.slice(indexOfFirstCourse, indexOfLastCourse);
-  const totalPages = Math.ceil(courses?.length / coursesPerPage);
+  const currentCourses = courses?.data.slice(indexOfFirstCourse, indexOfLastCourse);
+  const totalPages = Math.ceil(courses?.data.length / coursesPerPage);
 
   // Handle page change
   const onPageChange = (pageNumber) => {
@@ -61,7 +61,7 @@ const Courses = () => {
           ))}
         </div>
         {/* Reusable Pagination Component */}
-        {courses?.length > 0 ? (
+        {courses?.data.length > 0 ? (
           <div className="w-full flex justify-center">
             <Pagination
               currentPage={currentPage}

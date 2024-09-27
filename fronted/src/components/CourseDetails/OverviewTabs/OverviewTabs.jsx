@@ -15,7 +15,7 @@ const OverviewTabs = () => {
   const courses = useCourses();
   const apiHandler = useAxios();
   const { id } = useParams();
-  const course = courses?.find((item) => item._id === Number(id));
+  const course = courses?.data.find((item) => item._id === id);
   console.log(course);
   const {
     handleSubmit,

@@ -11,7 +11,7 @@ import { useCourses } from "../../../Hooks/api/useCourses";
 const CourseDetail = () => {
   const courses = useCourses();
   const { id } = useParams();
-  const course = courses?.find((course) => course._id === id);
+  const course = courses?.data.find(item => item._id === id);
   console.log(courses);
   console.log(course);
 
@@ -60,7 +60,7 @@ const CourseDetail = () => {
               >
                 11 hour left at this price
               </h2>
-              <Link to={`/checkout/${course.id}`}>
+              <Link to={`/checkout/${course?._id}`}>
                 <button className="text-xl font-bold text-center text-white bg-[#49BBBD] w-full lg:w-full md:w-[50%] rounded-xl py-3 hover:bg-emerald-600 ">
                   Buy Now
                 </button>
