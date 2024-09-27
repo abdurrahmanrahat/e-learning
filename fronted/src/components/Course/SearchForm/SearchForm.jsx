@@ -59,7 +59,7 @@ export default function SearchForm({ onSubmit }) {
         <input
           className="bg-[#49BBBD] px-12 py-4 rounded-xl text-white cursor-pointer w-[20%]"
           type="submit"
-          value="Pay"
+          value="Search"
         />
       </div>
       <div className="w-full flex justify-center lg:flex-nowrap xl:flex-nowrap flex-wrap gap-10">

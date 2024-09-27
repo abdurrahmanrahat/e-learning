@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import SearchForm from "../../components/Course/SearchForm/SearchForm";
 import CourseCard from "../../components/Ui/CourseCard";
 import PageBanner from "../../components/Ui/PageBanner";
@@ -6,14 +5,29 @@ import PrimaryTitle from "../../components/Ui/PrimaryTitle";
 import "../../css/coursesBgImg.css";
 import { SHAREDImages } from "../../image-data/shared";
 import OfferCourse from "./OfferCourse/OfferCourse";
-
-// TODO: dropdown manue will be fixed
+import { useCourses } from "../../Hooks/api/useCourses";
+import Pagination from "../../components/Ui/Pagination";
+import { useState } from "react";
 
 const Courses = () => {
-  const [courses, SetCourses] = useState([]);
+  const courses = useCourses();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [coursesPerPage] = useState(5); //set what num of pages shows
+
+  // Pagination logic
+  const indexOfLastCourse = currentPage * coursesPerPage;
+  const indexOfFirstCourse = indexOfLastCourse - coursesPerPage;
+  const currentCourses = courses?.slice(indexOfFirstCourse, indexOfLastCourse);
+  const totalPages = Math.ceil(courses?.length / coursesPerPage);
+
+  // Handle page change
+  const onPageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
   // Form submission handler
   const onSubmit = (data) => {
-    const { searchKeyword, country, language, program } = data;
+    console.log(data);
 
     // apiHandler
     //   .post("/users/register", data)
@@ -27,12 +41,6 @@ const Courses = () => {
     //     toast.error(err?.message);
     //   });
   };
-
-  useEffect(() => {
-    fetch("../../../public/InstructorCourses.json")
-      .then((res) => res.json())
-      .then((data) => SetCourses(data));
-  }, []);
 
   return (
     <div className="">
@@ -48,10 +56,24 @@ const Courses = () => {
         <PrimaryTitle headingPart1={"All"} headingPart2={"Courses"} />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {courses?.map((item) => (
+          {currentCourses?.map((item) => (
             <CourseCard popularCourse={item} key={item.id}></CourseCard>
           ))}
         </div>
+        {/* Reusable Pagination Component */}
+        {courses?.length > 0 ? (
+          <div className="w-full flex justify-center">
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={onPageChange}
+            />
+          </div>
+        ) : (
+          <div className="w-full flex justify-center items-center py-20">
+            <p>Data Not Found</p>
+          </div>
+        )}
       </div>
       {/* Know about learning learning platform section  */}
       <div className="lg:max-w-7xl mx-auto  lg:my-20 my-20 md:px-5 lg:px-0 ">

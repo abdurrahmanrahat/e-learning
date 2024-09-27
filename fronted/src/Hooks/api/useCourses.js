@@ -6,7 +6,7 @@ export const useCourses = () => {
     const apiHandler = useAxios();
 
     useEffect(() => {
-        apiHandler.get("/users").then(res => {
+        apiHandler.get("/courses").then(res => {
             console.log(res);
             setCourses(res?.data.data)
         })

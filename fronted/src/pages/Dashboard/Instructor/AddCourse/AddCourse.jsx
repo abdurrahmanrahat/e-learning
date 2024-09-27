@@ -17,12 +17,12 @@ const category = [
   "Languages",
   "computer",
   "Science",
-  "Academic Studies",
+  "Academic Courses",
   "Basic Computer",
   "Health & Fitness",
 ];
-// duration data
 
+// duration data
 const duration = [
   "1 Months",
   "2 Months",
@@ -136,6 +136,7 @@ const AddCourse = () => {
                 type="number"
                 placeholder="Course price"
                 name="price"
+                step="any"
                 className="w-full px-6 py-3 border focus:outline-none focus:border-[#49BBBD] border-[#D9D9D9] placeholder:text-[#9D9B9B] placeholder:text-base placeholder:font-light outline-none rounded-xl"
                 {...register("price", { required: true })}
               />
@@ -169,8 +170,8 @@ const AddCourse = () => {
               )}
             </div>
 
-            {/* select Duration */}
             <div className="space-y-2">
+            {/* select Duration */}
               <label className="text-[#5B5B5B] font-semibold">
                 Course Duration
               </label>

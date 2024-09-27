@@ -12,6 +12,7 @@ export default function Navbar() {
   // handle logout button
   const handleLogoutBtn = () => {
     removeUserInfo();
+    window.location.reload();
   };
 
   return (
