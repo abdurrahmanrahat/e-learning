@@ -5,13 +5,17 @@ import Rating from "./Rating";
 
 const CourseCard = ({ popularCourse }) => {
   const {
-    id,
-    courseTitle,
+    _id,
+    title,
     description,
-    instructor,
-    rating,
-    enrollment,
-    thumbnail,
+    bigDescription,
+    instructorName,
+    instructorImg,
+    instructorEmail,
+    courseDuration,
+    image,
+    category,
+    averageRatings,
     price,
   } = popularCourse || {};
 
@@ -20,7 +24,7 @@ const CourseCard = ({ popularCourse }) => {
       <figure className="overflow-hidden relative">
         <img
           className="hover:scale-110 transition-all duration-500"
-          src={thumbnail}
+          src={image}
           alt=""
         />
         <div className="bg-[#49bbbd] w-fit px-6 py-2 absolute bottom-0 right-0">
@@ -32,22 +36,22 @@ const CourseCard = ({ popularCourse }) => {
       </figure>
       <div className="p-4">
         <span className="text-[#6E7697] flex items-center gap-2">
-          <GoPerson className="text-xl" /> {instructor}
+          <GoPerson className="text-xl" /> {instructorName}
         </span>
         <h2 className="text-2xl text-[#2F327D] hover:text-[#00CBB8] font-bold font-nunito mb-3 transition delay-100 cursor-pointer">
-          {courseTitle}
+          {title}
         </h2>
         <p className="mb-4 text-[#6E7697]">{description}</p>
         <div className="flex items-center justify-between ">
           <div className="flex gap-1 justify-center text-[#6E7697]">
-            <Rating value={rating} />
-            <span>({rating})</span>
+            <Rating value={averageRatings} />
+            <span>({averageRatings})</span>
           </div>
           <span className="flex items-center gap-2 text-[#6E7697]">
-            <HiUserGroup className="text-xl" /> {enrollment}
+            <HiUserGroup className="text-xl" /> {courseDuration}
           </span>
         </div>
-        <Link to={`/courseDetails/${id}`}>
+        <Link to={`/courseDetails/${_id}`}>
           <button className="mt-6 border-[2px] w-full text-[#2F327D] hover:text-white px-7 py-3 hover:bg-[#23BDEE] hover:border-[#23BDEE] transition-colors duration-300">
             View Details
           </button>
