@@ -1,10 +1,11 @@
+import ScrollToTop from "./components/Ui/ScrollToTop";
 import MainLayout from "./layout/MainLayout";
 
 function App() {
   return (
-    <div>
+    <ScrollToTop>
       <MainLayout />
-    </div>
+    </ScrollToTop>
   );
 }
 
