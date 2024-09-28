@@ -11,6 +11,9 @@ const getAllCoursesFromDB = async (payload: Record<string, unknown>) => {
   // const result = await Course.find();
   // return result;
 
+  const page = Number(payload.page) || 1;
+  const limit = Number(payload.limit) || 9;
+
   const courseQuery = new QueryBuilder(Course.find(), payload)
     .search(['title', 'category'])
     .paginate()
@@ -19,7 +22,16 @@ const getAllCoursesFromDB = async (payload: Record<string, unknown>) => {
 
   const result = await courseQuery.modelQuery;
 
-  return result;
+  const countsData = new QueryBuilder(Course.find(), payload)
+    .search(['title', 'category'])
+    .filter();
+
+  const counts = await countsData.modelQuery;
+
+  const totalCourses = counts.length;
+  const pageCount = Math.ceil(totalCourses / limit);
+
+  return { result, totalCourses, pageCount };
 };
 
 const getSingleCourseFromDB = async (courseId: string) => {

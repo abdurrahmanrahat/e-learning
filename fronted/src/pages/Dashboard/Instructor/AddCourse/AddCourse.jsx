@@ -161,7 +161,7 @@ const AddCourse = () => {
                 </option>
                 {category?.map((item, index) => (
                   <option key={index} value={item}>
-                    {item}
+                    {item === "programming" ? "Programming" : item}
                   </option>
                 ))}
               </select>
@@ -171,7 +171,7 @@ const AddCourse = () => {
             </div>
 
             <div className="space-y-2">
-            {/* select Duration */}
+              {/* select Duration */}
               <label className="text-[#5B5B5B] font-semibold">
                 Course Duration
               </label>

@@ -1,45 +1,58 @@
-import SearchForm from "../../components/Course/SearchForm/SearchForm";
+import { useState } from "react";
+import ReactPaginate from "react-paginate";
+import { useCourses } from "../../Hooks/api/useCourses";
+import Functionality from "../../components/Course/Functionality/Functionality";
 import CourseCard from "../../components/Ui/CourseCard";
 import PageBanner from "../../components/Ui/PageBanner";
 import PrimaryTitle from "../../components/Ui/PrimaryTitle";
 import "../../css/coursesBgImg.css";
+import "../../css/pagination.css";
 import { SHAREDImages } from "../../image-data/shared";
 import OfferCourse from "./OfferCourse/OfferCourse";
-import { useCourses } from "../../Hooks/api/useCourses";
-import Pagination from "../../components/Ui/Pagination";
-import { useState } from "react";
 
 const Courses = () => {
-  const courses = useCourses();
-  const [currentPage, setCurrentPage] = useState(1);
-  const [coursesPerPage] = useState(5); //set what num of pages shows
+  const [page, setPage] = useState(1);
+  const [category, setCategory] = useState("");
+  const [duration, setDuration] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+  const limit = 9;
 
-  // Pagination logic
-  const indexOfLastCourse = currentPage * coursesPerPage;
-  const indexOfFirstCourse = indexOfLastCourse - coursesPerPage;
-  const currentCourses = courses?.data.slice(indexOfFirstCourse, indexOfLastCourse);
-  const totalPages = Math.ceil(courses?.data.length / coursesPerPage);
+  let query = {};
 
-  // Handle page change
-  const onPageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
+  query.page = page;
+  query.limit = limit;
+  query.category = category;
+  query.duration = duration;
+  query.searchTerm = searchTerm;
+
+  const {courses} = useCourses(query);
+
+  if (!courses) return <h2>Loading...</h2>;
+
+  const handlePageClick = (e) => {
+    console.log(e);
+    setPage(e.selected + 1);
   };
 
-  // Form submission handler
-  const onSubmit = (data) => {
-    console.log(data);
-
-    // apiHandler
-    //   .post("/users/register", data)
-    //   .then((res) => {
-    //     console.log("Register user:", res.data?.data);
-    //     toast.success("User Created Successfully");
-    //     navigate("/login");
-    //   })
-    //   .catch((err) => {
-    //     console.log(err?.message);
-    //     toast.error(err?.message);
-    //   });
+  // for category
+  const handleSelectCategory = (e) => {
+    if (e.target.value === "All Courses") {
+      setCategory("");
+    } else {
+      setCategory(e.target.value);
+    }
+  };
+  // for duration
+  const handleSelectDuration = (e) => {
+    if (e.target.value === "All Courses") {
+      setDuration("");
+    } else {
+      setDuration(e.target.value);
+    }
+  };
+  // for search
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
   };
 
   return (
@@ -47,7 +60,11 @@ const Courses = () => {
       {/* courses banner  */}
       <PageBanner image={SHAREDImages.banner_2}>
         <div className="w-full lg:w-[60%] xl:w-[60%] h-full flex flex-col justify-center gap-10 px-4">
-          <SearchForm onSubmit={onSubmit} />
+          <Functionality
+            handleSearch={handleSearch}
+            handleSelectCategory={handleSelectCategory}
+            handleSelectDuration={handleSelectDuration}
+          />
         </div>
       </PageBanner>
 
@@ -56,25 +73,34 @@ const Courses = () => {
         <PrimaryTitle headingPart1={"All"} headingPart2={"Courses"} />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {currentCourses?.map((item) => (
+          {courses?.data.map((item) => (
             <CourseCard popularCourse={item} key={item.id}></CourseCard>
           ))}
         </div>
-        {/* Reusable Pagination Component */}
-        {courses?.data.length > 0 ? (
-          <div className="w-full flex justify-center">
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={onPageChange}
-            />
-          </div>
-        ) : (
-          <div className="w-full flex justify-center items-center py-20">
-            <p>Data Not Found</p>
-          </div>
-        )}
+
+        {/* pagination part */}
+        <div>
+          <ReactPaginate
+            breakLabel="..."
+            nextLabel="next >"
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={5}
+            pageCount={courses.pageCount}
+            previousLabel="< previous"
+            renderOnZeroPageCount={null}
+            marginPagesDisplayed={2}
+            containerClassName="pagination justify-content-center"
+            pageClassName="page-item"
+            pageLinkClassName="page-link"
+            previousClassName="page-item"
+            previousLinkClassName="page-link"
+            nextClassName="page-item"
+            nextLinkClassName="page-link"
+            activeClassName="active"
+          />
+        </div>
       </div>
+
       {/* Know about learning learning platform section  */}
       <div className="lg:max-w-7xl mx-auto  lg:my-20 my-20 md:px-5 lg:px-0 ">
         <div

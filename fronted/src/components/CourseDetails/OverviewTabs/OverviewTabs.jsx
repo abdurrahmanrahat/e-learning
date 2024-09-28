@@ -1,70 +1,6 @@
-import { useParams } from "react-router-dom";
 import ReviewTabs from "../ReviewTabs/ReviewTabs";
-import { useForm } from "react-hook-form";
-import Rating from "../../Ui/Rating";
-import { useState } from "react";
-import { useUser } from "../../../Hooks/api/useUser";
-import useAxios from "../../../Hooks/useAxios";
-import { useCourses } from "../../../Hooks/api/useCourses";
-import toast from "react-hot-toast";
-
 
 const OverviewTabs = () => {
-  const [rating, setRating] = useState(0);
-  const user = useUser();
-  const courses = useCourses();
-  const apiHandler = useAxios();
-  const { id } = useParams();
-  const course = courses?.data.find((item) => item._id === id);
-  console.log(course);
-  const {
-    handleSubmit,
-    setValue,
-    formState: { errors },
-  } = useForm();
-  const [clickedInput, setClickedInput] = useState("");
-
-  const onSubmit = (data) => {
-    const { comments } = data;
-    // Get the current date
-    const currentDate = new Date();
-
-    // convert day, month and year
-    const day = String(currentDate.getDate()).padStart(2, "0");
-    const month = String(currentDate.getMonth() + 1).padStart(2, "0");
-    const year = currentDate.getFullYear();
-
-    // Format the date as MM/DD/YYYY
-    const formattedDate = `${month}/${day}/${year}`;
-
-    const commentsInfo = {
-      name: user?.name,
-      email: user?.email,
-      photoUrl: user?.photoUrl,
-      comment: comments,
-      date: formattedDate,
-      rating: rating,
-    };
-    console.log(commentsInfo);
-
-    apiHandler
-      .post(`/courses/${course?.id}/reviews`, data)
-      .then((res) => {
-        console.log("review:", res);
-        toast.success("User Created Successfully");
-      })
-      .catch((err) => {
-        console.log(err?.message);
-        toast.error(err?.message);
-      });
-  };
-
-  const handleInputChange = (e) => {
-    setClickedInput(e.target.value); 
-    setValue("comments", e.target.value);
-  };
-
-
   return (
     <div className="flex flex-col justify-between gap-20">
       <div className="bg-[#e0f2fe] p-4 flex flex-col lg:flex-row md:flex-row items-center gap-5">
@@ -238,62 +174,7 @@ const OverviewTabs = () => {
       </div>
 
       {/* Review cards */}
-      <div>
-        <form
-          className="space-y-8 px-6 pb-16 flex gap-2 justify-between items-center"
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          <figure className="w-16 rounded-full overflow-hidden aspect-square">
-            <img
-              className="w-[180px] h-[180px] object-cover rounded-full"
-              src={user?.photoUrl}
-              alt=""
-            />
-          </figure>
-          <div className="w-full bg-white p-2 text-[#000] flex flex-col gap-2 items-end">
-            <input
-              type="text"
-              name="comments"
-              id="comments"
-              placeholder="Add a comment..."
-              className="w-full px-6 py-3 border-b-[2px] focus:outline-none focus:border-[#49BBBD] border-[#D9D9D9] placeholder:text-[#9D9B9B] placeholder:text-base placeholder:font-light outline-none"
-              value={clickedInput}
-              onChange={handleInputChange} // Handle onChange manually
-            />
-            {errors.comments && (
-              <p className="text-red-500">Comment is required.</p>
-            )}
-            <div className="flex justify-between w-full items-center">
-              <Rating
-                value={rating}
-                onChange={(newRating) => setRating(newRating)}
-                readOnly={false}
-              />
-              <div className="flex gap-4">
-                <button
-                  onClick={() => setClickedInput("")}
-                  type="button"
-                  className="px-4 py-2 rounded-xl text-[#000] cursor-pointer w-full text-sm"
-                >
-                  Cancel
-                </button>
-                <button
-                  disabled={!clickedInput}
-                  className={`${
-                    clickedInput ? "bg-[#49BBBD]" : "bg-[#9d9b9bbb]"
-                  }  px-4 py-2 rounded-xl text-white cursor-pointer w-full text-sm`}
-                  type="submit"
-                >
-                  Comment
-                </button>
-              </div>
-            </div>
-          </div>
-        </form>
-        <div>
-          <ReviewTabs />
-        </div>
-      </div>
+      <ReviewTabs />
     </div>
   );
 };

@@ -2,20 +2,21 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAxios from "../../Hooks/useAxios";
 import { setUserInfo } from "../../utils/setUserInfo";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-
+  const location = useLocation();
+  const navigate = useNavigate();
+  const apiHandler = useAxios();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const apiHandler = useAxios();
-  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
 
   // Form submission handler
   const onSubmit = (data) => {
@@ -32,7 +33,7 @@ const Login = () => {
 
           toast.success("Successfully logged In");
 
-          navigate("/");
+          navigate(from, {replace: true});
         } else {
           throw new Error("Invalid response from the server");
         }
