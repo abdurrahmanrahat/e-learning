@@ -15,7 +15,9 @@ const About = () => {
   const [popularCourses, setPopularCourses] = useState([]);
 
   useEffect(() => {
-    const fetchCourses = async () => {
+
+    // popular courses
+    const fetchPopularCourses = async () => {
       try {
         const response = await axios.get("/popularCourses.json");
         setPopularCourses(response.data);
@@ -24,8 +26,9 @@ const About = () => {
       }
     };
 
-    fetchCourses();
+    fetchPopularCourses();
   }, []);
+  
 
   const instructorData = [
     {

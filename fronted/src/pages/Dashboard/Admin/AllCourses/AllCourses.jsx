@@ -1,4 +1,3 @@
-import Modal from "../../../../components/Ui/Modal";
 import TableCourseCard from "./TableCourseCard";
 
 const AllCourses = () => {
