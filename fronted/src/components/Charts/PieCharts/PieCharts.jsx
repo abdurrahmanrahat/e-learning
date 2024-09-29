@@ -1,5 +1,5 @@
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-const Charts = ({ data, colors }) => {
+const PieCharts = ({ data, colors }) => {
     return (
         <div>
         <ResponsiveContainer width="100%" height={400}>
@@ -13,7 +13,7 @@ const Charts = ({ data, colors }) => {
        outerRadius={150}
        label
      >
-       {data.map((entry, index) => (
+       {data?.map((entry, index) => (
          <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
        ))}
      </Pie>
@@ -25,4 +25,4 @@ const Charts = ({ data, colors }) => {
     );
 };
 
-export default Charts;
+export default PieCharts;
