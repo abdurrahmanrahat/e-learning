@@ -1,45 +1,70 @@
-import { useEffect, useState } from "react";
-import SearchForm from "../../components/Course/SearchForm/SearchForm";
+import { useState } from "react";
+import ReactPaginate from "react-paginate";
+import { useCourses } from "../../Hooks/api/useCourses";
+import Functionality from "../../components/Course/Functionality/Functionality";
 import CourseCard from "../../components/Ui/CourseCard";
 import PageBanner from "../../components/Ui/PageBanner";
 import PrimaryTitle from "../../components/Ui/PrimaryTitle";
 import "../../css/coursesBgImg.css";
+import "../../css/pagination.css";
 import { SHAREDImages } from "../../image-data/shared";
 import OfferCourse from "./OfferCourse/OfferCourse";
 
-// TODO: dropdown manue will be fixed
-
 const Courses = () => {
-  const [courses, SetCourses] = useState([]);
-  // Form submission handler
-  const onSubmit = (data) => {
-    const { searchKeyword, country, language, program } = data;
+  const [page, setPage] = useState(1);
+  const [category, setCategory] = useState("");
+  const [duration, setDuration] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+  const limit = 9;
 
-    // apiHandler
-    //   .post("/users/register", data)
-    //   .then((res) => {
-    //     console.log("Register user:", res.data?.data);
-    //     toast.success("User Created Successfully");
-    //     navigate("/login");
-    //   })
-    //   .catch((err) => {
-    //     console.log(err?.message);
-    //     toast.error(err?.message);
-    //   });
+  let query = {};
+
+  query.page = page;
+  query.limit = limit;
+  query.category = category;
+  query.duration = duration;
+  query.searchTerm = searchTerm;
+
+  const courses = useCourses(query);
+
+  if (!courses) return <h2>Loading...</h2>;
+
+  const handlePageClick = (e) => {
+    console.log(e);
+    setPage(e.selected + 1);
   };
 
-  useEffect(() => {
-    fetch("../../../public/InstructorCourses.json")
-      .then((res) => res.json())
-      .then((data) => SetCourses(data));
-  }, []);
+  // for category
+  const handleSelectCategory = (e) => {
+    if (e.target.value === "All Courses") {
+      setCategory("");
+    } else {
+      setCategory(e.target.value);
+    }
+  };
+  // for duration
+  const handleSelectDuration = (e) => {
+    if (e.target.value === "All Courses") {
+      setDuration("");
+    } else {
+      setDuration(e.target.value);
+    }
+  };
+  // for search
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
   return (
     <div className="">
       {/* courses banner  */}
       <PageBanner image={SHAREDImages.banner_2}>
         <div className="w-full lg:w-[60%] xl:w-[60%] h-full flex flex-col justify-center gap-10 px-4">
-          <SearchForm onSubmit={onSubmit} />
+          <Functionality
+            handleSearch={handleSearch}
+            handleSelectCategory={handleSelectCategory}
+            handleSelectDuration={handleSelectDuration}
+          />
         </div>
       </PageBanner>
 
@@ -48,11 +73,34 @@ const Courses = () => {
         <PrimaryTitle headingPart1={"All"} headingPart2={"Courses"} />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {courses?.map((item) => (
+          {courses?.data.map((item) => (
             <CourseCard popularCourse={item} key={item.id}></CourseCard>
           ))}
         </div>
+
+        {/* pagination part */}
+        <div>
+          <ReactPaginate
+            breakLabel="..."
+            nextLabel="next >"
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={5}
+            pageCount={courses.pageCount}
+            previousLabel="< previous"
+            renderOnZeroPageCount={null}
+            marginPagesDisplayed={2}
+            containerClassName="pagination justify-content-center"
+            pageClassName="page-item"
+            pageLinkClassName="page-link"
+            previousClassName="page-item"
+            previousLinkClassName="page-link"
+            nextClassName="page-item"
+            nextLinkClassName="page-link"
+            activeClassName="active"
+          />
+        </div>
       </div>
+
       {/* Know about learning learning platform section  */}
       <div className="lg:max-w-7xl mx-auto  lg:my-20 my-20 md:px-5 lg:px-0 ">
         <div

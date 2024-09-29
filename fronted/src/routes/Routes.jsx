@@ -18,6 +18,7 @@ import Registration from "../pages/Registration/Registration";
 import PaymentSuccess from "../components/Checkout/AfterPayment/PaymentSuccess";
 import PaymentFailed from "../components/Checkout/AfterPayment/PaymentFailed";
 import RoleChange from "../pages/RoleChange/RoleChange";
+import PieCharts from "../components/PieCharts/PieCharts";
 
 const router = createBrowserRouter([
   {
@@ -40,7 +41,6 @@ const router = createBrowserRouter([
       {
         path: "courseDetails/:id",
         element: <CourseDetail></CourseDetail>,
-        loader: () => fetch("../../public/InstructorCourses.json"),
       },
       {
         path: "instructors",
@@ -65,7 +65,11 @@ const router = createBrowserRouter([
       {
         path: "role-change",
         element: <RoleChange />,
-      }
+      },
+      {
+        path: "chart",
+        element: <PieCharts/>,
+      },
     ],
   },
   {

@@ -1,9 +1,19 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { getUser } from "../../../utils/getUser";
+import { removeUserInfo } from "../../../utils/removeUserInfo";
 import ActiveLink from "../../Ui/ActiveLink";
 
 export default function Navbar() {
   const [isToggleOpen, setIsToggleOpen] = useState(false);
+
+  const user = getUser();
+
+  // handle logout button
+  const handleLogoutBtn = () => {
+    removeUserInfo();
+    window.location.reload();
+  };
 
   return (
     <div className="container-class">
@@ -13,7 +23,7 @@ export default function Navbar() {
           <nav
             // aria-label="main navigation"
             className="flex items-center justify-between my-6"
-          // role="navigation"
+            // role="navigation"
           >
             {/*      <!-- Brand logo --> */}
             <Link to="/">
@@ -25,10 +35,11 @@ export default function Navbar() {
             {/*<!-- Mobile trigger --> */}
             <button
               className={`relative order-10 block h-10 w-10 self-center lg:hidden
-              ${isToggleOpen
+              ${
+                isToggleOpen
                   ? "visible opacity-100 [&_span:nth-child(1)]:w-6 [&_span:nth-child(1)]:translate-y-0 [&_span:nth-child(1)]:rotate-45 [&_span:nth-child(2)]:-rotate-45 [&_span:nth-child(3)]:w-0 "
                   : ""
-                }
+              }
             `}
               onClick={() => setIsToggleOpen(!isToggleOpen)}
               aria-expanded={isToggleOpen ? "true" : "false"}
@@ -54,10 +65,11 @@ export default function Navbar() {
             <ul
               role="menubar"
               aria-label="Select page"
-              className={`absolute left-0 top-0 z-[-1] h-[28.5rem] w-full justify-center overflow-hidden  overflow-y-auto overscroll-contain bg-white/90 px-8 pb-12 pt-24 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0 lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-0  lg:pt-0 lg:opacity-100 text-black ${isToggleOpen
-                ? "visible opacity-100 backdrop-blur-sm"
-                : "invisible opacity-0"
-                }`}
+              className={`absolute left-0 top-0 z-[-1] h-[28.5rem] w-full justify-center overflow-hidden  overflow-y-auto overscroll-contain bg-white/90 px-8 pb-12 pt-24 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0 lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-0  lg:pt-0 lg:opacity-100 text-black ${
+                isToggleOpen
+                  ? "visible opacity-100 backdrop-blur-sm"
+                  : "invisible opacity-0"
+              }`}
             >
               <li role="none" className="flex items-stretch">
                 <ActiveLink to={"/"}>
@@ -96,12 +108,32 @@ export default function Navbar() {
               </li>
             </ul>
 
-            <div className="ml-auto flex items-center px-6 lg:ml-0 lg:p-0">
-              <Link to='/login'>
-                <button className="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded bg-primary px-5 text-sm font-medium tracking-wide text-white shadow-md shadow-emerald-200 transition duration-300 hover:bg-emerald-600 hover:shadow-sm hover:shadow-emerald-200">
-                  <span>Login</span>
-                </button>
-              </Link>
+            <div className="ml-auto flex items-center px-6 lg:ml-0 lg:p-0 gap-8">
+              {!user ? (
+                <>
+                  <Link to="/login">
+                    <button className="inline-flex h-10 items-center justify-center gap-2 rounded  px-5 text-sm font-medium tracking-wide text-white shadow-md transition duration-300 bg-primary hover:bg-hover hover:shadow-sm">
+                      <span>Login</span>
+                    </button>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <figure className="w-12 rounded-full overflow-hidden">
+                    <img
+                      className="w-full h-full rounded-full object-cover"
+                      src={user?.photoUrl}
+                      alt=""
+                    />
+                  </figure>
+                  <button
+                    onClick={handleLogoutBtn}
+                    className="inline-flex h-10 items-center justify-center gap-2 rounded  px-5 text-sm font-medium tracking-wide text-white shadow-md transition duration-300 bg-primary hover:bg-hover hover:shadow-sm"
+                  >
+                    <span>Log out</span>
+                  </button>
+                </>
+              )}
             </div>
           </nav>
         </div>

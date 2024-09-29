@@ -46,43 +46,6 @@ export default function PaypalCardForm({ onSubmit }) {
           )}
         </div>
 
-        {/* Gender Selection */}
-        {/* <div className="space-y-2">
-          <label htmlFor="gender">Gender</label>
-          <div className="flex items-center space-x-4">
-            <label className="flex items-center">
-              <input
-                type="radio"
-                value="male"
-                {...register("gender", { required: true })}
-                className="form-radio text-[#49BBBD]"
-              />
-              <span className="ml-2">Male</span>
-            </label>
-            <label className="flex items-center">
-              <input
-                type="radio"
-                value="female"
-                {...register("gender", { required: true })}
-                className="form-radio text-[#49BBBD]"
-              />
-              <span className="ml-2">Female</span>
-            </label>
-            <label className="flex items-center">
-              <input
-                type="radio"
-                value="other"
-                {...register("gender", { required: true })}
-                className="form-radio text-[#49BBBD]"
-              />
-              <span className="ml-2">Other</span>
-            </label>
-          </div>
-          {errors.gender && (
-            <span className="text-red-600">This field is required</span>
-          )}
-        </div> */}
-
         {/* Photo URL Input */}
         <div className="flex flex-col lg:flex-row xl:flex-row justify-between gap-10">
           <div className="space-y-2 w-full lg:w-1/2 xl:w-1/2">

@@ -11,13 +11,8 @@ const Banner = () => {
       <div className="container-class flex flex-col lg:flex-row items-center lg:gap-10 mt-0 lg:mt-0 ">
         <div className="w-full lg:w-[50%] text-center lg:text-left text-white mt-16 md:mt-20 lg:mt-0">
           <h1 className="lg:text-[50px] md:text-6xl text-4xl max-w-[18ch] font-bold capitalize leading-[48px] lg:leading-[60px]">
-            <span
-              className="text-[#F48C06] ;
-  "
-            >
-              Studying
-            </span>{" "}
-            Online is now much easier
+            <span className="text-[#F48C06]">Studying</span> Online is now much
+            easier
           </h1>
 
           <div className="flex justify-center lg:justify-start">
@@ -54,7 +49,7 @@ const Banner = () => {
           <div className="relative">
             <div className="flex items-center justify-center">
               <img
-                className="w-[450px] h-[650px]  "
+                className="w-[450px] h-[650px]"
                 src="https://i.ibb.co.com/LS6thyY/lovely-teenage-girl-with-curly-hair-posing-yellow-tshirt-min-1.png"
                 alt=""
               />
@@ -79,7 +74,11 @@ const Banner = () => {
             </div>
 
             <div className="absolute lg:top-24 md:top-16 top-28 lg:end-0 md:end-28 end-4">
-              <img src="https://i.ibb.co.com/FhbnnPM/Group-9.png" alt="" />
+              <img
+                src="https://i.ibb.co.com/FhbnnPM/Group-9.png"
+                alt=""
+                className=""
+              />
             </div>
 
             <div className="absolute lg:top-[320px] md:top-[350px] top-[350px] right-0">

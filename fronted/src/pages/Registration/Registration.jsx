@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import useAxios from "../../Hooks/useAxios";
+import { setUserInfo } from "../../utils/setUserInfo";
 
 const Registration = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -58,8 +59,20 @@ const Registration = () => {
       .then((res) => {
         toast.success("User Created Successfully");
 
-        if (res.data) {
-          navigate("/role-change");
+        // auto login request
+        if (res) {
+          apiHandler
+            .post("/auth/login", { email: data.email, password: data.password })
+            .then((response) => {
+              const { accessToken, refreshToken } = response?.data?.data || {};
+
+              if (accessToken && refreshToken) {
+                setUserInfo(accessToken, refreshToken);
+                navigate("/role-change");
+              } else {
+                throw new Error("Invalid response from the server");
+              }
+            });
         }
       })
       .catch((err) => {
@@ -68,26 +81,26 @@ const Registration = () => {
   };
 
   return (
-    <div className="max-w-[1300px] mx-auto px-4 lg:px-0 flex items-center justify-between my-10 lg:my-20 pb-20">
-      <div className="lg:w-[45%] hidden lg:flex">
+    <div className="container-class flex justify-center items-center gap-10 py-6">
+      <figure className="w-1/2 hidden lg:flex xl:flex">
         <img
           className="w-full h-full"
-          src="https://i.ibb.co.com/Y8fsDkv/Rectangle-77.png"
+          src="https://i.ibb.co.com/JKG1V3v/Mobile-login-Cristina.jpg"
           alt="Registration"
         />
-      </div>
-      <div className="lg:w-[45%] w-full">
-        <h1 className="text-center mb-5 text-2xl">Create Your Account!</h1>
+      </figure>
+      <div className="w-full lg:w-1/2 xl:w-1/2 px-4 lg:px-10 xl:px-10">
+        <h1 className="text-center mb-5 text-xl">Welcome to <Link to="/"><span className="text-2xl text-primary font-bold">brainWave !!</span></Link></h1>
 
         {/* Form toggler */}
-        <div className="bg-[#49BBBD99] px-5 py-4 w-fit mx-auto flex justify-between rounded-xl">
+        <div className="bg-[#49BBBD99] px-4 py-2 w-fit mx-auto flex justify-between gap-10 rounded-full">
           <Link to="/registration">
-            <button className="bg-[#49BBBD] text-white font-medium rounded-xl px-7 py-3">
+            <button className="bg-[#49BBBD] text-white font-medium rounded-full px-6 py-2">
               Register
             </button>
           </Link>
           <Link to="/login">
-            <button className=" text-white font-medium rounded-xl px-7 py-3">
+            <button className="text-white font-medium rounded-full px-6 py-2">
               Login
             </button>
           </Link>
@@ -101,31 +114,61 @@ const Registration = () => {
         <form className="space-y-8" onSubmit={handleSubmit(onSubmit)}>
           <div className="space-y-8">
             {/* Name input */}
-            <div className="space-y-2">
-              <label htmlFor="name">User name</label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                placeholder="Your name"
-                className="w-full px-6 py-3 border border-[#49BBBD] placeholder:text-[#ACACAC] placeholder:text-base placeholder:font-light outline-none  rounded-xl focus:ring-2 focus:ring-[#49BBBD] focus:border-[#49BBBD] focus:bg-[#E8F9F9]"
-                {...register("name", { required: true })}
-              />
-              {errors.name && <span className="text-red-600">This field is required</span>}
+            <div className="flex flex-col lg:flex-row xl:flex-row gap-6 lg:gap-4 xl:gap-4">
+              <div className="space-y-2 w-full lg:w-1/2 xl:w-1/2">
+                <label htmlFor="name">User name</label>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Your name"
+                  className="w-full px-6 py-3 border border-[#49BBBD] placeholder:text-[#ACACAC] placeholder:text-base placeholder:font-light outline-none  rounded-xl focus:ring-2 focus:ring-[#49BBBD] focus:border-[#49BBBD] focus:bg-[#E8F9F9]"
+                  {...register("name", { required: true })}
+                />
+                {errors.name && (
+                  <span className="text-red-600">This field is required</span>
+                )}
+              </div>
+
+              {/* Email input */}
+              <div className="space-y-2 w-full lg:w-1/2 xl:w-1/2">
+                <label htmlFor="email">Email Address</label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Your Email"
+                  className="w-full px-6 py-3 border border-[#49BBBD] placeholder:text-[#ACACAC] placeholder:text-base placeholder:font-light outline-none  rounded-xl focus:ring-2 focus:ring-[#49BBBD] focus:border-[#49BBBD] focus:bg-[#E8F9F9]"
+                  {...register("email", { required: true })}
+                />
+                {errors.email && (
+                  <span className="text-red-600">This field is required</span>
+                )}
+              </div>
             </div>
 
-            {/* Email input */}
-            <div className="space-y-2">
-              <label htmlFor="email">Email Address</label>
+            {/* Password input */}
+            <div className="space-y-2 relative">
+              <label htmlFor="password">Password</label>
               <input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Your Email"
+                type={`${showPassword ? "text" : "password"}`}
+                name="password"
+                id="password"
+                placeholder="Password"
                 className="w-full px-6 py-3 border border-[#49BBBD] placeholder:text-[#ACACAC] placeholder:text-base placeholder:font-light outline-none  rounded-xl focus:ring-2 focus:ring-[#49BBBD] focus:border-[#49BBBD] focus:bg-[#E8F9F9]"
-                {...register("email", { required: true })}
+                {...register("password", { required: true })}
               />
-              {errors.email && (
+              <span
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute top-10 right-5 cursor-pointer"
+              >
+                {showPassword ? (
+                  <BsEyeFill className="common-color text-xl" />
+                ) : (
+                  <BsEyeSlashFill className="common-color text-xl" />
+                )}
+              </span>
+              {errors.password && (
                 <span className="text-red-600">This field is required</span>
               )}
             </div>
@@ -176,32 +219,6 @@ const Registration = () => {
                 <span className="text-red-600">This field is required</span>
               )}
             </div>
-
-            {/* Password input */}
-            <div className="space-y-2 relative">
-              <label htmlFor="password">Password</label>
-              <input
-                type={`${showPassword ? "text" : "password"}`}
-                name="password"
-                id="password"
-                placeholder="Password"
-                className="w-full px-6 py-3 border border-[#49BBBD] placeholder:text-[#ACACAC] placeholder:text-base placeholder:font-light outline-none  rounded-xl focus:ring-2 focus:ring-[#49BBBD] focus:border-[#49BBBD] focus:bg-[#E8F9F9]"
-                {...register("password", { required: true })}
-              />
-              <span
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute top-10 right-5 cursor-pointer"
-              >
-                {showPassword ? (
-                  <BsEyeFill className="common-color text-xl" />
-                ) : (
-                  <BsEyeSlashFill className="common-color text-xl" />
-                )}
-              </span>
-              {errors.password && (
-                <span className="text-red-600">This field is required</span>
-              )}
-            </div>
           </div>
 
           <div className="flex justify-end">
@@ -216,5 +233,4 @@ const Registration = () => {
     </div>
   );
 };
-
 export default Registration;

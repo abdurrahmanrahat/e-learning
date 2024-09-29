@@ -1,7 +1,7 @@
-const DescriptionTabs = () => {
+const DescriptionTabs = ({value}) => {
   return (
     <div>
-      This is Course Description
+      {value}
     </div>
   );
 };

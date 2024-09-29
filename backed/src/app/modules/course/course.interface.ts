@@ -4,6 +4,7 @@ export type TCourse = {
   image: string;
   instructorImg: string;
   instructorName: string;
+  instructorEmail: string;
   price: number;
   description: string;
   bigDescription: string;
