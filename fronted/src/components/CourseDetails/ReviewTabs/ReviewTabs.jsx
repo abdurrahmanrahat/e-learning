@@ -14,14 +14,36 @@ const ReviewTabs = () => {
   const { course } = useCourses(null, id);
   const { reviews, fetchReviews } = useReviews(id);
   const apiHandler = useAxios();
-  const [clickedEdit, setClickedEdit] = useState(false);
-  const [clickedOptions, setClickedOptions] = useState(false);
   const [rating, setRating] = useState(0);
   const { user } = useUser();
-  const {handleSubmit, setValue, formState: { errors }} = useForm();
+  const {
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm();
   const [clickedInput, setClickedInput] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
+  const [clickedEdit, setClickedEdit] = useState(
+    new Array(reviews?.length).fill(false)
+  );
+  const [clickedOptions, setClickedOptions] = useState(
+    new Array(reviews?.length).fill(false)
+  );
+
+  // Handle clicking on a specific card
+  const handleEditInput = (index) => {
+    const updatedClickedEdit = [...clickedEdit];
+    updatedClickedEdit[index] = !setClickedEdit[index];
+    setClickedOptions(updatedClickedEdit);
+  };
+
+  // Handle clicking on a specific card
+  const handleThreeDotBtn = (index) => {
+    const updatedClickedOptions = [...clickedOptions];
+    updatedClickedOptions[index] = !updatedClickedOptions[index];
+    setClickedOptions(updatedClickedOptions);
+  };
 
   const handleReviewSubmit = (data) => {
     const { comments } = data;
@@ -56,12 +78,13 @@ const ReviewTabs = () => {
 
   const handleInputClicked = () => {
     if (!user) {
-      navigate( "/login", {state: {from: location}, replace: true})
+      navigate("/login", { state: { from: location }, replace: true });
     }
   };
 
   const handleRemoveBtn = (courseId, id) => {
-    apiHandler.delete(`/courses/${courseId}/reviews/${id}`)
+    apiHandler
+      .delete(`/courses/${courseId}/reviews/${id}`)
       .then((res) => {
         console.log(res);
         toast.success("Successfully Removed");
@@ -75,7 +98,8 @@ const ReviewTabs = () => {
   };
 
   const handleReviewEdit = (courseId, id, newData) => {
-    apiHandler.patch(`/courses/${courseId}/reviews/${id}`, newData)
+    apiHandler
+      .patch(`/courses/${courseId}/reviews/${id}`, newData)
       .then((res) => {
         console.log(res);
         toast.success("Successfully Edit");
@@ -158,16 +182,19 @@ const ReviewTabs = () => {
         </div>
       </form>
       <div className="flex flex-col gap-4">
-        {reviews?.map((item) => (
+        {reviews?.map((item, index) => (
           <ReviewCard
             key={item._id}
             review={item}
+            index={index}
             handleRemoveBtn={handleRemoveBtn}
             handler={{
               clickedEdit,
               clickedOptions,
               setClickedEdit,
               setClickedOptions,
+              handleThreeDotBtn,
+              handleEditInput
             }}
             onSubmit={handleReviewEdit}
           />

@@ -10,6 +10,7 @@ export default function ReviewCard({
   handleRemoveBtn,
   onSubmit,
   handler,
+  index
 }) {
   const { _id, name, photoUrl, email, comment, createdAt, rating, course } =
     review;
@@ -31,10 +32,6 @@ export default function ReviewCard({
   // Format the date as "DD/MM/YYYY"
   const formattedDate = `${day}-${month}-${year}`;
 
-  const handleEditBtn = () => {
-    handler?.setClickedEdit(!handler?.clickedEdit);
-  };
-
   const handleInputChange = (e) => {
     setClickedInput(e.target.value);
     setValue("comments", e.target.value);
@@ -42,7 +39,7 @@ export default function ReviewCard({
 
   return (
     <>
-      {handler?.clickedEdit && (
+      {handler?.clickedEdit[index] && (
         <form
           className="space-y-8 px-6 pb-16 flex gap-2 justify-between items-center"
           onSubmit={handleSubmit(() =>
@@ -101,7 +98,7 @@ export default function ReviewCard({
           </div>
         </form>
       )}
-      {!handler?.clickedEdit && (
+      {!handler?.clickedEdit[index] && (
         <div className="text-slate-500 rounded-xl w-full p-4 flex gap-2 items-start">
           <figure className="w-16 rounded-full">
             <img className="w-full rounded-full" src={photoUrl} alt="" />
@@ -124,17 +121,15 @@ export default function ReviewCard({
                 <span>{formattedDate}</span>
                 { user &&
                   <span
-                    onClick={() =>
-                      handler?.setClickedOptions(!handler?.clickedOptions)
-                    }
+                    onClick={() => handler?.handleThreeDotBtn(index)}
                     className="cursor-pointer"
                   >
                     <BsThreeDotsVertical />
                   </span>
                 }
-                {handler?.clickedOptions && (
+                {handler?.clickedOptions[index] && (
                   <div className="absolute bottom-0 right-0 bg-white text-black px-4 py-2 rounded shadow-lg flex flex-col items-start gap-2">
-                    <p className="cursor-pointer" onClick={handleEditBtn}>
+                    <p className="cursor-pointer" onClick={()=>handler?.handleEditInput(index)}>
                       Edit
                     </p>
                     <p

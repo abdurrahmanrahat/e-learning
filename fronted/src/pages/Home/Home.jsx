@@ -1,7 +1,7 @@
 import AllInOne from "../../components/Home/AllInOne/AllInOne";
-import Banner from "../../components/Home/Banner/Banner";
 import ExploreCourse from "../../components/Home/ExploreCourse/ExploreCourse";
 import Features from "../../components/Home/Features/Features";
+import Hero from "../../components/Home/Hero/Hero";
 import LastestNews from "../../components/Home/LastestNews/LastestNews";
 import Success from "../../components/Home/Success/Success";
 import Testimonial from "../../components/Home/Testimonial/Testimonial";
@@ -10,7 +10,9 @@ import Totc from "../../components/Home/Totc/Totc";
 const Home = () => {
   return (
     <div className="">
-      <Banner></Banner>
+      <div className="bg-[#F6F7FB]">
+        <Hero />
+      </div>
 
       <div className="py-24 container-class">
         <Success />
