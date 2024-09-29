@@ -1,8 +1,9 @@
-import AllInOne from "../../components/Home/AllInOne/AllInOne";
+
 import Banner from "../../components/Home/Banner/Banner";
 import ExploreCourse from "../../components/Home/ExploreCourse/ExploreCourse";
 import Features from "../../components/Home/Features/Features";
 import LastestNews from "../../components/Home/LastestNews/LastestNews";
+import OurCategory from "../../components/Home/OurCategory/OurCategory";
 import Success from "../../components/Home/Success/Success";
 import Testimonial from "../../components/Home/Testimonial/Testimonial";
 import Totc from "../../components/Home/Totc/Totc";
@@ -17,7 +18,7 @@ const Home = () => {
       </div>
 
       <div className="py-24 container-class">
-        <AllInOne />
+       <OurCategory></OurCategory>
       </div>
 
       <div className="py-24 container-class">
