@@ -5,11 +5,6 @@ import toast from "react-hot-toast";
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import useAxios from "../../Hooks/useAxios";
-<<<<<<< HEAD
-import axios from "axios";
-=======
-import { setUserInfo } from "../../utils/setUserInfo";
->>>>>>> 987bfc4afeee57e5fc3d4e01b9a10c69c7f1efe9
 
 const Registration = () => {
   const [showPassword, setShowPassword] = useState(false);

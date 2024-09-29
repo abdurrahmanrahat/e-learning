@@ -29,7 +29,7 @@ const Courses = () => {
   };
 
   useEffect(() => {
-    fetch("../../../public/InstructorCourses.json")
+    fetch("/popularCourses.json")
       .then((res) => res.json())
       .then((data) => SetCourses(data));
   }, []);

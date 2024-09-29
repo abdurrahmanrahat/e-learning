@@ -1,10 +1,26 @@
 import { MdModeEdit } from "react-icons/md";
 import { useState } from 'react';
 import Select from "react-select";
+import toast from "react-hot-toast";
+import axios from "axios";
+import useAxios from "../../../../Hooks/useAxios";
+import { useNavigate } from "react-router-dom";
 
 const TableCourseCard = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [imageUrl, setImageUrl] = useState(null);
+
+  const apiHandler = useAxios();
+  const navigate = useNavigate();
+
+  // Form fields state
+  const [courseTitle, setCourseTitle] = useState("");
+  const [price, setPrice] = useState("");
+  const [category, setCategory] = useState("");
+  const [duration, setDuration] = useState("");
+  const [shortDescription, setShortDescription] = useState("");
+  const [description, setDescription] = useState("");
 
   // category data
   const categoryOptions = [
@@ -19,7 +35,7 @@ const TableCourseCard = () => {
 
   // duration data
   const durationOptions = [
-    { value: "1 Months", label: "1 Month" },
+    { value: "1 Month", label: "1 Month" },
     { value: "2 Months", label: "2 Months" },
     { value: "3 Months", label: "3 Months" },
     { value: "4 Months", label: "4 Months" },
@@ -30,12 +46,73 @@ const TableCourseCard = () => {
     setIsModalOpen(!isModalOpen);
   };
 
+  // Handle image upload to ImageBB
+  const handleImageUpload = async (file) => {
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("image", file);
+
+    try {
+      const res = await axios.post(
+        `https://api.imgbb.com/1/upload?key=4fcfecc8f4191aba98fe10068a124924`,
+        formData
+      );
+      setImageUrl(res.data.data.url);
+    } catch (error) {
+      toast.error("Failed to upload image");
+    }
+  };
+
+  // Handle image change and upload
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setImageUrl(file);
+    handleImageUpload(file);
+  };
+
+  // Function to handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent form reload
+
+    if (!imageUrl) {
+      toast.error("Please upload an image");
+      return;
+    }
+
+    const formData = {
+      courseTitle,
+      price,
+      category,
+      duration,
+      shortDescription,
+      description,
+      imageUrl, // Use the uploaded image URL
+    };
+
+    // apiHandler
+    //   .patch("/courses/66f1646793b0c49d453cb60a", formData)
+    //   .then((res) => {
+    //     toast.success("Successfully Update the Course");
+
+    //     if (res.data) {
+    //       navigate("/dashboard/admin/all-courses");
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     toast.error(err?.message);
+    //   });
+
+    // Log or submit the form data (you can replace this with API call)
+    console.log(formData);
+  };
+
   return (
     <div>
       <div className="w-full overflow-x-auto">
         <table
           className="w-full text-left border-collapse rounded w-overflow-x-auto "
-          cellspacing="0"
+          cellSpacing="0"
         >
           <tbody>
             <tr className="border-b border-slate-300 ">
@@ -81,7 +158,7 @@ const TableCourseCard = () => {
             <tr className="border-b  border-slate-200">
               <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200 stroke-slate-500 text-slate-500 ">
                 <img
-                  className="w-[60px]  h-[60px] rounded-xl"
+                  className="w-[60px]  h-[60px] rounded-lg"
                   src="https://i.pravatar.cc/48?img=1"
                   alt=""
                 />
@@ -103,24 +180,15 @@ const TableCourseCard = () => {
                 javaScript
               </td>
               <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200 stroke-slate-500 text-slate-500 ">
-                <button onClick={toggleModal} className="text-2xl font-bold bg-black px-3 py-5 text-white rounded-xl hover:bg-gray-700">
+                <button onClick={toggleModal} className="text-2xl font-bold bg-black px-3 py-5 text-white rounded-lg hover:bg-gray-700">
                   <MdModeEdit />
                 </button>
 
                 {/*  */}
                 <div>
-                  {/* Modal toggle */}
-                  {/* <button
-                    onClick={toggleModal}
-                    className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                    type="button"
-                  >
-                    Open modal
-                  </button> */}
-
                   {/* Main modal */}
                   <div
-                    className={`fixed inset-0 z-50 flex justify-center items-center transition-opacity duration-300 ${isModalOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+                    className={`fixed inset-0 px-6 z-50 flex justify-center items-center transition-opacity duration-300 ${isModalOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
                       }`}
                   >
                     {/* Background overlay */}
@@ -132,18 +200,18 @@ const TableCourseCard = () => {
 
                     {/* Modal box */}
                     <div
-                      className={`relative p-4 w-full max-w-6xl bg-white rounded-lg shadow dark:bg-gray-700 transform transition-transform duration-300 ${isModalOpen ? 'scale-100' : 'scale-75'
+                      className={`relative  w-full max-w-5xl bg-white rounded-lg shadow dark:bg-gray-700 transform transition-transform duration-300 ${isModalOpen ? 'scale-100' : 'scale-75'
                         }`}
                     >
                       {/* Modal content */}
-                      <div className="relative bg-white rounded-lg shadow dark:bg-gray-700 max-h-[80vh] overflow-y-auto overflow-x-auto">
+                      <div className="relative rounded-lg shadow dark:bg-gray-700 max-h-[90vh] overflow-y-auto overflow-x-auto">
                         {/* Modal header */}
                         <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
 
                           <button
                             type="button"
                             onClick={toggleModal}
-                            className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                            className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm  ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                           >
                             <svg
                               className="w-3 h-3"
@@ -166,21 +234,20 @@ const TableCourseCard = () => {
 
                         {/* Modal body */}
                         <div className="p-6">
-                          <h1 className="text-center text-4xl font-bold my-5">Update Course</h1>
-                          <div className="border bg-[#e0f2fe] mb-20 rounded-lg max-w-full mx-auto p-8 overflow-x-auto">
-                            <form
-                              // onSubmit={handleSubmit(handleAddCourse)}
-                              className="grid grid-cols-1 md:grid-cols-2 gap-10 min-w-[600px]" // ensure enough width for horizontal scrolling
-                            >
+                          <h1 className="text-center text-[#2F327D] text-4xl font-medium my-5">Update Course</h1>
+                          <div className="rounded-lg max-w-full mx-auto overflow-x-auto">
+                            <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6 min-w-[600px]">
+
                               {/* Title */}
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text font-semibold text-xl text-gray-600">Course Title</span>
+                                  <span className="text-roboto text-[#2F327D] text-xl">Course Title</span>
                                 </label>
                                 <input
+                                  onChange={(e) => setCourseTitle(e.target.value)}
                                   type="text"
                                   placeholder="Title"
-                                  className="text-left w-full rounded py-3 px-5 mt-3 text-sm"
+                                  className="mt-3 w-full px-6 py-3 border border-[#ACB4D3] bg-[#F4F6FB] text-[#2F327D] placeholder:text-[#8A90A5] rounded-xl focus:ring-2 focus:ring-[#49BBBD] focus:border-[#49BBBD] focus:bg-[#E8F9F9] outline-none"
                                   required
                                 />
                               </div>
@@ -188,12 +255,13 @@ const TableCourseCard = () => {
                               {/* Price */}
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text font-semibold text-xl text-gray-600">Price</span>
+                                  <span className="text-roboto text-[#2F327D] text-xl">Price</span>
                                 </label>
                                 <input
+                                  onChange={(e) => setPrice(e.target.value)}
                                   type="number"
                                   placeholder="Price"
-                                  className="text-left w-full rounded py-3 px-5 mt-3 text-sm"
+                                  className="mt-3 w-full px-6 py-3 border border-[#ACB4D3] bg-[#F4F6FB] text-[#2F327D] placeholder:text-[#8A90A5] rounded-xl focus:ring-2 focus:ring-[#49BBBD] focus:border-[#49BBBD] focus:bg-[#E8F9F9] outline-none"
                                   required
                                 />
                               </div>
@@ -201,11 +269,13 @@ const TableCourseCard = () => {
                               {/* Select Category */}
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text font-semibold text-xl text-gray-600">Select Category</span>
+                                  <span className="text-roboto text-[#2F327D] text-xl">Select Category</span>
                                 </label>
                                 <Select
                                   options={categoryOptions}
-                                  className="text-left w-full rounded py-3 px-5 mt-2 text-sm"
+                                  value={categoryOptions.find(option => option.value === category)}
+                                  onChange={(option) => setCategory(option.value)}
+                                  className="mt-3 w-full px-6 py-3 border border-[#ACB4D3] bg-[#F4F6FB] text-[#2F327D] placeholder:text-[#8A90A5] rounded-xl focus:ring-2 focus:ring-[#49BBBD] focus:border-[#49BBBD]"
                                   placeholder="Select category"
                                   required
                                 />
@@ -214,11 +284,13 @@ const TableCourseCard = () => {
                               {/* Select Duration */}
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text font-semibold text-xl text-gray-600">Select Duration</span>
+                                  <span className="text-roboto text-[#2F327D] text-xl">Select Duration</span>
                                 </label>
                                 <Select
+                                  value={durationOptions.find(option => option.value === duration)}
+                                  onChange={(option) => setDuration(option.value)}
                                   options={durationOptions}
-                                  className="text-left w-full rounded py-3 px-5 mt-2 text-sm"
+                                  className="mt-3 w-full px-6 py-3 border border-[#ACB4D3] bg-[#F4F6FB] text-[#2F327D] placeholder:text-[#8A90A5] rounded-xl focus:ring-2 focus:ring-[#49BBBD] focus:border-[#49BBBD]"
                                   placeholder="Select duration"
                                   required
                                 />
@@ -227,24 +299,27 @@ const TableCourseCard = () => {
                               {/* Short Description */}
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text font-semibold text-xl text-gray-600">Short Description</span>
+                                  <span className="text-roboto text-[#2F327D] text-xl">Short Description</span>
                                 </label>
                                 <textarea
+                                  value={shortDescription}
+                                  onChange={(e) => setShortDescription(e.target.value)}
                                   placeholder="Short description"
-                                  className="w-full rounded p-2 mt-3"
-                                  rows="2"
+                                  className="mt-3 w-full px-6 py-[6px] border border-[#ACB4D3] bg-[#F4F6FB] text-[#2F327D] placeholder:text-[#8A90A5] rounded-xl focus:ring-2 focus:ring-[#49BBBD] focus:border-[#49BBBD] focus:bg-[#E8F9F9] outline-none"
                                 ></textarea>
                               </div>
 
                               {/* Choice Image */}
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text font-semibold text-xl text-gray-600">Choice Image</span>
+                                  <span className="text-roboto text-[#2F327D] text-xl">Choice Image</span>
                                 </label>
                                 <input
+                                  accept="image/*"
+                                  onChange={handleImageChange}
                                   type="file"
                                   placeholder="Image file"
-                                  className="w-full rounded p-4 mt-3 bg-white"
+                                  className="mt-3 w-full px-6 py-3 border border-[#ACB4D3] bg-[#F4F6FB] text-[#2F327D] placeholder:text-[#8A90A5] rounded-xl focus:ring-2 focus:ring-[#49BBBD] focus:border-[#49BBBD] focus:bg-[#E8F9F9] outline-none"
                                   required
                                 />
                               </div>
@@ -252,20 +327,22 @@ const TableCourseCard = () => {
                               {/* Description */}
                               <div className="form-control md:col-span-2">
                                 <label className="label">
-                                  <span className="label-text font-semibold text-xl text-gray-600">Description</span>
+                                  <span className="text-roboto text-[#2F327D] text-xl">Description</span>
                                 </label>
                                 <textarea
+                                  value={description}
+                                  onChange={(e) => setDescription(e.target.value)}
                                   placeholder="Your description"
-                                  className="w-full rounded p-5 mt-3"
+                                  className="mt-3 w-full px-6 py-3 border border-[#ACB4D3] bg-[#F4F6FB] text-[#2F327D] placeholder:text-[#8A90A5] rounded-xl focus:ring-2 focus:ring-[#49BBBD] focus:border-[#49BBBD] focus:bg-[#E8F9F9] outline-none"
                                   rows="4"
                                 ></textarea>
                               </div>
 
                               {/* Submit button */}
-                              <div className="form-control mt-5 w-[200px]">
+                              <div className="form-control mt-5 w-full col-span-2">
                                 <button
                                   type="submit"
-                                  className="px-7 py-3 text-xl font-bold text-white bg-[#49BBBD] rounded-lg hover:bg-emerald-500"
+                                  className="px-7 py-3 text-xl font-bold text-white bg-[#49BBBD] rounded-lg hover:bg-emerald-500 w-full"
                                 >
                                   Update Course
                                 </button>
@@ -273,6 +350,7 @@ const TableCourseCard = () => {
                             </form>
                           </div>
                         </div>
+
                       </div>
                     </div>
                   </div>
@@ -281,7 +359,7 @@ const TableCourseCard = () => {
 
               </td>
               <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200 stroke-slate-500 text-slate-500 ">
-                <button className="text-2xl font-bold bg-red-600 p-4 text-white rounded-xl hover:bg-black">
+                <button className="text-2xl font-bold bg-red-600 p-4 text-white rounded-lg hover:bg-black">
                   x
                 </button>
               </td>
