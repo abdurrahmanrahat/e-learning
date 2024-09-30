@@ -1,5 +1,3 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import Totc from "../../components/Home/Totc/Totc";
 import PrimaryTitle from "../../components/Ui/PrimaryTitle";
 
@@ -9,70 +7,52 @@ import InstructorCard from "../../components/Ui/InstructorCard";
 import PageBanner from "../../components/Ui/PageBanner";
 import Testimonials from "../../components/Ui/Testimonials/Testimonials";
 import { SHAREDImages } from "../../image-data/shared"
+import { useCourses } from "../../Hooks/api/useCourses";
 import { INSTRUCTORImages } from "../../image-data/Instructors";
 
+const instructorData = [
+  {
+    id: 1,
+    name: "John Doe",
+    title: "Web Developer",
+    image: INSTRUCTORImages.instructor_1,
+    ratings: 4,
+    numOfCourses: 12,
+    about: "John is a highly skilled web developer with over 5 years of experience in building responsive websites and web applications."
+  },
+  {
+    id: 2,
+    name: "Jane Smith",
+    title: "SEO Expert",
+    image: INSTRUCTORImages.instructor_2,
+    ratings: 3,
+    numOfCourses: 8,
+    about: "Jane is an expert in search engine optimization, helping businesses rank higher on search engines and boost organic traffic."
+  },
+  {
+    id: 3,
+    name: "Michael Johnson",
+    title: "Mobile App Developer",
+    image: INSTRUCTORImages.instructor_3,
+    ratings: 5,
+    numOfCourses: 15,
+    about: "Michael specializes in mobile app development, creating user-friendly and innovative mobile applications for Android and iOS."
+  },
+  {
+    id: 4,
+    name: "Emily Davis",
+    title: "UI/UX Designer",
+    image: INSTRUCTORImages.instructor_1,
+    ratings: 2,
+    numOfCourses: 10,
+     about: "Emily is a creative UI/UX designer with a passion for designing intuitive and visually appealing user interfaces."
+  },
+];
+
 const About = () => {
-  const [popularCourses, setPopularCourses] = useState([]);
-
-  useEffect(() => {
-
-    // popular courses
-    const fetchPopularCourses = async () => {
-      try {
-        const response = await axios.get("/popularCourses.json");
-        setPopularCourses(response.data);
-      } catch (err) {
-        console.log(err.message);
-      }
-    };
-
-    fetchPopularCourses();
-  }, []);
-  
-
-  const instructorData = [
-    {
-      id: 1,
-      name: "John Doe",
-      title: "Web Developer",
-      image: INSTRUCTORImages.instructor_1,
-      ratings: 4,
-      numOfCourses: 12,
-      about:
-        "John is a highly skilled web developer with over 5 years of experience in building responsive websites and web applications.",
-    },
-    {
-      id: 2,
-      name: "Jane Smith",
-      title: "SEO Expert",
-      image: INSTRUCTORImages.instructor_2,
-      ratings: 3,
-      numOfCourses: 8,
-      about:
-        "Jane is an expert in search engine optimization, helping businesses rank higher on search engines and boost organic traffic.",
-    },
-    {
-      id: 3,
-      name: "Michael Johnson",
-      title: "Mobile App Developer",
-      image: INSTRUCTORImages.instructor_3,
-      ratings: 5,
-      numOfCourses: 15,
-      about:
-        "Michael specializes in mobile app development, creating user-friendly and innovative mobile applications for Android and iOS.",
-    },
-    {
-      id: 4,
-      name: "Emily Davis",
-      title: "UI/UX Designer",
-      image: INSTRUCTORImages.instructor_1,
-      ratings: 2,
-      numOfCourses: 10,
-      about:
-        "Emily is a creative UI/UX designer with a passion for designing intuitive and visually appealing user interfaces.",
-    },
-  ];
-
+  const query = {page: 1, limit: 3, category: '', duration: '', searchTerm: ''};
+  const {courses} = useCourses(query);
+console.log(courses)
   return (
     <div>
       <PageBanner image={SHAREDImages.banner_1}>
@@ -84,41 +64,6 @@ const About = () => {
           <Totc />
         </div>
 
-        {/* Mission And Vission */}
-        <div className="container-class md:p-4 mt-10 lg:mt-20">
-          <div className="flex flex-col lg:flex-row justify-between">
-            <div className="lg:w-[50%]">
-              <img
-                className="rounded-xl"
-                src="https://i.ibb.co.com/VJMKM9s/122864.jpg"
-                alt=""
-              />
-            </div>
-            <div className="lg:w-[40%] mt-8 lg:mt-0">
-              <PrimaryTitle
-                headingPart1={"Our"}
-                headingPart2={"Mission & Vision"}
-                style={""}
-              />
-              <p className="text-[#696984] mb-10">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit
-                suscipit, repudiandae similique accusantium eius nulla quam
-                laudantium sequi.
-              </p>
-              <p className="text-[#696984] mb-10">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit
-                suscipit, repudiandae similique accusantium eius nulla quam
-                laudantium sequi.
-              </p>
-              <p className="text-[#696984]">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit
-                suscipit, repudiandae similique accusantium eius nulla quam
-                laudantium sequi.
-              </p>
-            </div>
-          </div>
-        </div>
-
         {/* popular courses */}
         <div className="my-10 lg:my-20 container-class md:p-4">
           <PrimaryTitle
@@ -127,11 +72,11 @@ const About = () => {
             style={"text-center"}
             subtext={"Most Popular Course Of This Week"}
           />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-            {popularCourses?.map((popularCourse) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 py-10">
+            {courses?.data.map((item) => (
               <CourseCard
-                key={popularCourse?.id}
-                popularCourse={popularCourse}
+                key={item?.id}
+                course={item}
               ></CourseCard>
             ))}
           </div>
@@ -153,7 +98,7 @@ const About = () => {
 
           {/* Instructors cards */}
           <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-3 gap-x-8 gap-y-14 py-10">
-            {instructorData?.map((item) => (
+            {instructorData?.slice(0, 3).map((item) => (
               <InstructorCard key={item.id} item={item}></InstructorCard>
             ))}
           </div>

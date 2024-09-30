@@ -9,11 +9,9 @@ import DescriptionTabs from "../DescriptionTabs/DescriptionTabs";
 import { useCourses } from "../../../Hooks/api/useCourses";
 
 const CourseDetail = () => {
-  const courses = useCourses();
   const { id } = useParams();
-  const course = courses?.find((course) => course._id === id);
-  console.log(courses);
-  console.log(course);
+  const {course} = useCourses(null, id);
+  // console.log(id)
 
   const tabs = ["Overview", "Reviews", "Description"];
   const tabsItem = [
@@ -24,17 +22,17 @@ const CourseDetail = () => {
       content: <ReviewTabs />,
     },
     {
-      content: <DescriptionTabs value={course?.bigDescription}/>,
+      content: <DescriptionTabs value={course?.data.bigDescription}/>,
     },
   ];
 
   return (
     <div className="">
-      <PageBanner image={course?.image}>
+      <PageBanner image={course?.data.image}>
         <div className="hidden lg:flex xl:flex justify-end items-end lg:w-[1240px] xl:w-[1240px] h-full">
           <img
             className="w-[330px] border-[16px] h-[220px] rounded-2xl"
-            src={course?.image}
+            src={course?.data.image}
             alt=""
           />
         </div>
@@ -60,7 +58,7 @@ const CourseDetail = () => {
               >
                 11 hour left at this price
               </h2>
-              <Link to={`/checkout/${course.id}`}>
+              <Link to={`/checkout/${course?.data._id}`}>
                 <button className="text-xl font-bold text-center text-white bg-[#49BBBD] w-full lg:w-full md:w-[50%] rounded-xl py-3 hover:bg-emerald-600 ">
                   Buy Now
                 </button>

@@ -1,22 +1,16 @@
 import { Link } from "react-router-dom";
 import Rating from "./Rating";
 import { FaRegClock } from "react-icons/fa6";
-import { MdOutlineArrowOutward } from "react-icons/md";
 
 
-const CourseCard = ({ popularCourse }) => {
+const CourseCard = ({ course }) => {
   const {
-    _id, title, category, image, instructorImg, instructorName, price, description, courseDuration, rating, reviews, enrollment
-  } = popularCourse || {};
-
-  // Function to conditionally truncate the title if it exceeds 20 characters
-  // const sliceTitle = (title) => {
-  //   return title.length > 20 ? title.slice(0, 20) + '...' : title;
-  // };
+    _id, title, category, image, instructorImg, instructorName, price, description, courseDuration, rating, enrollment
+  } = course || {};
 
   return (
     <Link to={`/courseDetails/${_id}`}>
-      <div className="p-5 shadow-md rounded-lg flex flex-col justify-between h-full">
+      <div className="p-6 shadow-myCustomShadow rounded-xl flex flex-col justify-between">
 
         {/* card image */}
         <figure className="overflow-hidden relative mb-5">
@@ -44,17 +38,15 @@ const CourseCard = ({ popularCourse }) => {
             <h2 className="text-2xl text-[#2F327D] font-bold font-nunito">
               {title?.length > 20 ? title.slice(0, 18) + '...' : title}
             </h2>
-            <span className="text-3xl"><MdOutlineArrowOutward /></span>
           </div>
 
           <p className="mb-3 text-[#6E7697] line-clamp-3">
-            {description}
+            {description?.length > 80 ? description?.slice(0, 78) + '...' : description}
           </p>
 
           <div className="flex gap-1 justify-start items-center text-[#6E7697] mb-6">
-            <span className="text-[#00CBB8] text-sm font-medium">({rating})</span>
             <Rating value={rating} />
-            <span className="text-sm text-[#969696]">({reviews})</span>
+            <span className="text-sm text-[#969696]">(0)</span>
           </div>
         </div>
 
