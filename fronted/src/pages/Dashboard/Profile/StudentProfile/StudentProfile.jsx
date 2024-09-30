@@ -2,6 +2,8 @@ import { IoMdCamera } from "react-icons/io";
 
 import { useEffect, useRef, useState } from "react";
 import MyProfile from "./MyProfile";
+import SocialLink from "./SocialLink";
+import BasicInfo from "./BasicInfo";
 
 const StudentProfile = () => {
   //   student profile tabs
@@ -60,45 +62,49 @@ const StudentProfile = () => {
   });
 
   return (
-    
-
     <div>
-      <>
-        {/*<!-- Component: Basic lg sized tab --> */}
-        <section className="max-w-full flex " aria-multiselectable="false ">
-          <div className="w-full lg:w-[25%]  ">
-            <div className="mb-10">
-              <h2 className="text-2xl font-bold text-gray-600">
-                Student Profile
-              </h2>
-            </div>
-            <div className="flex flex-col  items-center gap-5 ">
-              <div className="relative">
-                <img
-                  className="rounded-full h-[150px] w-[150px] border-8 border-[#4bc0c0]"
-                  src="https://i.ibb.co.com/djnH674/download-20-removebg-preview.png"
-                  alt=""
-                />
-                <div className="bg-[#4bc0c0] p-2 rounded-full absolute end-2 top-28">
-                  <IoMdCamera className="text-white text-xl" />
-                </div>
+      {/* <div className="mb-10">
+        <h2 className="text-2xl font-bold text-gray-600">Student Profile</h2>
+      </div> */}
+      <div className="relative mb-80 lg:mb-40 md:mb-40">
+        <img src="https://i.ibb.co.com/5k16J00/header-setting.png" alt="" />
+        <div className="absolute lg:top-[75px] lg:left-12 md:top-12">
+        <div className="flex flex-col lg:flex-row md:flex-row  items-center  gap-7 lg:mb-16 md:mb-16 ">
+          <div className="">
+            <div className="relative">
+              <img
+                className="rounded-full h-[150px] w-[150px] border-8 border-[#4bc0c0]"
+                src="https://i.ibb.co.com/djnH674/download-20-removebg-preview.png"
+                alt=""
+              />
+              <div className="bg-[#4bc0c0] p-2 rounded-full absolute end-2 top-28">
+                <IoMdCamera className="text-white text-xl" />
               </div>
-              <div className="text-center">
-                <h2 className="text-xl font-bold text-gray-700 mb-1">
-                  Setu Akther
-                </h2>
+            </div>
+          </div>
+        <div className="lg:mt-16 md:mt-16">
+          <h2 className="text-xl font-bold text-gray-700 mb-1">Setu Akther</h2>
+          <p className=" text-gray-500 ">
+            Your account is ready, you can now apply for advice.
+          </p>
+          <h2 className="font-bold text-gray-500 ">
+            Email: msetu5763@gmail.com
+          </h2>
+        </div>
+      </div>
+        </div>
+      </div>
 
-                <h2 className="font-bold text-gray-500 mb-2">
-                  Email: msetu5763@gmail.com
-                </h2>
-              </div>
-            </div>
+      <>
+        {/*<!-- Component: tab --> */}
+        <section className="max-w-full flex flex-col lg:flex-row gap-y-10 lg:gap-y-0" aria-multiselectable="false ">
+          <div className="w-full lg:w-[25%] ">
             <ul
-              className="flex p-5 flex-col  justify-start  border-slate-200"
+              className="flex lg:px-5 flex-col  justify-start  border-slate-200"
               role="tablist"
               ref={wrapperRef}
             >
-              <li className="border mb-4 border-[#4bc0c0]" role="presentation">
+              <li className="border rounded mb-4 border-[#4bc0c0] w-[60%] md:w-[30%] lg:w-full" role="presentation">
                 <button
                   className={`-mb-px inline-flex h-12 w-full items-center justify-start gap-2  whitespace-nowrap  px-6 text-sm font-medium tracking-wide transition duration-300 
                     hover:text-white hover:bg-[#4bc0c0] hover:stroke-[#4bc0c0] focus:bg-[#4bc0c0] focus-visible:outline-none disabled:cursor-not-allowed ${
@@ -124,7 +130,7 @@ const StudentProfile = () => {
                   </span>
                 </button>
               </li>
-              <li className="border border-[#4bc0c0]" role="presentation">
+              <li className="border border-[#4bc0c0] w-[60%] md:w-[30%] lg:w-full" role="presentation">
                 <button
                   className={`-mb-px inline-flex h-12 w-full items-center justify-start gap-2 whitespace-nowrap  px-6 text-sm font-medium tracking-wide transition duration-300 hover:bg-[#4bc0c0] hover:stroke-[#4bc0c0] focus:bg-[#4bc0c0] hover:text-white focus-visible:outline-none disabled:cursor-not-allowed ${
                     tabSelected.currentTab === 2
@@ -149,7 +155,7 @@ const StudentProfile = () => {
                   </span>
                 </button>
               </li>
-              <li className="border mt-4 border-[#4bc0c0]" role="presentation">
+              <li className="border mt-4 border-[#4bc0c0] w-[60%] md:w-[30%] lg:w-full" role="presentation">
                 <button
                   className={`-mb-px inline-flex h-12 w-full items-center justify-start gap-2 whitespace-nowrap px-6 text-sm font-medium tracking-wide transition duration-300 hover:bg-[#4bc0c0] hover:stroke-[#4bc0c0] focus:bg-[#4bc0c0] focus-visible:outline-none disabled:cursor-not-allowed ${
                     tabSelected.currentTab === 3
@@ -176,7 +182,7 @@ const StudentProfile = () => {
               </li>
             </ul>
           </div>
-          <div className="w-full lg:w-[75%] bg-gray-100 mx-10 rounded-xl">
+          <div className="w-full lg:w-[75%] bg-gray-100 lg:mx-10 rounded-xl">
             <div
               className={`px-6  ${
                 tabSelected.currentTab === 1 ? "" : "hidden"
@@ -190,7 +196,7 @@ const StudentProfile = () => {
               <MyProfile></MyProfile>
             </div>
             <div
-              className={`px-6 py-4 ${
+              className={`px-6  ${
                 tabSelected.currentTab === 2 ? "" : "hidden"
               }`}
               id="tab-panel-2a"
@@ -199,15 +205,10 @@ const StudentProfile = () => {
               aria-labelledby="tab-label-2a"
               tabindex="-1"
             >
-              <p>
-                One must be entirely sensitive to the structure of the material
-                that one is handling. One must yield to it in tiny details of
-                execution, perhaps the handling of the surface or grain, and one
-                must master it as a whole.
-              </p>
+              <BasicInfo></BasicInfo>
             </div>
             <div
-              className={`px-6 py-4 ${
+              className={`px-6  ${
                 tabSelected.currentTab === 3 ? "" : "hidden"
               }`}
               id="tab-panel-3a"
@@ -216,12 +217,7 @@ const StudentProfile = () => {
               aria-labelledby="tab-label-3a"
               tabindex="-1"
             >
-              <p>
-                Even though there is no certainty that the expected results of
-                our work will manifest, we have to remain committed to our work
-                and duties; because, even if the results are slated to arrive,
-                they cannot do so without the performance of work.
-              </p>
+             <SocialLink></SocialLink>
             </div>
           </div>
         </section>

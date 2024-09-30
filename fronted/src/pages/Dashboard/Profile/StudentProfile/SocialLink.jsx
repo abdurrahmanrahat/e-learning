@@ -1,52 +1,51 @@
 import { useState } from "react";
-const MyProfile = () => {
-      const [isModalOpen, setIsModalOpen] = useState(false);
+
+const SocialLink = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
       const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
       };
-
   return (
     <div className="py-10">
-      <h2 className="text-xl font-bold text-gray-600">My Profile</h2>
-      <div className="flex flex-col lg:flex-row gap-5 mt-6">
-        <div className="w-full lg:w-[50%]">
-          <h2 className="text-lg font-semibold text-gray-500">Full name</h2>
-          <h2 className="text-md font-semibold ">Mst. Setu Akther</h2>
-        </div>
-        <div className="w-full lg:w-[50%]">
-          <h2 className="text-lg font-semibold text-gray-500">Email</h2>
-          <h2 className="text-md font-semibold ">msetu5763@gmail.com</h2>
-        </div>
+      <div className="mb-5">
+        <h2 className="text-xl font-bold text-gray-600">Github Profile link</h2>
+        <p className="font-semibold">
+          open link: <a href=""></a>
+        </p>
       </div>
-      <div className="flex flex-col lg:flex-row gap-5 mt-10">
-        <div className="w-full lg:w-[50%]">
-          <h2 className="text-lg font-semibold text-gray-500">
-            Education Level
-          </h2>
-          <h2 className="text-md font-semibold ">Wab developer</h2>
-        </div>
-        <div className="w-full lg:w-[50%]">
-          <h2 className="text-lg font-semibold text-gray-500">Date of Birth</h2>
-          <h2 className="text-md font-semibold ">08-05-2005</h2>
-        </div>
+      <div className="mb-5">
+        <h2 className="text-xl font-bold text-gray-600">Portfolio link</h2>
+        <p className="font-semibold">
+          open link: <a href=""></a>
+        </p>
       </div>
-      <div className="flex flex-col lg:flex-row gap-5 mt-10">
-        <div className="w-full lg:w-[50%]">
-          <h2 className="text-lg font-semibold text-gray-500">Student Id</h2>
-          <h2 className="text-md font-semibold ">WEB-123</h2>
-        </div>
-        <div className="w-full lg:w-[50%]">
-          <h2 className="text-lg font-semibold text-gray-500">Country</h2>
-          <h2 className="text-md font-semibold ">Bangladesh</h2>
-        </div>
+      <div className="mb-5">
+        <h2 className="text-xl font-bold text-gray-600">
+          LinkedIn Profile link
+        </h2>
+        <p className="font-semibold">
+          open link: <a href=""></a>
+        </p>
       </div>
-      <button
-         onClick={toggleModal}
-        className="border px-4 py-2 font-bold mt-10 hover:bg-[#4bc0c0] border-[#4bc0c0] hover:text-white"
-      >
-        Edit Profile
-      </button>
-      <div>
+      <div className="mb-5">
+        <h2 className="text-xl font-bold text-gray-600">
+          Facebook Profile link
+        </h2>
+        <p className="font-semibold">
+          open link: <a href=""></a>
+        </p>
+      </div>
+      <div className="flex flex-col lg:flex-row md:flex-row gap-4 items-center">
+        <button className="border px-4 py-2 font-bold mt-5 hover:bg-[#4bc0c0]  border-[#4bc0c0] hover:text-white">
+          <span className="text-[#4bc0c0] hover:text-white ">+</span> Add
+          Project link
+        </button>
+        <button 
+        onClick={toggleModal}
+        className="border px-4 py-2 font-bold mt-5 hover:bg-[#4bc0c0]  border-[#4bc0c0] hover:text-white">
+          Edit link
+        </button>
+        <div>
         <div
           className={`fixed inset-0 z-50 flex justify-center items-center transition-opacity duration-300 ${
             isModalOpen ? "opacity-100 visible" : "opacity-0 invisible"
@@ -91,19 +90,13 @@ const MyProfile = () => {
                   </svg>
                   <span className="sr-only">Close modal</span>
                 </button>
-                {/* <button
-                  type="button"
-                  onClick={toggleModal}
-                  className="border px-4 py-2 font-bold mt-10 hover:bg-[#4bc0c0] border-[#4bc0c0] hover:text-white"
-                >
-                  Edit Profile
-                </button> */}
+               
               </div>
             </div>
             {/* modal body  */}
             <div className="p-6">
               <h1 className=" text-xl font-bold mb-5">
-                Edit Profile
+                Edit Link
               </h1>
               <div>
                 <form>
@@ -111,12 +104,12 @@ const MyProfile = () => {
                     <div className="w-full lg:w-[50%]">
                       <label className="label">
                         <span className="label-text font-semibold text-md text-gray-600">
-                          First Name :
+                        Github Profile link :
                         </span>
                       </label>
                       <input
                         type="text"
-                        placeholder="first name"
+                        placeholder="Github link"
                         className="text-left w-full rounded py-3 px-5 mt-2 text-sm border border-[#4bc0c0]"
                         required
                       />
@@ -124,12 +117,12 @@ const MyProfile = () => {
                     <div className="w-full lg:w-[50%]">
                       <label className="label">
                         <span className="label-text font-semibold text-md text-gray-600">
-                          Last Name :
+                        Portfolio link :
                         </span>
                       </label>
                       <input
                         type="text"
-                        placeholder="last name"
+                        placeholder="Portfolio link"
                         className="text-left w-full rounded py-3 px-5 mt-2 text-sm border border-[#4bc0c0]"
                         required
                       />
@@ -139,12 +132,12 @@ const MyProfile = () => {
                     <div className="w-full lg:w-[50%]">
                       <label className="label">
                         <span className="label-text font-semibold text-md text-gray-600">
-                          Email :
+                        LinkedIn Profile link
                         </span>
                       </label>
                       <input
-                        type="email"
-                        placeholder="Email"
+                        type="text"
+                        placeholder="linked link"
                         className="text-left w-full rounded py-3 px-5 mt-2 text-sm border border-[#4bc0c0]"
                         required
                       />
@@ -152,45 +145,18 @@ const MyProfile = () => {
                     <div className="w-full lg:w-[50%]">
                       <label className="label">
                         <span className="label-text font-semibold text-md text-gray-600">
-                          Date of birth :
+                        Facebook Profile link :
                         </span>
                       </label>
                       <input
-                        type="date"
-                        placeholder="last name"
+                        type="text"
+                        placeholder="Facebook link"
                         className="text-left w-full rounded py-3 px-5 mt-2 text-sm border border-[#4bc0c0]"
                         required
                       />
                     </div>
                   </div>
-                  <div className="flex flex-col md:flex-row lg:flex-row items-center gap-5 mt-5">
-                    <div className="w-full lg:w-[50%]">
-                      <label className="label">
-                        <span className="label-text font-semibold text-md text-gray-600">
-                          Student ID :
-                        </span>
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="student id"
-                        className="text-left w-full rounded py-3 px-5 mt-2 text-sm border border-[#4bc0c0]"
-                        required
-                      />
-                    </div>
-                    <div className="w-full lg:w-[50%]">
-                      <label className="label">
-                        <span className="label-text font-semibold text-md text-gray-600">
-                          Educational Level:
-                        </span>
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="education"
-                        className="text-left w-full rounded py-3 px-5 mt-2 text-sm border border-[#4bc0c0]"
-                        required
-                      />
-                    </div>
-                  </div>
+                  
                   <button className="rounded border hover:bg-white hover:text-black px-4 py-2 font-bold mt-10 bg-[#4bc0c0] border-[#4bc0c0] text-white text-xl">Save</button>
                 </form>
               </div>
@@ -198,8 +164,11 @@ const MyProfile = () => {
           </div>
         </div>
       </div>
+
+
+      </div>
     </div>
   );
 };
 
-export default MyProfile;
+export default SocialLink;
