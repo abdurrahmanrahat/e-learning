@@ -36,12 +36,13 @@ const CourseCard = ({ course }) => {
           {/* Conditionally truncate the title */}
           <div className="flex items-center justify-between mb-5">
             <h2 className="text-2xl text-[#2F327D] font-bold font-nunito">
-              {title?.length > 20 ? title.slice(0, 18) + '...' : title}
+              {title?.length > 20 ? title.slice(0, 25) + '...' : title}
             </h2>
           </div>
 
           <p className="mb-3 text-[#6E7697] line-clamp-3">
-            {description?.length > 80 ? description?.slice(0, 78) + '...' : description}
+            {/* {description?.length > 80 ? description?.slice(0, 78) + '...' : description} */}
+            {description}
           </p>
 
           <div className="flex gap-1 justify-start items-center text-[#6E7697] mb-6">
