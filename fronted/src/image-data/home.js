@@ -14,6 +14,8 @@ import totc_4 from "../assets/home/TOTC/play-button.png";
 import allInOne_1 from "../assets/home/all-in-one/Group 79.png";
 import allInOne_2 from "../assets/home/all-in-one/Group 80.png";
 import allInOne_3 from "../assets/home/all-in-one/Group 81.png";
+import hero_1 from "../assets/home/hero/hero.png";
+import hero_2 from "../assets/home/hero/graph.png";
 
 
 export const HOMEImages = {
@@ -23,5 +25,6 @@ export const HOMEImages = {
     news4,
     feature_1, feature_2, feature_3, feature_4, feature_5,
     totc_1, totc_2, totc_3, totc_4,
-    allInOne_1, allInOne_2, allInOne_3
+    allInOne_1, allInOne_2, allInOne_3,
+    hero_1, hero_2
 }

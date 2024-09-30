@@ -8,6 +8,50 @@ import { Link } from "react-router-dom";
 import { RiMentalHealthLine } from "react-icons/ri";
 import { HiOutlineAcademicCap } from "react-icons/hi2";
 import { MdDeveloperMode } from "react-icons/md";
+
+const popularCategory = [
+  {
+    name: "Technology",
+    icon: <GrTechnology />,
+    numOfCourses: 9,
+  },
+  {
+    name: "Programming",
+    icon: <MdDeveloperMode />,
+    numOfCourses: 9,
+  },
+  {
+    name: "Science",
+    icon: <MdOutlineScience />,
+    numOfCourses: 9,
+  },
+  {
+    name: "Creatives",
+    icon: <LiaLanguageSolid />,
+    numOfCourses: 10,
+  },
+  {
+    name: "Computer",
+    icon: <FaComputer />,
+    numOfCourses: 9,
+  },
+  {
+    name: "Management",
+    icon: <SiNginxproxymanager />,
+    numOfCourses: 9,
+  },
+  {
+    name: "Health",
+    icon: <RiMentalHealthLine />,
+    numOfCourses: 9,
+  },
+  {
+    name: "Academic",
+    icon: <HiOutlineAcademicCap />,
+    numOfCourses: 9,
+  },
+];
+
 const OurCategory = () => {
   return (
     <div className=" px-10">
@@ -20,94 +64,21 @@ const OurCategory = () => {
         }
       />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-10 mt-16">
-<Link to='/courses'>
-<div className="flex items-center  gap-2 border-2 px-4 py-2 rounded-full hover:bg-[#4bc0c0] hover:text-white">
-<div className="bg-[#4bc0c0] p-3 rounded-full ">
-<GrTechnology className="text-5xl  text-white " />
-</div>
-<div>
-    <h2 className="text-xl mb-3 text-gray-500 font-bold ">Technology</h2>
-    <p className="text-lg text-gray-500">9 Course</p>
-</div>
-</div>
-</Link>
-<Link to='/courses'>
-<div className="flex items-center  gap-2 border-2 px-4 py-2 rounded-full hover:bg-[#4bc0c0] hover:text-white">
-<div className="bg-[#4bc0c0] p-3 rounded-full ">
-<MdDeveloperMode className="text-5xl  text-white " />
-</div>
-<div>
-    <h2 className="text-xl mb-3 text-gray-500 font-bold ">Programming</h2>
-    <p className="text-lg text-gray-500">9 Course</p>
-</div>
-</div>
-</Link>
-<Link to='/courses'>
-<div className="flex items-center  gap-2 border-2 px-4 py-2 rounded-full hover:bg-[#4bc0c0] hover:text-white">
-<div className="bg-[#4bc0c0] p-3 rounded-full ">
-<MdOutlineScience className="text-5xl  text-white " />
-</div>
-<div>
-    <h2 className="text-xl mb-3 text-gray-500 font-bold ">Science</h2>
-    <p className="text-lg text-gray-500">9 Course</p>
-</div>
-</div>
-</Link>
-<Link to='/courses'>
-<div className="flex items-center  gap-2 border-2 px-4 py-2 rounded-full hover:bg-[#4bc0c0] hover:text-white">
-<div className="bg-[#4bc0c0] p-3 rounded-full ">
-<LiaLanguageSolid className="text-5xl  text-white " />
-</div>
-<div>
-    <h2 className="text-xl mb-3 text-gray-500 font-bold ">Creatives </h2>
-    <p className="text-lg text-gray-500">10 Course</p>
-</div>
-</div>
-</Link>
-<Link to='/courses'>
-<div className="flex items-center  gap-2 border-2 px-4 py-2 rounded-full hover:bg-[#4bc0c0] hover:text-white">
-<div className="bg-[#4bc0c0] p-3 rounded-full ">
-<FaComputer className="text-5xl  text-white " />
-</div>
-<div>
-    <h2 className="text-xl mb-3 text-gray-500 font-bold ">Computer </h2>
-    <p className="text-lg text-gray-500">8 Course</p>
-</div>
-</div>
-</Link>
-<Link to='/courses'>
-<div className="flex items-center  gap-2 border-2 px-4 py-2 rounded-full hover:bg-[#4bc0c0] hover:text-white">
-<div className="bg-[#4bc0c0] p-3 rounded-full ">
-<SiNginxproxymanager className="text-5xl  text-white " />
-</div>
-<div>
-    <h2 className="text-xl mb-3 text-gray-500 font-bold ">Management</h2>
-    <p className="text-lg text-gray-500">9 Course</p>
-</div>
-</div>
-</Link>
-<Link to='/courses'>
-<div className="flex items-center  gap-2 border-2 px-4 py-2 rounded-full hover:bg-[#4bc0c0] hover:text-white">
-<div className="bg-[#4bc0c0] p-3 rounded-full ">
-<RiMentalHealthLine className="text-5xl  text-white " />
-</div>
-<div>
-    <h2 className="text-xl mb-3 text-gray-500 font-bold ">Health </h2>
-    <p className="text-lg text-gray-500">10 Course</p>
-</div>
-</div>
-</Link>
-<Link to='/courses'>
-<div className="flex items-center  gap-2 border-2 px-4 py-2 rounded-full hover:bg-[#4bc0c0] hover:text-white">
-<div className="bg-[#4bc0c0] p-3 rounded-full ">
-<HiOutlineAcademicCap className="text-5xl  text-white " />
-</div>
-<div>
-    <h2 className="text-xl mb-3 text-gray-500 font-bold ">Academic </h2>
-    <p className="text-lg text-gray-500">10 Course</p>
-</div>
-</div>
-</Link>
+        {popularCategory?.map((item, index) => (
+          <Link key={index} to="/courses">
+            <div className="group flex items-center justify-start  gap-4 border border-[#49BBBD] px-4 py-2 rounded-full hover:bg-[#49BBBD] transition-all duration-500 ease-in-out">
+              <div className="bg-[#49BBBD] p-3 rounded-full text-4xl text-white">{item.icon}</div>
+              <div className="flex flex-col items-center gap-1">
+                <h2 className="text-xl font-medium group-hover:text-white transition-all duration-500 ease-in-out">
+                  {item.name}
+                </h2>
+                <p className="text-md text-[#646464] group-hover:text-white transition-all duration-500 ease-in-out">
+                  {item.numOfCourses} Course
+                </p>
+              </div>
+            </div>
+          </Link>
+        ))}
       </div>
     </div>
   );
