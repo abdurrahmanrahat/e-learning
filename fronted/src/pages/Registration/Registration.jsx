@@ -6,6 +6,8 @@ import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import useAxios from "../../Hooks/useAxios";
 import { setUserInfo } from "../../utils/setUserInfo";
+import { Cloudinary } from "@cloudinary/url-gen";
+import { auto } from '@cloudinary/url-gen/actions/resize';
 
 const Registration = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -21,24 +23,45 @@ const Registration = () => {
   const apiHandler = useAxios();
   const navigate = useNavigate();
 
+  // Initialize Cloudinary
+  const cloudinary = new Cloudinary({
+    cloud: {
+      cloudName: "dxxisvcbd",
+    },
+  });
+
   // Handle image upload to ImageBB
   const handleImageUpload = async (e) => {
     const imageFile = e.target.files[0];
-
     if (!imageFile) return;
 
     const formData = new FormData();
-    formData.append("image", imageFile);
+    formData.append("file", imageFile);
+    formData.append("upload_preset", "brainwave");
 
+    // `https://api.imgbb.com/1/upload?key=4fcfecc8f4191aba98fe10068a124924`,
     try {
       setUploading(true);
       const res = await axios.post(
-        `https://api.imgbb.com/1/upload?key=4fcfecc8f4191aba98fe10068a124924`,
-        formData
+        "https://api.cloudinary.com/v1_1/dxxisvcbd/image/upload",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
-      setImageUrl(res.data.data.url);
+
+      const { public_id } = res.data;
+      console.log(public_id)
+
+      const img = cloudinary.image(public_id);
+      const transformedImageUrl = img.resize(auto().width(278).height(277)).toURL();
+
+      setImageUrl(transformedImageUrl);
       setUploading(false);
-      // toast.success("Image uploaded successfully!");
+
+      toast.success("Image uploaded successfully!");
     } catch (error) {
       toast.error("Failed to upload image");
       setUploading(false);
@@ -48,7 +71,7 @@ const Registration = () => {
   // Form submission handler
   const onSubmit = (data) => {
     if (imageUrl) {
-      data.photoUrl = imageUrl; // Attach the uploaded image URL to the form data
+      data.photoUrl = imageUrl;
     } else {
       toast.error("Please upload an image");
       return;
@@ -90,7 +113,14 @@ const Registration = () => {
         />
       </figure>
       <div className="w-full lg:w-1/2 xl:w-1/2 px-4 lg:px-10 xl:px-10">
-        <h1 className="text-center mb-5 text-xl">Welcome to <Link to="/"><span className="text-2xl text-primary font-bold">brainWave !!</span></Link></h1>
+        <h1 className="text-center mb-5 text-xl">
+          Welcome to{" "}
+          <Link to="/">
+            <span className="text-2xl text-primary font-bold">
+              brainWave !!
+            </span>
+          </Link>
+        </h1>
 
         {/* Form toggler */}
         <div className="bg-[#49BBBD99] px-4 py-2 w-fit mx-auto flex justify-between gap-10 rounded-full">
@@ -206,8 +236,6 @@ const Registration = () => {
               <label htmlFor="photoUrl">Profile Photo</label>
               <input
                 type="file"
-                name="photo"
-                id="photoUrl"
                 accept="image/*"
                 onChange={handleImageUpload}
                 className="w-full px-6 py-3 border border-[#49BBBD] placeholder:text-[#ACACAC] placeholder:text-base placeholder:font-light outline-none  rounded-xl focus:ring-2 focus:ring-[#49BBBD] focus:border-[#49BBBD] focus:bg-[#E8F9F9]"

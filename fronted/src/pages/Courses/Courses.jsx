@@ -25,7 +25,7 @@ const Courses = () => {
   query.duration = duration;
   query.searchTerm = searchTerm;
 
-  const courses = useCourses(query);
+  const {courses} = useCourses(query);
 
   if (!courses) return <h2>Loading...</h2>;
 
@@ -72,9 +72,9 @@ const Courses = () => {
       <div className="container-class px-10 flex flex-col gap-10 py-10">
         <PrimaryTitle headingPart1={"All"} headingPart2={"Courses"} />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-20">
           {courses?.data.map((item) => (
-            <CourseCard popularCourse={item} key={item.id}></CourseCard>
+            <CourseCard course={item} key={item.id}></CourseCard>
           ))}
         </div>
 
