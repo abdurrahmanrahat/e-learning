@@ -19,6 +19,7 @@ import PaymentSuccess from "../components/Checkout/AfterPayment/PaymentSuccess";
 import PaymentFailed from "../components/Checkout/AfterPayment/PaymentFailed";
 import RoleChange from "../pages/RoleChange/RoleChange";
 import Charts from "../components/Charts/Charts";
+import StudentProfile from "../pages/Dashboard/Profile/StudentProfile/StudentProfile";
 
 
 const router = createBrowserRouter([
@@ -100,6 +101,10 @@ const router = createBrowserRouter([
       {
         path: "users-management",
         element: <UsersManagement />,
+      },
+      {
+        path: "student-profile",
+        element: <StudentProfile></StudentProfile>,
       },
     ],
   },
