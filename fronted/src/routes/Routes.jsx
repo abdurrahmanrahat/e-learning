@@ -13,12 +13,11 @@ import AddCourse from "../pages/Dashboard/Instructor/AddCourse/AddCourse";
 import Home from "../pages/Home/Home";
 import InstructorDetails from "../pages/InstructorDetails/InstructorDetails";
 import Instructors from "../pages/Instructors/Instructors";
-import Login from "../pages/Login/Login";
-import Registration from "../pages/Registration/Registration";
 import PaymentSuccess from "../components/Checkout/AfterPayment/PaymentSuccess";
 import PaymentFailed from "../components/Checkout/AfterPayment/PaymentFailed";
 import RoleChange from "../pages/RoleChange/RoleChange";
 import Charts from "../components/Charts/Charts";
+import Authentication from "../pages/Authentication/Authentication";
 import StudentProfile from "../pages/Dashboard/Profile/StudentProfile/StudentProfile";
 
 
@@ -75,12 +74,8 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "registration",
-    element: <Registration />,
-  },
-  {
-    path: "login",
-    element: <Login />,
+    path: "authentication",
+    element: <Authentication />,
   },
   {
     path: "/dashboard/admin/",
