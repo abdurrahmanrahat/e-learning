@@ -111,7 +111,7 @@ export default function Navbar() {
             <div className="ml-auto flex items-center px-6 lg:ml-0 lg:p-0 gap-8">
               {!user ? (
                 <>
-                  <Link to="/login">
+                  <Link to="/authentication">
                     <button className="inline-flex h-10 items-center justify-center gap-2 rounded  px-5 text-sm font-medium tracking-wide text-white shadow-md transition duration-300 bg-primary hover:bg-hover hover:shadow-sm">
                       <span>Login</span>
                     </button>

@@ -19,6 +19,7 @@ import PaymentSuccess from "../components/Checkout/AfterPayment/PaymentSuccess";
 import PaymentFailed from "../components/Checkout/AfterPayment/PaymentFailed";
 import RoleChange from "../pages/RoleChange/RoleChange";
 import Charts from "../components/Charts/Charts";
+import Authentication from "../pages/Authentication/Authentication";
 
 
 const router = createBrowserRouter([
@@ -80,6 +81,10 @@ const router = createBrowserRouter([
   {
     path: "login",
     element: <Login />,
+  },
+  {
+    path: "authentication",
+    element: <Authentication />,
   },
   {
     path: "/dashboard/admin/",
