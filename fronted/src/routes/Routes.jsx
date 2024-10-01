@@ -19,6 +19,7 @@ import RoleChange from "../pages/RoleChange/RoleChange";
 import Charts from "../components/Charts/Charts";
 import Authentication from "../pages/Authentication/Authentication";
 import StudentProfile from "../pages/Dashboard/Profile/StudentProfile/StudentProfile";
+import EnrolledCourses from "../pages/Dashboard/Student/EnrolledCourses/EnrolledCourses";
 
 
 const router = createBrowserRouter([
@@ -100,6 +101,10 @@ const router = createBrowserRouter([
       {
         path: "student-profile",
         element: <StudentProfile></StudentProfile>,
+      },
+      {
+        path: "enrolled-courses",
+        element: <EnrolledCourses/>,
       },
     ],
   },

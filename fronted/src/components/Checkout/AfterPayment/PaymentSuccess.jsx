@@ -13,7 +13,17 @@ export default function PaymentSuccess() {
         <h4 className="text-lg">Transaction Number: {trans_id}</h4>
         <div className="bg-[#5B5B5B] h-[1px] w-full"></div>
         <h2>Amount Paid: 000</h2>
-        <p className="text-base">Redirect to your <Link to={"/dashboard/admin"} className="text-md underline">dashboard...</Link></p>
+        <p className="text-base">
+          Redirect to your{" "}
+          <Link to={"/dashboard/admin"} className="text-md underline">
+            Download Payment Receipt...
+          </Link>
+        </p>
+        <Link to="/dashboard/admin/enrolled-courses">
+          <button className="bg-[#49BBBD] px-12 py-4 rounded-xl text-white cursor-pointer w-full mt-2">
+            Go to Class
+          </button>
+        </Link>
       </div>
     </div>
   );

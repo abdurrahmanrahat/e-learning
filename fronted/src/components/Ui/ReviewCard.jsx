@@ -10,7 +10,7 @@ export default function ReviewCard({
   handleRemoveBtn,
   onSubmit,
   handler,
-  index
+  index,
 }) {
   const { _id, name, photoUrl, email, comment, createdAt, rating, course } =
     review;
@@ -119,25 +119,34 @@ export default function ReviewCard({
                   <FaRegClock />
                 </span>
                 <span>{formattedDate}</span>
-                { user &&
+                {user && (
                   <span
                     onClick={() => handler?.handleThreeDotBtn(index)}
                     className="cursor-pointer"
                   >
                     <BsThreeDotsVertical />
                   </span>
-                }
+                )}
                 {handler?.clickedOptions[index] && (
                   <div className="absolute bottom-0 right-0 bg-white text-black px-4 py-2 rounded shadow-lg flex flex-col items-start gap-2">
-                    <p className="cursor-pointer" onClick={()=>handler?.handleEditInput(index)}>
-                      Edit
-                    </p>
-                    <p
-                      className="cursor-pointer"
-                      onClick={() => handleRemoveBtn(course?._id, _id)}
-                    >
-                      Remove
-                    </p>
+                    {user?.email === email ? (
+                      <>
+                        <p
+                          className="cursor-pointer"
+                          onClick={() => handler?.handleEditInput(index)}
+                        >
+                          Edit
+                        </p>
+                        <p
+                          className="cursor-pointer"
+                          onClick={() => handleRemoveBtn(course?._id, _id)}
+                        >
+                          Remove
+                        </p>
+                      </>
+                    ) : (
+                      <p className="cursor-pointer">Feedback</p>
+                    )}
                   </div>
                 )}
               </div>
