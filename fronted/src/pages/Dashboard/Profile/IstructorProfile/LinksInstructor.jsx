@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-const SocialLink = () => {
+const LinksInstructor = () => {
   const {
     register,
     handleSubmit,
@@ -22,11 +22,12 @@ const SocialLink = () => {
 
   const handleAddInstructorLink = (data) => {
     const editProfile = {
-      studentName: data?.name,
-      studentProjectLink: data?.link,
+      instructorName: data?.name,
+      instructorLink: data?.link,
     };
     console.log(editProfile);
   };
+
   return (
     <div className="py-10">
       <div className="mb-6">
@@ -85,13 +86,14 @@ const SocialLink = () => {
           </a>
         </p>
       </div>
+
       <div className="flex flex-col lg:flex-row md:flex-row gap-4 items-center">
         <button
           onClick={addToggleModal}
           className="border px-4 py-2 font-bold mt-5 hover:bg-[#4bc0c0]  border-[#4bc0c0] hover:text-white"
         >
-          <span className="text-[#4bc0c0] hover:text-white ">+</span> Add
-          Project link
+          <span className="text-[#4bc0c0] hover:text-white mr-2">+</span> Add
+          Link
         </button>
         {/* modal  add link*/}
         <div
@@ -143,7 +145,7 @@ const SocialLink = () => {
 
             {/* modal body  */}
             <div className="p-6">
-              <h1 className=" text-xl font-bold mb-5">Add Project Link</h1>
+              <h1 className=" text-xl font-bold mb-5">Add Link</h1>
               <div>
                 <form onSubmit={handleSubmit(handleAddInstructorLink)}>
                   <div className="w-full mb-3">
@@ -183,7 +185,6 @@ const SocialLink = () => {
             </div>
           </div>
         </div>
-
         <button
           onClick={toggleModal}
           className="border px-4 py-2 font-bold mt-5 hover:bg-[#4bc0c0]  border-[#4bc0c0] hover:text-white"
@@ -191,6 +192,7 @@ const SocialLink = () => {
           Edit link
         </button>
         <div>
+          {/* edit modal  */}
           <div
             className={`fixed inset-0 z-50 flex justify-center items-center transition-opacity duration-300 ${
               isModalOpen ? "opacity-100 visible" : "opacity-0 invisible"
@@ -313,4 +315,4 @@ const SocialLink = () => {
   );
 };
 
-export default SocialLink;
+export default LinksInstructor;

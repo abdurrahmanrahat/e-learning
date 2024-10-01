@@ -1,5 +1,7 @@
+// import { useUser } from "../../../../Hooks/api/useUser";
 
 const BasicInfo = () => {
+    // const {user}=useUser()
     return (
         <div className="py-10">
             <div className="mb-10">

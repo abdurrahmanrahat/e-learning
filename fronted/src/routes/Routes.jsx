@@ -19,6 +19,7 @@ import RoleChange from "../pages/RoleChange/RoleChange";
 import Charts from "../components/Charts/Charts";
 import Authentication from "../pages/Authentication/Authentication";
 import StudentProfile from "../pages/Dashboard/Profile/StudentProfile/StudentProfile";
+import InstructorsProfile from "../pages/Dashboard/Profile/IstructorProfile/InstructorsProfile";
 
 
 const router = createBrowserRouter([
@@ -100,6 +101,10 @@ const router = createBrowserRouter([
       {
         path: "student-profile",
         element: <StudentProfile></StudentProfile>,
+      },
+      {
+        path: "instructor-profile",
+        element: <InstructorsProfile></InstructorsProfile>,
       },
     ],
   },
