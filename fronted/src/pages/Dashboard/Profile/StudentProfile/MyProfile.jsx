@@ -1,29 +1,32 @@
 import { useState } from "react";
 import { useUser } from "../../../../Hooks/api/useUser";
+import { useForm } from "react-hook-form";
 const MyProfile = () => {
   const { user } = useUser();
   console.log(user);
-      const [isModalOpen, setIsModalOpen] = useState(false);
-      const toggleModal = () => {
-        setIsModalOpen(!isModalOpen);
-      };
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
-      // const handleEditProfile = async (data) => {
-      //   const newCourse = {
-      //     instructorName: user?.name,
-      //     instructorEmail: user?.email,
-      //     instructorImg: user?.photoUrl,
-      //     title: data?.title,
-      //     price: Number(data?.price),
-      //     image: imageUrl,
-      //     description: data?.shortDescription,
-      //     bigDescription: data?.description,
-      //     courseDuration: data?.duration,
-      //     category: data?.category,
-      //   };
-      //   console.log(newCourse);
-      // };
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+  const handleEditStudentProfile = (data) => {
+    const editProfile = {
+      studentName: user?.name,
+      studentEmail: user?.email,
+      studentImg: user?.photoUrl,
+      studentNationality: data?.nationality,
+      studentEducationLevel: data?.level,
+      studentDateOfBirth: data?.date,
+      studentId: data?.studentId,
+    };
+    console.log(editProfile);
+  };
 
   return (
     <div className="py-10">
@@ -56,17 +59,17 @@ const MyProfile = () => {
           <h2 className="text-md font-semibold ">WEB-123</h2>
         </div>
         <div className="w-full lg:w-[50%]">
-          <h2 className="text-lg font-semibold text-gray-500">Country</h2>
+          <h2 className="text-lg font-semibold text-gray-500">Nationality</h2>
           <h2 className="text-md font-semibold ">Bangladesh</h2>
         </div>
       </div>
       <button
-         onClick={toggleModal}
+        onClick={toggleModal}
         className="border px-4 py-2 font-bold mt-10 hover:bg-[#4bc0c0] border-[#4bc0c0] hover:text-white"
       >
         Edit Profile
       </button>
-      
+
       <div>
         <div
           className={`fixed inset-0 z-50 flex justify-center items-center transition-opacity duration-300 ${
@@ -112,47 +115,28 @@ const MyProfile = () => {
                   </svg>
                   <span className="sr-only">Close modal</span>
                 </button>
-               
               </div>
             </div>
             {/* modal body  */}
             <div className="p-6">
-              <h1 className=" text-xl font-bold mb-5">
-                Edit Profile
-              </h1>
+              <h1 className=" text-xl font-bold mb-5">Edit Profile</h1>
               <div>
-                <form 
-                // onSubmit={handleSubmit(handleEditProfile)}
-                >
+                <form onSubmit={handleSubmit(handleEditStudentProfile)}>
                   <div className="flex flex-col md:flex-row lg:flex-row items-center gap-5 mb-5">
                     <div className="w-full lg:w-[50%]">
                       <label className="label">
                         <span className="label-text font-semibold text-md text-gray-600">
-                          First Name :
+                          Full Name :
                         </span>
                       </label>
                       <input
-                        type="text"
-                        placeholder="first name"
+                        type="title"
+                        defaultValue={user?.name}
                         className="text-left w-full rounded py-3 px-5 mt-2 text-sm border border-[#4bc0c0]"
                         required
+                        {...register("title", { required: true })}
                       />
                     </div>
-                    <div className="w-full lg:w-[50%]">
-                      <label className="label">
-                        <span className="label-text font-semibold text-md text-gray-600">
-                          Last Name :
-                        </span>
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="last name"
-                        className="text-left w-full rounded py-3 px-5 mt-2 text-sm border border-[#4bc0c0]"
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="flex flex-col md:flex-row lg:flex-row items-center gap-5">
                     <div className="w-full lg:w-[50%]">
                       <label className="label">
                         <span className="label-text font-semibold text-md text-gray-600">
@@ -161,9 +145,26 @@ const MyProfile = () => {
                       </label>
                       <input
                         type="email"
-                        placeholder="Email"
+                        defaultValue={user?.email}
                         className="text-left w-full rounded py-3 px-5 mt-2 text-sm border border-[#4bc0c0]"
                         required
+                        {...register("email", { required: true })}
+                      />
+                    </div>
+                  </div>
+                  <div className="flex flex-col md:flex-row lg:flex-row items-center gap-5">
+                    <div className="w-full lg:w-[50%]">
+                      <label className="label">
+                        <span className="label-text font-semibold text-md text-gray-600">
+                          Student ID :
+                        </span>
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="student id"
+                        className="text-left w-full rounded py-3 px-5 mt-2 text-sm border border-[#4bc0c0]"
+                        required
+                        {...register("studentId", { required: true })}
                       />
                     </div>
                     <div className="w-full lg:w-[50%]">
@@ -177,6 +178,7 @@ const MyProfile = () => {
                         placeholder="last name"
                         className="text-left w-full rounded py-3 px-5 mt-2 text-sm border border-[#4bc0c0]"
                         required
+                        {...register("date", { required: true })}
                       />
                     </div>
                   </div>
@@ -184,20 +186,7 @@ const MyProfile = () => {
                     <div className="w-full lg:w-[50%]">
                       <label className="label">
                         <span className="label-text font-semibold text-md text-gray-600">
-                          Student ID :
-                        </span>
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="student id"
-                        className="text-left w-full rounded py-3 px-5 mt-2 text-sm border border-[#4bc0c0]"
-                        required
-                      />
-                    </div>
-                    <div className="w-full lg:w-[50%]">
-                      <label className="label">
-                        <span className="label-text font-semibold text-md text-gray-600">
-                          Educational Level:
+                          Educational Level :
                         </span>
                       </label>
                       <input
@@ -205,10 +194,61 @@ const MyProfile = () => {
                         placeholder="education"
                         className="text-left w-full rounded py-3 px-5 mt-2 text-sm border border-[#4bc0c0]"
                         required
+                        {...register("level", { required: true })}
+                      />
+                    </div>
+                    <div className="w-full lg:w-[50%]">
+                      <label className="label">
+                        <span className="label-text font-semibold text-md text-gray-600">
+                          Nationality :
+                        </span>
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="Nationality"
+                        className="text-left w-full rounded py-3 px-5 mt-2 text-sm border border-[#4bc0c0]"
+                        required
+                        {...register("nationality", { required: true })}
                       />
                     </div>
                   </div>
-                  <button className="rounded border hover:bg-white hover:text-black px-4 py-2 font-bold mt-10 bg-[#4bc0c0] border-[#4bc0c0] text-white text-xl">Save</button>
+                  {/* Gender Selection */}
+                  <div className="mt-4">
+                    <label
+                      className="label-text font-semibold text-md text-gray-600 "
+                      htmlFor="gender"
+                    >
+                      Gender
+                    </label>
+                    <div className="flex items-center space-x-4 mt-2">
+                      <label className="flex items-center">
+                        <input
+                          type="radio"
+                          value="male"
+                          {...register("gender", { required: true })}
+                          className="form-radio text-[#49BBBD]"
+                        />
+                        <span className="ml-2">Male</span>
+                      </label>
+                      <label className="flex items-center">
+                        <input
+                          type="radio"
+                          value="female"
+                          {...register("gender", { required: true })}
+                          className="form-radio text-[#49BBBD]"
+                        />
+                        <span className="ml-2">Female</span>
+                      </label>
+                    </div>
+                    {errors.gender && (
+                      <span className="text-red-600">
+                        This field is required
+                      </span>
+                    )}
+                  </div>
+                  <button className="rounded border hover:bg-white hover:text-black px-4 py-2 font-bold mt-10 bg-[#4bc0c0] border-[#4bc0c0] text-white text-xl">
+                    Save
+                  </button>
                 </form>
               </div>
             </div>

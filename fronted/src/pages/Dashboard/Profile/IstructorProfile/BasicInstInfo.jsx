@@ -1,15 +1,34 @@
 import { useState } from "react";
 import { useUser } from "../../../../Hooks/api/useUser";
+import { useForm } from "react-hook-form";
 
 const BasicInstInfo = () => {
-  const {user}=useUser()
+  const { user } = useUser();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
-    return (
-        <div className="py-10">
-            <h2 className="text-xl font-bold text-gray-600">Information</h2>
+
+  const handleEditInstructorProfile = (data) => {
+    const editProfile = {
+      instructorName: user?.name,
+      instructorEmail: user?.email,
+      instructorImg: user?.photoUrl,
+      nationality: data?.nationality,
+      mobileNumber: data?.number,
+    };
+    console.log(editProfile);
+  };
+
+  return (
+    <div className="py-10">
+      <h2 className="text-xl font-bold text-gray-600">Information</h2>
       <div className="flex flex-col lg:flex-row gap-5 mt-6">
         <div className="w-full lg:w-[50%]">
           <h2 className="text-lg font-semibold text-gray-500">Name </h2>
@@ -22,9 +41,7 @@ const BasicInstInfo = () => {
       </div>
       <div className="flex flex-col lg:flex-row gap-5 mt-10">
         <div className="w-full lg:w-[50%]">
-          <h2 className="text-lg font-semibold text-gray-500">
-            Nationality
-          </h2>
+          <h2 className="text-lg font-semibold text-gray-500">Nationality</h2>
           <h2 className="text-md font-semibold ">Bangladesh</h2>
         </div>
         <div className="w-full lg:w-[50%]">
@@ -34,9 +51,11 @@ const BasicInstInfo = () => {
       </div>
       {/* Gender Selection */}
       <div className="mt-5">
-              <label htmlFor="gender" className="text-lg font-semibold text-gray-500">Gender</label>
-              <h2 className="text-md font-semibold ">{user?.gender}</h2>
-              {/* <div className="flex items-center space-x-4">
+        <label htmlFor="gender" className="text-lg font-semibold text-gray-500">
+          Gender
+        </label>
+        <h2 className="text-md font-semibold ">{user?.gender}</h2>
+        {/* <div className="flex items-center space-x-4">
                 <label className="flex items-center">
                   <input
                     type="radio"
@@ -60,16 +79,16 @@ const BasicInstInfo = () => {
                   <span className="ml-2">Female</span>
                 </label>
               </div> */}
-              {/* {
+        {/* {
               errors.gender && (
                 <span className="text-red-600">This field is required</span>
               )} */}
-            </div>
+      </div>
       <button
-         onClick={toggleModal}
+        onClick={toggleModal}
         className="border px-4 py-2 font-bold mt-10 hover:bg-[#4bc0c0] border-[#4bc0c0] hover:text-white"
       >
-        Edit 
+        Edit
       </button>
 
       {/* modal section  */}
@@ -118,18 +137,13 @@ const BasicInstInfo = () => {
                   </svg>
                   <span className="sr-only">Close modal</span>
                 </button>
-               
               </div>
             </div>
             {/* modal body  */}
             <div className="p-6">
-              <h1 className=" text-xl font-bold mb-5">
-                Edit Profile
-              </h1>
+              <h1 className=" text-xl font-bold mb-5">Edit Profile</h1>
               <div>
-                <form 
-                // onSubmit={handleSubmit(handleEditProfile)}
-                >
+                <form onSubmit={handleSubmit(handleEditInstructorProfile)}>
                   <div className="flex flex-col md:flex-row lg:flex-row items-center gap-5 mb-5">
                     <div className="w-full lg:w-[50%]">
                       <label className="label">
@@ -139,9 +153,10 @@ const BasicInstInfo = () => {
                       </label>
                       <input
                         type="text"
-                        placeholder="full name"
+                        defaultValue={user?.name}
                         className="text-left w-full rounded py-3 px-5 mt-2 text-sm border border-[#4bc0c0]"
                         required
+                        {...register("title", { required: true })}
                       />
                     </div>
                     <div className="w-full lg:w-[50%]">
@@ -152,9 +167,10 @@ const BasicInstInfo = () => {
                       </label>
                       <input
                         type="email"
-                        placeholder="email"
+                        defaultValue={user?.email}
                         className="text-left w-full rounded py-3 px-5 mt-2 text-sm border border-[#4bc0c0]"
                         required
+                        {...register("email", { required: true })}
                       />
                     </div>
                   </div>
@@ -167,9 +183,10 @@ const BasicInstInfo = () => {
                       </label>
                       <input
                         type="text"
-                        placeholder="text"
+                        // defaultValue={data?.nationality}
                         className="text-left w-full rounded py-3 px-5 mt-2 text-sm border border-[#4bc0c0]"
                         required
+                        {...register("nationality", { required: true })}
                       />
                     </div>
                     <div className="w-full lg:w-[50%]">
@@ -180,49 +197,53 @@ const BasicInstInfo = () => {
                       </label>
                       <input
                         type="number"
-                        placeholder="your number"
+                        defaultValue={user?.number}
                         className="text-left w-full rounded py-3 px-5 mt-2 text-sm border border-[#4bc0c0]"
                         required
+                        {...register("number", { required: true })}
                       />
                     </div>
                   </div>
                   {/* Gender Selection */}
-            {/* <div className="space-y-2">
-              <label htmlFor="gender">Gender</label>
-              <div className="flex items-center space-x-4">
-                <label className="flex items-center">
-                  <input
-                    type="radio"
-                    value="male"
-                    {...register("gender", { required: true })}
-                    className="form-radio text-[#49BBBD]"
-                  />
-                  <span className="ml-2">Male</span>
-                </label>
-                <label className="flex items-center">
-                  <input
-                    type="radio"
-                    value="female"
-                    {...register("gender", { required: true })}
-                    className="form-radio text-[#49BBBD]"
-                  />
-                  <span className="ml-2">Female</span>
-                </label>
-              </div>
-              {errors.gender && (
-                <span className="text-red-600">This field is required</span>
-              )}
-            </div> */}
-                  <button className="rounded border hover:bg-white hover:text-black px-4 py-2 font-bold mt-10 bg-[#4bc0c0] border-[#4bc0c0] text-white text-xl">Save</button>
+                  <div className="space-y-2">
+                    <label htmlFor="gender">Gender</label>
+                    <div className="flex items-center space-x-4">
+                      <label className="flex items-center">
+                        <input
+                          type="radio"
+                          value="male"
+                          {...register("gender", { required: true })}
+                          className="form-radio text-[#49BBBD]"
+                        />
+                        <span className="ml-2">Male</span>
+                      </label>
+                      <label className="flex items-center">
+                        <input
+                          type="radio"
+                          value="female"
+                          {...register("gender", { required: true })}
+                          className="form-radio text-[#49BBBD]"
+                        />
+                        <span className="ml-2">Female</span>
+                      </label>
+                    </div>
+                    {errors.gender && (
+                      <span className="text-red-600">
+                        This field is required
+                      </span>
+                    )}
+                  </div>
+                  <button className="rounded border hover:bg-white hover:text-black px-4 py-2 font-bold mt-10 bg-[#4bc0c0] border-[#4bc0c0] text-white text-xl">
+                    Save
+                  </button>
                 </form>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-        </div>
-    );
+    </div>
+  );
 };
 
 export default BasicInstInfo;
