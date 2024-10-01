@@ -33,7 +33,7 @@ const Testimonials = () => {
       return (
             <div className="relative py-8 mt-10 lg:mt-20 w-full bg-fixed bg-cover bg-center bg-[url('https://i.ibb.co/8K7yhTB/16041.jpg')]">
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+                  <div className="absolute inset-0 bg-black bg-opacity-70"></div>
 
                   {/* Custom arrows */}
                   <div className="custom-prev absolute left-4 top-1/2 transform -translate-y-1/2 z-20 cursor-pointer">
