@@ -4,8 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import MyProfile from "./MyProfile";
 import SocialLink from "./SocialLink";
 import BasicInfo from "./BasicInfo";
+import { useUser } from "../../../../Hooks/api/useUser";
 
 const StudentProfile = () => {
+  const {user}=useUser();
+  console.log(user);
   //   student profile tabs
   const [tabSelected, setTabSelected] = useState({
     currentTab: 1,
@@ -63,9 +66,6 @@ const StudentProfile = () => {
 
   return (
     <div>
-      {/* <div className="mb-10">
-        <h2 className="text-2xl font-bold text-gray-600">Student Profile</h2>
-      </div> */}
       <div className="relative mb-80 lg:mb-40 md:mb-40">
         <img src="https://i.ibb.co.com/5k16J00/header-setting.png" alt="" />
         <div className="absolute lg:top-[75px] lg:left-12 md:top-12">
@@ -74,7 +74,7 @@ const StudentProfile = () => {
             <div className="relative">
               <img
                 className="rounded-full h-[150px] w-[150px] border-8 border-[#4bc0c0]"
-                src="https://i.ibb.co.com/djnH674/download-20-removebg-preview.png"
+                src={user?.photoUrl}
                 alt=""
               />
               <div className="bg-[#4bc0c0] p-2 rounded-full absolute end-2 top-28">
@@ -83,12 +83,12 @@ const StudentProfile = () => {
             </div>
           </div>
         <div className="lg:mt-16 md:mt-16">
-          <h2 className="text-xl font-bold text-gray-700 mb-1">Setu Akther</h2>
+          <h2 className="text-xl font-bold text-gray-700 mb-1">{user?.name}</h2>
           <p className=" text-gray-500 ">
             Your account is ready, you can now apply for advice.
           </p>
           <h2 className="font-bold text-gray-500 ">
-            Email: msetu5763@gmail.com
+            Email: {user?.email}
           </h2>
         </div>
       </div>

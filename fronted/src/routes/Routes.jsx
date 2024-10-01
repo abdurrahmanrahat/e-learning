@@ -20,6 +20,7 @@ import Charts from "../components/Charts/Charts";
 import Authentication from "../pages/Authentication/Authentication";
 import StudentProfile from "../pages/Dashboard/Profile/StudentProfile/StudentProfile";
 import EnrolledCourses from "../pages/Dashboard/Student/EnrolledCourses/EnrolledCourses";
+import InstructorsProfile from "../pages/Dashboard/Profile/IstructorProfile/InstructorsProfile";
 
 
 const router = createBrowserRouter([
@@ -105,6 +106,10 @@ const router = createBrowserRouter([
       {
         path: "enrolled-courses",
         element: <EnrolledCourses/>,
+      },
+      {
+        path: "instructor-profile",
+        element: <InstructorsProfile></InstructorsProfile>,
       },
     ],
   },
