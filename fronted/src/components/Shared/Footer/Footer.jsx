@@ -1,41 +1,97 @@
+import { FaSquareXTwitter } from "react-icons/fa6";
+import { FaLinkedin } from "react-icons/fa6";
+import { FaFacebook } from "react-icons/fa";
+import { FaInstagramSquare } from "react-icons/fa";
+// import { FaAngleUp } from "react-icons/fa6";
+// import { FaAngleDown } from "react-icons/fa6";
+// import { useState } from "react";
+
+const footerElements = [
+  {
+    label: "Product",
+    element: ["Overview", "Features", "Category", "Courses", "Tutors"] 
+  },
+  {
+    label: "Company",
+    element: ["About", "Careers", "News"] 
+  },
+  {
+    label: "Legal",
+    element: ["Terms", "Privacy", "Cookies", "Contact"] 
+  },
+  // {
+  //   label: "Social",
+  //   element: ["Linkedin", "Facebook", "Twitter", "Instagram"] 
+  // },
+]
+
+
 const Footer = () => {
+
+
   return (
-    <div className="w-full text-white bg-[#252641] text-center space-y-10 p-10">
-      <div className="flex items-center justify-center">
-        {/* logo */}
-        <img
-          src="https://i.ibb.co.com/PQ0nLNs/Group-115-1.png"
-          alt=""
-          width="250"
-          height="250"
-        />
-      </div>
-      <div>
-        {/* form */}
-        <p className="pb-3">Subscribe to get our Newsletter</p>
-        <form>
-          <input
-            type="email"
-            className="rounded-full py-1 px-5 mr-5 bg-transparent border"
-            placeholder="your email"
-            name=""
-            id=""
-          />
-          <input
-            type="submit"
-            className="rounded-full py-2 px-5 mr-5 bg-cyan-400"
-            value="Subscribe"
-          />
-        </form>
-      </div>
-      <div>
-        {/* menu */}
-        <div className="flex items-center justify-center text-center">
-          <p className="px-3">Career</p>
-          <p className="border-l-2 px-3">Privacy Policy</p>
-          <p className="border-l-2 px-3">Terms & Conditions</p>
+    <div className="bg-[#101828] pt-10 lg:pt-20 xl:pt-20 pb-6">
+      <div className="container-class flex flex-col items-between gap-14">
+        {/* top layer */}
+        <div className="flex flex-col lg:flex-row xl:flex-row justify-between items-start gap-10">
+          <div className="text-white text-2xl flex flex-col gap-10 justify-start w-full lg:w-[40%] xl:w-[40%]">
+            <span>BrainWave</span>
+            <p className="text-[#646464] text-base">
+              Top learning experiences that create more talent in the world.
+            </p>
+          </div>
+          <div className="w-full lg:w-[60%] xl:w-[60%] flex justify-between gap-10 text-white">
+            {
+              footerElements?.map((item, index) => <div className="flex flex-col gap-4" key={index}>
+              <h4 className="text-[#98A2B3]">{item.label}</h4>
+              <ul className="flex flex-col gap-4">
+                {
+                  item?.element.map((item, index) => <li className="text-[#EAECF0] cursor-pointer hover:underline transition-all duration-300 ease-in-out" key={index}>{item}</li>)
+                }
+              </ul>
+            </div>)
+            }
+            {/* <div>
+              {
+                footerElements?.map((item, index) => <div key={index}>
+                  <div className="flex justify-between gap-4">
+                  <span>{item.label}</span>
+                  { !arrowClicked && listIndex === index ?
+                    <span onClick={
+                      ()=>setArrowClicked(true),
+                       ()=>setListIndex(index)}><FaAngleUp/></span>
+                    :
+                    <span onClick={()=>setArrowClicked(false)}><FaAngleDown/></span>
+                  }
+                  </div>
+                  <ul>
+                    {item.element.map((item, index)=> <li key={index}>{item}</li>)}
+                  </ul>
+                </div>)
+              }
+            </div> */}
+          </div>
         </div>
-        <p className="mt-3">© 2021 Class Technologies Inc. </p>
+        {/* bottom layer */}
+        <div className="flex flex-col lg:flex-row xl:flex-row justify-between items-center gap-4">
+          <div className="text-[#98A2B3] text-md">
+            <span>© 2022 Ed-Circle. All rights reserved.</span>
+          </div>
+          <div className="flex gap-4 text-[#98A2B3] text-3xl">
+            <span>
+              <FaSquareXTwitter />
+            </span>
+            <span>
+              <FaLinkedin />
+            </span>
+            <span>
+              <FaFacebook />
+            </span>
+            <span>
+              <FaInstagramSquare />
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   );
