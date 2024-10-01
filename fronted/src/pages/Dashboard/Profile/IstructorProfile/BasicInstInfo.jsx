@@ -1,51 +1,79 @@
 import { useState } from "react";
+import { useUser } from "../../../../Hooks/api/useUser";
 
-const SocialLink = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-      const toggleModal = () => {
-        setIsModalOpen(!isModalOpen);
-      };
-  return (
-    <div className="py-10">
-      <div className="mb-6">
-        <h2 className="text-xl font-bold text-gray-600">Github Profile link</h2>
-        <p className="font-semibold mt-2">
-          open link: <a className="ml-2 underline underline-offset-2 text-[#c084fc]" href="https://github.com/your-username"> https://github.com/your-username</a>
-        </p>
+const BasicInstInfo = () => {
+  const {user}=useUser()
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+    return (
+        <div className="py-10">
+            <h2 className="text-xl font-bold text-gray-600">Information</h2>
+      <div className="flex flex-col lg:flex-row gap-5 mt-6">
+        <div className="w-full lg:w-[50%]">
+          <h2 className="text-lg font-semibold text-gray-500">Name </h2>
+          <h2 className="text-md font-semibold ">{user?.name}</h2>
+        </div>
+        <div className="w-full lg:w-[50%]">
+          <h2 className="text-lg font-semibold text-gray-500">Email</h2>
+          <h2 className="text-md font-semibold ">{user?.email}</h2>
+        </div>
       </div>
-      <div className="mb-6">
-        <h2 className="text-xl font-bold text-gray-600">Portfolio link</h2>
-        <p className="font-semibold mt-2">
-          open link: <a className="ml-2 underline underline-offset-2 text-[#c084fc]" href="https://github.com/your-username"> https://portfolio.com/your-username</a>
-        </p>
+      <div className="flex flex-col lg:flex-row gap-5 mt-10">
+        <div className="w-full lg:w-[50%]">
+          <h2 className="text-lg font-semibold text-gray-500">
+            Nationality
+          </h2>
+          <h2 className="text-md font-semibold ">Bangladesh</h2>
+        </div>
+        <div className="w-full lg:w-[50%]">
+          <h2 className="text-lg font-semibold text-gray-500">Mobile NUmber</h2>
+          <h2 className="text-md font-semibold ">017------</h2>
+        </div>
       </div>
-      <div className="mb-6">
-        <h2 className="text-xl font-bold text-gray-600">
-          LinkedIn Profile link
-        </h2>
-        <p className="font-semibold mt-2">
-          open link: <a className="ml-2 underline underline-offset-2 text-[#c084fc]" href="https://github.com/your-username"> https://linkedIn.com/your-username</a>
-        </p>
-      </div>
-      <div className="mb-5">
-        <h2 className="text-xl font-bold text-gray-600">
-          Facebook Profile link
-        </h2>
-        <p className="font-semibold mt-2">
-          open link: <a className="ml-2 underline underline-offset-2 text-[#c084fc]" href="https://github.com/your-username"> https://facebook.com/your-username</a>
-        </p>
-      </div>
-      <div className="flex flex-col lg:flex-row md:flex-row gap-4 items-center">
-        <button className="border px-4 py-2 font-bold mt-5 hover:bg-[#4bc0c0]  border-[#4bc0c0] hover:text-white">
-          <span className="text-[#4bc0c0] hover:text-white ">+</span> Add
-          Project link
-        </button>
-        <button 
-        onClick={toggleModal}
-        className="border px-4 py-2 font-bold mt-5 hover:bg-[#4bc0c0]  border-[#4bc0c0] hover:text-white">
-          Edit link
-        </button>
-        <div>
+      {/* Gender Selection */}
+      <div className="mt-5">
+              <label htmlFor="gender" className="text-lg font-semibold text-gray-500">Gender</label>
+              <h2 className="text-md font-semibold ">{user?.gender}</h2>
+              {/* <div className="flex items-center space-x-4">
+                <label className="flex items-center">
+                  <input
+                    type="radio"
+                    value="male"
+
+                    // {...register("gender", { required: true })}
+
+                    className="form-radio text-[#49BBBD]"
+                  />
+                  <span className="ml-2">Male</span>
+                </label>
+                <label className="flex items-center">
+                  <input
+                    type="radio"
+                    value="female"
+
+                    // {...register("gender", { required: true })}
+
+                    className="form-radio text-[#49BBBD]"
+                  />
+                  <span className="ml-2">Female</span>
+                </label>
+              </div> */}
+              {/* {
+              errors.gender && (
+                <span className="text-red-600">This field is required</span>
+              )} */}
+            </div>
+      <button
+         onClick={toggleModal}
+        className="border px-4 py-2 font-bold mt-10 hover:bg-[#4bc0c0] border-[#4bc0c0] hover:text-white"
+      >
+        Edit 
+      </button>
+
+      {/* modal section  */}
+      <div>
         <div
           className={`fixed inset-0 z-50 flex justify-center items-center transition-opacity duration-300 ${
             isModalOpen ? "opacity-100 visible" : "opacity-0 invisible"
@@ -96,20 +124,22 @@ const SocialLink = () => {
             {/* modal body  */}
             <div className="p-6">
               <h1 className=" text-xl font-bold mb-5">
-                Edit Link
+                Edit Profile
               </h1>
               <div>
-                <form>
+                <form 
+                // onSubmit={handleSubmit(handleEditProfile)}
+                >
                   <div className="flex flex-col md:flex-row lg:flex-row items-center gap-5 mb-5">
                     <div className="w-full lg:w-[50%]">
                       <label className="label">
                         <span className="label-text font-semibold text-md text-gray-600">
-                        Github Profile link :
+                          Full Name :
                         </span>
                       </label>
                       <input
                         type="text"
-                        placeholder="Github link"
+                        placeholder="full name"
                         className="text-left w-full rounded py-3 px-5 mt-2 text-sm border border-[#4bc0c0]"
                         required
                       />
@@ -117,12 +147,12 @@ const SocialLink = () => {
                     <div className="w-full lg:w-[50%]">
                       <label className="label">
                         <span className="label-text font-semibold text-md text-gray-600">
-                        Portfolio link :
+                          Email
                         </span>
                       </label>
                       <input
-                        type="text"
-                        placeholder="Portfolio link"
+                        type="email"
+                        placeholder="email"
                         className="text-left w-full rounded py-3 px-5 mt-2 text-sm border border-[#4bc0c0]"
                         required
                       />
@@ -132,12 +162,12 @@ const SocialLink = () => {
                     <div className="w-full lg:w-[50%]">
                       <label className="label">
                         <span className="label-text font-semibold text-md text-gray-600">
-                        LinkedIn Profile link
+                          Nationality :
                         </span>
                       </label>
                       <input
                         type="text"
-                        placeholder="linked link"
+                        placeholder="text"
                         className="text-left w-full rounded py-3 px-5 mt-2 text-sm border border-[#4bc0c0]"
                         required
                       />
@@ -145,18 +175,44 @@ const SocialLink = () => {
                     <div className="w-full lg:w-[50%]">
                       <label className="label">
                         <span className="label-text font-semibold text-md text-gray-600">
-                        Facebook Profile link :
+                          Mobile Number :
                         </span>
                       </label>
                       <input
-                        type="text"
-                        placeholder="Facebook link"
+                        type="number"
+                        placeholder="your number"
                         className="text-left w-full rounded py-3 px-5 mt-2 text-sm border border-[#4bc0c0]"
                         required
                       />
                     </div>
                   </div>
-                  
+                  {/* Gender Selection */}
+            {/* <div className="space-y-2">
+              <label htmlFor="gender">Gender</label>
+              <div className="flex items-center space-x-4">
+                <label className="flex items-center">
+                  <input
+                    type="radio"
+                    value="male"
+                    {...register("gender", { required: true })}
+                    className="form-radio text-[#49BBBD]"
+                  />
+                  <span className="ml-2">Male</span>
+                </label>
+                <label className="flex items-center">
+                  <input
+                    type="radio"
+                    value="female"
+                    {...register("gender", { required: true })}
+                    className="form-radio text-[#49BBBD]"
+                  />
+                  <span className="ml-2">Female</span>
+                </label>
+              </div>
+              {errors.gender && (
+                <span className="text-red-600">This field is required</span>
+              )}
+            </div> */}
                   <button className="rounded border hover:bg-white hover:text-black px-4 py-2 font-bold mt-10 bg-[#4bc0c0] border-[#4bc0c0] text-white text-xl">Save</button>
                 </form>
               </div>
@@ -165,10 +221,8 @@ const SocialLink = () => {
         </div>
       </div>
 
-
-      </div>
-    </div>
-  );
+        </div>
+    );
 };
 
-export default SocialLink;
+export default BasicInstInfo;

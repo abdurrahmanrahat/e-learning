@@ -1,9 +1,29 @@
 import { useState } from "react";
+import { useUser } from "../../../../Hooks/api/useUser";
 const MyProfile = () => {
+  const { user } = useUser();
+  console.log(user);
       const [isModalOpen, setIsModalOpen] = useState(false);
       const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
       };
+
+      // const handleEditProfile = async (data) => {
+      //   const newCourse = {
+      //     instructorName: user?.name,
+      //     instructorEmail: user?.email,
+      //     instructorImg: user?.photoUrl,
+      //     title: data?.title,
+      //     price: Number(data?.price),
+      //     image: imageUrl,
+      //     description: data?.shortDescription,
+      //     bigDescription: data?.description,
+      //     courseDuration: data?.duration,
+      //     category: data?.category,
+      //   };
+      //   console.log(newCourse);
+      // };
+
 
   return (
     <div className="py-10">
@@ -11,11 +31,11 @@ const MyProfile = () => {
       <div className="flex flex-col lg:flex-row gap-5 mt-6">
         <div className="w-full lg:w-[50%]">
           <h2 className="text-lg font-semibold text-gray-500">Full name</h2>
-          <h2 className="text-md font-semibold ">Mst. Setu Akther</h2>
+          <h2 className="text-md font-semibold ">{user?.name}</h2>
         </div>
         <div className="w-full lg:w-[50%]">
           <h2 className="text-lg font-semibold text-gray-500">Email</h2>
-          <h2 className="text-md font-semibold ">msetu5763@gmail.com</h2>
+          <h2 className="text-md font-semibold ">{user?.email}</h2>
         </div>
       </div>
       <div className="flex flex-col lg:flex-row gap-5 mt-10">
@@ -46,6 +66,7 @@ const MyProfile = () => {
       >
         Edit Profile
       </button>
+      
       <div>
         <div
           className={`fixed inset-0 z-50 flex justify-center items-center transition-opacity duration-300 ${
@@ -91,13 +112,7 @@ const MyProfile = () => {
                   </svg>
                   <span className="sr-only">Close modal</span>
                 </button>
-                {/* <button
-                  type="button"
-                  onClick={toggleModal}
-                  className="border px-4 py-2 font-bold mt-10 hover:bg-[#4bc0c0] border-[#4bc0c0] hover:text-white"
-                >
-                  Edit Profile
-                </button> */}
+               
               </div>
             </div>
             {/* modal body  */}
@@ -106,7 +121,9 @@ const MyProfile = () => {
                 Edit Profile
               </h1>
               <div>
-                <form>
+                <form 
+                // onSubmit={handleSubmit(handleEditProfile)}
+                >
                   <div className="flex flex-col md:flex-row lg:flex-row items-center gap-5 mb-5">
                     <div className="w-full lg:w-[50%]">
                       <label className="label">

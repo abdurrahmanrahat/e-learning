@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-const SocialLink = () => {
+const LinksInstructor = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
       const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
       };
   return (
     <div className="py-10">
-      <div className="mb-6">
+       <div className="mb-6">
         <h2 className="text-xl font-bold text-gray-600">Github Profile link</h2>
         <p className="font-semibold mt-2">
           open link: <a className="ml-2 underline underline-offset-2 text-[#c084fc]" href="https://github.com/your-username"> https://github.com/your-username</a>
@@ -35,10 +35,11 @@ const SocialLink = () => {
           open link: <a className="ml-2 underline underline-offset-2 text-[#c084fc]" href="https://github.com/your-username"> https://facebook.com/your-username</a>
         </p>
       </div>
+      {/* modal  */}
       <div className="flex flex-col lg:flex-row md:flex-row gap-4 items-center">
         <button className="border px-4 py-2 font-bold mt-5 hover:bg-[#4bc0c0]  border-[#4bc0c0] hover:text-white">
-          <span className="text-[#4bc0c0] hover:text-white ">+</span> Add
-          Project link
+          <span className="text-[#4bc0c0] hover:text-white mr-2">+</span> Add
+           Link
         </button>
         <button 
         onClick={toggleModal}
@@ -167,8 +168,9 @@ const SocialLink = () => {
 
 
       </div>
+
     </div>
   );
 };
 
-export default SocialLink;
+export default LinksInstructor;
