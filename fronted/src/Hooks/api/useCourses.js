@@ -5,10 +5,6 @@ export const useCourses = (query, id) => {
     const [courses, setCourses] = useState();
     const [course, setCourse] = useState();
     const apiHandler = useAxios();
-<<<<<<< HEAD
-=======
-    console.log(id)
->>>>>>> 5595997eafc8174fcd9c4ac1b944095f02fde786
 
     useEffect(() => {
         if (id) {
