@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import TableCourseCard from "./TableCourseCard";
 import PrimaryTitle from "../../../../components/Ui/PrimaryTitle";
 import { useCourses } from "../../../../Hooks/api/useCourses";
@@ -18,7 +17,7 @@ const AllCourses = () => {
         />
       </div>
 
-      <div className="overflow-x-auto bg-white">
+      <div className="overflow-x-auto bg-white rounded">
         <table className="min-w-full table-auto">
           <thead>
             <tr className="bg-primary text-white">
