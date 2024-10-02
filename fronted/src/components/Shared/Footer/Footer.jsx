@@ -2,32 +2,35 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa6";
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagramSquare } from "react-icons/fa";
-// import { FaAngleUp } from "react-icons/fa6";
-// import { FaAngleDown } from "react-icons/fa6";
-// import { useState } from "react";
+import { FaAngleUp } from "react-icons/fa6";
+import { FaAngleDown } from "react-icons/fa6";
+import { useState } from "react";
 
 const footerElements = [
   {
     label: "Product",
-    element: ["Overview", "Features", "Category", "Courses", "Tutors"] 
+    element: ["Overview", "Features", "Category", "Courses", "Tutors"],
   },
   {
     label: "Company",
-    element: ["About", "Careers", "News"] 
+    element: ["About", "Careers", "News"],
   },
   {
     label: "Legal",
-    element: ["Terms", "Privacy", "Cookies", "Contact"] 
+    element: ["Terms", "Privacy", "Cookies", "Contact"],
   },
-  // {
-  //   label: "Social",
-  //   element: ["Linkedin", "Facebook", "Twitter", "Instagram"] 
-  // },
-]
-
+  {
+    label: "Social",
+    element: ["Linkedin", "Facebook", "Twitter", "Instagram"],
+  },
+];
 
 const Footer = () => {
+  const [activeIndex, setActiveIndex] = useState(null);
 
+  const handleLinksMenu = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
 
   return (
     <div className="bg-[#101828] pt-10 lg:pt-20 xl:pt-20 pb-6">
@@ -40,36 +43,53 @@ const Footer = () => {
               Top learning experiences that create more talent in the world.
             </p>
           </div>
+
+          {/* large device */}
           <div className="w-full lg:w-[60%] xl:w-[60%] flex justify-between gap-10 text-white">
-            {
-              footerElements?.map((item, index) => <div className="flex flex-col gap-4" key={index}>
-              <h4 className="text-[#98A2B3]">{item.label}</h4>
-              <ul className="flex flex-col gap-4">
-                {
-                  item?.element.map((item, index) => <li className="text-[#EAECF0] cursor-pointer hover:underline transition-all duration-300 ease-in-out" key={index}>{item}</li>)
-                }
-              </ul>
-            </div>)
-            }
-            {/* <div>
-              {
-                footerElements?.map((item, index) => <div key={index}>
-                  <div className="flex justify-between gap-4">
-                  <span>{item.label}</span>
-                  { !arrowClicked && listIndex === index ?
-                    <span onClick={
-                      ()=>setArrowClicked(true),
-                       ()=>setListIndex(index)}><FaAngleUp/></span>
-                    :
-                    <span onClick={()=>setArrowClicked(false)}><FaAngleDown/></span>
-                  }
+            {footerElements?.map((item, index) => (
+              <div className="hidden lg:flex xl:flex flex-col gap-4" key={index}>
+                <h4 className="text-[#98A2B3]">{item.label}</h4>
+                <ul className="flex flex-col gap-4">
+                  {item?.element.map((item, index) => (
+                    <li
+                      className="text-[#EAECF0] cursor-pointer hover:underline transition-all duration-300 ease-in-out"
+                      key={index}
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+
+            <div className="lg:hidden xl:hidden flex flex-col gap-4 w-full">
+              {footerElements?.map((item, index) => (
+                <div key={index} className="flex flex-col gap-4">
+                  <div
+                    onClick={() => handleLinksMenu(index)}
+                    className="flex justify-between gap-4 text-xl"
+                  >
+                    <span>{item.label}</span>
+                    {activeIndex === index ? (
+                      <span>
+                        <FaAngleUp />
+                      </span>
+                    ) : (
+                      <span>
+                        <FaAngleDown />
+                      </span>
+                    )}
                   </div>
-                  <ul>
-                    {item.element.map((item, index)=> <li key={index}>{item}</li>)}
-                  </ul>
-                </div>)
-              }
-            </div> */}
+                  {activeIndex === index && (
+                    <ul className="flex flex-col gap-4 text-lg">
+                      {item.element.map((item, index) => (
+                        <li className="cursor-pointer" key={index}>{item}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
         {/* bottom layer */}
