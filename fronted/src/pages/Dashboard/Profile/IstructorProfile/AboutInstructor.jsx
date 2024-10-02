@@ -10,7 +10,7 @@ const AboutInstructor = () => {
             
           <div>
             <div className="mb-10">
-            <h2 className="text-2xl font-bold text-gray-600 mb-3">Expertise: </h2>
+            <h2 className="text-2xl font-bold text-gray-600 mb-3">Expertise:</h2>
             <p className="text-gray-500">
             Emily Davis is a Senior Web Developer with over 10 years of experience in building scalable web applications. He has extensive expertise in JavaScript, React, and Node.js and has mentored hundreds of students in mastering web development. He is passionate about coding best practices and modern frameworks.
             </p>
