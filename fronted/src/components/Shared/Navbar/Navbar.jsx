@@ -124,7 +124,7 @@ export default function Navbar() {
                       />
                     </figure>
 
-                    {/* Dropdown menu */}
+                    {/* Dropdown menu start */}
                     <div
                       className={`absolute -right-14 md:right-0 mt-2 w-80 md:w-96 py-2 bg-white rounded-md shadow-lg transform transition-all duration-300 ${isDropdownOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
                         }`}
@@ -135,17 +135,19 @@ export default function Navbar() {
                           <img className="w-16 h-16 rounded-full" src={user?.photoUrl} alt="User Profile" />
                         </figure>
 
-                        <h4 className="text-2xl font-nunito font-bold">{user?.name}</h4>
-                        <p className="text-[#646464]">Email: {user?.email}</p>
+                        <h4 className="text-2xl text-center font-nunito font-bold">{user?.name}</h4>
+                        <p className="text-[#646464] text-center">Email: {user?.email}</p>
 
-                        <li className="flex items-stretch">
-                          <button
-                            className="relative flex items-center justify-center w-full px-5 py-3 text-sm font-medium text-white transition-colors duration-300 bg-gradient-to-r from-primary to-secondary mt-2 rounded-lg"
-                          >
-                            <span className="absolute inset-0 border-t-2 border-b-2 border-white"></span>
-                            <span className="relative">View profile</span>
-                          </button>
-                        </li>
+                        <Link to='/dashboard/admin/student-profile'>
+                          <li className="flex items-stretch">
+                            <button
+                              className="relative flex items-center justify-center w-full px-5 py-3 text-sm font-medium text-white transition-colors duration-300 bg-gradient-to-r from-primary to-secondary mt-2 rounded-lg"
+                            >
+                              <span className="absolute inset-0 border-t-2 border-b-2 border-white"></span>
+                              <span className="relative">View profile</span>
+                            </button>
+                          </li>
+                        </Link>
                       </div>
 
                       <div className="pl-6">
@@ -194,7 +196,7 @@ export default function Navbar() {
                         </button>
                       </div>
 
-                    </div>
+                    </div> {/* Dropdown menu end */}
 
                   </div>
                 </>

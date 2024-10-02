@@ -1,11 +1,11 @@
-// import toast from "react-hot-toast";
+import toast from "react-hot-toast";
 import PrimaryTitle from "../../Ui/PrimaryTitle";
 import { CHECKOUTImages } from "../../../image-data/checkout";
 import { useState } from "react";
 import PaypalCardForm from "../PaypalCardForm/PaypalCardForm";
 import SSLCommerceForm from "../SSLCommerceForm/SSLCommerceForm";
 import VisaCardForm from "../VisaCardForm/VisaCardForm";
-// import useAxios from "../../../Hooks/useAxios";
+import useAxios from "../../../Hooks/useAxios";
 
 const cards = [
   {
@@ -24,7 +24,7 @@ const cards = [
 
 export default function CheckoutForm({course}) {
   const [clickedCard, setClickedCard] = useState("paypal");
-  // const apiHandler = useAxios();
+  const apiHandler = useAxios();
 
   console.log(course)
   // Form submission handler
@@ -38,20 +38,22 @@ export default function CheckoutForm({course}) {
       phone: data.phone,
       productName: course?.data.title,
       amount: course?.data.price,
-      category: course?.data.category
+      category: course?.data.category,
+      city: data.city,
+      post_code: data.postCode,
     }
-    console.log(paymentInfo)
+    // console.log(paymentInfo)
 
-    // apiHandler.post("http://localhost:5000/paymentGateway/sslCommerce", paymentInfo)
-    //   .then((res) => {
-    //     console.log('payment:', res);
-    //     // toast.success(`${res.data.redirect_url}`);
-    //     window.location.replace(res.data.redirect_url);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err?.message);
-    //     toast.error(err?.message);
-    //   });
+    apiHandler.post("http://localhost:5000/paymentGateway/sslCommerce", paymentInfo)
+      .then((res) => {
+        console.log('payment:', res);
+        // toast.success(`${res.data.redirect_url}`);
+        window.location.replace(res.data.redirect_url);
+      })
+      .catch((err) => {
+        console.log(err?.message);
+        toast.error(err?.message);
+      });
   };
 
   return (
