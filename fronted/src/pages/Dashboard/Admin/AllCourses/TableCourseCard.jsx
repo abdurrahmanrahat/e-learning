@@ -1,18 +1,23 @@
-import { MdModeEdit } from "react-icons/md";
+import { MdDeleteForever, MdModeEdit } from "react-icons/md";
 import { useState } from 'react';
 import Select from "react-select";
 import toast from "react-hot-toast";
 import axios from "axios";
-import useAxios from "../../../../Hooks/useAxios";
-import { useNavigate } from "react-router-dom";
+// import useAxios from "../../../../Hooks/useAxios";
+// import { useNavigate } from "react-router-dom";
+import PrimaryTitle from "../../../../components/Ui/PrimaryTitle";
+import Rating from "../../../../components/Ui/Rating";
 
-const TableCourseCard = () => {
+const TableCourseCard = ({ course, idx }) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [imageUrl, setImageUrl] = useState(null);
 
-  const apiHandler = useAxios();
-  const navigate = useNavigate();
+
+  // const apiHandler = useAxios();
+  // const navigate = useNavigate();
+
+  // const { _id, title, category, image, instructorImg, instructorName, instructorEmail, price, description, bigDescription, courseDuration, totalRatings, averageRatings, isDeleted, createdAt, updatedAt, __v } = course || {};
 
   // Form fields state
   const [courseTitle, setCourseTitle] = useState("");
@@ -108,266 +113,225 @@ const TableCourseCard = () => {
   };
 
   return (
-    <div>
-      <div className="w-full overflow-x-auto">
-        <table
-          className="w-full text-left border-collapse rounded w-overflow-x-auto "
-          cellSpacing="0"
+
+    <tr className="border-b border-slate-200 hover:bg-gray-50">
+      <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200">
+        {idx + 1}
+      </td>
+
+      <td className="text-sm transition duration-300 border-slate-200">
+        <img
+          className="w-[80px] h-[60px] rounded-lg "
+          src={course?.image}
+          alt=""
+        />
+      </td>
+
+      <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200">
+        <p className="text-[#2F327D] font-medium">{course?.title}</p>
+        <span className="text-slate-500">{course?.category}</span>
+      </td>
+
+      <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200">
+        {course?.instructorName}
+      </td>
+
+      <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200">
+        ${course?.price}
+      </td>
+
+      <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200">
+        {course?.courseDuration}
+        <span className="flex gap-1 justify-start items-center text-[#6E7697] mb-6">
+          <Rating value={course?.totalRatings} />
+          <span className="text-sm text-[#969696]">({course?.totalRatings})</span>
+        </span>
+      </td>
+
+      {/* <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200">
+        {course?.courseDuration}
+      </td> */}
+
+      {/* button for edit */}
+      <td className=" px-6 py-3 text-sm transition duration-300 border-slate-200 flex space-x-2">
+        <button
+          onClick={toggleModal}
+          className="text-2xl font-bold bg-[#49BBBD] p-2 text-white rounded-lg hover:bg-[#3A9A9A] transition duration-200"
         >
-          <tbody>
-            <tr className="border-b border-slate-300 ">
-              <th
-                scope="col"
-                className="h-12 px-6 text-sm font-medium stroke-slate-700 text-slate-700 "
-              >
-                Image
-              </th>
-              <th
-                scope="col"
-                className="h-12 px-6 text-sm font-medium stroke-slate-700 text-slate-700 "
-              >
-                Title & Category
-              </th>
-              <th
-                scope="col"
-                className="h-12 px-6 text-sm font-medium stroke-slate-700 text-slate-700 "
-              >
-                Instruction
-              </th>
-              <th
-                scope="col"
-                className="h-12 px-6 text-sm font-medium stroke-slate-700 text-slate-700 "
-              >
-                Price
-              </th>
+          <MdModeEdit />
+        </button>
 
-              <th
-                scope="col"
-                className="h-12 px-6 text-sm font-medium stroke-slate-700 text-slate-700 "
-              >
-                Duration
-              </th>
+        {/* Modal for updating course */}
+        <div className={`fixed inset-0 z-50 flex justify-center items-center transition-opacity duration-300 ${isModalOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+          {/* Background overlay */}
+          <div
+            className={`fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ${isModalOpen ? 'opacity-100' : 'opacity-0'}`}
+            onClick={toggleModal}
+          ></div>
 
-              <th
-                scope="col"
-                className="h-12 px-6 text-sm font-medium stroke-slate-700 text-slate-700 "
-              >
-                Ratings
-              </th>
-            </tr>
-            <tr className="border-b  border-slate-200">
-              <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200 stroke-slate-500 text-slate-500 ">
-                <img
-                  className="w-[60px]  h-[60px] rounded-lg"
-                  src="https://i.pravatar.cc/48?img=1"
-                  alt=""
-                />
-              </td>
-
-              <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200 stroke-slate-500 text-slate-500 ">
-                javaScript
-              </td>
-              <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200 stroke-slate-500 text-slate-500 ">
-                javaScript
-              </td>
-              <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200 stroke-slate-500 text-slate-500 ">
-                javaScript
-              </td>
-              <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200 stroke-slate-500 text-slate-500 ">
-                javaScript
-              </td>
-              <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200 stroke-slate-500 text-slate-500 ">
-                javaScript
-              </td>
-              <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200 stroke-slate-500 text-slate-500 ">
-                <button onClick={toggleModal} className="text-2xl font-bold bg-black px-3 py-5 text-white rounded-lg hover:bg-gray-700">
-                  <MdModeEdit />
-                </button>
-
-                {/*  */}
-                <div>
-                  {/* Main modal */}
-                  <div
-                    className={`fixed inset-0 px-6 z-50 flex justify-center items-center transition-opacity duration-300 ${isModalOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-                      }`}
+          {/* Modal box */}
+          <div className={`relative w-full max-w-5xl bg-white rounded-lg shadow transform transition-transform duration-300 ${isModalOpen ? 'scale-100' : 'scale-75'}`}>
+            {/* Modal content */}
+            <div className="relative rounded-lg max-h-[90vh] overflow-y-auto">
+              {/* Modal header */}
+              <div className="flex items-center justify-between p-4 border-b rounded-t">
+                <button
+                  type="button"
+                  onClick={toggleModal}
+                  className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm inline-flex justify-center items-center"
+                >
+                  <svg
+                    className="w-3 h-3"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 14 14"
                   >
-                    {/* Background overlay */}
-                    <div
-                      className={`fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ${isModalOpen ? 'opacity-100' : 'opacity-0'
-                        }`}
-                      onClick={toggleModal}
-                    ></div>
-
-                    {/* Modal box */}
-                    <div
-                      className={`relative  w-full max-w-5xl bg-white rounded-lg shadow dark:bg-gray-700 transform transition-transform duration-300 ${isModalOpen ? 'scale-100' : 'scale-75'
-                        }`}
-                    >
-                      {/* Modal content */}
-                      <div className="relative rounded-lg shadow dark:bg-gray-700 max-h-[90vh] overflow-y-auto overflow-x-auto">
-                        {/* Modal header */}
-                        <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-
-                          <button
-                            type="button"
-                            onClick={toggleModal}
-                            className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm  ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                          >
-                            <svg
-                              className="w-3 h-3"
-                              aria-hidden="true"
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 14 14"
-                            >
-                              <path
-                                stroke="currentColor"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-                              />
-                            </svg>
-                            <span className="sr-only">Close modal</span>
-                          </button>
-                        </div>
-
-                        {/* Modal body */}
-                        <div className="p-6">
-                          <h1 className="text-center text-[#2F327D] text-4xl font-medium my-5">Update Course</h1>
-                          <div className="rounded-lg max-w-full mx-auto overflow-x-auto">
-                            <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6 min-w-[600px]">
-
-                              {/* Title */}
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="text-roboto text-[#2F327D] text-xl">Course Title</span>
-                                </label>
-                                <input
-                                  onChange={(e) => setCourseTitle(e.target.value)}
-                                  type="text"
-                                  placeholder="Title"
-                                  className="mt-3 w-full px-6 py-3 border border-[#ACB4D3] bg-[#F4F6FB] text-[#2F327D] placeholder:text-[#8A90A5] rounded-xl focus:ring-2 focus:ring-[#49BBBD] focus:border-[#49BBBD] focus:bg-[#E8F9F9] outline-none"
-                                  required
-                                />
-                              </div>
-
-                              {/* Price */}
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="text-roboto text-[#2F327D] text-xl">Price</span>
-                                </label>
-                                <input
-                                  onChange={(e) => setPrice(e.target.value)}
-                                  type="number"
-                                  placeholder="Price"
-                                  className="mt-3 w-full px-6 py-3 border border-[#ACB4D3] bg-[#F4F6FB] text-[#2F327D] placeholder:text-[#8A90A5] rounded-xl focus:ring-2 focus:ring-[#49BBBD] focus:border-[#49BBBD] focus:bg-[#E8F9F9] outline-none"
-                                  required
-                                />
-                              </div>
-
-                              {/* Select Category */}
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="text-roboto text-[#2F327D] text-xl">Select Category</span>
-                                </label>
-                                <Select
-                                  options={categoryOptions}
-                                  value={categoryOptions.find(option => option.value === category)}
-                                  onChange={(option) => setCategory(option.value)}
-                                  className="mt-3 w-full px-6 py-3 border border-[#ACB4D3] bg-[#F4F6FB] text-[#2F327D] placeholder:text-[#8A90A5] rounded-xl focus:ring-2 focus:ring-[#49BBBD] focus:border-[#49BBBD]"
-                                  placeholder="Select category"
-                                  required
-                                />
-                              </div>
-
-                              {/* Select Duration */}
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="text-roboto text-[#2F327D] text-xl">Select Duration</span>
-                                </label>
-                                <Select
-                                  value={durationOptions.find(option => option.value === duration)}
-                                  onChange={(option) => setDuration(option.value)}
-                                  options={durationOptions}
-                                  className="mt-3 w-full px-6 py-3 border border-[#ACB4D3] bg-[#F4F6FB] text-[#2F327D] placeholder:text-[#8A90A5] rounded-xl focus:ring-2 focus:ring-[#49BBBD] focus:border-[#49BBBD]"
-                                  placeholder="Select duration"
-                                  required
-                                />
-                              </div>
-
-                              {/* Short Description */}
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="text-roboto text-[#2F327D] text-xl">Short Description</span>
-                                </label>
-                                <textarea
-                                  value={shortDescription}
-                                  onChange={(e) => setShortDescription(e.target.value)}
-                                  placeholder="Short description"
-                                  className="mt-3 w-full px-6 py-[6px] border border-[#ACB4D3] bg-[#F4F6FB] text-[#2F327D] placeholder:text-[#8A90A5] rounded-xl focus:ring-2 focus:ring-[#49BBBD] focus:border-[#49BBBD] focus:bg-[#E8F9F9] outline-none"
-                                ></textarea>
-                              </div>
-
-                              {/* Choice Image */}
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="text-roboto text-[#2F327D] text-xl">Choice Image</span>
-                                </label>
-                                <input
-                                  accept="image/*"
-                                  onChange={handleImageChange}
-                                  type="file"
-                                  placeholder="Image file"
-                                  className="mt-3 w-full px-6 py-3 border border-[#ACB4D3] bg-[#F4F6FB] text-[#2F327D] placeholder:text-[#8A90A5] rounded-xl focus:ring-2 focus:ring-[#49BBBD] focus:border-[#49BBBD] focus:bg-[#E8F9F9] outline-none"
-                                  required
-                                />
-                              </div>
-
-                              {/* Description */}
-                              <div className="form-control md:col-span-2">
-                                <label className="label">
-                                  <span className="text-roboto text-[#2F327D] text-xl">Description</span>
-                                </label>
-                                <textarea
-                                  value={description}
-                                  onChange={(e) => setDescription(e.target.value)}
-                                  placeholder="Your description"
-                                  className="mt-3 w-full px-6 py-3 border border-[#ACB4D3] bg-[#F4F6FB] text-[#2F327D] placeholder:text-[#8A90A5] rounded-xl focus:ring-2 focus:ring-[#49BBBD] focus:border-[#49BBBD] focus:bg-[#E8F9F9] outline-none"
-                                  rows="4"
-                                ></textarea>
-                              </div>
-
-                              {/* Submit button */}
-                              <div className="form-control mt-5 w-full col-span-2">
-                                <button
-                                  type="submit"
-                                  className="px-7 py-3 text-xl font-bold text-white bg-[#49BBBD] rounded-lg hover:bg-emerald-500 w-full"
-                                >
-                                  Update Course
-                                </button>
-                              </div>
-                            </form>
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/*  */}
-
-              </td>
-              <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200 stroke-slate-500 text-slate-500 ">
-                <button className="text-2xl font-bold bg-red-600 p-4 text-white rounded-lg hover:bg-black">
-                  x
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                    />
+                  </svg>
+                  <span className="sr-only">Close modal</span>
                 </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+              </div>
+
+              {/* Modal body */}
+              <div className="p-6">
+                <div className="mb-6">
+                  <PrimaryTitle
+                    headingPart1={"Update"}
+                    headingPart2={"Course"}
+                    style={"text-center"}
+                  />
+                </div>
+                <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6 min-w-[600px]">
+                  {/* Title */}
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="text-roboto text-[#2F327D] text-xl">Course Title</span>
+                    </label>
+                    <input
+                      onChange={(e) => setCourseTitle(e.target.value)}
+                      type="text"
+                      placeholder="Title"
+                      className="mt-3 w-full px-6 py-3 border border-[#ACB4D3] bg-[#F4F6FB] text-[#2F327D] placeholder:text-[#8A90A5] rounded-xl focus:ring-2 focus:ring-[#49BBBD] focus:border-[#49BBBD] outline-none"
+                      required
+                    />
+                  </div>
+
+                  {/* Price */}
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="text-roboto text-[#2F327D] text-xl">Price</span>
+                    </label>
+                    <input
+                      onChange={(e) => setPrice(e.target.value)}
+                      type="number"
+                      placeholder="Price"
+                      className="mt-3 w-full px-6 py-3 border border-[#ACB4D3] bg-[#F4F6FB] text-[#2F327D] placeholder:text-[#8A90A5] rounded-xl focus:ring-2 focus:ring-[#49BBBD] focus:border-[#49BBBD] outline-none"
+                      required
+                    />
+                  </div>
+
+                  {/* Select Category */}
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="text-roboto text-[#2F327D] text-xl">Select Category</span>
+                    </label>
+                    <Select
+                      options={categoryOptions}
+                      value={categoryOptions.find(option => option.value === category)}
+                      onChange={(option) => setCategory(option.value)}
+                      className="mt-3 w-full border border-[#ACB4D3] rounded-xl focus:ring-2 focus:ring-[#49BBBD]"
+                      placeholder="Select category"
+                      required
+                    />
+                  </div>
+
+                  {/* Select Duration */}
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="text-roboto text-[#2F327D] text-xl">Select Duration</span>
+                    </label>
+                    <Select
+                      value={durationOptions.find(option => option.value === duration)}
+                      onChange={(option) => setDuration(option.value)}
+                      options={durationOptions}
+                      className="mt-3 w-full border border-[#ACB4D3] rounded-xl focus:ring-2 focus:ring-[#49BBBD]"
+                      placeholder="Select duration"
+                      required
+                    />
+                  </div>
+
+                  {/* Short Description */}
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="text-roboto text-[#2F327D] text-xl">Short Description</span>
+                    </label>
+                    <textarea
+                      value={shortDescription}
+                      onChange={(e) => setShortDescription(e.target.value)}
+                      placeholder="Short description"
+                      className="mt-3 w-full px-6 py-3 border border-[#ACB4D3] bg-[#F4F6FB] text-[#2F327D] placeholder:text-[#8A90A5] rounded-xl focus:ring-2 focus:ring-[#49BBBD] outline-none"
+                    ></textarea>
+                  </div>
+
+                  {/* Choice Image */}
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="text-roboto text-[#2F327D] text-xl">Choice Image</span>
+                    </label>
+                    <input
+                      accept="image/*"
+                      onChange={handleImageChange}
+                      type="file"
+                      className="mt-3 w-full px-6 py-3 border border-[#ACB4D3] bg-[#F4F6FB] text-[#2F327D] placeholder:text-[#8A90A5] rounded-xl focus:ring-2 focus:ring-[#49BBBD] outline-none"
+                      required
+                    />
+                  </div>
+
+                  {/* Description */}
+                  <div className="form-control md:col-span-2">
+                    <label className="label">
+                      <span className="text-roboto text-[#2F327D] text-xl">Description</span>
+                    </label>
+                    <textarea
+                      value={description}
+                      onChange={(e) => setDescription(e.target.value)}
+                      placeholder="Your description"
+                      className="mt-3 w-full px-6 py-3 border border-[#ACB4D3] bg-[#F4F6FB] text-[#2F327D] placeholder:text-[#8A90A5] rounded-xl focus:ring-2 focus:ring-[#49BBBD] outline-none"
+                      rows="4"
+                    ></textarea>
+                  </div>
+
+                  {/* Submit button */}
+                  <div className="form-control mt-5 w-full col-span-2">
+                    <button
+                      type="submit"
+                      className="px-7 py-3 text-xl font-bold text-white bg-[#49BBBD] rounded-lg hover:bg-emerald-500 w-full"
+                    >
+                      Update Course
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* button for delete */}
+        <button
+          className="text-2xl font-bold bg-red-500 p-2 text-white rounded-lg hover:bg-red-700 transition duration-200"
+        >
+          <MdDeleteForever />
+        </button>
+      </td>
+    </tr>
+
   );
 };
 

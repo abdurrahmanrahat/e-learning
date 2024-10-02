@@ -19,5 +19,5 @@ export const useCourses = (query, id) => {
         }
     }, [apiHandler, query?.page, query?.limit, query?.category, query?.duration, query?.searchTerm, id])
 
-    return {courses, course}
+    return { courses, course }
 }
