@@ -78,7 +78,7 @@ const ReviewTabs = () => {
 
   const handleInputClicked = () => {
     if (!user) {
-      navigate("/login", { state: { from: location }, replace: true });
+      navigate("/authentication", { state: { from: location }, replace: true });
     }
   };
 
@@ -115,6 +115,7 @@ const ReviewTabs = () => {
 
   return (
     <div className="flex flex-col gap-2">
+      <h1 className="text-2xl font-medium text-start">Comments</h1>
       <form
         className="space-y-8 px-6 pb-16 flex gap-2 justify-between items-center"
         onSubmit={handleSubmit(handleReviewSubmit)}

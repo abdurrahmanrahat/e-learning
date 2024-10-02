@@ -1,27 +1,11 @@
-import { useEffect, useState } from "react";
 import CheckoutForm from "../../components/Checkout/CheckoutForm/CheckoutForm";
 import PrimaryTitle from "../../components/Ui/PrimaryTitle";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import { useCourses } from "../../Hooks/api/useCourses";
 
 export default function Checkout() {
   const { id } = useParams();
-  const [courses, setCourses] = useState([]);
-
-  const course = courses?.find((item) => item.id === Number(id));
-
-  useEffect(() => {
-    const fetchCourses = async () => {
-      try {
-        const response = await axios.get("/popularCourses.json");
-        setCourses(response.data);
-      } catch (err) {
-        console.log(err.message);
-      }
-    };
-
-    fetchCourses();
-  }, []);
+  const {course} = useCourses(null, id);
 
   console.log(course);
 
@@ -37,8 +21,8 @@ export default function Checkout() {
             {/*  <!-- Image --> */}
             <figure className="flex-1 rounded-xl">
               <img
-                src={course?.thumbnail}
-                alt={course?.courseTitle}
+                src={course?.data.image}
+                alt={course?.data.title}
                 className="object-cover min-h-full aspect-auto rounded-xl"
               />
             </figure>
@@ -47,21 +31,21 @@ export default function Checkout() {
               <header className="flex gap-4 mb-4">
                 <div>
                   <h3 className="text-md font-medium text-slate-700">
-                    {course?.courseTitle}
+                    {course?.data.title}
                   </h3>
-                  <p className="text-sm text-slate-400">{course?.instructor}</p>
+                  <p className="text-sm text-slate-400">{course?.data.instructorName}</p>
                 </div>
               </header>
-              <p className="mb-4">{course?.description.slice(0, 15)} . . .</p>
+              <p className="mb-4">{course?.data.description.slice(0, 15)} . . .</p>
               <span className="text-xl font-medium text-slate-700">
-                $ {course?.price}
+                $ {course?.data.price}
               </span>
             </div>
           </div>
           <div className="bg-[#5B5B5B] h-[1px] w-full"></div>
           <div className="text-[#5B5B5B] text-xl flex justify-between">
             <span>Sub Total</span>
-            <span>${" "}{course?.price}</span>
+            <span>${" "}{course?.data.price}</span>
           </div>
           <div className="bg-[#5B5B5B] h-[1px] w-full"></div>
           <div className="text-[#5B5B5B] text-xl flex justify-between">
@@ -71,7 +55,7 @@ export default function Checkout() {
           <div className="bg-[#5B5B5B] h-[1px] w-full"></div>
           <div className="text-[#5B5B5B] text-xl font-semibold flex justify-between">
             <span>Total</span>
-            <span>${" "}{course?.price}</span>
+            <span>${" "}{course?.data.price}</span>
           </div>
         </div>
       </div>
