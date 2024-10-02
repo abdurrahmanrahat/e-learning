@@ -21,6 +21,7 @@ import Authentication from "../pages/Authentication/Authentication";
 import StudentProfile from "../pages/Dashboard/Profile/StudentProfile/StudentProfile";
 import EnrolledCourses from "../pages/Dashboard/Student/EnrolledCourses/EnrolledCourses";
 import InstructorsProfile from "../pages/Dashboard/Profile/IstructorProfile/InstructorsProfile";
+import CourseClassroom from "../pages/Dashboard/Student/CourseClassroom/CourseClassroom";
 
 
 const router = createBrowserRouter([
@@ -106,6 +107,10 @@ const router = createBrowserRouter([
       {
         path: "enrolled-courses",
         element: <EnrolledCourses/>,
+      },
+      {
+        path: "course-classroom/:id",
+        element: <CourseClassroom/>,
       },
       {
         path: "instructor-profile",
