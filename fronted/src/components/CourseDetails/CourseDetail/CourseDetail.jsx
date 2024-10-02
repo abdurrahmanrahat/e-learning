@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { HOMEImages } from "../../../image-data/home";
 import PrimaryTitle from "../../Ui/PrimaryTitle";
 import PageBanner from "../../Ui/PageBanner";
@@ -7,10 +7,14 @@ import OverviewTabs from "../OverviewTabs/OverviewTabs";
 import ReviewTabs from "../ReviewTabs/ReviewTabs";
 import DescriptionTabs from "../DescriptionTabs/DescriptionTabs";
 import { useCourses } from "../../../Hooks/api/useCourses";
+import { useUser } from "../../../Hooks/api/useUser";
+import toast from "react-hot-toast";
 
 const CourseDetail = () => {
   const { id } = useParams();
-  const {course} = useCourses(null, id);
+  const { course } = useCourses(null, id);
+  const { user } = useUser();
+  const navigate = useNavigate();
   // console.log(id)
 
   const tabs = ["Overview", "Reviews", "Description"];
@@ -22,9 +26,17 @@ const CourseDetail = () => {
       content: <ReviewTabs />,
     },
     {
-      content: <DescriptionTabs value={course?.data.bigDescription}/>,
+      content: <DescriptionTabs value={course?.data.bigDescription} />,
     },
   ];
+
+  const handleEnrollBtn = () => {
+    if (!user) {
+      toast.error('Please login before enrollment!');
+    } else {
+      navigate(`/checkout/${course?.data._id}`)
+    }
+  };
 
   return (
     <div className="">
@@ -58,11 +70,15 @@ const CourseDetail = () => {
               >
                 11 hour left at this price
               </h2>
-              <Link to={`/checkout/${course?.data._id}`}>
-                <button className="text-xl font-bold text-center text-white bg-[#49BBBD] w-full lg:w-full md:w-[50%] rounded-xl py-3 hover:bg-emerald-600 ">
-                  Buy Now
+                <button onClick={handleEnrollBtn}
+                  className={`text-xl font-bold text-center w-full lg:w-full md:w-[50%] rounded-xl py-3 ${
+                    user
+                      ? "bg-[#49BBBD] text-white hover:bg-emerald-600"
+                      : "bg-gray-400 text-gray-700 cursor-not-allowed"
+                  }`}
+                >
+                  Enroll Now
                 </button>
-              </Link>
             </div>
             <div className="mb-10 mt-10">
               <img

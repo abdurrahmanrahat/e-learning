@@ -5,8 +5,7 @@ import { useState } from "react";
 import PaypalCardForm from "../PaypalCardForm/PaypalCardForm";
 import SSLCommerceForm from "../SSLCommerceForm/SSLCommerceForm";
 import VisaCardForm from "../VisaCardForm/VisaCardForm";
-import axios from "axios";
-// import useAxios from "../../../Hooks/useAxios";
+import useAxios from "../../../Hooks/useAxios";
 
 const cards = [
   {
@@ -25,8 +24,9 @@ const cards = [
 
 export default function CheckoutForm({course}) {
   const [clickedCard, setClickedCard] = useState("paypal");
-  // const apiHandler = useAxios();
+  const apiHandler = useAxios();
 
+  console.log(course)
   // Form submission handler
   const onSubmit = (data) => {
 
@@ -36,17 +36,19 @@ export default function CheckoutForm({course}) {
       address: data.address,
       country: data.country,
       phone: data.phone,
-      productName: course.courseTitle,
-      amount: course.price,
+      productName: course?.data.title,
+      amount: course?.data.price,
+      category: course?.data.category,
+      city: data.city,
+      post_code: data.postCode,
     }
-    console.log(paymentInfo)
+    // console.log(paymentInfo)
 
-    //apiHandler
-      axios.post("http://localhost:5000/paymentGataway/sslCommerce", paymentInfo)
+    apiHandler.post("http://localhost:5000/paymentGateway/sslCommerce", paymentInfo)
       .then((res) => {
-        console.log("url:", res.data.redirect_url);
-        window.location.replace(res.data.redirect_url)
-        // toast.success("User Created Successfully");
+        console.log('payment:', res);
+        // toast.success(`${res.data.redirect_url}`);
+        window.location.replace(res.data.redirect_url);
       })
       .catch((err) => {
         console.log(err?.message);
