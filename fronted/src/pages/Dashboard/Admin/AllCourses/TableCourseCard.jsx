@@ -3,8 +3,8 @@ import { useState } from "react";
 import Select from "react-select";
 import toast from "react-hot-toast";
 import axios from "axios";
-import useAxios from "../../../../Hooks/useAxios";
-import { useNavigate } from "react-router-dom";
+// import useAxios from "../../../../Hooks/useAxios";
+// import { useNavigate } from "react-router-dom";
 import PrimaryTitle from "../../../../components/Ui/PrimaryTitle";
 import Rating from "../../../../components/Ui/Rating";
 import { LuPlus } from "react-icons/lu";
@@ -27,8 +27,8 @@ const TableCourseCard = ({ course, idx }) => {
     setAddModalOpen(!addModalOpen);
   };
 
-  const apiHandler = useAxios();
-  const navigate = useNavigate();
+  // const apiHandler = useAxios();
+  // const navigate = useNavigate();
 
   // const { _id, title, category, image, instructorImg, instructorName, instructorEmail, price, description, bigDescription, courseDuration, totalRatings, averageRatings, isDeleted, createdAt, updatedAt, __v } = course || {};
 
@@ -161,7 +161,7 @@ const TableCourseCard = ({ course, idx }) => {
         {idx + 1}
       </td>
 
-      <td className=" text-sm transition duration-300 border-slate-200">
+      <td className="text-sm transition duration-300 border-slate-200">
         <img
           className="w-[80px] h-[60px] rounded-lg "
           src={course?.image}
