@@ -46,20 +46,26 @@ export default function PaymentSuccess() {
     doc.setFontSize(16);
     doc.setTextColor(0, 0, 0);
 
-    doc.text(`Customer Name: ${paymentReceipt?.orderInfo?.name}`, 20, 40);
-    doc.text(`Total Amount: $${paymentReceipt?.orderInfo?.amount}`, 20, 50);
-    doc.text(`Date: ${paymentReceipt?.date}`, 20, 60);
-    doc.text(`Transition Id: ${paymentReceipt?.transactionId}`, 20, 70);
-    doc.text(`Payment Method: Online`, 20, 80);
+    doc.text(`Transition Id: ${paymentReceipt?.transactionId}`, 20, 50);
+    doc.text(`Payment Method: Online`, 20, 60);
+    doc.text(`Date: ${paymentReceipt?.date}`, 20, 70);
+    doc.text(`Customer Name: ${paymentReceipt?.orderInfo?.name}`, 20, 80);
+    doc.text(`Address: ${paymentReceipt?.orderInfo?.address}`, 20, 90);
+    doc.text(`Phone: ${paymentReceipt?.orderInfo?.phone}`, 20, 100);
+    doc.text(`Product Category: ${paymentReceipt?.orderInfo?.category}`, 20, 110);
+    doc.text(`Product Name: ${paymentReceipt?.orderInfo?.productName}`, 20, 120);
+    doc.text(`Total Amount: $${paymentReceipt?.orderInfo?.amount}`, 140, 140, { align: "left" });
 
     // Draw rectangle around payment data
     doc.setDrawColor(0, 0, 0);
     doc.setLineWidth(0.2);
-    doc.rect(15, 35, 180, 50);
+    doc.rect(15, 35, 180, 110);
 
     // Footer text
     doc.setFontSize(12);
-    doc.text("Thank you for your payment!", 105, 130, { align: "center" });
+    doc.text("Thank you for your payment!", 105, 160, { align: "center" });
+    doc.setFontSize(24);
+    doc.text("BrainWave", 105, 170, { align: "center" });
 
     // Save the PDF
     doc.save("styled-payment-receipt.pdf");

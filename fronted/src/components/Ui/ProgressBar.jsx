@@ -1,4 +1,4 @@
-export default function ProgressBar({value}) {
+export default function ProgressBar({value, width}) {
   return (
     <div className="w-full flex justify-between gap-4 items-center">
       <div
@@ -6,7 +6,7 @@ export default function ProgressBar({value}) {
       >
         <div
           className={`bg-[#49BBBD] rounded-full h-3 text-white flex items-center justify-center`}
-          style={{ width: `${value}%` }}
+          style={{ width: `${width}%` }}
         ></div>
       </div>
       <div className="w-[10%]">{value}%</div>
