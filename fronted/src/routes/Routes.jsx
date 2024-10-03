@@ -22,6 +22,7 @@ import StudentProfile from "../pages/Dashboard/Profile/StudentProfile/StudentPro
 import EnrolledCourses from "../pages/Dashboard/Student/EnrolledCourses/EnrolledCourses";
 import InstructorsProfile from "../pages/Dashboard/Profile/IstructorProfile/InstructorsProfile";
 import CourseClassroom from "../pages/Dashboard/Student/CourseClassroom/CourseClassroom";
+import AddModule from "../pages/Dashboard/AddModule/AddModule";
 
 
 const router = createBrowserRouter([
@@ -99,6 +100,10 @@ const router = createBrowserRouter([
       {
         path: "users-management",
         element: <UsersManagement />,
+      },
+      {
+        path: "add-module",
+        element: <AddModule/>,
       },
       {
         path: "student-profile",
