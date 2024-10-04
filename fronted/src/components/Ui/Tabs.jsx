@@ -1,5 +1,5 @@
 import { useState } from "react";
-import PrimaryTitle from "./PrimaryTitle";
+// import PrimaryTitle from "./PrimaryTitle";
 
 export default function Tabs({ tabs, tabItems }) {
   const [tabSelected, setTabSelected] = useState(0);
@@ -29,10 +29,10 @@ export default function Tabs({ tabs, tabItems }) {
       </ul>
       <div className="py-4" role="tabpanel">
         <div className="flex flex-col gap-6 py-10">
-          <PrimaryTitle
+          {/* <PrimaryTitle
             headingPart1={tabItems[tabSelected]?.title}
             style={"text-start"}
-          />
+          /> */}
           {tabItems[tabSelected]?.content}
         </div>
       </div>

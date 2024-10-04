@@ -105,12 +105,12 @@ const InstructorsProfile = () => {
               ref={wrapperRef}
             >
               <li
-                className="border rounded mb-4 border-[#4bc0c0] w-[60%] md:w-[30%] lg:w-full"
+                className=" mb-4  w-[60%] md:w-[30%] lg:w-full"
                 role="presentation"
               >
                 <button
-                  className={`-mb-px inline-flex h-12 w-full items-center justify-start gap-2  whitespace-nowrap  px-6 text-sm font-medium tracking-wide transition duration-300 
-                    hover:text-white hover:bg-[#4bc0c0] hover:stroke-[#4bc0c0] focus:bg-[#4bc0c0] focus-visible:outline-none disabled:cursor-not-allowed ${
+                  className={`-mb-px inline-flex h-12 w-full items-center justify-start gap-2 rounded-xl whitespace-nowrap  px-6 text-sm font-medium tracking-wide transition duration-300 
+                    hover:text-white hover:bg-[#e1fefe] hover:stroke-[#4bc0c0] focus:bg-[#e1fefe] focus-visible:outline-none disabled:cursor-not-allowed ${
                       tabSelected.currentTab === 1
                         ? "border-[#4bc0c0] stroke-[#4bc0c0] text-black hover:border-[#4bc0c0]   focus:border-[#4bc0c0] focus:stroke-[#4bc0c0]  focus:text-black  disabled:border-slate-500"
                         : " justify-self-center border-transparent stroke-slate-700 text-slate-700 hover:border-[#4bc0c0]hover:text-[#4bc0c0] focus:border-[#4bc0c0] focus:stroke-[#4bc0c0] focus:text-[#4bc0c0] disabled:text-slate-500"
@@ -134,11 +134,11 @@ const InstructorsProfile = () => {
                 </button>
               </li>
               <li
-                className="border border-[#4bc0c0] w-[60%] md:w-[30%] lg:w-full"
+                className=" w-[60%] md:w-[30%] mb-4 lg:w-full "
                 role="presentation"
               >
                 <button
-                  className={`-mb-px inline-flex h-12 w-full items-center justify-start gap-2 whitespace-nowrap  px-6 text-sm font-medium tracking-wide transition duration-300 hover:bg-[#4bc0c0] hover:stroke-[#4bc0c0] focus:bg-[#4bc0c0] hover:text-white focus-visible:outline-none disabled:cursor-not-allowed ${
+                  className={`-mb-px inline-flex h-12 w-full items-center justify-start gap-2 whitespace-nowrap  px-6 text-sm font-medium tracking-wide transition duration-300 hover:bg-[#e1fefe] hover:stroke-[#4bc0c0] focus:bg-[#e1fefe] hover:text-white rounded-xl focus-visible:outline-none disabled:cursor-not-allowed ${
                     tabSelected.currentTab === 2
                       ? "border-[#4bc0c0] text-black  stroke-[#4bc0c0]  hover:border-[#4bc0c0]  hover:text-[#4bc0c0] focus:border-[#4bc0c0] focus:stroke-[#4bc0c0] focus:text-[#4bc0c0] disabled:border-slate-500"
                       : "justify-self-center border-transparent stroke-slate-700 text-slate-700 hover:border-[#4bc0c0] hover:text-[#4bc0c0] focus:border-[#4bc0c0] focus:stroke-[#4bc0c0] focus:text-[#4bc0c0] disabled:text-slate-500"
@@ -160,13 +160,13 @@ const InstructorsProfile = () => {
                 </button>
               </li>
               <li
-                className="border mt-4 border-[#4bc0c0] w-[60%] md:w-[30%] lg:w-full"
+                className=" w-[60%] md:w-[30%]   lg:w-full"
                 role="presentation"
               >
                 <button
-                  className={`-mb-px inline-flex h-12 w-full items-center justify-start gap-2 whitespace-nowrap px-6 text-sm font-medium tracking-wide transition duration-300 hover:bg-[#4bc0c0] hover:stroke-[#4bc0c0] focus:bg-[#4bc0c0] focus-visible:outline-none disabled:cursor-not-allowed ${
+                  className={`-mb-px inline-flex h-12 w-full items-center justify-start gap-2   rounded-xl whitespace-nowrap  px-6 text-sm font-medium tracking-wide transition duration-300 hover:bg-[#e1fefe] hover:stroke-[#4bc0c0] focus:bg-[#e1fefe] focus-visible:outline-none disabled:cursor-not-allowed ${
                     tabSelected.currentTab === 3
-                      ? "border-[#4bc0c0]  stroke-[#4bc0c0] text-black hover:border-[#4bc0c0]   focus:border-[#4bc0c0] focus:stroke-[#4bc0c0] focus:text-[#4bc0c0] disabled:border-slate-500"
+                      ? "border-[#4bc0c0]   stroke-[#4bc0c0]  hover:border-[#4bc0c0]   focus:border-[#4bc0c0] focus:stroke-[#4bc0c0] focus:text-[#4bc0c0] disabled:border-slate-500"
                       : "justify-self-center border-transparent stroke-slate-700 text-slate-700 hover:border-[#4bc0c0]  focus:border-[#4bc0c0] focus:stroke-[#4bc0c0] focus:text-[#4bc0c0] disabled:text-slate-500"
                   }`}
                   id="tab-label-3a"
