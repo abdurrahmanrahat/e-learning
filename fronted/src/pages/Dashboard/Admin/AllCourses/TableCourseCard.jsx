@@ -192,9 +192,6 @@ const TableCourseCard = ({ course, idx }) => {
         </span>
       </td>
 
-      {/* <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200">
-        {course?.courseDuration}
-      </td> */}
       {/* button for edit */}
       <td className=" px-6 py-3 text-sm transition duration-300 border-slate-200 flex space-x-2">
         <button
@@ -396,6 +393,7 @@ const TableCourseCard = ({ course, idx }) => {
             </div>
           </div>
         </div>
+        
         {/* button for add module */}
         <div>
           <button

@@ -21,7 +21,12 @@ import Authentication from "../pages/Authentication/Authentication";
 import EnrolledCourses from "../pages/Dashboard/Student/EnrolledCourses/EnrolledCourses";
 import InstructorsProfile from "../pages/Dashboard/Profile/IstructorProfile/InstructorsProfile";
 import CourseClassroom from "../pages/Dashboard/Student/CourseClassroom/CourseClassroom";
+<<<<<<< HEAD
+import AddModule from "../pages/Dashboard/AddModule/AddModule";
+import AllBlogs from "../pages/Dashboard/AllBlogs/AllBlogs";
+=======
 import Profile from "../pages/Dashboard/Profile/Profile/Profile";
+>>>>>>> 43f700befc8ed27b409ac79e103085d79bfb6307
 
 
 const router = createBrowserRouter([
@@ -91,6 +96,10 @@ const router = createBrowserRouter([
       {
         path: "all-courses",
         element: <AllCourses />,
+      },
+      {
+        path: "all-blogs",
+        element: <AllBlogs />,
       },
       {
         path: "users-management",
