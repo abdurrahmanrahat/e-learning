@@ -5,6 +5,7 @@ import { PiUsersThreeDuotone } from "react-icons/pi";
 import { RxCross2, RxDashboard, RxHamburgerMenu } from "react-icons/rx";
 import { Link, Outlet } from "react-router-dom";
 import DashboardActiveLink from "../components/Ui/DashboardActiveLink";
+import { getUser } from "../utils/getUser";
 
 export default function DashboardLayout() {
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
@@ -12,6 +13,9 @@ export default function DashboardLayout() {
   const handleNavToggle = () => {
     setIsSideNavOpen((prev) => !prev);
   };
+
+  const user = getUser();
+  console.log(user?.role);
 
   return (
     <>
@@ -55,69 +59,101 @@ export default function DashboardLayout() {
             className="flex-1 divide-y divide-slate-100 overflow-auto"
           >
             <ul className="flex flex-1 flex-col gap-1 py-3">
-              {/* Add your navigation items */}
+              {user?.role === "admin" && (
+                <>
+                  <li className="">
+                    <DashboardActiveLink to="/dashboard/admin">
+                      <span className="flex items-center gap-3 rounded py-3 px-6  transition-colors duration-300 ">
+                        <RxDashboard className="block text-[18px]" />
+                        <span className="block text-[17px]">Dashboard</span>
+                      </span>
+                    </DashboardActiveLink>
+                  </li>
 
-              <li className="">
-                <DashboardActiveLink to="/dashboard/admin">
-                  <span className="flex items-center gap-3 rounded py-3 px-6  transition-colors duration-300 ">
-                    <RxDashboard className="block text-[18px]" />
-                    <span className="block text-[17px]">Dashboard</span>
-                  </span>
-                </DashboardActiveLink>
-              </li>
+                  <li className="">
+                    <DashboardActiveLink to="/dashboard/admin/all-courses">
+                      <span className="flex items-center gap-3 rounded py-3 px-6 transition-colors duration-300">
+                        <IoListSharp className="block text-[18px]" />
+                        <span className="block text-[17px]">All Courses</span>
+                      </span>
+                    </DashboardActiveLink>
+                  </li>
 
-              <li className="">
-                <DashboardActiveLink to="/dashbard">
-                  <span className="flex items-center gap-3 rounded py-3 px-6  transition-colors duration-300">
-                    <RxDashboard className="block text-[18px]" />
-                    <span className="block text-[17px]">Test</span>
-                  </span>
-                </DashboardActiveLink>
-              </li>
+                  <li className="">
+                    <DashboardActiveLink to="/dashboard/admin/users-management">
+                      <span className="flex items-center gap-3 rounded py-3 px-6 transition-colors duration-300">
+                        <PiUsersThreeDuotone className="block text-[18px]" />
+                        <span className="block text-[17px]">
+                          Users Management
+                        </span>
+                      </span>
+                    </DashboardActiveLink>
+                  </li>
+                </>
+              )}
+              {user?.role === "instructor" && (
+                <>
+                  <li className="">
+                    <DashboardActiveLink to="/dashboard/instructor">
+                      <span className="flex items-center gap-3 rounded py-3 px-6  transition-colors duration-300 ">
+                        <RxDashboard className="block text-[18px]" />
+                        <span className="block text-[17px]">Dashboard</span>
+                      </span>
+                    </DashboardActiveLink>
+                  </li>
 
-              <li className="">
-                <DashboardActiveLink to="/dashboard/admin/add-course">
-                  <span className="flex items-center gap-3 rounded py-3 px-6 transition-colors duration-300">
-                    <GrUploadOption className="block text-[18px]" />
-                    <span className="block text-[17px]">Add Course</span>
-                  </span>
-                </DashboardActiveLink>
-              </li>
+                  <li className="">
+                    <DashboardActiveLink to="/dashboard/instructor/my-courses">
+                      <span className="flex items-center gap-3 rounded py-3 px-6 transition-colors duration-300">
+                        <GrUploadOption className="block text-[18px]" />
+                        <span className="block text-[17px]">My Courses</span>
+                      </span>
+                    </DashboardActiveLink>
+                  </li>
 
-              <li className="">
-                <DashboardActiveLink to="/dashboard/admin/all-courses">
-                  <span className="flex items-center gap-3 rounded py-3 px-6 transition-colors duration-300">
-                    <IoListSharp className="block text-[18px]" />
-                    <span className="block text-[17px]">All Courses</span>
-                  </span>
-                </DashboardActiveLink>
-              </li>
+                  <li className="">
+                    <DashboardActiveLink to="/dashboard/instructor/add-course">
+                      <span className="flex items-center gap-3 rounded py-3 px-6 transition-colors duration-300">
+                        <GrUploadOption className="block text-[18px]" />
+                        <span className="block text-[17px]">Add Course</span>
+                      </span>
+                    </DashboardActiveLink>
+                  </li>
 
-              <li className="">
-                <DashboardActiveLink to="/dashboard/admin/enrolled-courses">
-                  <span className="flex items-center gap-3 rounded py-3 px-6 transition-colors duration-300">
-                    <IoListSharp className="block text-[18px]" />
-                    <span className="block text-[17px]">Enrolled Courses</span>
-                  </span>
-                </DashboardActiveLink>
-              </li>
+                  <li className="">
+                    <DashboardActiveLink to="/dashboard/instructor/add-module">
+                      <span className="flex items-center gap-3 rounded py-3 px-6 transition-colors duration-300">
+                        <PiUsersThreeDuotone className="block text-[18px]" />
+                        <span className="block text-[17px]">Add Module</span>
+                      </span>
+                    </DashboardActiveLink>
+                  </li>
+                </>
+              )}
 
-              <li className="">
-                <DashboardActiveLink to="/dashboard/admin/users-management">
-                  <span className="flex items-center gap-3 rounded py-3 px-6 transition-colors duration-300">
-                    <PiUsersThreeDuotone className="block text-[18px]" />
-                    <span className="block text-[17px]">User Management</span>
-                  </span>
-                </DashboardActiveLink>
-              </li>
-              <li className="">
-                <DashboardActiveLink to="/dashboard/admin/add-module">
-                  <span className="flex items-center gap-3 rounded py-3 px-6 transition-colors duration-300">
-                    <PiUsersThreeDuotone className="block text-[18px]" />
-                    <span className="block text-[17px]">Add Module</span>
-                  </span>
-                </DashboardActiveLink>
-              </li>
+              {user?.role === "student" && (
+                <>
+                  <li className="">
+                    <DashboardActiveLink to="/dashboard/student">
+                      <span className="flex items-center gap-3 rounded py-3 px-6  transition-colors duration-300 ">
+                        <RxDashboard className="block text-[18px]" />
+                        <span className="block text-[17px]">Dashboard</span>
+                      </span>
+                    </DashboardActiveLink>
+                  </li>
+
+                  <li className="">
+                    <DashboardActiveLink to="/dashboard/student/enrolled-courses">
+                      <span className="flex items-center gap-3 rounded py-3 px-6 transition-colors duration-300">
+                        <IoListSharp className="block text-[18px]" />
+                        <span className="block text-[17px]">
+                          Enrolled Courses
+                        </span>
+                      </span>
+                    </DashboardActiveLink>
+                  </li>
+                </>
+              )}
             </ul>
           </nav>
 
