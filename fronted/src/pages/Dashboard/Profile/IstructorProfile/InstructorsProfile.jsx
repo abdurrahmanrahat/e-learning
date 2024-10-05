@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { IoMdCamera } from "react-icons/io";
 import AboutInstructor from "./AboutInstructor";
 import LinksInstructor from "./LinksInstructor";
-import { useUser } from "../../../../Hooks/api/useUser";
+import { useUser } from "../../../../Hooks/api/useUsers";
 import BasicInstInfo from "./BasicInstInfo";
 
 const InstructorsProfile = () => {

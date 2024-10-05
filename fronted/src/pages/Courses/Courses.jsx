@@ -1,6 +1,5 @@
 import { useState } from "react";
 import ReactPaginate from "react-paginate";
-import { useCourses } from "../../Hooks/api/useCourses";
 import Functionality from "../../components/Course/Functionality/Functionality";
 import CourseCard from "../../components/Ui/CourseCard";
 import PageBanner from "../../components/Ui/PageBanner";
@@ -9,6 +8,7 @@ import "../../css/coursesBgImg.css";
 import "../../css/pagination.css";
 import { SHAREDImages } from "../../image-data/shared";
 import OfferCourse from "./OfferCourse/OfferCourse";
+import { useCourses } from "../../Hooks/api/useCourses";
 
 const Courses = () => {
   const [page, setPage] = useState(1);
@@ -26,6 +26,7 @@ const Courses = () => {
   query.searchTerm = searchTerm;
 
   const {courses} = useCourses(query);
+  console.log(courses)
 
   if (!courses) return <h2>Loading...</h2>;
 

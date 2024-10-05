@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useUser } from "../../../../Hooks/api/useUser";
+import { useUser } from "../../../../Hooks/api/useUsers";
 import { useForm } from "react-hook-form";
 const MyProfile = () => {
   const { user } = useUser();

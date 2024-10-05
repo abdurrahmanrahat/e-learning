@@ -2,7 +2,7 @@ import { FaRegClock } from "react-icons/fa";
 import Rating from "./Rating";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { useState } from "react";
-import { useUser } from "../../Hooks/api/useUser";
+import { useUser } from "../../Hooks/api/useUsers";
 import { useForm } from "react-hook-form";
 
 export default function ReviewCard({

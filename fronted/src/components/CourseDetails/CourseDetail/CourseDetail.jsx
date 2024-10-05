@@ -7,7 +7,7 @@ import OverviewTabs from "../OverviewTabs/OverviewTabs";
 import ReviewTabs from "../ReviewTabs/ReviewTabs";
 import DescriptionTabs from "../DescriptionTabs/DescriptionTabs";
 import { useCourses } from "../../../Hooks/api/useCourses";
-import { useUser } from "../../../Hooks/api/useUser";
+import { useUser } from "../../../Hooks/api/useUsers";
 import toast from "react-hot-toast";
 
 const CourseDetail = () => {

@@ -5,7 +5,7 @@ import ReviewCard from "../../Ui/ReviewCard";
 import { useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useCourses } from "../../../Hooks/api/useCourses";
-import { useUser } from "../../../Hooks/api/useUser";
+import { useUser } from "../../../Hooks/api/useUsers";
 import { useForm } from "react-hook-form";
 import Rating from "../../Ui/Rating";
 

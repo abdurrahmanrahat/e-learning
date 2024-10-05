@@ -1,5 +1,5 @@
 import PrimaryTitle from "../../../../components/Ui/PrimaryTitle";
-import { useUser } from "../../../../Hooks/api/useUser";
+import { useUser } from "../../../../Hooks/api/useUsers";
 import { useState } from "react";
 import { FaUserEdit } from "react-icons/fa";
 

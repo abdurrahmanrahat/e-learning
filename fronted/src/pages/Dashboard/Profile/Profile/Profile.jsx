@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import MyProfile from "./MyProfile";
 import SocialLink from "./SocialLink";
 import BasicInfo from "./BasicInfo";
-import { useUser } from "../../../../Hooks/api/useUser";
+import { useUser } from "../../../../Hooks/api/useUsers";
 
 const Profile = () => {
   const {user}=useUser();

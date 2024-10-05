@@ -1,23 +1,22 @@
 import { useEffect, useState } from "react";
 import useAxios from "../useAxios";
 
-export const useCourses = (query, id) => {
+export const useCourses = (query) => {
     const [courses, setCourses] = useState();
-    const [course, setCourse] = useState();
     const apiHandler = useAxios();
 
-    useEffect(() => {
-        if (id) {
-            apiHandler.get(`/courses/${id}`)
-                .then(res => setCourse(res?.data))
-                .catch(err => console.error(err));
-        }
-        else {
-            apiHandler.get(`/courses?page=${query?.page}&limit=${query?.limit}&category=${query?.category}&courseDuration=${query?.duration}&searchTerm=${query?.searchTerm}`).then(res => {
-                setCourses(res?.data.data)
-            })
-        }
-    }, [apiHandler, query?.page, query?.limit, query?.category, query?.duration, query?.searchTerm, id])
+    const fetchCourses = async () => {
+        await apiHandler.get(`/courses?page=${query?.page}&limit=${query?.limit}&category=${query?.category}&courseDuration=${query?.duration}&searchTerm=${query?.searchTerm}`).then(res => {
+            setCourses(res?.data.data)
+        })
+    }
 
-    return { courses, course }
+    useEffect(() => {
+        if (query) {
+            fetchCourses()
+        }
+
+    }, [query])
+
+    return { courses, fetchCourses }
 }
