@@ -5,11 +5,11 @@ export default function ProgressBar({value, width}) {
         className={`w-[90%] bg-gray-300 rounded-full h-3 flex justify-between`}
       >
         <div
-          className={`bg-[#49BBBD] rounded-full h-3 text-white flex items-center justify-center`}
-          style={{ width: `${width}%` }}
+          className={`bg-[#FFF] rounded-full h-3 text-white flex items-center justify-center`}
+          style={{ width: `${width ? width : 0}%` }}
         ></div>
       </div>
-      <div className="w-[10%]">{value}%</div>
+      <div className="w-[10%]">{value ? value : 0}%</div>
     </div>
   );
 }

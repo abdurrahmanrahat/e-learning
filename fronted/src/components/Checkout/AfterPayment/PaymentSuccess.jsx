@@ -87,7 +87,7 @@ export default function PaymentSuccess() {
           Amount Paid: ${paymentReceipt?.orderInfo?.amount}
         </h2>
         <p className="text-base">
-          Redirect to your{" "}
+          Click this link and {" "}
           <button
             onClick={handleDownloadBtn}
             className="text-md text-blue-500 underline"

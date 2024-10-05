@@ -6,7 +6,7 @@ import SocialLink from "./SocialLink";
 import BasicInfo from "./BasicInfo";
 import { useUser } from "../../../../Hooks/api/useUser";
 
-const StudentProfile = () => {
+const Profile = () => {
   const {user}=useUser();
   console.log(user);
   //   student profile tabs
@@ -116,7 +116,7 @@ const StudentProfile = () => {
                   role="tab"
                   aria-setsize="3"
                   aria-posinset="1"
-                  tabindex={`${tabSelected.currentTab === 1 ? "0" : "-1"}`}
+                  tabIndex={`${tabSelected.currentTab === 1 ? "0" : "-1"}`}
                   aria-controls="tab-panel-1a"
                   aria-selected={`${
                     tabSelected.currentTab === 1 ? "true" : "false"
@@ -141,7 +141,7 @@ const StudentProfile = () => {
                   role="tab"
                   aria-setsize="3"
                   aria-posinset="2"
-                  tabindex={`${tabSelected.currentTab === 2 ? "0" : "-1"}`}
+                  tabIndex={`${tabSelected.currentTab === 2 ? "0" : "-1"}`}
                   aria-controls="tab-panel-2a"
                   aria-selected={`${
                     tabSelected.currentTab === 2 ? "true" : "false"
@@ -166,7 +166,7 @@ const StudentProfile = () => {
                   role="tab"
                   aria-setsize="3"
                   aria-posinset="2"
-                  tabindex={`${tabSelected.currentTab === 3 ? "0" : "-1"}`}
+                  tabIndex={`${tabSelected.currentTab === 3 ? "0" : "-1"}`}
                   aria-controls="tab-panel-2a"
                   aria-selected={`${
                     tabSelected.currentTab === 3 ? "true" : "false"
@@ -191,7 +191,7 @@ const StudentProfile = () => {
               aria-hidden={`${tabSelected.currentTab === 1 ? "true" : "false"}`}
               role="tabpanel"
               aria-labelledby="tab-label-1a"
-              tabindex="-1"
+              tabIndex="-1"
             >
               <MyProfile></MyProfile>
             </div>
@@ -203,7 +203,7 @@ const StudentProfile = () => {
               aria-hidden={`${tabSelected.currentTab === 2 ? "true" : "false"}`}
               role="tabpanel"
               aria-labelledby="tab-label-2a"
-              tabindex="-1"
+              tabIndex="-1"
             >
               <BasicInfo></BasicInfo>
             </div>
@@ -215,7 +215,7 @@ const StudentProfile = () => {
               aria-hidden={`${tabSelected.currentTab === 3 ? "true" : "false"}`}
               role="tabpanel"
               aria-labelledby="tab-label-3a"
-              tabindex="-1"
+              tabIndex="-1"
             >
              <SocialLink></SocialLink>
             </div>
@@ -227,4 +227,4 @@ const StudentProfile = () => {
   );
 };
 
-export default StudentProfile;
+export default Profile;

@@ -4,10 +4,11 @@ import ProgressBar from "../../../../components/Ui/ProgressBar";
 import { useState } from "react";
 import { FaAngleDown, FaAngleUp, FaSearch } from "react-icons/fa";
 import { FiYoutube } from "react-icons/fi";
-import PrimaryTitle from "../../../../components/Ui/PrimaryTitle";
 import Tabs from "../../../../components/Ui/Tabs";
 import { FaLock } from "react-icons/fa";
 import { FaCheckCircle } from "react-icons/fa";
+import { FaCircleArrowLeft } from "react-icons/fa6";
+import Button from "../../../../components/Ui/Button";
 
 const modules = [
   {
@@ -134,8 +135,10 @@ export default function CourseClassroom() {
   const [activeModuleIndex, setActiveModuleIndex] = useState(null);
   const [watchedVideos, setWatchedVideos] = useState({});
 
-  const handleActiveModuleIndex = (index, description) => {
-    setActiveModuleIndex(activeModuleIndex === index ? null : index);
+  const handleActiveModuleIndex = (moduleIndex, videoIndex, description) => {
+    setActiveModuleIndex(
+      activeModuleIndex === moduleIndex ? null : moduleIndex
+    );
     setDescription(description);
   };
 
@@ -152,6 +155,7 @@ export default function CourseClassroom() {
       return prevWatched;
     });
     setContents(item);
+    setActiveModuleIndex(activeModuleIndex === videoIndex ? null : videoIndex);
   };
 
   const getTotalVideosCount = () => {
@@ -189,138 +193,151 @@ export default function CourseClassroom() {
   console.log(description);
 
   return (
-    <div className="flex flex-col gap-10 my-6">
-      <PrimaryTitle
-        headingPart1={`${course?.data?.title} with`}
-        headingPart2={`${course?.data?.instructorName}`}
-      />
-      <div className="flex flex-col gap-2 w-full ">
-        <div className="flex gap-2 justify-start items-center border-b-[3px] border-b-[#49BBBD] pb-2">
-          <span></span>
-          <span className="text-xl font-medium text-primary">
-            {contents?.title}
+    <div className="flex flex-col gap-0 w-full">
+      <div className="flex flex-col lg:flex-row xl:flex-row gap-4 justify-between items-center px-4 py-6 text-xl font-medium text-white bg-primary border-b-[0.6px] border-b-[#D1D7DC]">
+        <div className="w-full flex gap-4 justify-center lg:justify-start xl:justify-start items-center">
+          <span className="cursor-pointer text-2xl hover:scale-[1.2] transition-all duration-500 ease-in-out">
+            <FaCircleArrowLeft />
+          </span>
+          <span>{contents?.title}</span>
+        </div>
+        {/* progress bar */}
+        <div className="w-full flex flex-col justify-end lg:flex-row xl:flex-row items-center gap-2 text-[#fff]">
+          <div className="flex gap-2">
+            <span className="">Module :</span>
+            <span>
+              ({watchedVideosCount}/{totalVideosCount})
+            </span>
+          </div>
+          <span className="w-[60%]">
+            <ProgressBar
+              value={`${Math.floor(courseProgressPercentage)}`}
+              width={`${Math.floor(courseProgressPercentage)}`}
+            />
           </span>
         </div>
-        <div className="w-full flex justify-center items-start gap-6">
-          {/* video */}
-          <div className="w-[60%]">
-            {/* video content */}
-            <div className="p-4 w-full">
-              <iframe
-                className="w-full h-[350px] rounded-xl"
-                src={`${contents?.contentLink}&autoplay=1`}
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-              ></iframe>
+      </div>
+      <div className="w-full flex flex-col lg:flex-row xl:flex-row justify-center items-start">
+        {/* video */}
+        <div className="w-full lg:w-[65%] xl:w-[65%] border-r-[2px] border-r-[#D1D7DC]">
+          {/* video content */}
+          <div className="w-full h-[40vh] lg:h-[70vh] xl:h-[70vh] flex flex-col items-end gap-4">
+            <iframe
+              className="w-full h-full"
+              src={`${contents?.contentLink}&autoplay=1`}
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+            <div className="w-full lg:w-[40%] xl:w-[40%] flex gap-12 items-center px-4">
+              <Button outlineBtn>Previous</Button>
+              <Button bgBtn>Next</Button>
             </div>
+          </div>
+          {/* description */}
+          <div className="h-[40%] mt-10 px-4 hidden flex:flex xl:flex">
+            <Tabs
+              tabs={["Description", "Notes", "Resources"]}
+              tabItems={tabsItem}
+            />
+          </div>
+          <div className="h-[40%] mt-10 px-4 flex flex:hidden xl:hidden">
+            <Tabs
+              tabs={["Description", "Notes", "Resources"]}
+              tabItems={tabsItem}
+            />
+          </div>
+        </div>
 
-            {/* description */}
-            <div className="h-[40%] mt-10">
-              <Tabs
-                tabs={["Description", "Notes", "Resources"]}
-                tabItems={tabsItem}
+        {/* module */}
+        <div className="w-full lg:w-[35%] xl:w-[35%] flex flex-col gap-4">
+          {/* search */}
+          <div className="bg-primary shadow-myCustomShadow p-6">
+            <div className="w-full rounded-xl focus:outline-none focus:border-[#49BBBD] border text-[#000] flex items-center bg-white shadow-myCustomShadow">
+              <div className="text-[#9D9B9B] cursor-pointer text-2xl w-[10%] flex justify-center">
+                <span>
+                  <FaSearch />
+                </span>
+              </div>
+              <input
+                type="text"
+                name="searchKeyword"
+                id="searchKeyword"
+                placeholder="Search your favorite course"
+                className="w-[90%] py-3 border-none focus:outline-none focus:border-[#49BBBD] border-[#D9D9D9] placeholder:text-[#9D9B9B] placeholder:text-base placeholder:font-light outline-none rounded-r-xl"
+                //   onChange={(e) => handleSearch(e)}
               />
             </div>
           </div>
-
-          {/* module */}
-          <div className="w-[40%] flex flex-col gap-4">
-            {/* progress bar */}
-            <div className="flex justify-start items-center gap-2 text-primary mb-4">
-              <span className="">Course Status:</span>
-              <div className="w-full flex flex-col gap-2 justify-start ">
-                <span className="">
-                  <ProgressBar
-                    value={`${Math.floor(courseProgressPercentage)}`}
-                    width={`${Math.floor(courseProgressPercentage)}`}
-                  />
-                </span>
-                <span>
-                  ({watchedVideosCount}/{totalVideosCount})
-                </span>
-              </div>
-            </div>
-            {/* search */}
-            <div className="bg-[#49BBBD] shadow-myCustomShadow p-6 rounded-xl">
-              <div className="w-full rounded-xl focus:outline-none focus:border-[#49BBBD] border text-[#000] flex items-center bg-white shadow-myCustomShadow">
-                <div className="text-[#9D9B9B] cursor-pointer text-2xl w-[10%] flex justify-center">
-                  <span>
-                    <FaSearch />
-                  </span>
-                </div>
-                <input
-                  type="text"
-                  name="searchKeyword"
-                  id="searchKeyword"
-                  placeholder="Search your favorite course"
-                  className="w-[90%] py-3 border-none focus:outline-none focus:border-[#49BBBD] border-[#D9D9D9] placeholder:text-[#9D9B9B] placeholder:text-base placeholder:font-light outline-none rounded-r-xl"
-                  //   onChange={(e) => handleSearch(e)}
-                />
-              </div>
-            </div>
-            {/* modules */}
-            <div className="custom-scrollbar h-[60vh] overflow-y-scroll flex flex-col gap-4">
-              <div className="flex flex-col gap-4 py-4 rounded-2xl">
-                {modules?.map((item, moduleIndex) => (
+          {/* modules */}
+          <div className="custom-scrollbar h-[80vh] overflow-y-scroll flex flex-col gap-4">
+            <div className="flex flex-col py-4 rounded-2xl">
+              {modules?.map((item, moduleIndex) => (
+                <div
+                  key={moduleIndex}
+                  className="flex flex-col bg-[#FFF] rounded-2xl text-[#2d2421]"
+                >
                   <div
-                    key={moduleIndex}
-                    className="flex flex-col gap-4 bg-[#49BBBD] p-4 rounded-2xl text-white"
+                    onClick={() =>
+                      handleActiveModuleIndex(moduleIndex, item.description)
+                    }
+                    className={`flex flex-col gap-1 justify-start text-xl font-medium cursor-pointer border-b-[2px] border-b-[#D1D7DC] p-4 hove:bg-[#F7F9FA] ${
+                      activeModuleIndex === moduleIndex ? "bg-[#F7F9FA]" : ""
+                    }`}
                   >
-                    <div
-                      onClick={() =>
-                        handleActiveModuleIndex(moduleIndex, item.description)
-                      }
-                      className="flex justify-between gap-4 text-xl cursor-pointer"
-                    >
+                    <div className="flex justify-between gap-4">
                       <span>{item.moduleName}</span>
                       {activeModuleIndex === moduleIndex ? (
-                        <span className="cursor-pointer">
+                        <span className="text-2xl">
                           <FaAngleUp />
                         </span>
                       ) : (
-                        <span className="cursor-pointer">
+                        <span className="text-2xl">
                           <FaAngleDown />
                         </span>
                       )}
                     </div>
-                    <span>1h. 30m. 10/1</span>
-                    {activeModuleIndex === moduleIndex && (
-                      <ul className="bg-[#2a494967] rounded-xl p-4">
-                        {item?.content.map((item, videoIndex) => (
-                          <li
-                            className="border-b-[2px] border-b-[#9D9B9B] py-4 px-2 cursor-pointer flex gap-4 items-center"
-                            key={videoIndex}
-                            onClick={() =>
-                              handleVideoWatch(moduleIndex, videoIndex, item)
-                            }
-                          >
-                            <div className="flex gap-2 text-xl">
-                              {watchedVideos[`module-${moduleIndex}`]?.includes(
-                                videoIndex
-                              ) ? (
-                                <FaCheckCircle />
-                              ) : (
-                                <FaLock />
-                              )}
-                            </div>
-                            <div className="flex flex-col gap-2">
-                              <span>{item.title}</span>
-                              <div className="flex gap-2 items-center text-md">
-                                <span>
-                                  <FiYoutube />
-                                </span>
-                                <span>{item.duration}</span>
-                              </div>
-                            </div>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
+                    <span className="text-base font-normal">1h. 30m. 10/1</span>
                   </div>
-                ))}
-              </div>
+                  {activeModuleIndex === moduleIndex && (
+                    <ul className="bg-[#fff] text-[#2d2f31]">
+                      {item?.content.map((item, videoIndex) => (
+                        <li
+                          className={`py-4 px-4 cursor-pointer flex gap-4 items-center hover:bg-[#D1D7DC] transition-all duration-300 ease-in-out ${
+                            activeModuleIndex === videoIndex
+                              ? "bg-[#D1D7DC]"
+                              : ""
+                          }`}
+                          key={videoIndex}
+                          onClick={() =>
+                            handleVideoWatch(moduleIndex, videoIndex, item)
+                          }
+                        >
+                          <div className="flex gap-2 text-xl">
+                            {watchedVideos[`module-${moduleIndex}`]?.includes(
+                              videoIndex
+                            ) ? (
+                              <FaCheckCircle />
+                            ) : (
+                              <FaLock />
+                            )}
+                          </div>
+                          <div className="flex flex-col gap-2 text-lg">
+                            <span>{item.title}</span>
+                            <div className="flex gap-2 items-center text-sm">
+                              <span>
+                                <FiYoutube />
+                              </span>
+                              <span>{item.duration}</span>
+                            </div>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </div>

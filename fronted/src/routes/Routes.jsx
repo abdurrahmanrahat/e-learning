@@ -18,11 +18,10 @@ import PaymentFailed from "../components/Checkout/AfterPayment/PaymentFailed";
 import RoleChange from "../pages/RoleChange/RoleChange";
 import Charts from "../components/Charts/Charts";
 import Authentication from "../pages/Authentication/Authentication";
-import StudentProfile from "../pages/Dashboard/Profile/StudentProfile/StudentProfile";
 import EnrolledCourses from "../pages/Dashboard/Student/EnrolledCourses/EnrolledCourses";
 import InstructorsProfile from "../pages/Dashboard/Profile/IstructorProfile/InstructorsProfile";
 import CourseClassroom from "../pages/Dashboard/Student/CourseClassroom/CourseClassroom";
-import AddModule from "../pages/Dashboard/AddModule/AddModule";
+import Profile from "../pages/Dashboard/Profile/Profile/Profile";
 
 
 const router = createBrowserRouter([
@@ -71,10 +70,6 @@ const router = createBrowserRouter([
         path: "role-change",
         element: <RoleChange />,
       },
-      {
-        path: "charts",
-        element: <Charts/>,
-      },
     ],
   },
   {
@@ -102,12 +97,8 @@ const router = createBrowserRouter([
         element: <UsersManagement />,
       },
       {
-        path: "add-module",
-        element: <AddModule/>,
-      },
-      {
-        path: "student-profile",
-        element: <StudentProfile></StudentProfile>,
+        path: "profile",
+        element: <Profile/>,
       },
       {
         path: "enrolled-courses",
@@ -120,6 +111,11 @@ const router = createBrowserRouter([
       {
         path: "instructor-profile",
         element: <InstructorsProfile></InstructorsProfile>,
+      },
+      
+      {
+        path: "charts",
+        element: <Charts/>,
       },
     ],
   },
