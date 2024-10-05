@@ -1,31 +1,62 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FaCheckCircle } from "react-icons/fa";
 import { useParams, Link } from "react-router-dom";
 import jsPDF from "jspdf";
+import useAxios from "../../../Hooks/useAxios";
+import axios from "axios";
 
 export default function PaymentSuccess() {
   const { trans_id } = useParams();
   const [paymentReceipt, setPaymentReceipt] = useState({});
+  const apiHandler = useAxios();
 
   useEffect(() => {
     const getReceipt = async () => {
-      await axios
-        .get(`http://localhost:5000/payment-history/${trans_id}`)
-        .then((res) => {
-          console.log(res.data);
-          setPaymentReceipt(res.data);
-        })
-        .catch((err) => {
-          console.log(err.message);
-          toast.error(`${err.message}`);
-        });
+      try {
+        const res = await axios.get(
+          `http://localhost:5000/payment-history/${trans_id}`
+        );
+        console.log(res.data);
+        setPaymentReceipt(res.data);
+        return res.data; // Return the receipt data for the next function
+      } catch (err) {
+        console.log(err.message);
+        toast.error(`${err.message}`);
+        return null; // Return null in case of error
+      }
     };
-    getReceipt();
-  }, [trans_id]);
 
-  console.log(paymentReceipt?.orderInfo?.amount);
+    const createEnrolledCourse = async (receiptData) => {
+      if (!receiptData) return;
+
+      try {
+        const data = {
+          course: receiptData?.orderInfo?.courseId,
+          studentName: receiptData?.orderInfo?.name,
+          studentEmail: receiptData?.orderInfo?.email,
+        };
+        const res = await apiHandler.post(
+          "/enrolled-courses/create-enrolled-course",
+          data
+        );
+        console.log(res.data);
+        toast.success("Course Enrolled Successfully");
+      } catch (err) {
+        console.log(err.message);
+        toast.error(`${err.message}`);
+      }
+    };
+
+    const handleData = async () => {
+      const receiptData = await getReceipt();
+      await createEnrolledCourse(receiptData);
+    };
+
+    handleData();
+  }, [trans_id, apiHandler]);
+
+  console.log(paymentReceipt?.orderInfo);
 
   // handleDownloadBtn
   const handleDownloadBtn = async () => {
@@ -52,9 +83,19 @@ export default function PaymentSuccess() {
     doc.text(`Customer Name: ${paymentReceipt?.orderInfo?.name}`, 20, 80);
     doc.text(`Address: ${paymentReceipt?.orderInfo?.address}`, 20, 90);
     doc.text(`Phone: ${paymentReceipt?.orderInfo?.phone}`, 20, 100);
-    doc.text(`Product Category: ${paymentReceipt?.orderInfo?.category}`, 20, 110);
-    doc.text(`Product Name: ${paymentReceipt?.orderInfo?.productName}`, 20, 120);
-    doc.text(`Total Amount: $${paymentReceipt?.orderInfo?.amount}`, 140, 140, { align: "left" });
+    doc.text(
+      `Product Category: ${paymentReceipt?.orderInfo?.category}`,
+      20,
+      110
+    );
+    doc.text(
+      `Product Name: ${paymentReceipt?.orderInfo?.productName}`,
+      20,
+      120
+    );
+    doc.text(`Total Amount: $${paymentReceipt?.orderInfo?.amount}`, 140, 140, {
+      align: "left",
+    });
 
     // Draw rectangle around payment data
     doc.setDrawColor(0, 0, 0);
@@ -87,7 +128,7 @@ export default function PaymentSuccess() {
           Amount Paid: ${paymentReceipt?.orderInfo?.amount}
         </h2>
         <p className="text-base">
-          Click this link and {" "}
+          Click this link and{" "}
           <button
             onClick={handleDownloadBtn}
             className="text-md text-blue-500 underline"
