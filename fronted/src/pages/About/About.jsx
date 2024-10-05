@@ -1,4 +1,4 @@
-import Totc from "../../components/Home/Totc/Totc";
+import BrainWave from "../../components/Home/BrainWave/BrainWave";
 import PrimaryTitle from "../../components/Ui/PrimaryTitle";
 
 // Import required modules
@@ -61,7 +61,7 @@ console.log(courses)
 
       <div className="lg:my-20 my-10 ">
         <div className="container-class md:p-4">
-          <Totc />
+          <BrainWave />
         </div>
 
         {/* popular courses */}

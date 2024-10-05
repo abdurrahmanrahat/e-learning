@@ -58,19 +58,10 @@ export default function DashboardLayout() {
               {/* Add your navigation items */}
 
               <li className="">
-                <DashboardActiveLink to="/dashboard/admin">
+                <DashboardActiveLink to="/dashboard/admin/charts">
                   <span className="flex items-center gap-3 rounded py-3 px-6  transition-colors duration-300 ">
                     <RxDashboard className="block text-[18px]" />
                     <span className="block text-[17px]">Dashboard</span>
-                  </span>
-                </DashboardActiveLink>
-              </li>
-
-              <li className="">
-                <DashboardActiveLink to="/dashbard">
-                  <span className="flex items-center gap-3 rounded py-3 px-6  transition-colors duration-300">
-                    <RxDashboard className="block text-[18px]" />
-                    <span className="block text-[17px]">Test</span>
                   </span>
                 </DashboardActiveLink>
               </li>
@@ -110,31 +101,23 @@ export default function DashboardLayout() {
                   </span>
                 </DashboardActiveLink>
               </li>
-              <li className="">
-                <DashboardActiveLink to="/dashboard/admin/add-module">
-                  <span className="flex items-center gap-3 rounded py-3 px-6 transition-colors duration-300">
-                    <PiUsersThreeDuotone className="block text-[18px]" />
-                    <span className="block text-[17px]">Add Module</span>
-                  </span>
-                </DashboardActiveLink>
-              </li>
             </ul>
           </nav>
 
           <footer className="border-t border-slate-200 p-3">
-            <a
-              href="#"
+            <Link to="/dashboard/admin/profile"
+              href="/dashboard/admin/profile"
               className="flex items-center gap-3 rounded p-3 text-secondary transition-colors hover:text-primary"
             >
               <IoSettingsOutline />
               <span className="text-sm font-medium">Settings</span>
-            </a>
+            </Link>
           </footer>
         </aside>
 
         {/* Main Content Area */}
         <div
-          className={`flex-1 p-6 text-black border-opacity-50 ${
+          className={`flex-1 text-black border-opacity-50 w-full ${
             isSideNavOpen ? "" : "lg:ml-72"
           }`}
         >
