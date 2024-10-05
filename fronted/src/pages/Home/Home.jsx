@@ -1,10 +1,9 @@
+import BrainWave from "../../components/Home/BrainWave/BrainWave";
 import Features from "../../components/Home/Features/Features";
 import Hero from "../../components/Home/Hero/Hero";
-import LastestNews from "../../components/Home/LastestNews/LastestNews";
+import LatestBlogs from "../../components/Home/LatestBlogs/LatestBlogs";
 import OurCategory from "../../components/Home/OurCategory/OurCategory";
 import Success from "../../components/Home/Success/Success";
-import Testimonial from "../../components/Home/Testimonial/Testimonial";
-import Totc from "../../components/Home/Totc/Totc";
 import TestimonialsForHome from "../../components/Ui/Testimonials/TestimonialsForHome/TestimonialsForHome";
 
 const Home = () => {
@@ -23,7 +22,7 @@ const Home = () => {
       </div>
 
       <div className="pb-24 container-class">
-        <Totc />
+        <BrainWave />
       </div>
 
       <div className="pb-24 container-class">
@@ -31,15 +30,11 @@ const Home = () => {
       </div>
 
       <div className="pb-24 container-class">
-        <Testimonial />
-      </div>
-
-      <div className="pb-24 container-class">
         <TestimonialsForHome />
       </div>
 
       <div className="pb-24 container-class">
-        <LastestNews />
+        <LatestBlogs />
       </div>
     </div>
   );

@@ -4,14 +4,14 @@ import useAxios from "../../../Hooks/useAxios";
 import ReviewCard from "../../Ui/ReviewCard";
 import { useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { useCourses } from "../../../Hooks/api/useCourses";
-import { useUser } from "../../../Hooks/api/useUser";
 import { useForm } from "react-hook-form";
 import Rating from "../../Ui/Rating";
+import useCourse from "../../../Hooks/api/useCourse";
+import useUser from "../../../Hooks/api/useUser";
 
 const ReviewTabs = () => {
   const { id } = useParams();
-  const { course } = useCourses(null, id);
+  const { course } = useCourse(id);
   const { reviews, fetchReviews } = useReviews(id);
   const apiHandler = useAxios();
   const [rating, setRating] = useState(0);

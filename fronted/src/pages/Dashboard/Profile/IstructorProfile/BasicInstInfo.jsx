@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useUser } from "../../../../Hooks/api/useUser";
 import { useForm } from "react-hook-form";
+import useUser from "../../../../Hooks/api/useUser";
 
 const BasicInstInfo = () => {
   const { user } = useUser();

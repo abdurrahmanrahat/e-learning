@@ -4,119 +4,124 @@ import ProgressBar from "../../../../components/Ui/ProgressBar";
 import { useState } from "react";
 import { FaAngleDown, FaAngleUp, FaSearch } from "react-icons/fa";
 import { FiYoutube } from "react-icons/fi";
-import PrimaryTitle from "../../../../components/Ui/PrimaryTitle";
 import Tabs from "../../../../components/Ui/Tabs";
+import { FaLock } from "react-icons/fa";
+import { FaCheckCircle } from "react-icons/fa";
+import { FaCircleArrowLeft } from "react-icons/fa6";
+import Button from "../../../../components/Ui/Button";
 
-const milestones = [
+const modules = [
   {
-    milestoneName: "Milestone 1: Getting Started",
+    moduleName: "Introduction to Web Development",
     description:
       "This milestone covers the basics of web development, including an introduction to HTML.",
-    modules: [
+    content: [
       {
-        moduleName: "Introduction to Web Development",
-        content: [
-          {
-            title: "What is Web Development?",
-            duration: "10:35",
-            contentLink:
-              "https://www.youtube.com/embed/UYbN4jhDg6Q?si=XgjHgu6tT_I9SAay",
-          },
-          {
-            title: "Getting Started with HTML",
-            duration: "15:20",
-            contentLink:
-              "https://www.youtube.com/embed/Gu6k47UjZ44?si=IwqbhceFsUUArXRQ",
-          },
-        ],
+        title: "What is Web Development?",
+        duration: "10:35",
+        contentLink:
+          "https://www.youtube.com/embed/UYbN4jhDg6Q?si=XgjHgu6tT_I9SAay",
+      },
+      {
+        title: "Getting Started with HTML",
+        duration: "15:20",
+        contentLink:
+          "https://www.youtube.com/embed/Gu6k47UjZ44?si=IwqbhceFsUUArXRQ",
       },
     ],
   },
   {
-    milestoneName: "Milestone 2: CSS Basics",
+    moduleName: "CSS Fundamentals",
     description:
-      "Learn how to style web pages using CSS, covering essential styling techniques and properties.",
-    modules: [
+      "This module introduces CSS, exploring its core concepts for styling web pages.",
+    content: [
       {
-        moduleName: "Styling with CSS",
-        content: [
-          {
-            title: "Introduction to CSS",
-            duration: "12:00",
-            contentLink: "https://www.youtube.com/embed/1PnVor36_40?si=abc123",
-          },
-          {
-            title: "CSS Selectors and Properties",
-            duration: "18:30",
-            contentLink: "https://www.youtube.com/embed/54ZJmMGVpP8?si=xyz456",
-          },
-        ],
+        title: "What is CSS?",
+        duration: "12:50",
+        contentLink:
+          "https://www.youtube.com/embed/Edsxf_NBFrw?si=y6vXDiDxIC6LXeDv",
+      },
+      {
+        title: "Basic CSS Properties",
+        duration: "14:30",
+        contentLink:
+          "https://www.youtube.com/embed/hJECxP0qlFQ?si=cJDKVZaZUGjhfKvW",
       },
     ],
   },
   {
-    milestoneName: "Milestone 3: JavaScript Essentials",
+    moduleName: "JavaScript Basics",
     description:
-      "Dive into the fundamentals of JavaScript, the core programming language of the web.",
-    modules: [
+      "An introduction to JavaScript, including variables, functions, and basic DOM manipulation.",
+    content: [
       {
-        moduleName: "Introduction to JavaScript",
-        content: [
-          {
-            title: "What is JavaScript?",
-            duration: "14:45",
-            contentLink: "https://www.youtube.com/embed/W6NZfCO5SIk?si=def789",
-          },
-          {
-            title: "JavaScript Variables and Data Types",
-            duration: "20:10",
-            contentLink: "https://www.youtube.com/embed/hdI2bqOjy3c?si=ghi101",
-          },
-        ],
+        title: "JavaScript Syntax and Variables",
+        duration: "18:15",
+        contentLink:
+          "https://www.youtube.com/embed/W6NZfCO5SIk?si=RugCyoxLEyG0p9v2",
+      },
+      {
+        title: "Functions in JavaScript",
+        duration: "13:45",
+        contentLink:
+          "https://www.youtube.com/embed/8R7w3jwj4g4?si=ZaF63KvSJ1VPAwRI",
       },
     ],
   },
   {
-    milestoneName: "Milestone 4: Version Control with Git",
+    moduleName: "Responsive Web Design",
     description:
-      "Understand how to use Git and GitHub for version control and collaboration on coding projects.",
-    modules: [
+      "This module teaches how to create websites that work well on different devices.",
+    content: [
       {
-        moduleName: "Understanding Git and GitHub",
-        content: [
-          {
-            title: "Introduction to Git",
-            duration: "11:55",
-            contentLink: "https://www.youtube.com/embed/8JJ101D3knE?si=jkl102",
-          },
-          {
-            title: "Using GitHub for Collaboration",
-            duration: "22:40",
-            contentLink: "https://www.youtube.com/embed/USjZcfj8yxE?si=mno345",
-          },
-        ],
+        title: "Introduction to Responsive Design",
+        duration: "16:30",
+        contentLink:
+          "https://www.youtube.com/embed/srvUrASNj0s?si=U6DtK9C1CmZgJED9",
+      },
+      {
+        title: "Media Queries in CSS",
+        duration: "14:40",
+        contentLink:
+          "https://www.youtube.com/embed/ZBRq03R9D0U?si=ZJEnwWn_jmJQgNMr",
       },
     ],
   },
   {
-    milestoneName: "Milestone 5: Responsive Design",
+    moduleName: "Version Control with Git",
     description:
-      "Learn to build websites that look great on all devices by mastering responsive design techniques.",
-    modules: [
+      "Learn about version control using Git, including basic Git commands and repositories.",
+    content: [
       {
-        moduleName: "Building Responsive Websites",
-        content: [
-          {
-            title: "Introduction to Responsive Design",
-            duration: "16:25",
-            contentLink: "https://www.youtube.com/embed/srvUrASNj0s?si=pqr678",
-          },
-          {
-            title: "Using Flexbox and Grid",
-            duration: "19:50",
-            contentLink: "https://www.youtube.com/embed/JJSoEo8JSnc?si=stu910",
-          },
-        ],
+        title: "What is Version Control?",
+        duration: "11:20",
+        contentLink:
+          "https://www.youtube.com/embed/1ffBJ4sVUb4?si=lxZkt0NOvjHvPYcJ",
+      },
+      {
+        title: "Basic Git Commands",
+        duration: "19:00",
+        contentLink:
+          "https://www.youtube.com/embed/HVsySz-h9r4?si=_PxSw-OBYzfv5UKR",
+      },
+    ],
+  },
+  {
+    moduleName: "Introduction to Node.js",
+    description:
+      "This module covers the basics of Node.js and how it can be used for backend development.",
+    content: [
+      {
+        title: "What is Node.js?",
+        duration: "12:45",
+        contentLink:
+          "https://www.youtube.com/embed/TlB_eWDSMt4?si=Uexf4EzfN5gHj_d9",
+      },
+      {
+        title: "Creating a Simple Server with Node.js",
+        duration: "17:30",
+        contentLink:
+          "https://www.youtube.com/embed/jIsj0upCBAM?si=tqBHF-uXMP4YFuGx",
       },
     ],
   },
@@ -125,19 +130,54 @@ const milestones = [
 export default function CourseClassroom() {
   const { id } = useParams();
   const { course } = useCourses(null, id);
-  const [description, setDescription] = useState(milestones[0]?.description);
-  const [contents, setContents] = useState(
-    milestones[0]?.modules[0]?.content[1]
-  );
+  const [description, setDescription] = useState(modules[0]?.description);
+  const [contents, setContents] = useState(modules[0]?.content[1]);
   const [activeModuleIndex, setActiveModuleIndex] = useState(null);
-  const [activeMilestoneIndex, setActiveMilestoneIndex] = useState(null);
+  const [watchedVideos, setWatchedVideos] = useState({});
 
-  const handleActiveMilestoneIndex = (index) => {
-    setActiveMilestoneIndex(activeMilestoneIndex === index ? null : index);
+  const handleActiveModuleIndex = (moduleIndex, videoIndex, description) => {
+    setActiveModuleIndex(
+      activeModuleIndex === moduleIndex ? null : moduleIndex
+    );
+    setDescription(description);
   };
-  const handleActiveModuleIndex = (index) => {
-    setActiveModuleIndex(activeModuleIndex === index ? null : index);
+
+  const handleVideoWatch = (moduleIndex, videoIndex, item) => {
+    setWatchedVideos((prevWatched) => {
+      const key = `module-${moduleIndex}`;
+      const currentWatched = prevWatched[key] || [];
+      if (!currentWatched.includes(videoIndex)) {
+        return {
+          ...prevWatched,
+          [key]: [...currentWatched, videoIndex],
+        };
+      }
+      return prevWatched;
+    });
+    setContents(item);
+    setActiveModuleIndex(activeModuleIndex === videoIndex ? null : videoIndex);
   };
+
+  const getTotalVideosCount = () => {
+    return modules.reduce((total, module) => total + module.content.length, 0);
+  };
+
+  // Function to calculate number of watched videos
+  const getWatchedVideosCount = () => {
+    return Object.values(watchedVideos).reduce((total, watchedInModule) => {
+      return total + watchedInModule.length;
+    }, 0);
+  };
+
+  // Calculate the total number of videos
+  const totalVideosCount = getTotalVideosCount();
+
+  // Calculate the number of watched videos
+  const watchedVideosCount = getWatchedVideosCount();
+
+  // Calculate the overall course progress as a percentage
+  const courseProgressPercentage =
+    totalVideosCount > 0 ? (watchedVideosCount / totalVideosCount) * 100 : 0;
 
   const tabsItem = [
     {
@@ -153,133 +193,148 @@ export default function CourseClassroom() {
   console.log(description);
 
   return (
-    <div className="flex flex-col gap-10 my-6">
-      <PrimaryTitle
-        headingPart1={`${course?.data?.title} with`}
-        headingPart2={`${course?.data?.instructorName}`}
-      />
-      <div className="flex flex-col gap-2 w-full ">
-        <div className="flex gap-2 justify-start items-center border-b-[3px] border-b-[#49BBBD] pb-2">
-          <span></span>
-          <span className="text-xl font-medium text-primary">{contents?.title}</span>
+    <div className="flex flex-col gap-0 w-full">
+      <div className="flex flex-col lg:flex-row xl:flex-row gap-4 justify-between items-center px-4 py-6 text-xl font-medium text-white bg-primary border-b-[0.6px] border-b-[#D1D7DC]">
+        <div className="w-full flex gap-4 justify-center lg:justify-start xl:justify-start items-center">
+          <span className="cursor-pointer text-2xl hover:scale-[1.2] transition-all duration-500 ease-in-out">
+            <FaCircleArrowLeft />
+          </span>
+          <span>{contents?.title}</span>
         </div>
-        <div className="w-full flex justify-center items-start gap-6">
-          {/* video */}
-          <div className="w-[60%]">
-            {/* video content */}
-            <div className="p-4 w-full">
-              <iframe
-                className="w-full h-[350px] rounded-xl"
-                src={contents?.contentLink}
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-              ></iframe>
+        {/* progress bar */}
+        <div className="w-full flex flex-col justify-end lg:flex-row xl:flex-row items-center gap-2 text-[#fff]">
+          <div className="flex gap-2">
+            <span className="">Module :</span>
+            <span>
+              ({watchedVideosCount}/{totalVideosCount})
+            </span>
+          </div>
+          <span className="w-[60%]">
+            <ProgressBar
+              value={`${Math.floor(courseProgressPercentage)}`}
+              width={`${Math.floor(courseProgressPercentage)}`}
+            />
+          </span>
+        </div>
+      </div>
+      <div className="w-full flex flex-col lg:flex-row xl:flex-row justify-center items-start">
+        {/* video */}
+        <div className="w-full lg:w-[65%] xl:w-[65%] border-r-[2px] border-r-[#D1D7DC]">
+          {/* video content */}
+          <div className="w-full h-[40vh] lg:h-[70vh] xl:h-[70vh] flex flex-col items-end gap-4">
+            <iframe
+              className="w-full h-full"
+              src={`${contents?.contentLink}&autoplay=1`}
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+            <div className="w-full lg:w-[40%] xl:w-[40%] flex gap-12 items-center px-4">
+              <Button outlineBtn>Previous</Button>
+              <Button bgBtn>Next</Button>
             </div>
+          </div>
+          {/* description */}
+          <div className="h-[40%] mt-10 px-4 hidden flex:flex xl:flex">
+            <Tabs
+              tabs={["Description", "Notes", "Resources"]}
+              tabItems={tabsItem}
+            />
+          </div>
+          <div className="h-[40%] mt-10 px-4 flex flex:hidden xl:hidden">
+            <Tabs
+              tabs={["Description", "Notes", "Resources"]}
+              tabItems={tabsItem}
+            />
+          </div>
+        </div>
 
-            {/* description */}
-            <div className="h-[40%] mt-10">
-              <Tabs
-                tabs={["Description", "Notes", "Resources"]}
-                tabItems={tabsItem}
+        {/* module */}
+        <div className="w-full lg:w-[35%] xl:w-[35%] flex flex-col gap-4">
+          {/* search */}
+          <div className="bg-primary shadow-myCustomShadow p-6">
+            <div className="w-full rounded-xl focus:outline-none focus:border-[#49BBBD] border text-[#000] flex items-center bg-white shadow-myCustomShadow">
+              <div className="text-[#9D9B9B] cursor-pointer text-2xl w-[10%] flex justify-center">
+                <span>
+                  <FaSearch />
+                </span>
+              </div>
+              <input
+                type="text"
+                name="searchKeyword"
+                id="searchKeyword"
+                placeholder="Search your favorite course"
+                className="w-[90%] py-3 border-none focus:outline-none focus:border-[#49BBBD] border-[#D9D9D9] placeholder:text-[#9D9B9B] placeholder:text-base placeholder:font-light outline-none rounded-r-xl"
+                //   onChange={(e) => handleSearch(e)}
               />
             </div>
           </div>
-
-          {/* module */}
-          <div className="w-[40%] flex flex-col gap-4">
-            <div className="flex justify-start items-center gap-2 text-primary mb-4">
-              <span className="">Running Module:</span>
-              <span className="w-full">
-                <ProgressBar value={80} />
-              </span>
-            </div>
-            <div className="bg-[#49BBBD] shadow-myCustomShadow p-6 rounded-xl">
-              <div className="w-full rounded-xl focus:outline-none focus:border-[#49BBBD] border text-[#000] flex items-center bg-white shadow-myCustomShadow">
-                <div className="text-[#9D9B9B] cursor-pointer text-2xl w-[10%] flex justify-center">
-                  <span>
-                    <FaSearch />
-                  </span>
-                </div>
-                <input
-                  type="text"
-                  name="searchKeyword"
-                  id="searchKeyword"
-                  placeholder="Search your favorite course"
-                  className="w-[90%] py-3 border-none focus:outline-none focus:border-[#49BBBD] border-[#D9D9D9] placeholder:text-[#9D9B9B] placeholder:text-base placeholder:font-light outline-none rounded-r-xl"
-                  //   onChange={(e) => handleSearch(e)}
-                />
-              </div>
-            </div>
-
-            <div className="custom-scrollbar h-[60vh] overflow-y-scroll flex flex-col gap-4">
-              {milestones?.map((item, index) => (
+          {/* modules */}
+          <div className="custom-scrollbar h-[80vh] overflow-y-scroll flex flex-col gap-4">
+            <div className="flex flex-col py-4 rounded-2xl">
+              {modules?.map((item, moduleIndex) => (
                 <div
-                  key={index}
-                  className="bg-[#49BBBD] shadow-myCustomShadow p-6 rounded-xl"
-                  onClick={() => setDescription(item?.description)}
+                  key={moduleIndex}
+                  className="flex flex-col bg-[#FFF] rounded-2xl text-[#2d2421]"
                 >
                   <div
-                    className="flex justify-between items-center cursor-pointer"
-                    onClick={() => handleActiveMilestoneIndex(index)}
+                    onClick={() =>
+                      handleActiveModuleIndex(moduleIndex, item.description)
+                    }
+                    className={`flex flex-col gap-1 justify-start text-xl font-medium cursor-pointer border-b-[2px] border-b-[#D1D7DC] p-4 hove:bg-[#F7F9FA] ${
+                      activeModuleIndex === moduleIndex ? "bg-[#F7F9FA]" : ""
+                    }`}
                   >
-                    <h2 className="text-2xl">{item.milestoneName}</h2>
-                    {activeMilestoneIndex === index ? (
-                      <span>
-                        <FaAngleUp />
-                      </span>
-                    ) : (
-                      <span>
-                        <FaAngleDown />
-                      </span>
-                    )}
+                    <div className="flex justify-between gap-4">
+                      <span>{item.moduleName}</span>
+                      {activeModuleIndex === moduleIndex ? (
+                        <span className="text-2xl">
+                          <FaAngleUp />
+                        </span>
+                      ) : (
+                        <span className="text-2xl">
+                          <FaAngleDown />
+                        </span>
+                      )}
+                    </div>
+                    <span className="text-base font-normal">1h. 30m. 10/1</span>
                   </div>
-                  {activeMilestoneIndex === index && (
-                    <div className="flex flex-col gap-4 py-4 rounded-2xl">
-                      {item?.modules?.map((item, index) => (
-                        <div
-                          key={index}
-                          className="flex flex-col gap-4 bg-[#2a494967] p-4 rounded-2xl text-white"
+                  {activeModuleIndex === moduleIndex && (
+                    <ul className="bg-[#fff] text-[#2d2f31]">
+                      {item?.content.map((item, videoIndex) => (
+                        <li
+                          className={`py-4 px-4 cursor-pointer flex gap-4 items-center hover:bg-[#D1D7DC] transition-all duration-300 ease-in-out ${
+                            activeModuleIndex === videoIndex
+                              ? "bg-[#D1D7DC]"
+                              : ""
+                          }`}
+                          key={videoIndex}
+                          onClick={() =>
+                            handleVideoWatch(moduleIndex, videoIndex, item)
+                          }
                         >
-                          <div
-                            onClick={() => handleActiveModuleIndex(index)}
-                            className="flex justify-between gap-4 text-xl cursor-pointer"
-                          >
-                            <span>{item.moduleName}</span>
-                            {activeModuleIndex === index ? (
-                              <span className="cursor-pointer">
-                                <FaAngleUp />
-                              </span>
+                          <div className="flex gap-2 text-xl">
+                            {watchedVideos[`module-${moduleIndex}`]?.includes(
+                              videoIndex
+                            ) ? (
+                              <FaCheckCircle />
                             ) : (
-                              <span className="cursor-pointer">
-                                <FaAngleDown />
-                              </span>
+                              <FaLock />
                             )}
                           </div>
-                          <span>1h. 30m. 10/1</span>
-                          {activeModuleIndex === index && (
-                            <ul>
-                              {item?.content.map((item, index) => (
-                                <li
-                                  className="border-t-[2px] border-t-[#9D9B9B] py-4 px-2 cursor-pointer flex flex-col gap-2"
-                                  key={index}
-                                  onClick={() => setContents(item)}
-                                >
-                                  <span>{item.title}</span>
-                                  <div className="flex gap-2 items-center text-md">
-                                    <span>
-                                      <FiYoutube />
-                                    </span>
-                                    <span>{item.duration}</span>
-                                  </div>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-                        </div>
+                          <div className="flex flex-col gap-2 text-lg">
+                            <span>{item.title}</span>
+                            <div className="flex gap-2 items-center text-sm">
+                              <span>
+                                <FiYoutube />
+                              </span>
+                              <span>{item.duration}</span>
+                            </div>
+                          </div>
+                        </li>
                       ))}
-                    </div>
+                    </ul>
                   )}
                 </div>
               ))}

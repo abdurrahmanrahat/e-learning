@@ -31,6 +31,7 @@ export default function CheckoutForm({course}) {
   const onSubmit = (data) => {
 
     const paymentInfo = {
+      courseId: course?.data?._id,
       name: data.name,
       email: data.email,
       address: data.address,
@@ -41,6 +42,7 @@ export default function CheckoutForm({course}) {
       category: course?.data.category,
       city: data.city,
       post_code: data.postCode,
+      currency: data.currency
     }
     // console.log(paymentInfo)
 

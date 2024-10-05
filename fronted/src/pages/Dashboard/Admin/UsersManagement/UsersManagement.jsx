@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import PrimaryTitle from "../../../../components/Ui/PrimaryTitle";  // Importing the title component
 import { useUser } from "../../../../Hooks/api/useUser";  // Importing custom hook to fetch users data
 import { useState } from "react";  // Importing React's useState hook to manage state
@@ -6,6 +7,15 @@ import { FaUserEdit } from "react-icons/fa";  // Importing the edit icon from re
 const UsersManagement = () => {
   
   const { users } = useUser();
+=======
+import PrimaryTitle from "../../../../components/Ui/PrimaryTitle";
+import { useState } from "react";
+import { FaUserEdit } from "react-icons/fa";
+import { useUsers } from "../../../../Hooks/api/useUsers";
+
+const UsersManagement = () => {
+  const { users } = useUsers();
+>>>>>>> 43f700befc8ed27b409ac79e103085d79bfb6307
   const [editingUserId, setEditingUserId] = useState(null);
 
   // Function to handle changing the role of a user
