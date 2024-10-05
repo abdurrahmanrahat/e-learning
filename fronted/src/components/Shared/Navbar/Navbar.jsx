@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { getUser } from "../../../utils/getUser";
 import { removeUserInfo } from "../../../utils/removeUserInfo";
 import ActiveLink from "../../Ui/ActiveLink";
-import Button from "../../Ui/Button";
-import { MdLogout } from "react-icons/md";
 
 export default function Navbar() {
   const [isToggleOpen, setIsToggleOpen] = useState(false);
@@ -96,7 +94,7 @@ export default function Navbar() {
                 </ActiveLink>
               </li>
               <li className="flex items-stretch">
-                <ActiveLink to={"/dashboard/admin"}>
+                <ActiveLink to={`/dashboard/${user?.role}`}>
                   <span className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-primary lg:px-4">
                     Dashboard
                   </span>
@@ -108,7 +106,7 @@ export default function Navbar() {
               {!user ? (
                 <>
                   <Link to="/authentication">
-                    <button className="inline-flex h-10 items-center justify-center gap-2 rounded px-5 text-sm font-medium tracking-wide text-white shadow-md transition duration-300 bg-primary hover:bg-hover hover:shadow-sm">
+                    <button className="inline-flex items-center justify-center gap-2 rounded px-8 py-3 text-[15px] font-medium tracking-wide text-white shadow-md transition duration-300 bg-primary hover:bg-hover hover:shadow-sm">
                       <span>Login</span>
                     </button>
                   </Link>
@@ -118,7 +116,7 @@ export default function Navbar() {
                   {/* User profile */}
                   <div className="relative">
                     <figure
-                      className="w-16 rounded-full overflow-hidden cursor-pointer lg:flex xl:flex hidden"
+                      className="w-12 h-12 rounded-full overflow-hidden cursor-pointer"
                       onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                     >
                       <img
@@ -129,17 +127,17 @@ export default function Navbar() {
                     </figure>
                     {/* Dropdown menu start */}
                     <div
-                      className={`hidden lg:flex xl:flex flex-col gap-4 py-4 absolute -right-14 md:right-0 mt-2 w-50 md:w-80 bg-white rounded-md shadow-lg transform transition-all duration-300 ${
+                      className={`absolute -right-14 md:right-0 mt-2 w-80 md:w-96 py-2 bg-white rounded-md shadow-lg transform transition-all duration-300 ${
                         isDropdownOpen
                           ? "opacity-100 scale-100"
                           : "opacity-0 scale-95 pointer-events-none"
                       }`}
                     >
                       {/* Dropdown head */}
-                      <div className="flex flex-col justify-center gap-2 items-center">
-                        <figure className="w-20 rounded-full">
+                      <div className="flex flex-col items-center">
+                        <figure className="w-16 h-16 rounded-full">
                           <img
-                            className="w-full h-full rounded-full"
+                            className="w-16 h-16 rounded-full"
                             src={user?.photoUrl}
                             alt="User Profile"
                           />
@@ -149,46 +147,72 @@ export default function Navbar() {
                           {user?.name}
                         </h4>
                         <p className="text-[#646464] text-center">
-                          {user?.email}
+                          Email: {user?.email}
                         </p>
 
                         <Link to="/dashboard/admin/student-profile">
                           <li className="flex items-stretch">
-                            <Button bgBtn>
+                            <button className="relative flex items-center justify-center w-full px-5 py-3 text-sm font-medium text-white transition-colors duration-300 bg-gradient-to-r from-primary to-secondary mt-2 rounded-lg">
+                              <span className="absolute inset-0 border-t-2 border-b-2 border-white"></span>
                               <span className="relative">View profile</span>
-                            </Button>
+                            </button>
                           </li>
                         </Link>
                       </div>
 
-                      <ul className="flex flex-col gap-4 items-center">
+                      <div className="pl-6">
                         {/* Dropdown Content */}
-                        <li>
+                        <li className="flex items-stretch">
                           <ActiveLink to={"/my-courses"}>
-                            <span className="font-poppins font-medium transition-colors duration-300 hover:text-primary">
-                              Enrolled Courses
+                            <span className="flex font-poppins font-medium items-center gap-2 py-4 transition-colors duration-300 hover:text-primary">
+                              My Courses
                             </span>
                           </ActiveLink>
                         </li>
-                        <li>
+                        <li className="flex items-stretch">
                           <ActiveLink to={"/charts"}>
-                            <span className="font-poppins font-medium transition-colors duration-300 hover:text-primary">
+                            <span className="flex font-poppins font-medium items-center gap-2 pb-4 transition-colors duration-300 hover:text-primary">
                               Student Analytics
                             </span>
                           </ActiveLink>
                         </li>
-                        {/* Log out Button with Gradient and Hover */}
-                        <li className="w-[80%] flex justify-center">
-                          <Button outlineBtn handler={handleLogoutBtn}>
-                            <span className="text-2xl">
-                              <MdLogout />
+                        <li className="flex items-stretch">
+                          <ActiveLink to={"/leaderboard"}>
+                            <span className="flex font-poppins font-medium items-center gap-2 pb-4 transition-colors duration-300 hover:text-primary">
+                              Leaderboard
                             </span>
-                            <span className="relative flex items-center">
-                              Log out
-                            </span>
-                          </Button>
+                          </ActiveLink>
                         </li>
-                      </ul>
+                        <li className="flex items-stretch">
+                          <ActiveLink to={"/settings"}>
+                            <span className="flex font-poppins font-medium items-center gap-2 pb-4 transition-colors duration-300 hover:text-primary">
+                              Settings
+                            </span>
+                          </ActiveLink>
+                        </li>
+
+                        {/* Log out Button with Gradient and Hover */}
+                        <button
+                          onClick={handleLogoutBtn}
+                          className="relative flex items-center justify-center w-fit px-6 py-3 mt-2 text-sm font-medium text-white transition-colors duration-300 bg-gradient-to-r from-primary to-secondary rounded-lg"
+                        >
+                          <span className="absolute inset-0 border-t-2 border-b-2 border-white"></span>
+                          <span className="relative flex items-center">
+                            <i className="mr-2">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                              >
+                                <path d="M8 9v-4l8 7-8 7v-4h-8v-6h8zm2-7v2h12v16h-12v2h14v-20h-14z" />
+                              </svg>{" "}
+                              {/* Include the icon with space */}
+                            </i>
+                            Log out
+                          </span>
+                        </button>
+                      </div>
                     </div>{" "}
                     {/* Dropdown menu end */}
                   </div>

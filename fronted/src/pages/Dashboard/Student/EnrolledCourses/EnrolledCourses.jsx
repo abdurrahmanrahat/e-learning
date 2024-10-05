@@ -14,7 +14,6 @@ export default function EnrolledCourses() {
   };
   const { courses } = useCourses(query);
 
-  console.log(courses?.data);
 
   return (
     <div className="p-6">
@@ -55,7 +54,7 @@ export default function EnrolledCourses() {
               <div className="flex justify-between gap-8 lg:gap-16 xl:gap-16 items-center">
                 <Link
                   className="w-full"
-                  to={`/dashboard/admin/course-classroom/${item._id}`}
+                  to={`/dashboard/student/course-classroom/${item._id}`}
                 >
                   <Button bgBtn>Continue</Button>
                 </Link>
