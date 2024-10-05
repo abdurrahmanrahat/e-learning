@@ -11,5 +11,6 @@ export type TCourse = {
   courseDuration: string;
   totalRatings: number;
   averageRatings: number;
+  totalStudents: number;
   isDeleted?: boolean;
 };

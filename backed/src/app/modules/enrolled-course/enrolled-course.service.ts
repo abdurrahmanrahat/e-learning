@@ -1,3 +1,4 @@
+import { Course } from '../course/course.model';
 import { TEnrolledCourse } from './enrolled-course.interface';
 import { EnrolledCourse } from './enrolled-course.model';
 
@@ -5,6 +6,13 @@ const createEnrolledCourseIntoDB = async (
   payload: Partial<TEnrolledCourse>,
 ) => {
   const result = await EnrolledCourse.create(payload);
+
+  const totalStudents = await EnrolledCourse.countDocuments({
+    course: payload.course,
+  });
+
+  await Course.findByIdAndUpdate({ _id: payload.course }, { totalStudents });
+
   return result;
 };
 
