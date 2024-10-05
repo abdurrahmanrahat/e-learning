@@ -1,10 +1,10 @@
 import PrimaryTitle from "../../../../components/Ui/PrimaryTitle";
-import { useUser } from "../../../../Hooks/api/useUsers";
 import { useState } from "react";
 import { FaUserEdit } from "react-icons/fa";
+import { useUsers } from "../../../../Hooks/api/useUsers";
 
 const UsersManagement = () => {
-  const { users } = useUser();
+  const { users } = useUsers();
   const [editingUserId, setEditingUserId] = useState(null);
   const [selectedRole, setSelectedRole] = useState("");
 

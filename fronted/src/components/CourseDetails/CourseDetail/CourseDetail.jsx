@@ -6,16 +6,16 @@ import Tabs from "../../Ui/Tabs";
 import OverviewTabs from "../OverviewTabs/OverviewTabs";
 import ReviewTabs from "../ReviewTabs/ReviewTabs";
 import DescriptionTabs from "../DescriptionTabs/DescriptionTabs";
-import { useCourses } from "../../../Hooks/api/useCourses";
-import { useUser } from "../../../Hooks/api/useUsers";
 import toast from "react-hot-toast";
+import useCourse from "../../../Hooks/api/useCourse";
+import useUser from "../../../Hooks/api/useUser";
 
 const CourseDetail = () => {
   const { id } = useParams();
-  const { course } = useCourses(null, id);
+  const { course } = useCourse(id);
   const { user } = useUser();
   const navigate = useNavigate();
-  console.log(user);
+  console.log(course);
 
   const tabs = ["Overview", "Reviews", "Description"];
   const tabsItem = [
@@ -26,7 +26,7 @@ const CourseDetail = () => {
       content: <ReviewTabs />,
     },
     {
-      content: <DescriptionTabs value={course?.data.bigDescription} />,
+      content: <DescriptionTabs value={course?.data?.bigDescription} />,
     },
   ];
 
@@ -36,17 +36,17 @@ const CourseDetail = () => {
     } else if (user?.role !== "student") {
       toast.error("You are not enrolled this");
     } else {
-      navigate(`/checkout/${course?.data._id}`);
+      navigate(`/checkout/${course?.data?._id}`);
     }
   };
 
   return (
     <div className="">
-      <PageBanner image={course?.data.image}>
+      <PageBanner image={course?.data?.image}>
         <div className="hidden lg:flex xl:flex justify-end items-end lg:w-[1240px] xl:w-[1240px] h-full">
           <img
             className="w-[330px] border-[16px] h-[220px] rounded-2xl"
-            src={course?.data.image}
+            src={course?.data?.image}
             alt=""
           />
         </div>
@@ -60,7 +60,7 @@ const CourseDetail = () => {
         <div className="flex flex-col lg:flex-row xl:flex-row justify-between gap-20">
           {/* left-side */}
           <div className="w-full lg:w-[70%] xl:w-[70%]">
-            <Tabs tabs={tabs} tabItems={tabsItem} />
+            <Tabs  tabs={tabs} tabItems={tabsItem} />
           </div>
           {/* right-side */}
           <div className="w-full lg:w-[30%]">

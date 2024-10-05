@@ -1,4 +1,5 @@
-import { useUser } from "../../../../Hooks/api/useUsers";
+import useUser from "../../../../Hooks/api/useUser";
+
 
 const AboutInstructor = () => {
     const {user}=useUser();
