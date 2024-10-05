@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
 import { z } from 'zod';
 
 const contentValidationSchema = z.object({
@@ -17,11 +16,11 @@ const contentValidationSchema = z.object({
 
 const createCourseModuleValidationSchema = z.object({
   body: z.object({
-    course: z
-      .string()
-      .refine((value) => mongoose.Types.ObjectId.isValid(value), {
-        message: 'Invalid MongoDB ObjectId',
-      }),
+    // course: z
+    //   .string()
+    //   .refine((value) => mongoose.Types.ObjectId.isValid(value), {
+    //     message: 'Invalid MongoDB ObjectId',
+    //   }),
     moduleName: z.string({
       required_error: 'Module name is required',
     }),
@@ -40,6 +39,22 @@ const createCourseModuleValidationSchema = z.object({
   }),
 });
 
+const createContentValidationSchema = z.object({
+  body: z.object({
+    title: z.string({
+      required_error: 'Title is required',
+    }),
+    duration: z.string({
+      required_error: 'Duration is required',
+    }),
+    contentLink: z
+      .string({
+        required_error: 'Content link is required',
+      })
+      .url('Content link must be a valid URL'),
+  }),
+});
+
 const updateContentValidationSchema = z.object({
   title: z.string().optional(),
   duration: z.string().optional(),
@@ -48,12 +63,6 @@ const updateContentValidationSchema = z.object({
 
 const updateCourseModuleValidationSchema = z.object({
   body: z.object({
-    course: z
-      .string()
-      .optional()
-      .refine((value) => !value || mongoose.Types.ObjectId.isValid(value), {
-        message: 'Invalid MongoDB ObjectId',
-      }),
     moduleName: z.string().optional(),
     description: z.string().optional(),
     notes: z.string().optional(),
@@ -65,4 +74,5 @@ const updateCourseModuleValidationSchema = z.object({
 export const CourseModuleValidations = {
   createCourseModuleValidationSchema,
   updateCourseModuleValidationSchema,
+  createContentValidationSchema,
 };
