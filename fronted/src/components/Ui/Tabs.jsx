@@ -10,7 +10,7 @@ export default function Tabs({ tabs, tabItems }) {
 
   return (
     <section className="max-w-full" aria-multiselectable="false">
-      <ul className="flex items-center gap-2" role="tablist">
+      <ul className="flex items-center gap-6" role="tablist">
         {tabs?.map((item, index) => (
           <li key={index} className="" role="presentation">
             <button

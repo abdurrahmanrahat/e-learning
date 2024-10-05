@@ -1,37 +1,38 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import useUser from "../../../../Hooks/api/useUser";
-
-const BasicInstInfo = () => {
+const MyProfile = () => {
   const { user } = useUser();
+  console.log(user);
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
-
-  const handleEditInstructorProfile = (data) => {
+  const handleEditStudentProfile = (data) => {
     const editProfile = {
-      instructorName: user?.name,
-      instructorEmail: user?.email,
-      instructorImg: user?.photoUrl,
-      nationality: data?.nationality,
-      mobileNumber: data?.number,
+      studentName: user?.name,
+      studentEmail: user?.email,
+      studentImg: user?.photoUrl,
+      studentNationality: data?.nationality,
+      studentEducationLevel: data?.level,
+      studentDateOfBirth: data?.date,
+      studentId: data?.studentId,
     };
     console.log(editProfile);
   };
 
   return (
     <div className="py-10">
-      <h2 className="text-xl font-bold text-gray-600">Information</h2>
+      <h2 className="text-xl font-bold text-gray-600">My Profile</h2>
       <div className="flex flex-col lg:flex-row gap-5 mt-6">
         <div className="w-full lg:w-[50%]">
-          <h2 className="text-lg font-semibold text-gray-500">Name </h2>
+          <h2 className="text-lg font-semibold text-gray-500">Full name</h2>
           <h2 className="text-md font-semibold ">{user?.name}</h2>
         </div>
         <div className="w-full lg:w-[50%]">
@@ -41,57 +42,33 @@ const BasicInstInfo = () => {
       </div>
       <div className="flex flex-col lg:flex-row gap-5 mt-10">
         <div className="w-full lg:w-[50%]">
+          <h2 className="text-lg font-semibold text-gray-500">
+            Education Level
+          </h2>
+          <h2 className="text-md font-semibold ">Wab developer</h2>
+        </div>
+        <div className="w-full lg:w-[50%]">
+          <h2 className="text-lg font-semibold text-gray-500">Date of Birth</h2>
+          <h2 className="text-md font-semibold ">08-05-2005</h2>
+        </div>
+      </div>
+      <div className="flex flex-col lg:flex-row gap-5 mt-10">
+        <div className="w-full lg:w-[50%]">
+          <h2 className="text-lg font-semibold text-gray-500">Student Id</h2>
+          <h2 className="text-md font-semibold ">WEB-123</h2>
+        </div>
+        <div className="w-full lg:w-[50%]">
           <h2 className="text-lg font-semibold text-gray-500">Nationality</h2>
           <h2 className="text-md font-semibold ">Bangladesh</h2>
         </div>
-        <div className="w-full lg:w-[50%]">
-          <h2 className="text-lg font-semibold text-gray-500">Mobile NUmber</h2>
-          <h2 className="text-md font-semibold ">017------</h2>
-        </div>
-      </div>
-      {/* Gender Selection */}
-      <div className="mt-5">
-        <label htmlFor="gender" className="text-lg font-semibold text-gray-500">
-          Gender
-        </label>
-        <h2 className="text-md font-semibold ">{user?.gender}</h2>
-        {/* <div className="flex items-center space-x-4">
-                <label className="flex items-center">
-                  <input
-                    type="radio"
-                    value="male"
-
-                    // {...register("gender", { required: true })}
-
-                    className="form-radio text-[#49BBBD]"
-                  />
-                  <span className="ml-2">Male</span>
-                </label>
-                <label className="flex items-center">
-                  <input
-                    type="radio"
-                    value="female"
-
-                    // {...register("gender", { required: true })}
-
-                    className="form-radio text-[#49BBBD]"
-                  />
-                  <span className="ml-2">Female</span>
-                </label>
-              </div> */}
-        {/* {
-              errors.gender && (
-                <span className="text-red-600">This field is required</span>
-              )} */}
       </div>
       <button
         onClick={toggleModal}
         className="border px-4 py-2 font-bold mt-10 hover:bg-[#4bc0c0] border-[#4bc0c0] hover:text-white"
       >
-        Edit
+        Edit Profile
       </button>
 
-      {/* modal section  */}
       <div>
         <div
           className={`fixed inset-0 z-50 flex justify-center items-center transition-opacity duration-300 ${
@@ -143,7 +120,7 @@ const BasicInstInfo = () => {
             <div className="p-6">
               <h1 className=" text-xl font-bold mb-5">Edit Profile</h1>
               <div>
-                <form onSubmit={handleSubmit(handleEditInstructorProfile)}>
+                <form onSubmit={handleSubmit(handleEditStudentProfile)}>
                   <div className="flex flex-col md:flex-row lg:flex-row items-center gap-5 mb-5">
                     <div className="w-full lg:w-[50%]">
                       <label className="label">
@@ -152,7 +129,7 @@ const BasicInstInfo = () => {
                         </span>
                       </label>
                       <input
-                        type="text"
+                        type="title"
                         defaultValue={user?.name}
                         className="text-left w-full rounded py-3 px-5 mt-2 text-sm border border-[#4bc0c0]"
                         required
@@ -162,7 +139,7 @@ const BasicInstInfo = () => {
                     <div className="w-full lg:w-[50%]">
                       <label className="label">
                         <span className="label-text font-semibold text-md text-gray-600">
-                          Email
+                          Email :
                         </span>
                       </label>
                       <input
@@ -178,36 +155,71 @@ const BasicInstInfo = () => {
                     <div className="w-full lg:w-[50%]">
                       <label className="label">
                         <span className="label-text font-semibold text-md text-gray-600">
-                          Nationality :
+                          Student ID :
                         </span>
                       </label>
                       <input
                         type="text"
-                        // defaultValue={data?.nationality}
+                        placeholder="student id"
                         className="text-left w-full rounded py-3 px-5 mt-2 text-sm border border-[#4bc0c0]"
                         required
-                        {...register("nationality", { required: true })}
+                        {...register("studentId", { required: true })}
                       />
                     </div>
                     <div className="w-full lg:w-[50%]">
                       <label className="label">
                         <span className="label-text font-semibold text-md text-gray-600">
-                          Mobile Number :
+                          Date of birth :
                         </span>
                       </label>
                       <input
-                        type="number"
-                        defaultValue={user?.number}
+                        type="date"
+                        placeholder="last name"
                         className="text-left w-full rounded py-3 px-5 mt-2 text-sm border border-[#4bc0c0]"
                         required
-                        {...register("number", { required: true })}
+                        {...register("date", { required: true })}
+                      />
+                    </div>
+                  </div>
+                  <div className="flex flex-col md:flex-row lg:flex-row items-center gap-5 mt-5">
+                    <div className="w-full lg:w-[50%]">
+                      <label className="label">
+                        <span className="label-text font-semibold text-md text-gray-600">
+                          Educational Level :
+                        </span>
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="education"
+                        className="text-left w-full rounded py-3 px-5 mt-2 text-sm border border-[#4bc0c0]"
+                        required
+                        {...register("level", { required: true })}
+                      />
+                    </div>
+                    <div className="w-full lg:w-[50%]">
+                      <label className="label">
+                        <span className="label-text font-semibold text-md text-gray-600">
+                          Nationality :
+                        </span>
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="Nationality"
+                        className="text-left w-full rounded py-3 px-5 mt-2 text-sm border border-[#4bc0c0]"
+                        required
+                        {...register("nationality", { required: true })}
                       />
                     </div>
                   </div>
                   {/* Gender Selection */}
-                  <div className="space-y-2">
-                    <label htmlFor="gender">Gender</label>
-                    <div className="flex items-center space-x-4">
+                  <div className="mt-4">
+                    <label
+                      className="label-text font-semibold text-md text-gray-600 "
+                      htmlFor="gender"
+                    >
+                      Gender
+                    </label>
+                    <div className="flex items-center space-x-4 mt-2">
                       <label className="flex items-center">
                         <input
                           type="radio"
@@ -246,4 +258,4 @@ const BasicInstInfo = () => {
   );
 };
 
-export default BasicInstInfo;
+export default MyProfile;

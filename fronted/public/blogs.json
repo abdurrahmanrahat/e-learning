@@ -1,0 +1,54 @@
+[
+      {
+            "_id": "1",
+            "title": "The Future of Web Development in 2024",
+            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
+            "shortDescription": "Web development is constantly evolving, and 2024 brings new trends that will shape the industry for years to come.",
+            "description": "In 2024, web development continues to evolve with technologies like AI integration, WebAssembly, and faster frameworks gaining popularity. Developers are focusing on improving user experience, website performance, and security. Tools like Next.js, Svelte, and frameworks like Tailwind CSS are becoming essential. Web3, decentralized apps, and blockchain technology are also becoming more integral in the development space. As the internet expands, so does the potential of web development, making it a promising field for future tech innovations.",
+            "author": {
+                  "name": "John Doe",
+                  "profile_image": "https://via.placeholder.com/150x150.png?text=John+Doe",
+                  "bio": "John is a seasoned web developer with over 10 years of experience, specializing in JavaScript frameworks and cutting-edge web technologies."
+            },
+            "published_date": "2024-01-15"
+      },
+      {
+            "_id": "2",
+            "title": "How to Build a Responsive Website",
+            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
+            "shortDescription": "Learn the fundamentals of responsive web design and how to build websites that adapt to any screen size.",
+            "description": "Responsive web design is a crucial skill for any web developer. In this blog, we will explore the importance of flexible layouts, media queries, and mobile-first design. You’ll learn how to use modern CSS frameworks like Bootstrap and Tailwind CSS to create responsive websites that look great on both desktop and mobile devices. We’ll also cover tips for optimizing images and performance for different screen sizes, ensuring your site provides a smooth user experience no matter the device.",
+            "author": {
+                  "name": "Jane Smith",
+                  "profile_image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
+                  "bio": "Jane is a front-end developer with a passion for creating intuitive and visually appealing web interfaces, focusing on responsive design and accessibility."
+            },
+            "published_date": "2024-02-10"
+      },
+      {
+            "_id": "3",
+            "title": "The Rise of AI in Web Development",
+            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
+            "shortDescription": "Artificial Intelligence is transforming how websites are built, maintained, and optimized for users.",
+            "description": "Artificial Intelligence is revolutionizing the web development industry. From AI-powered design tools to chatbots and automated testing, the possibilities are endless. In this blog, we’ll look at the tools and techniques that use AI to streamline development processes, improve user experiences, and enhance website personalization. We’ll also explore future AI trends that are likely to shape the future of web development, including machine learning algorithms for better SEO optimization, automated code generation, and AI-driven content creation.",
+            "author": {
+                  "name": "Michael Brown",
+                  "profile_image": "https://via.placeholder.com/150x150.png?text=Michael+Brown",
+                  "bio": "Michael is an AI enthusiast and web developer who loves exploring the intersection of machine learning and web technologies."
+            },
+            "published_date": "2024-03-05"
+      },
+      {
+            "_id": "4",
+            "title": "Top CSS Frameworks for 2024",
+            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
+            "shortDescription": "Discover the best CSS frameworks to speed up your development process and create beautiful designs.",
+            "description": "CSS frameworks have come a long way, providing developers with pre-built classes and styles to create responsive and modern websites. In this blog, we’ll cover the top CSS frameworks to watch out for in 2024, including Bootstrap 5, Tailwind CSS, Bulma, and Materialize. Each framework has its pros and cons, but all of them provide significant value by speeding up development, ensuring cross-browser compatibility, and offering design flexibility. Whether you’re a seasoned developer or a beginner, these frameworks are essential tools for any web project.",
+            "author": {
+                  "name": "Sarah Lee",
+                  "profile_image": "https://via.placeholder.com/150x150.png?text=Sarah+Lee",
+                  "bio": "Sarah is a creative web designer and front-end developer who loves using CSS frameworks to bring ideas to life."
+            },
+            "published_date": "2024-04-20"
+      }
+]

@@ -4,8 +4,8 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { FaPlus } from "react-icons/fa6";
 import PrimaryTitle from "../../../../components/Ui/PrimaryTitle";
-import { useUser } from "../../../../Hooks/api/useUser";
 import useAxios from "../../../../Hooks/useAxios";
+import useUser from "../../../../Hooks/api/useUser";
 
 // category data
 const category = [

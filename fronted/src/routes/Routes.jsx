@@ -13,6 +13,7 @@ import Courses from "../pages/Courses/Courses";
 import AdminDashboardHome from "../pages/Dashboard/Admin/AdminDashboardHome/AdminDashboardHome";
 import AllCourses from "../pages/Dashboard/Admin/AllCourses/AllCourses";
 import UsersManagement from "../pages/Dashboard/Admin/UsersManagement/UsersManagement";
+import AllBlogs from "../pages/Dashboard/AllBlogs/AllBlogs";
 import AddCourse from "../pages/Dashboard/Instructor/AddCourse/AddCourse";
 import AddModule from "../pages/Dashboard/Instructor/AddModule/AddModule";
 import InstructorDashboardHome from "../pages/Dashboard/Instructor/InstructorDashboardHome/InstructorDashboardHome";
@@ -98,6 +99,10 @@ const router = createBrowserRouter([
       {
         path: "users-management",
         element: <UsersManagement />,
+      },
+      {
+        path: "all-blogs",
+        element: <AllBlogs />,
       },
     ],
   },

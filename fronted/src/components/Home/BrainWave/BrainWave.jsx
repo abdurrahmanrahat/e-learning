@@ -1,7 +1,7 @@
 import { HOMEImages } from "../../../image-data/home";
 import PrimaryTitle from "../../Ui/PrimaryTitle";
 
-export default function Totc() {
+export default function BrainWave() {
   return (
     <div className="flex flex-col gap-24 px-10">
       {/* what is brain web  */}
