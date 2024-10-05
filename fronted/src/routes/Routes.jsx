@@ -23,6 +23,7 @@ import EnrolledCourses from "../pages/Dashboard/Student/EnrolledCourses/Enrolled
 import InstructorsProfile from "../pages/Dashboard/Profile/IstructorProfile/InstructorsProfile";
 import CourseClassroom from "../pages/Dashboard/Student/CourseClassroom/CourseClassroom";
 import AddModule from "../pages/Dashboard/AddModule/AddModule";
+import AllBlogs from "../pages/Dashboard/AllBlogs/AllBlogs";
 
 
 const router = createBrowserRouter([
@@ -96,6 +97,10 @@ const router = createBrowserRouter([
       {
         path: "all-courses",
         element: <AllCourses />,
+      },
+      {
+        path: "all-blogs",
+        element: <AllBlogs />,
       },
       {
         path: "users-management",

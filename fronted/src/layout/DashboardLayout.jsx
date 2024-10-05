@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { GrUploadOption } from "react-icons/gr";
 import { IoListSharp, IoSettingsOutline } from "react-icons/io5";
@@ -89,6 +90,15 @@ export default function DashboardLayout() {
                   <span className="flex items-center gap-3 rounded py-3 px-6 transition-colors duration-300">
                     <IoListSharp className="block text-[18px]" />
                     <span className="block text-[17px]">All Courses</span>
+                  </span>
+                </DashboardActiveLink>
+              </li>
+
+              <li className="">
+                <DashboardActiveLink to="/dashboard/admin/all-blogs">
+                  <span className="flex items-center gap-3 rounded py-3 px-6 transition-colors duration-300">
+                    <IoListSharp className="block text-[18px]" />
+                    <span className="block text-[17px]">All Blogs</span>
                   </span>
                 </DashboardActiveLink>
               </li>
