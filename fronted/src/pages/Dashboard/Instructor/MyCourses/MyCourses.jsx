@@ -1,22 +1,13 @@
 import PrimaryTitle from "../../../../components/Ui/PrimaryTitle";
-import { useCourses } from "../../../../Hooks/api/useCourses";
+import { useCoursesByEmail } from "../../../../Hooks/api/useCoursesByEmail";
 import { getUser } from "../../../../utils/getUser";
 import TableCourse from "./TableCourse";
 
 const MyCourses = () => {
-  const query = {
-    page: 1,
-    limit: 9,
-    category: "",
-    duration: "",
-    searchTerm: "",
-  };
-  const { courses } = useCourses(query);
-  console.log(courses);
   const user = getUser();
 
-  //   const coursestt = useCoursesByEmail(user?.email);
-  //   console.log("jjfd", coursestt);
+  const courses = useCoursesByEmail(user?.email);
+  console.log(courses);
 
   return (
     <div className="p-6 bg-[#F4F6FB] rounded-lg shadow-md">
@@ -52,7 +43,7 @@ const MyCourses = () => {
             </tr>
           </thead>
           <tbody>
-            {courses?.data?.map((course, idx) => (
+            {courses?.map((course, idx) => (
               <TableCourse key={course?._id} course={course} idx={idx} />
             ))}
           </tbody>
