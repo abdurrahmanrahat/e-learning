@@ -28,6 +28,8 @@ export default function Functionality({
   handleSelectCategory,
   handleSelectDuration,
   handleSearch,
+  categoryInputValue,
+  durationInputValue
 }) {
   return (
     <form className="space-y-8 py-10">
@@ -50,11 +52,12 @@ export default function Functionality({
         <div className="space-y-2 w-full">
           <select
             name="country"
+            value={categoryInputValue}
             className="w-full px-6 py-3 border focus:outline-none text-[#000] focus:border-[#49BBBD] border-[#D9D9D9] placeholder:text-[#9D9B9B] placeholder:text-base placeholder:font-light outline-none rounded-xl"
             onChange={(e) => handleSelectCategory(e)}
           >
             {/* Placeholder option */}
-            <option value="" disabled selected>
+            <option value="" disabled>
               Select Category
             </option>
             {category?.map((item, index) => (
@@ -68,11 +71,12 @@ export default function Functionality({
           <select
             placeholder="Select Programs"
             name="programs"
+            value={durationInputValue}
             className="w-full px-6 py-3 border focus:outline-none text-[#000] focus:border-[#49BBBD] border-[#D9D9D9] placeholder:text-[#9D9B9B] placeholder:text-base placeholder:font-light outline-none rounded-xl"
             onChange={(e) => handleSelectDuration(e)}
           >
             {/* Placeholder option */}
-            <option disabled selected>
+            <option value="" disabled>
               Select Duration
             </option>
             {duration?.map((item, index) => (

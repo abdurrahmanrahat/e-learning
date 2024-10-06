@@ -5,11 +5,13 @@ import { useParams, Link } from "react-router-dom";
 import jsPDF from "jspdf";
 import useAxios from "../../../Hooks/useAxios";
 import axios from "axios";
+import useDateFormatter from "../../../Hooks/getValues/useDateFormatter";
 
 export default function PaymentSuccess() {
   const { trans_id } = useParams();
   const [paymentReceipt, setPaymentReceipt] = useState({});
   const apiHandler = useAxios();
+  const formattedDate = useDateFormatter(paymentReceipt?.date);
 
   useEffect(() => {
     const getReceipt = async () => {
@@ -40,8 +42,9 @@ export default function PaymentSuccess() {
           "/enrolled-courses/create-enrolled-course",
           data
         );
-        console.log(res.data);
-        toast.success("Course Enrolled Successfully");
+        if(res){
+          toast.success("Course Enrolled Successfully");
+        }
       } catch (err) {
         console.log(err.message);
         toast.error(`${err.message}`);
@@ -56,7 +59,7 @@ export default function PaymentSuccess() {
     handleData();
   }, [trans_id, apiHandler]);
 
-  console.log(paymentReceipt?.orderInfo);
+  console.log(paymentReceipt);
 
   // handleDownloadBtn
   const handleDownloadBtn = async () => {
@@ -79,7 +82,7 @@ export default function PaymentSuccess() {
 
     doc.text(`Transition Id: ${paymentReceipt?.transactionId}`, 20, 50);
     doc.text(`Payment Method: Online`, 20, 60);
-    doc.text(`Date: ${paymentReceipt?.date}`, 20, 70);
+    doc.text(`Date: ${formattedDate}`, 20, 70);
     doc.text(`Customer Name: ${paymentReceipt?.orderInfo?.name}`, 20, 80);
     doc.text(`Address: ${paymentReceipt?.orderInfo?.address}`, 20, 90);
     doc.text(`Phone: ${paymentReceipt?.orderInfo?.phone}`, 20, 100);
@@ -136,7 +139,7 @@ export default function PaymentSuccess() {
             Download Pay Receipt...
           </button>
         </p>
-        <Link to="/dashboard/admin/enrolled-courses">
+        <Link to="/dashboard/student/enrolled-courses">
           <button className="bg-[#49BBBD] px-12 py-4 rounded-xl text-white cursor-pointer w-full mt-2 hover:scale-[1.2] transition-all duration-500 ease-in-out">
             Go to Class
           </button>

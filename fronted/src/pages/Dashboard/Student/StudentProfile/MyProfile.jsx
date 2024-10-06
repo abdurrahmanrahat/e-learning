@@ -7,6 +7,7 @@ const MyProfile = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 

@@ -25,8 +25,8 @@ const Courses = () => {
   query.duration = duration;
   query.searchTerm = searchTerm;
 
-  const {courses} = useCourses(query);
-  console.log(courses)
+  const { courses } = useCourses(query);
+  // console.log(courses);
 
   if (!courses) return <h2>Loading...</h2>;
 
@@ -62,6 +62,8 @@ const Courses = () => {
       <PageBanner image={SHAREDImages.banner_2}>
         <div className="w-full lg:w-[60%] xl:w-[60%] h-full flex flex-col justify-center gap-10 px-4">
           <Functionality
+            categoryInputValue={category}
+            durationInputValue={duration}
             handleSearch={handleSearch}
             handleSelectCategory={handleSelectCategory}
             handleSelectDuration={handleSelectDuration}
@@ -75,7 +77,7 @@ const Courses = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-20">
           {courses?.data.map((item) => (
-            <CourseCard course={item} key={item.id}></CourseCard>
+            <CourseCard course={item} key={item._id}></CourseCard>
           ))}
         </div>
 

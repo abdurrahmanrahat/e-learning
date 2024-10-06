@@ -4,17 +4,16 @@ const AddModule = () => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm();
 
   const handleAddModule = (data) => {
     const addModule = {
-        title: data?.title,
-        moduleName: data?.module_name,
-        videoLink: data?.video_link,
-        videoDuration: data?.video_duration,
-        description: data?.description,
+      title: data?.title,
+      moduleName: data?.module_name,
+      videoLink: data?.video_link,
+      videoDuration: data?.video_duration,
+      description: data?.description,
     };
     console.log(addModule);
     // console.log(data);
