@@ -107,7 +107,7 @@ const AllBlogs = () => {
                                     </button>
                               </div>
 
-                              {/* Modal for adding/updating blog */}
+                              {/* Modal for adding blog */}
                               <div
                                     className={`fixed inset-0 z-50 flex justify-center items-center transition-opacity duration-300 ${isModalOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}
                               >

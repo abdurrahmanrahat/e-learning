@@ -1,6 +1,10 @@
 import Rating from "../../../../components/Ui/Rating";
+import { MdDeleteForever } from "react-icons/md";
+import MyCourseModalForUpdate from "./MyCourseModalForUpdate";
+import MyCourseModalForAddModule from "./MyCourseModalForAddModule";
 
 const TableCourse = ({ course, idx }) => {
+
   return (
     <tr className="border-b border-slate-200 hover:bg-gray-50">
       <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200">
@@ -36,6 +40,25 @@ const TableCourse = ({ course, idx }) => {
             ({course?.totalRatings})
           </span>
         </span>
+      </td>
+
+      {/* button for edit */}
+      <td className=" px-6 py-3 text-sm transition duration-300 border-slate-200 flex space-x-2">
+
+        {/* Modal for updating course */}
+        <div>
+          <MyCourseModalForUpdate />
+        </div>
+
+        {/* button for add module */}
+        <div>
+          <MyCourseModalForAddModule />
+        </div>
+
+        {/* button for delete */}
+        <button className="text-2xl font-bold bg-red-500 p-2 text-white rounded-lg hover:bg-red-700 transition duration-200">
+          <MdDeleteForever />
+        </button>
       </td>
     </tr>
   );
