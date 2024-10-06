@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { getUser } from "../../../utils/getUser";
 import { removeUserInfo } from "../../../utils/removeUserInfo";
 import ActiveLink from "../../Ui/ActiveLink";
+import Button from "../../Ui/Button";
 
 export default function Navbar() {
   const [isToggleOpen, setIsToggleOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Dropdown state
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   const user = getUser();
 
@@ -15,6 +17,20 @@ export default function Navbar() {
     removeUserInfo();
     window.location.reload();
   };
+
+  // Close dropdown when clicking outside of it
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownRef]);
 
   return (
     <div className="container-class">
@@ -31,11 +47,10 @@ export default function Navbar() {
             {/* Mobile trigger */}
             <button
               className={`relative order-10 block h-10 w-10 self-center lg:hidden
-              ${
-                isToggleOpen
+              ${isToggleOpen
                   ? "visible opacity-100 [&_span:nth-child(1)]:w-6 [&_span:nth-child(1)]:translate-y-0 [&_span:nth-child(1)]:rotate-45 [&_span:nth-child(2)]:-rotate-45 [&_span:nth-child(3)]:w-0 "
                   : ""
-              }
+                }
             `}
               onClick={() => setIsToggleOpen(!isToggleOpen)}
               aria-expanded={isToggleOpen ? "true" : "false"}
@@ -59,11 +74,10 @@ export default function Navbar() {
 
             {/* Navigation links */}
             <ul
-              className={`absolute left-0 top-0 z-[-1] h-[28.5rem] w-full justify-center overflow-hidden overflow-y-auto bg-white/90 px-8 pb-12 pt-24 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0 lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:bg-white/0 lg:px-0 lg:py-0 lg:opacity-100 text-black ${
-                isToggleOpen
-                  ? "visible opacity-100 backdrop-blur-sm"
-                  : "invisible opacity-0"
-              }`}
+              className={`absolute left-0 top-0 z-[-1] h-[28.5rem] w-full justify-center overflow-hidden overflow-y-auto bg-white/90 px-8 pb-12 pt-24 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0 lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:bg-white/0 lg:px-0 lg:py-0 lg:opacity-100 text-black ${isToggleOpen
+                ? "visible opacity-100 backdrop-blur-sm"
+                : "invisible opacity-0"
+                }`}
             >
               <li className="flex items-stretch">
                 <ActiveLink to={"/"}>
@@ -106,15 +120,16 @@ export default function Navbar() {
               {!user ? (
                 <>
                   <Link to="/authentication">
-                    <button className="inline-flex items-center justify-center gap-2 rounded px-8 py-3 text-[15px] font-medium tracking-wide text-white shadow-md transition duration-300 bg-primary hover:bg-hover hover:shadow-sm">
-                      <span>Login</span>
-                    </button>
+                    <Button bgBtn >
+                      Login
+                    </Button>
                   </Link>
+
                 </>
               ) : (
                 <>
                   {/* User profile */}
-                  <div className="relative">
+                  <div className="relative" ref={dropdownRef}>
                     <figure
                       className="w-12 h-12 rounded-full overflow-hidden cursor-pointer"
                       onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -127,11 +142,10 @@ export default function Navbar() {
                     </figure>
                     {/* Dropdown menu start */}
                     <div
-                      className={`absolute -right-14 md:right-0 mt-2 w-80 md:w-96 py-2 bg-white rounded-md shadow-lg transform transition-all duration-300 ${
-                        isDropdownOpen
-                          ? "opacity-100 scale-100"
-                          : "opacity-0 scale-95 pointer-events-none"
-                      }`}
+                      className={`absolute -right-14 md:right-0 mt-2 w-80 md:w-96 py-2 bg-white rounded-md shadow-lg transform transition-all duration-300 ${isDropdownOpen
+                        ? "opacity-100 scale-100"
+                        : "opacity-0 scale-95 pointer-events-none"
+                        }`}
                     >
                       {/* Dropdown head */}
                       <div className="flex flex-col items-center">
@@ -151,11 +165,10 @@ export default function Navbar() {
                         </p>
 
                         <Link to="/dashboard/admin/student-profile">
-                          <li className="flex items-stretch">
-                            <button className="relative flex items-center justify-center w-full px-5 py-3 text-sm font-medium text-white transition-colors duration-300 bg-gradient-to-r from-primary to-secondary mt-2 rounded-lg">
-                              <span className="absolute inset-0 border-t-2 border-b-2 border-white"></span>
-                              <span className="relative">View profile</span>
-                            </button>
+                          <li className="flex items-stretch mt-2">
+                            <Button bgBtn >
+                              View Profile
+                            </Button>
                           </li>
                         </Link>
                       </div>
@@ -192,28 +205,13 @@ export default function Navbar() {
                         </li>
 
                         {/* Log out Button with Gradient and Hover */}
-                        <button
-                          onClick={handleLogoutBtn}
-                          className="relative flex items-center justify-center w-fit px-6 py-3 mt-2 text-sm font-medium text-white transition-colors duration-300 bg-gradient-to-r from-primary to-secondary rounded-lg"
-                        >
-                          <span className="absolute inset-0 border-t-2 border-b-2 border-white"></span>
-                          <span className="relative flex items-center">
-                            <i className="mr-2">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="20"
-                                height="20"
-                                viewBox="0 0 24 24"
-                              >
-                                <path d="M8 9v-4l8 7-8 7v-4h-8v-6h8zm2-7v2h12v16h-12v2h14v-20h-14z" />
-                              </svg>{" "}
-                              {/* Include the icon with space */}
-                            </i>
+                        <div className="w-fit mb-3" onClick={handleLogoutBtn}>
+                          <Button bgBtn>
                             Log out
-                          </span>
-                        </button>
+                          </Button>
+                        </div>
                       </div>
-                    </div>{" "}
+                    </div>
                     {/* Dropdown menu end */}
                   </div>
                 </>

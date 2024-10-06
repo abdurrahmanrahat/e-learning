@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import BlogTableRow from './BlogTableRow';
 import toast from 'react-hot-toast';
+import Button from '../../../components/Ui/Button';
 
 const AllBlogs = () => {
       const [blogs, setBlogs] = useState([]);
@@ -98,13 +99,10 @@ const AllBlogs = () => {
 
                         {/* Add new blog button start from here */}
                         <div>
-                              <div className='flex justify-end'>
-                                    <button
-                                          onClick={toggleModal}
-                                          className="px-4 py-2 bg-[#49BBBD] text-white rounded-lg mt-4"
-                                    >
+                              <div onClick={toggleModal} className='w-fit'>
+                                    <Button bgBtn>
                                           Add New Blog
-                                    </button>
+                                    </Button>
                               </div>
 
                               {/* Modal for adding blog */}
@@ -235,13 +233,11 @@ const AllBlogs = () => {
                                                                   ></textarea>
                                                             </div>
 
-                                                            <div className="form-control md:col-span-2">
-                                                                  <button
-                                                                        type="submit"
-                                                                        className="px-4 py-3 bg-[#49BBBD] text-white font-semibold rounded-lg"
-                                                                  >
+                                                            <div className="form-control w-fit">
+                                                                  
+                                                                  <Button bgBtn>
                                                                         Add Blog
-                                                                  </button>
+                                                                  </Button>
                                                             </div>
                                                       </form>
                                                 </div>

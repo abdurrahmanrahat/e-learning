@@ -6,6 +6,7 @@ import { FaPlayCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { MdCancel } from "react-icons/md";
+import Button from "../../Ui/Button";
 
 const Hero = () => {
   const [clickedPlayBtn, setClickedPlayBtn] = useState(false);
@@ -67,9 +68,9 @@ const Hero = () => {
             </div>
             <div className="flex items-center gap-4">
               <Link to="/authentication">
-                <button className="inline-flex h-14 items-center justify-center gap-2 rounded-xl  px-8 text-sm font-medium tracking-wide text-white shadow-md transition duration-300 bg-primary hover:bg-hover hover:shadow-sm">
+                <Button bgBtn>
                   Start Now
-                </button>
+                </Button>
               </Link>
               <button
                 onClick={() => setClickedPlayBtn(!clickedPlayBtn)}
