@@ -1,27 +1,42 @@
 import { Link } from "react-router-dom";
 import Rating from "./Rating";
 import { FaRegClock } from "react-icons/fa6";
-
+import { useState } from "react";
+import Loader from "./Loader";
 
 const CourseCard = ({ course }) => {
+  const [imageLoading, setImageLoading] = useState(false);
   const {
-    _id, title, category, image, instructorImg, instructorName, price, description, courseDuration, rating, enrollment
+    _id,
+    title,
+    category,
+    image,
+    instructorImg,
+    instructorName,
+    price,
+    description,
+    courseDuration,
+    rating,
+    enrollment,
   } = course || {};
 
   return (
     <Link to={`/courseDetails/${_id}`}>
       <div className="p-6 shadow-myCustomShadow rounded-xl flex flex-col justify-between">
-
         {/* card image */}
         <figure className="overflow-hidden relative mb-5">
-          <img
+          {image && <img
+            onLoad={() => setImageLoading(true)}
             className="w-full h-[240px] object-cover rounded"
             src={image}
             alt="course"
-          />
+          />}
+          {!imageLoading && <div className="flex justify-center items-center my-2"><Loader/></div>}
           <div className=" bg-white w-fit px-5 py-2 absolute top-5 right-5 rounded">
             <span className="font-medium text-[#667085] flex items-center gap-2 font-nunito text-sm">
-              <span className="text-lg"><FaRegClock /></span>
+              <span className="text-lg">
+                <FaRegClock />
+              </span>
               {courseDuration}
             </span>
           </div>
@@ -36,7 +51,7 @@ const CourseCard = ({ course }) => {
           {/* Conditionally truncate the title */}
           <div className="flex items-center justify-between mb-5">
             <h2 className="text-2xl text-[#2F327D] font-bold font-nunito">
-              {title?.length > 20 ? title.slice(0, 25) + '...' : title}
+              {title?.length > 20 ? title.slice(0, 25) + "..." : title}
             </h2>
           </div>
 
@@ -55,15 +70,23 @@ const CourseCard = ({ course }) => {
           {/* author */}
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2">
-              <img className="w-12 h-12 rounded-full" src={instructorImg} alt="instructor" />
+              <img
+                className="w-12 h-12 rounded-full"
+                src={instructorImg}
+                alt="instructor"
+              />
               <div>
                 <h4 className="text-[#2F327D] font-medium">{instructorName}</h4>
-                <span className="text-[#667085] text-sm">{enrollment} Enrolled</span>
+                <span className="text-[#667085] text-sm">
+                  {enrollment} Enrolled
+                </span>
               </div>
             </div>
 
             {/* price */}
-            <p className="text-[#00CBB8] text-2xl font-bold font-nunito">${price}</p>
+            <p className="text-[#00CBB8] text-2xl font-bold font-nunito">
+              ${price}
+            </p>
           </div>
         </div>
       </div>

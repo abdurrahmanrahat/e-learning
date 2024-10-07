@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import { useCourses } from "../../../../Hooks/api/useCourses";
 import ProgressBar from "../../../../components/Ui/ProgressBar";
 import { useState } from "react";
 import { FaAngleDown, FaAngleUp, FaSearch } from "react-icons/fa";
@@ -9,6 +8,7 @@ import { FaLock } from "react-icons/fa";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaCircleArrowLeft } from "react-icons/fa6";
 import Button from "../../../../components/Ui/Button";
+import useCourse from "../../../../Hooks/api/useCourse";
 
 const modules = [
   {
@@ -129,7 +129,7 @@ const modules = [
 
 export default function CourseClassroom() {
   const { id } = useParams();
-  const { course } = useCourses(null, id);
+  const { course } = useCourse(id);
   const [description, setDescription] = useState(modules[0]?.description);
   const [contents, setContents] = useState(modules[0]?.content[1]);
   const [activeModuleIndex, setActiveModuleIndex] = useState(null);

@@ -22,7 +22,7 @@ export default function useEnrolledCoursesByEmail(email) {
         if (email) {
             getEnrolledCourses();
         }
-    }, [apiHandler])
+    }, [apiHandler, email])
 
     return enrolledCourses;
 }

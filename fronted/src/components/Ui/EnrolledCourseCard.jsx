@@ -3,7 +3,7 @@ import Button from "./Button";
 import ProgressBar from "./ProgressBar";
 
 export default function EnrolledCourseCard({enrolledCourse}) {
-    const {studentName, completedPercentage} = enrolledCourse;
+    const {course, studentName, completedPercentage} = enrolledCourse;
 
   return (
     <div
@@ -33,7 +33,7 @@ export default function EnrolledCourseCard({enrolledCourse}) {
         <div className="flex justify-between gap-8 lg:gap-16 xl:gap-16 items-center">
           <Link
             className="w-full"
-            to={`/dashboard/admin/course-classroom/${'#'}`}
+            to={`/dashboard/student/course-classroom/${course}`}
           >
             <Button bgBtn>Continue</Button>
           </Link>

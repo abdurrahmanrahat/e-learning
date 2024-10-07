@@ -9,7 +9,7 @@ export const useCourses = (query) => {
     const fetchCourses = useCallback(async () => {
         try {
             const response = await apiHandler.get(`/courses?page=${query?.page || 1}&limit=${query?.limit || 10}&category=${query?.category || ''}&courseDuration=${query?.duration || ''}&searchTerm=${query?.searchTerm || ''}`);
-            setCourses(response?.data?.data || []);
+            setCourses(response?.data?.data || []);   
         } catch (error) {
             console.error('Error fetching courses:', error.message);
         }
@@ -30,5 +30,5 @@ export const useCourses = (query) => {
     }, [fetchCourses, query.page, query.limit, query.category, query.duration, query.searchTerm]);
 
 
-    return { courses, fetchCourses }
+    return { courses, fetchCourses}
 }

@@ -9,6 +9,7 @@ import "../../css/pagination.css";
 import { SHAREDImages } from "../../image-data/shared";
 import OfferCourse from "./OfferCourse/OfferCourse";
 import { useCourses } from "../../Hooks/api/useCourses";
+import Loader from "../../components/Ui/Loader";
 
 const Courses = () => {
   const [page, setPage] = useState(1);
@@ -25,10 +26,10 @@ const Courses = () => {
   query.duration = duration;
   query.searchTerm = searchTerm;
 
-  const { courses } = useCourses(query);
+  const { courses, } = useCourses(query);
   // console.log(courses);
 
-  if (!courses) return <h2>Loading...</h2>;
+  if (!courses) return( <div className="w-full flex justify-center items-center my-20"><Loader/></div>)
 
   const handlePageClick = (e) => {
     console.log(e);
@@ -76,19 +77,19 @@ const Courses = () => {
         <PrimaryTitle headingPart1={"All"} headingPart2={"Courses"} />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-20">
-          {courses?.data.map((item) => (
+          {courses?.data?.map((item) => (
             <CourseCard course={item} key={item._id}></CourseCard>
           ))}
         </div>
 
         {/* pagination part */}
-        <div>
+        <div className="w-full">
           <ReactPaginate
             breakLabel="..."
             nextLabel="next >"
             onPageChange={handlePageClick}
-            pageRangeDisplayed={5}
-            pageCount={courses.pageCount}
+            pageRangeDisplayed={2}
+            pageCount={courses?.pageCount}
             previousLabel="< previous"
             renderOnZeroPageCount={null}
             marginPagesDisplayed={2}
