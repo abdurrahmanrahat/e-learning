@@ -44,7 +44,6 @@ export default function CheckoutForm({course}) {
       post_code: data.postCode,
       currency: data.currency
     }
-    // console.log(paymentInfo)
 
     apiHandler.post("http://localhost:5000/paymentGateway/sslCommerce", paymentInfo)
       .then((res) => {
