@@ -1,10 +1,11 @@
 import { ObjectId } from 'mongodb';
 import { SSLCommerzPayment } from 'sslcommerz-lts';
+import config from '../../config';
 import { TPaymentOrder } from './payment.interface';
 import { PaymentHistory } from './payment.model';
 
-const store_id = 'YOUR_STORE_ID';
-const store_passwd = 'YOUR_STORE_PASSWORD';
+const store_id = config.SSLCOMMERCE_STOREID;
+const store_passwd = config.SSLCOMMERCE_STORE_PASSWORD;
 const is_live = false; // Set to true for live mode
 
 // Create a new payment and initiate SSLCommerz
@@ -42,7 +43,11 @@ const createPaymentIntoDB = async (orderInfo: TPaymentOrder) => {
     ship_country: 'Bangladesh',
   };
 
-  const sslcz = new SSLCommerzPayment(store_id, store_passwd, is_live);
+  const sslcz = new SSLCommerzPayment(
+    store_id as string,
+    store_passwd as string,
+    is_live,
+  );
   const apiResponse = await sslcz.init(data);
 
   // Store payment info in the database with a pending status
