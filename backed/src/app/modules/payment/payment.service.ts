@@ -1,5 +1,5 @@
 import { ObjectId } from 'mongodb';
-import { SSLCommerzPayment } from 'sslcommerz-lts';
+import SSLCommerzPayment from 'sslcommerz-lts';
 import config from '../../config';
 import { TPaymentOrder } from './payment.interface';
 import { PaymentHistory } from './payment.model';
@@ -43,7 +43,7 @@ const createPaymentIntoDB = async (orderInfo: TPaymentOrder) => {
     ship_country: 'Bangladesh',
   };
 
-  const sslcz = new SSLCommerzPayment(
+  const sslcz = SSLCommerzPayment(
     store_id as string,
     store_passwd as string,
     is_live,
