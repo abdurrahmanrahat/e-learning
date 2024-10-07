@@ -1,61 +1,16 @@
 import { Schema, model } from 'mongoose';
-import { TPayment } from './payment.interface';
 
-const paymentSchema = new Schema<TPayment>(
+const paymentHistorySchema = new Schema(
   {
-    courseId: {
-      type: Schema.Types.ObjectId,
-      ref: 'Course',
-      required: [true, 'Course ID is required.'],
-    },
-    name: {
-      type: String,
-      required: [true, 'Name is required.'],
-    },
-    email: {
-      type: String,
-      required: [true, 'Email is required.'],
-    },
-    address: {
-      type: String,
-      required: [true, 'Address is required.'],
-    },
-    country: {
-      type: String,
-      required: [true, 'Country is required.'],
-    },
-    phone: {
-      type: String,
-      required: [true, 'Phone number is required.'],
-    },
-    productName: {
-      type: String,
-      required: [true, 'Product name is required.'],
-    },
-    amount: {
-      type: Number,
-      required: [true, 'Amount is required.'],
-    },
-    category: {
-      type: String,
-      required: [true, 'Category is required.'],
-    },
-    city: {
-      type: String,
-      required: [true, 'City is required.'],
-    },
-    post_code: {
-      type: String,
-      required: [true, 'Post code is required.'],
-    },
-    currency: {
-      type: String,
-      required: [true, 'Currency is required.'],
-    },
+    transactionId: { type: String, required: true, unique: true },
+    orderInfo: { type: Object, required: true },
+    payment_status: { type: Boolean, default: false },
+    currency: { type: String, required: true },
+    acct_no: { type: String, required: true },
+    shipping_method: { type: String, required: true },
+    date: { type: Date, default: Date.now },
   },
-  {
-    timestamps: true,
-  },
+  { timestamps: true },
 );
 
-export const Payment = model<TPayment>('Payment', paymentSchema);
+export const PaymentHistory = model('PaymentHistory', paymentHistorySchema);
