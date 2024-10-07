@@ -1,11 +1,11 @@
-import toast from "react-hot-toast";
-import PrimaryTitle from "../../Ui/PrimaryTitle";
-import { CHECKOUTImages } from "../../../image-data/checkout";
 import { useState } from "react";
+import toast from "react-hot-toast";
+import useAxios from "../../../Hooks/useAxios";
+import { CHECKOUTImages } from "../../../image-data/checkout";
+import PrimaryTitle from "../../Ui/PrimaryTitle";
 import PaypalCardForm from "../PaypalCardForm/PaypalCardForm";
 import SSLCommerceForm from "../SSLCommerceForm/SSLCommerceForm";
 import VisaCardForm from "../VisaCardForm/VisaCardForm";
-import useAxios from "../../../Hooks/useAxios";
 
 const cards = [
   {
@@ -22,14 +22,13 @@ const cards = [
   },
 ];
 
-export default function CheckoutForm({course}) {
+export default function CheckoutForm({ course }) {
   const [clickedCard, setClickedCard] = useState("paypal");
   const apiHandler = useAxios();
 
-  console.log(course)
+  console.log(course);
   // Form submission handler
   const onSubmit = (data) => {
-
     const paymentInfo = {
       courseId: course?.data?._id,
       name: data.name,
@@ -42,12 +41,14 @@ export default function CheckoutForm({course}) {
       category: course?.data.category,
       city: data.city,
       post_code: data.postCode,
-      currency: data.currency
+      currency: data.currency,
     }
 
-    apiHandler.post("http://localhost:5000/paymentGateway/sslCommerce", paymentInfo)
+
+    apiHandler
+      .post("http://localhost:5000/paymentGateway/sslCommerce", paymentInfo)
       .then((res) => {
-        console.log('payment:', res);
+        console.log("payment:", res);
         // toast.success(`${res.data.redirect_url}`);
         window.location.replace(res.data.redirect_url);
       })
@@ -71,25 +72,22 @@ export default function CheckoutForm({course}) {
             <figure
               key={index}
               onClick={() => setClickedCard(item.name)}
-              className={`cursor-pointer border-[1px] ${clickedCard === item.name ? 'border-[#49BBBD]' : 'border-[#D9D9D9]'} py-2 px-4 rounded-xl`}
+              className={`cursor-pointer border-[1px] ${
+                clickedCard === item.name
+                  ? "border-[#49BBBD]"
+                  : "border-[#D9D9D9]"
+              } py-2 px-4 rounded-xl`}
             >
               <img src={item.logo} alt="" />
             </figure>
           ))}
         </div>
         <div>
-            {
-               clickedCard === 'paypal' &&
-               <PaypalCardForm onSubmit={onSubmit}/> 
-            }
-            {
-               clickedCard === 'SSLCommerce' &&
-               <SSLCommerceForm onSubmit={onSubmit}/> 
-            }
-            {
-               clickedCard === 'visa' &&
-               <VisaCardForm onSubmit={onSubmit}/> 
-            }
+          {clickedCard === "paypal" && <PaypalCardForm onSubmit={onSubmit} />}
+          {clickedCard === "SSLCommerce" && (
+            <SSLCommerceForm onSubmit={onSubmit} />
+          )}
+          {clickedCard === "visa" && <VisaCardForm onSubmit={onSubmit} />}
         </div>
       </div>
     </div>

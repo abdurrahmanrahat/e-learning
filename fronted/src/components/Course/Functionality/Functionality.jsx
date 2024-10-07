@@ -43,9 +43,6 @@ export default function Functionality({
           onChange={(e) => handleSearch(e)}
         />
 
-        <div className="bg-primary hover:bg-hover transition-all duration-300 px-12 py-3 rounded-xl text-white cursor-pointer w-[20%] flex justify-center items-center">
-          Search
-        </div>
       </div>
 
       <div className="w-full flex justify-center lg:flex-nowrap xl:flex-nowrap flex-wrap gap-10">

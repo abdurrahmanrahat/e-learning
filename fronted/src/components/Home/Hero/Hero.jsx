@@ -1,11 +1,10 @@
-import { HOMEImages } from "../../../image-data/home";
-import { HiOutlineDesktopComputer } from "react-icons/hi";
-import { FaChalkboardTeacher } from "react-icons/fa";
-import { RiProgress3Line } from "react-icons/ri";
-import { FaPlayCircle } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import { FaChalkboardTeacher, FaPlayCircle } from "react-icons/fa";
+import { HiOutlineDesktopComputer } from "react-icons/hi";
 import { MdCancel } from "react-icons/md";
+import { RiProgress3Line } from "react-icons/ri";
+import { Link } from "react-router-dom";
+import { HOMEImages } from "../../../image-data/home";
 
 const Hero = () => {
   const [clickedPlayBtn, setClickedPlayBtn] = useState(false);
@@ -32,9 +31,7 @@ const Hero = () => {
             }`}
           >
             <div className="absolute text-3xl top-[-3%] right-[-1%] cursor-pointer">
-              <span
-                onClick={() => setClickedPlayBtn(!clickedPlayBtn)}
-              >
+              <span onClick={() => setClickedPlayBtn(!clickedPlayBtn)}>
                 <MdCancel />
               </span>
             </div>
@@ -57,7 +54,7 @@ const Hero = () => {
         <div className="w-full lg:w-1/2 xl:w-1/2">
           <div className="flex flex-col gap-14 justify-start ">
             <div className="flex flex-col gap-8">
-              <h2 className="text-6xl  text-[#101828] font-semibold leading-[1.3em]">
+              <h2 className="text-6xl  text-[#101828] font-semibold leading-[1.3em] capitalize">
                 Get where you{"'"}re getting faster with{" "}
                 <span className="text-primary">BrainWave</span>
               </h2>

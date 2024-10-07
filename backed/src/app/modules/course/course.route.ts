@@ -18,6 +18,7 @@ router.post(
 router.get('/', CourseControllers.getAllCourses);
 
 router.get('/:courseId', CourseControllers.getSingleCourse);
+router.get('/email/:email', CourseControllers.getCoursesByEmail);
 
 router.patch(
   '/:courseId',
