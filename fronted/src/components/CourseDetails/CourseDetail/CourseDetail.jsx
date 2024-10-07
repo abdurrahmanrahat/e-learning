@@ -15,7 +15,7 @@ const CourseDetail = () => {
   const { course } = useCourse(id);
   const { user } = useUser();
   const navigate = useNavigate();
-  console.log(course);
+  // console.log(course);
 
   const tabs = ["Overview", "Reviews", "Description"];
   const tabsItem = [

@@ -42,9 +42,8 @@ export default function CheckoutForm({ course }) {
       city: data.city,
       post_code: data.postCode,
       currency: data.currency,
-    };
-    // console.log(paymentInfo)
-    console.log(paymentInfo);
+    }
+
 
     apiHandler
       .post("http://localhost:5000/paymentGateway/sslCommerce", paymentInfo)
