@@ -34,6 +34,11 @@ const getAllCoursesFromDB = async (payload: Record<string, unknown>) => {
   return { result, totalCourses, pageCount };
 };
 
+const getCoursesByEmailFromDB = async (email: string) => {
+  const result = await Course.find({ instructorEmail: email });
+  return result;
+};
+
 const getSingleCourseFromDB = async (courseId: string) => {
   const result = await Course.findById(courseId);
   return result;
@@ -58,6 +63,7 @@ const deleteCourseFromDB = async (courseId: string) => {
 export const CourseServices = {
   createCourseIntoDB,
   getAllCoursesFromDB,
+  getCoursesByEmailFromDB,
   getSingleCourseFromDB,
   updateCourseIntoDB,
   deleteCourseFromDB,

@@ -40,10 +40,6 @@ export default function Functionality({
           className="w-[80%] px-6 py-3 border-none focus:outline-none focus:border-[#49BBBD] border-[#D9D9D9] placeholder:text-[#9D9B9B] placeholder:text-base placeholder:font-light outline-none rounded-l-xl"
           onChange={(e) => handleSearch(e)}
         />
-
-        <div className="bg-primary hover:bg-hover transition-all duration-300 px-12 py-3 rounded-xl text-white cursor-pointer w-[20%]">
-          Search
-        </div>
       </div>
 
       <div className="w-full flex justify-center lg:flex-nowrap xl:flex-nowrap flex-wrap gap-10">
