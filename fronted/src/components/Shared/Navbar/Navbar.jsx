@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import { getUser } from "../../../utils/getUser";
 import { removeUserInfo } from "../../../utils/removeUserInfo";
 import ActiveLink from "../../Ui/ActiveLink";
+import Button from "../../Ui/Button";
+import { RxDashboard } from "react-icons/rx";
+import { IoListSharp, IoSettingsOutline } from "react-icons/io5";
+import { FiLogOut } from "react-icons/fi";
 
 export default function Navbar() {
   const [isToggleOpen, setIsToggleOpen] = useState(false);
@@ -87,13 +91,6 @@ export default function Navbar() {
                 </ActiveLink>
               </li>
               <li className="flex items-stretch">
-                <ActiveLink to={"blog-page"}>
-                  <span className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-primary lg:px-4">
-                    Blog
-                  </span>
-                </ActiveLink>
-              </li>
-              <li className="flex items-stretch">
                 <ActiveLink to={"about-us"}>
                   <span className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-primary lg:px-4">
                     About
@@ -101,9 +98,9 @@ export default function Navbar() {
                 </ActiveLink>
               </li>
               <li className="flex items-stretch">
-                <ActiveLink to={`/dashboard/${user?.role}`}>
+                <ActiveLink to={"blogs"}>
                   <span className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-primary lg:px-4">
-                    Dashboard
+                    Blogs
                   </span>
                 </ActiveLink>
               </li>
@@ -134,14 +131,14 @@ export default function Navbar() {
                     </figure>
                     {/* Dropdown menu start */}
                     <div
-                      className={`absolute -right-14 md:right-0 mt-2 w-80 md:w-96 py-2 bg-white rounded-md shadow-lg transform transition-all duration-300 ${
+                      className={`absolute -right-14 md:right-0 mt-2 w-80 md:w-96 py-2 bg-white rounded-md shadow-lg transform transition-all duration-300 flex flex-col gap-6 ${
                         isDropdownOpen
                           ? "opacity-100 scale-100"
                           : "opacity-0 scale-95 pointer-events-none"
                       }`}
                     >
                       {/* Dropdown head */}
-                      <div className="flex flex-col items-center">
+                      <div className="flex flex-col items-center gap-4">
                         <figure className="w-16 h-16 rounded-full">
                           <img
                             className="w-16 h-16 rounded-full"
@@ -149,70 +146,81 @@ export default function Navbar() {
                             alt="User Profile"
                           />
                         </figure>
-
+                        {/* user name */}
                         <h4 className="text-2xl text-center font-nunito font-bold">
                           {user?.name}
                         </h4>
+                        {/* user email */}
                         <p className="text-[#646464] text-center">
                           {user?.email}
                         </p>
-
-                        <Link to="/dashboard/admin/student-profile">
-                          <li className="flex items-stretch">
-                            <button className="relative flex items-center justify-center w-full px-5 py-3 text-sm font-medium text-white transition-colors duration-300 bg-gradient-to-r from-primary to-secondary mt-2 rounded-lg">
-                              <span className="absolute inset-0 border-t-2 border-b-2 border-white"></span>
+                        {/* profile */}
+                        <Link to={`/dashboard/${user?.role}/profile`}>
+                          <li className="flex items-stretch text-base">
+                            <Button outlineBtn>
                               <span className="relative">View profile</span>
-                            </button>
+                            </Button>
                           </li>
                         </Link>
                       </div>
 
-                      <div className="pl-6">
+                      {/* dropdown links */}
+                      <ul className="px-6">
+                        <li className="flex items-stretch">
+                          <ActiveLink to={`/dashboard/${user?.role}`}>
+                            <span className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-primary lg:px-4">
+                              <span>
+                                <RxDashboard className="block text-[18px]" />
+                              </span>
+                              <span>Dashboard</span>
+                            </span>
+                          </ActiveLink>
+                        </li>
                         {/* Dropdown Content */}
-                        <li className="flex items-stretch">
-                          <ActiveLink to={"/my-courses"}>
-                            <span className="flex font-poppins font-medium items-center gap-2 py-4 transition-colors duration-300 hover:text-primary">
-                              My Courses
+                        { user?.role === 'instructor' ?
+                          <li className="flex items-stretch">
+                          <ActiveLink to={"/dashboard/instructor/my-courses"}>
+                            <span className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-primary lg:px-4">
+                              <span>
+                                <IoListSharp className="block text-[18px]" />
+                              </span>
+                              <span>My Courses</span>
                             </span>
                           </ActiveLink>
                         </li>
+                        :
                         <li className="flex items-stretch">
-                          <ActiveLink to={"/charts"}>
-                            <span className="flex font-poppins font-medium items-center gap-2 pb-4 transition-colors duration-300 hover:text-primary">
-                              Student Analytics
+                          <ActiveLink to={"/dashboard/student/enrolled-courses"}>
+                            <span className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-primary lg:px-4">
+                              <span>
+                                <IoListSharp className="block text-[18px]" />
+                              </span>
+                              <span>Enrolled Courses</span>
                             </span>
                           </ActiveLink>
-                        </li>
+                        </li>}
                         <li className="flex items-stretch">
                           <ActiveLink to={"/settings"}>
-                            <span className="flex font-poppins font-medium items-center gap-2 pb-4 transition-colors duration-300 hover:text-primary">
-                              Settings
+                            <span className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-primary lg:px-4">
+                              <span>
+                                <IoSettingsOutline className="block text-[18px]" />
+                              </span>
+                              <span>Settings</span>
                             </span>
                           </ActiveLink>
                         </li>
-
-                        {/* Log out Button with Gradient and Hover */}
-                        <button
+                        <li
+                          className="flex items-stretch"
                           onClick={handleLogoutBtn}
-                          className="relative flex items-center justify-center w-fit px-6 py-3 mt-2 text-sm font-medium text-white transition-colors duration-300 bg-gradient-to-r from-primary to-secondary rounded-lg"
                         >
-                          <span className="absolute inset-0 border-t-2 border-b-2 border-white"></span>
-                          <span className="relative flex items-center">
-                            <i className="mr-2">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="20"
-                                height="20"
-                                viewBox="0 0 24 24"
-                              >
-                                <path d="M8 9v-4l8 7-8 7v-4h-8v-6h8zm2-7v2h12v16h-12v2h14v-20h-14z" />
-                              </svg>{" "}
-                              {/* Include the icon with space */}
-                            </i>
-                            Log out
+                          <span className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-primary lg:px-4 cursor-pointer">
+                            <span>
+                              <FiLogOut className="block text-[18px]" />
+                            </span>
+                            <span>Log Out</span>
                           </span>
-                        </button>
-                      </div>
+                        </li>
+                      </ul>
                     </div>{" "}
                     {/* Dropdown menu end */}
                   </div>

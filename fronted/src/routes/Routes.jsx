@@ -16,18 +16,17 @@ import UsersManagement from "../pages/Dashboard/Admin/UsersManagement/UsersManag
 import AllBlogs from "../pages/Dashboard/AllBlogs/AllBlogs";
 import AddCourse from "../pages/Dashboard/Instructor/AddCourse/AddCourse";
 import InstructorDashboardHome from "../pages/Dashboard/Instructor/InstructorDashboardHome/InstructorDashboardHome";
-import InstructorsProfile from "../pages/Dashboard/Instructor/InstructorProfile/InstructorsProfile";
 import MyCourses from "../pages/Dashboard/Instructor/MyCourses/MyCourses";
 import CourseClassroom from "../pages/Dashboard/Student/CourseClassroom/CourseClassroom";
 import EnrolledCourses from "../pages/Dashboard/Student/EnrolledCourses/EnrolledCourses";
 import StudentDashboardHome from "../pages/Dashboard/Student/StudentDashboardHome/StudentDashboardHome";
-import StudentProfile from "../pages/Dashboard/Student/StudentProfile/StudentProfile";
 import Home from "../pages/Home/Home";
 import InstructorDetails from "../pages/InstructorDetails/InstructorDetails";
 import Instructors from "../pages/Instructors/Instructors";
 import RoleChange from "../pages/RoleChange/RoleChange";
-import BlogPage from "../components/Blog/BlogPage/BlogPage";
-import BlogDetails from "../components/Blog/BlogDetails/BlogDetails";
+import Blogs from "../pages/Blogs/Blogs";
+import BlogDetails from "../pages/BlogDetails/BlogDetails";
+import Profile from "../pages/Dashboard/Profile/Profile/Profile";
 
 const router = createBrowserRouter([
   {
@@ -80,8 +79,8 @@ const router = createBrowserRouter([
         element: <Charts />,
       },
       {
-        path: "blog-page",
-        element: <BlogPage></BlogPage>,
+        path: "blogs",
+        element: <Blogs/>,
       },
       {
         path: "blog-details/:id",
@@ -115,6 +114,10 @@ const router = createBrowserRouter([
         path: "all-blogs",
         element: <AllBlogs />,
       },
+      {
+        path: "profile",
+        element: <Profile/>,
+      },
     ],
   },
   {
@@ -134,8 +137,8 @@ const router = createBrowserRouter([
         element: <MyCourses />,
       },
       {
-        path: "instructor-profile",
-        element: <InstructorsProfile></InstructorsProfile>,
+        path: "profile",
+        element: <Profile/>,
       },
     ],
   },
@@ -156,8 +159,8 @@ const router = createBrowserRouter([
         element: <CourseClassroom />,
       },
       {
-        path: "student-profile",
-        element: <StudentProfile></StudentProfile>,
+        path: "profile",
+        element: <Profile/>,
       },
     ],
   },
