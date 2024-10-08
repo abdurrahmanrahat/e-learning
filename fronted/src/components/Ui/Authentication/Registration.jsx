@@ -1,13 +1,13 @@
-import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import useAxios from "../../../Hooks/useAxios";
-import axios from "axios";
-import { setUserInfo } from "../../../utils/setUserInfo";
-import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 import { auto } from "@cloudinary/url-gen/actions/resize";
 import { Cloudinary } from "@cloudinary/url-gen/index";
+import axios from "axios";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
+import { Link, useNavigate } from "react-router-dom";
+import useAxios from "../../../Hooks/useAxios";
+import { setUserInfo } from "../../../utils/setUserInfo";
 
 const Registration = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -227,7 +227,11 @@ const Registration = () => {
 
         <div className="flex justify-end">
           <input
+<<<<<<< HEAD
             className="bg-[#49BBBD] px-12 py-4 w-fit  rounded-xl text-white cursor-pointer"
+=======
+            className="inline-flex items-center justify-center gap-2 rounded px-8 py-3 text-[15px] font-medium tracking-wide text-white shadow-md transition duration-300 bg-primary hover:bg-hover hover:shadow-sm cursor-pointer"
+>>>>>>> e3911f0cde7b6abfb6536cd0c1a186b694ec1163
             type="submit"
             value="Register"
           />

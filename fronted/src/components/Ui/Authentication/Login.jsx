@@ -1,10 +1,10 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import useAxios from "../../../Hooks/useAxios";
-import { useNavigate } from "react-router-dom";
-import { setUserInfo } from "../../../utils/setUserInfo";
 import toast from "react-hot-toast";
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import useAxios from "../../../Hooks/useAxios";
+import { setUserInfo } from "../../../utils/setUserInfo";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -120,7 +120,7 @@ const Login = () => {
 
         <div className="flex justify-end">
           <input
-            className="bg-[#49BBBD] px-12 py-4 w-fit rounded-xl text-white cursor-pointer"
+            className="inline-flex items-center justify-center gap-2 rounded px-8 py-3 text-[15px] font-medium tracking-wide text-white shadow-md transition duration-300 bg-primary hover:bg-hover hover:shadow-sm cursor-pointer"
             type="submit"
             value="Login"
           />

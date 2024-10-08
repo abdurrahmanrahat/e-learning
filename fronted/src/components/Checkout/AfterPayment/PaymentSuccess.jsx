@@ -1,31 +1,65 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FaCheckCircle } from "react-icons/fa";
 import { useParams, Link } from "react-router-dom";
 import jsPDF from "jspdf";
+import useAxios from "../../../Hooks/useAxios";
+import axios from "axios";
+import useDateFormatter from "../../../Hooks/getValues/useDateFormatter";
 
 export default function PaymentSuccess() {
   const { trans_id } = useParams();
   const [paymentReceipt, setPaymentReceipt] = useState({});
+  const apiHandler = useAxios();
+  const formattedDate = useDateFormatter(paymentReceipt?.date);
 
   useEffect(() => {
     const getReceipt = async () => {
-      await axios
-        .get(`http://localhost:5000/payment-history/${trans_id}`)
-        .then((res) => {
-          console.log(res.data);
-          setPaymentReceipt(res.data);
-        })
-        .catch((err) => {
-          console.log(err.message);
-          toast.error(`${err.message}`);
-        });
+      try {
+        const res = await axios.get(
+          `http://localhost:5000/payment-history/${trans_id}`
+        );
+        console.log(res.data);
+        setPaymentReceipt(res.data);
+        return res.data; // Return the receipt data for the next function
+      } catch (err) {
+        console.log(err.message);
+        toast.error(`${err.message}`);
+        return null; // Return null in case of error
+      }
     };
-    getReceipt();
-  }, [trans_id]);
 
-  console.log(paymentReceipt?.orderInfo?.amount);
+    const createEnrolledCourse = async (receiptData) => {
+      if (!receiptData) return;
+
+      try {
+        const data = {
+          course: receiptData?.orderInfo?.courseId,
+          studentName: receiptData?.orderInfo?.name,
+          studentEmail: receiptData?.orderInfo?.email,
+        };
+        const res = await apiHandler.post(
+          "/enrolled-courses/create-enrolled-course",
+          data
+        );
+        if(res){
+          toast.success("Course Enrolled Successfully");
+        }
+      } catch (err) {
+        console.log(err.message);
+        toast.error(`${err.message}`);
+      }
+    };
+
+    const handleData = async () => {
+      const receiptData = await getReceipt();
+      await createEnrolledCourse(receiptData);
+    };
+
+    handleData();
+  }, [trans_id, apiHandler]);
+
+  console.log(paymentReceipt);
 
   // handleDownloadBtn
   const handleDownloadBtn = async () => {
@@ -46,20 +80,36 @@ export default function PaymentSuccess() {
     doc.setFontSize(16);
     doc.setTextColor(0, 0, 0);
 
-    doc.text(`Customer Name: ${paymentReceipt?.orderInfo?.name}`, 20, 40);
-    doc.text(`Total Amount: $${paymentReceipt?.orderInfo?.amount}`, 20, 50);
-    doc.text(`Date: ${paymentReceipt?.date}`, 20, 60);
-    doc.text(`Transition Id: ${paymentReceipt?.transactionId}`, 20, 70);
-    doc.text(`Payment Method: Online`, 20, 80);
+    doc.text(`Transition Id: ${paymentReceipt?.transactionId}`, 20, 50);
+    doc.text(`Payment Method: Online`, 20, 60);
+    doc.text(`Date: ${formattedDate}`, 20, 70);
+    doc.text(`Customer Name: ${paymentReceipt?.orderInfo?.name}`, 20, 80);
+    doc.text(`Address: ${paymentReceipt?.orderInfo?.address}`, 20, 90);
+    doc.text(`Phone: ${paymentReceipt?.orderInfo?.phone}`, 20, 100);
+    doc.text(
+      `Product Category: ${paymentReceipt?.orderInfo?.category}`,
+      20,
+      110
+    );
+    doc.text(
+      `Product Name: ${paymentReceipt?.orderInfo?.productName}`,
+      20,
+      120
+    );
+    doc.text(`Total Amount: $${paymentReceipt?.orderInfo?.amount}`, 140, 140, {
+      align: "left",
+    });
 
     // Draw rectangle around payment data
     doc.setDrawColor(0, 0, 0);
     doc.setLineWidth(0.2);
-    doc.rect(15, 35, 180, 50);
+    doc.rect(15, 35, 180, 110);
 
     // Footer text
     doc.setFontSize(12);
-    doc.text("Thank you for your payment!", 105, 130, { align: "center" });
+    doc.text("Thank you for your payment!", 105, 160, { align: "center" });
+    doc.setFontSize(24);
+    doc.text("BrainWave", 105, 170, { align: "center" });
 
     // Save the PDF
     doc.save("styled-payment-receipt.pdf");
@@ -81,7 +131,7 @@ export default function PaymentSuccess() {
           Amount Paid: ${paymentReceipt?.orderInfo?.amount}
         </h2>
         <p className="text-base">
-          Redirect to your{" "}
+          Click this link and{" "}
           <button
             onClick={handleDownloadBtn}
             className="text-md text-blue-500 underline"
@@ -89,7 +139,7 @@ export default function PaymentSuccess() {
             Download Pay Receipt...
           </button>
         </p>
-        <Link to="/dashboard/admin/enrolled-courses">
+        <Link to="/dashboard/student/enrolled-courses">
           <button className="bg-[#49BBBD] px-12 py-4 rounded-xl text-white cursor-pointer w-full mt-2 hover:scale-[1.2] transition-all duration-500 ease-in-out">
             Go to Class
           </button>

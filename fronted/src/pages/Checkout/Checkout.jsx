@@ -1,11 +1,11 @@
 import CheckoutForm from "../../components/Checkout/CheckoutForm/CheckoutForm";
 import PrimaryTitle from "../../components/Ui/PrimaryTitle";
 import { useParams } from "react-router-dom";
-import { useCourses } from "../../Hooks/api/useCourses";
+import useCourse from "../../Hooks/api/useCourse";
 
 export default function Checkout() {
   const { id } = useParams();
-  const {course} = useCourses(null, id);
+  const {course} = useCourse(id);
 
   console.log(course);
 
@@ -21,8 +21,8 @@ export default function Checkout() {
             {/*  <!-- Image --> */}
             <figure className="flex-1 rounded-xl">
               <img
-                src={course?.data.image}
-                alt={course?.data.title}
+                src={course?.data?.image}
+                alt={course?.data?.title}
                 className="object-cover min-h-full aspect-auto rounded-xl"
               />
             </figure>
@@ -31,21 +31,21 @@ export default function Checkout() {
               <header className="flex gap-4 mb-4">
                 <div>
                   <h3 className="text-md font-medium text-slate-700">
-                    {course?.data.title}
+                    {course?.data?.title}
                   </h3>
-                  <p className="text-sm text-slate-400">{course?.data.instructorName}</p>
+                  <p className="text-sm text-slate-400">{course?.data?.instructorName}</p>
                 </div>
               </header>
-              <p className="mb-4">{course?.data.description.slice(0, 15)} . . .</p>
+              <p className="mb-4">{course?.data?.description.slice(0, 15)} . . .</p>
               <span className="text-xl font-medium text-slate-700">
-                $ {course?.data.price}
+                $ {course?.data?.price}
               </span>
             </div>
           </div>
           <div className="bg-[#5B5B5B] h-[1px] w-full"></div>
           <div className="text-[#5B5B5B] text-xl flex justify-between">
             <span>Sub Total</span>
-            <span>${" "}{course?.data.price}</span>
+            <span>${" "}{course?.data?.price}</span>
           </div>
           <div className="bg-[#5B5B5B] h-[1px] w-full"></div>
           <div className="text-[#5B5B5B] text-xl flex justify-between">
@@ -55,7 +55,7 @@ export default function Checkout() {
           <div className="bg-[#5B5B5B] h-[1px] w-full"></div>
           <div className="text-[#5B5B5B] text-xl font-semibold flex justify-between">
             <span>Total</span>
-            <span>${" "}{course?.data.price}</span>
+            <span>${" "}{course?.data?.price}</span>
           </div>
         </div>
       </div>

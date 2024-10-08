@@ -1,14 +1,14 @@
-import { MdDeleteForever, MdModeEdit } from "react-icons/md";
-import { useState } from "react";
-import Select from "react-select";
-import toast from "react-hot-toast";
 import axios from "axios";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import { MdDeleteForever, MdModeEdit } from "react-icons/md";
+import Select from "react-select";
 // import useAxios from "../../../../Hooks/useAxios";
 // import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { LuPlus } from "react-icons/lu";
 import PrimaryTitle from "../../../../components/Ui/PrimaryTitle";
 import Rating from "../../../../components/Ui/Rating";
-import { LuPlus } from "react-icons/lu";
-import { useForm } from "react-hook-form";
 
 const TableCourseCard = ({ course, idx }) => {
   const {
@@ -47,7 +47,9 @@ const TableCourseCard = ({ course, idx }) => {
     { value: "Module 9", label: "Module 9" },
     { value: "Module 10", label: "Module 10" },
   ];
+
   const [module, setModule] = useState("");
+
   const handleAddModule = (data) => {
     const addModule = {
       title: data?.title,
@@ -189,9 +191,6 @@ const TableCourseCard = ({ course, idx }) => {
         </span>
       </td>
 
-      {/* <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200">
-        {course?.courseDuration}
-      </td> */}
       {/* button for edit */}
       <td className=" px-6 py-3 text-sm transition duration-300 border-slate-200 flex space-x-2">
         <button
@@ -393,6 +392,7 @@ const TableCourseCard = ({ course, idx }) => {
             </div>
           </div>
         </div>
+
         {/* button for add module */}
         <div>
           <button

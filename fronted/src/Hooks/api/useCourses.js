@@ -1,23 +1,37 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import useAxios from "../useAxios";
 
-export const useCourses = (query, id) => {
+export const useCourses = (query) => {
     const [courses, setCourses] = useState();
-    const [course, setCourse] = useState();
     const apiHandler = useAxios();
+<<<<<<< HEAD
+=======
+    const isInitialLoad = useRef(true);
+
+    const fetchCourses = useCallback(async () => {
+        try {
+            const response = await apiHandler.get(`/courses?page=${query?.page || 1}&limit=${query?.limit || 10}&category=${query?.category || ''}&courseDuration=${query?.duration || ''}&searchTerm=${query?.searchTerm || ''}`);
+            setCourses(response?.data?.data || []);   
+        } catch (error) {
+            console.error('Error fetching courses:', error.message);
+        }
+    }, [apiHandler, query.page, query.limit, query.category, query.duration, query.searchTerm]);
+>>>>>>> e3911f0cde7b6abfb6536cd0c1a186b694ec1163
 
     useEffect(() => {
-        if (id) {
-            apiHandler.get(`/courses/${id}`)
-                .then(res => setCourse(res?.data))
-                .catch(err => console.error(err));
+        // Fetch courses on initial load
+        if (isInitialLoad.current) {
+            fetchCourses();
+            isInitialLoad.current = false; // Mark the initial load as complete
+            return;
         }
-        else {
-            apiHandler.get(`/courses?page=${query?.page}&limit=${query?.limit}&category=${query?.category}&courseDuration=${query?.duration}&searchTerm=${query?.searchTerm}`).then(res => {
-                setCourses(res?.data.data)
-            })
-        }
-    }, [apiHandler, query?.page, query?.limit, query?.category, query?.duration, query?.searchTerm, id])
 
-    return { courses, course }
+        // Fetch courses when query params change
+        if (query.category || query.duration || query.searchTerm || query.page || query.limit) {
+            fetchCourses();
+        }
+    }, [fetchCourses, query.page, query.limit, query.category, query.duration, query.searchTerm]);
+
+
+    return { courses, fetchCourses}
 }

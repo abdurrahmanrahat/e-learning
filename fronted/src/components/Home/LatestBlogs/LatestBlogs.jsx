@@ -1,6 +1,6 @@
 import { IMAGES } from "../../../image-data";
 
-const LastestNews = () => {
+const LatestBlogs = () => {
   const news = [
     {
       image: IMAGES.HOMEImages.news2,
@@ -91,4 +91,4 @@ const LastestNews = () => {
   );
 };
 
-export default LastestNews;
+export default LatestBlogs;

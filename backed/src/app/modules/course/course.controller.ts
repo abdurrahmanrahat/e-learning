@@ -29,6 +29,18 @@ const getAllCourses = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const getCoursesByEmail = catchAsync(async (req: Request, res: Response) => {
+  const { email } = req.params;
+  const result = await CourseServices.getCoursesByEmailFromDB(email as string);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Courses get successfully',
+    data: result,
+  });
+});
+
 const getSingleCourse = catchAsync(async (req: Request, res: Response) => {
   const { courseId } = req.params;
 
@@ -75,6 +87,7 @@ const deleteCourse = catchAsync(async (req: Request, res: Response) => {
 export const CourseControllers = {
   createCourse,
   getAllCourses,
+  getCoursesByEmail,
   getSingleCourse,
   updateCourse,
   deleteCourse,

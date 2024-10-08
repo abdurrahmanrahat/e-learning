@@ -21,7 +21,7 @@ const AllCourses = () => {
         <table className="min-w-full table-auto">
           <thead>
             <tr className="bg-primary text-white">
-              <th className="px-6 py-3 text-left text-sm font-semibold"></th>
+              <th className="px-6 py-3 text-left text-sm font-semibold">#</th>
               <th className="px-6 py-3 text-left text-sm font-semibold">Image</th>
               <th className="px-6 py-3 text-left text-sm font-semibold">Title & Category</th>
               <th className="px-6 py-3 text-left text-sm font-semibold">Instructor</th>

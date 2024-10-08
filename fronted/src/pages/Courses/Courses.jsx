@@ -1,6 +1,5 @@
 import { useState } from "react";
 import ReactPaginate from "react-paginate";
-import { useCourses } from "../../Hooks/api/useCourses";
 import Functionality from "../../components/Course/Functionality/Functionality";
 import CourseCard from "../../components/Ui/CourseCard";
 import PageBanner from "../../components/Ui/PageBanner";
@@ -9,6 +8,8 @@ import "../../css/coursesBgImg.css";
 import "../../css/pagination.css";
 import { SHAREDImages } from "../../image-data/shared";
 import OfferCourse from "./OfferCourse/OfferCourse";
+import { useCourses } from "../../Hooks/api/useCourses";
+import Loader from "../../components/Ui/Loader";
 
 const Courses = () => {
   const [page, setPage] = useState(1);
@@ -25,9 +26,10 @@ const Courses = () => {
   query.duration = duration;
   query.searchTerm = searchTerm;
 
-  const {courses} = useCourses(query);
+  const { courses, } = useCourses(query);
+  // console.log(courses);
 
-  if (!courses) return <h2>Loading...</h2>;
+  if (!courses) return( <div className="w-full flex justify-center items-center my-20"><Loader/></div>)
 
   const handlePageClick = (e) => {
     console.log(e);
@@ -61,6 +63,8 @@ const Courses = () => {
       <PageBanner image={SHAREDImages.banner_2}>
         <div className="w-full lg:w-[60%] xl:w-[60%] h-full flex flex-col justify-center gap-10 px-4">
           <Functionality
+            categoryInputValue={category}
+            durationInputValue={duration}
             handleSearch={handleSearch}
             handleSelectCategory={handleSelectCategory}
             handleSelectDuration={handleSelectDuration}
@@ -73,19 +77,19 @@ const Courses = () => {
         <PrimaryTitle headingPart1={"All"} headingPart2={"Courses"} />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-20">
-          {courses?.data.map((item) => (
-            <CourseCard course={item} key={item.id}></CourseCard>
+          {courses?.data?.map((item) => (
+            <CourseCard course={item} key={item._id}></CourseCard>
           ))}
         </div>
 
         {/* pagination part */}
-        <div>
+        <div className="w-full">
           <ReactPaginate
             breakLabel="..."
             nextLabel="next >"
             onPageChange={handlePageClick}
-            pageRangeDisplayed={5}
-            pageCount={courses.pageCount}
+            pageRangeDisplayed={2}
+            pageCount={courses?.pageCount}
             previousLabel="< previous"
             renderOnZeroPageCount={null}
             marginPagesDisplayed={2}
