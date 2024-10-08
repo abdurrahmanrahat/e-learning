@@ -147,7 +147,7 @@ export default function Navbar() {
                           {user?.name}
                         </h4>
                         <p className="text-[#646464] text-center">
-                          Email: {user?.email}
+                          {user?.email}
                         </p>
 
                         <Link to="/dashboard/admin/student-profile">
@@ -173,13 +173,6 @@ export default function Navbar() {
                           <ActiveLink to={"/charts"}>
                             <span className="flex font-poppins font-medium items-center gap-2 pb-4 transition-colors duration-300 hover:text-primary">
                               Student Analytics
-                            </span>
-                          </ActiveLink>
-                        </li>
-                        <li className="flex items-stretch">
-                          <ActiveLink to={"/leaderboard"}>
-                            <span className="flex font-poppins font-medium items-center gap-2 pb-4 transition-colors duration-300 hover:text-primary">
-                              Leaderboard
                             </span>
                           </ActiveLink>
                         </li>
