@@ -11,7 +11,7 @@ const is_live = false; // Set to true for live mode
 // Create a new payment and initiate SSLCommerz
 const createPaymentIntoDB = async (orderInfo: TPaymentOrder) => {
   const trans_id = new ObjectId().toString();
-
+  
   const data = {
     total_amount: orderInfo?.amount,
     currency: `${orderInfo?.currency}`,

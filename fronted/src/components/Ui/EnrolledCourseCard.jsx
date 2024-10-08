@@ -13,7 +13,7 @@ export default function EnrolledCourseCard({enrolledCourse}) {
       <figure className="overflow-hidden relative">
         <img
           className="w-full h-full object-cover rounded"
-          src={'#'}
+          src={course?.image}
           alt="course"
         />
       </figure>
@@ -22,9 +22,9 @@ export default function EnrolledCourseCard({enrolledCourse}) {
         {/* Conditionally truncate the title */}
         <div className="flex flex-col items-start justify-between">
           <h2 className="text-2xl text-[#2F327D] font-bold font-nunito">
-            {'dkfjkd'}
+            {course?.title}
           </h2>
-          <h4 className="text-[#2F327D] font-medium">{studentName}</h4>
+          <h4 className="text-[#2F327D] font-medium">{course?.instructorName}</h4>
         </div>
         {/* progress bar */}
         <ProgressBar value={completedPercentage} width={completedPercentage} />

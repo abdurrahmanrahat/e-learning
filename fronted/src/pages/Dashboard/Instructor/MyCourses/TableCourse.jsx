@@ -1,10 +1,13 @@
 import { useState } from "react";
 import Rating from "../../../../components/Ui/Rating";
-import ModuleForm from "./ModuleForm";
 import Modal from "../../../../components/Ui/Modal";
+import Button from "../../../../components/Ui/Button";
+import NewModuleForm from "./NewModuleForm";
+import ExistingModuleForm from "./ExistingModuleForm";
 
 const TableCourse = ({ course, idx }) => {
   const [openModal, setOpenModal] = useState(false);
+  const [moduleType, setModuleType] = useState("");
 
   return (
     <>
@@ -52,11 +55,18 @@ const TableCourse = ({ course, idx }) => {
           </span>
         </td>
       </tr>
-      { openModal &&
-        <Modal openModal={openModal} setOpenModal={setOpenModal}>
-          <ModuleForm/>
+      {openModal && (
+        <Modal openModal={openModal} setOpenModal={setOpenModal} setModuleType={setModuleType}>
+          {moduleType === "existing" && <ExistingModuleForm courseId={course._id}/>}
+          {moduleType === "new" && <NewModuleForm courseId={course._id}/>}
+          {moduleType === "" && (
+            <div className="w-[60%] mx-auto h-full flex justify-center items-center gap-10">
+              <Button handler={()=> setModuleType('new')} bgBtn>New Module</Button>
+              <Button handler={()=> setModuleType('existing')} outlineBtn>Existing Module</Button>
+            </div>
+          )}
         </Modal>
-      }
+      )}
     </>
   );
 };

@@ -1,8 +1,6 @@
 import { IoIosCloseCircle } from "react-icons/io";
 
-const Modal = ({ children, setOpenModal, openModal }) => {
-   
-
+const Modal = ({ children, setOpenModal, openModal, setModuleType }) => {
   // category data
   const categoryOptions = [
     { value: "education", label: "education" },
@@ -22,6 +20,11 @@ const Modal = ({ children, setOpenModal, openModal }) => {
     { value: "4 Months", label: "4 Months" },
     { value: "5 Months", label: "5 Months" },
   ];
+  // handle close button
+  const handleCloseBtn = () => {
+    setOpenModal(false);
+    setModuleType("");
+  };
 
   return (
     <>
@@ -36,16 +39,21 @@ const Modal = ({ children, setOpenModal, openModal }) => {
           className={`fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ${
             openModal ? "opacity-100" : "opacity-0"
           }`}
-          onClick={()=> setOpenModal(false)}
+          onClick={() => setOpenModal(false)}
         ></div>
 
         {/* Modal box */}
         <div
-          className={`relative p-4 w-full max-w-6xl bg-white rounded-lg shadow dark:bg-gray-700 transform transition-transform duration-300${
+          className={`relative p-4 w-full max-w-6xl bg-white rounded-lg shadow dark:bg-gray-700 transform transition-transform duration-300 h-[80vh] flex flex-col overflow-y-scroll ${
             openModal ? "scale-100" : "scale-75"
           }`}
         >
-          <span onClick={()=> setOpenModal(false)} className="flex justify-end cursor-pointer text-3xl"><IoIosCloseCircle/></span>
+          <span
+            onClick={handleCloseBtn}
+            className="flex justify-end cursor-pointer text-3xl"
+          >
+            <IoIosCloseCircle />
+          </span>
           {/* Modal content */}
           {children}
         </div>
