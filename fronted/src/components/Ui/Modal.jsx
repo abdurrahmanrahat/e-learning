@@ -1,9 +1,6 @@
-import { useState } from "react";
-import Select from "react-select";
+import { IoIosCloseCircle } from "react-icons/io";
 
-const Modal = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
+const Modal = ({ children, setOpenModal, openModal, setModuleType }) => {
   // category data
   const categoryOptions = [
     { value: "education", label: "education" },
@@ -23,46 +20,58 @@ const Modal = () => {
     { value: "4 Months", label: "4 Months" },
     { value: "5 Months", label: "5 Months" },
   ];
-
-  const toggleModal = () => {
-    setIsModalOpen(!isModalOpen);
+  // handle close button
+  const handleCloseBtn = () => {
+    setOpenModal(false);
+    setModuleType("");
   };
 
   return (
-    <div>
-      {/* Modal toggle */}
-      <button
-        onClick={toggleModal}
-        className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        type="button"
-      >
-        Open modal
-      </button>
-
+    <>
       {/* Main modal */}
       <div
         className={`fixed inset-0 z-50 flex justify-center items-center transition-opacity duration-300 ${
-          isModalOpen ? "opacity-100 visible" : "opacity-0 invisible"
+          openModal ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
         {/* Background overlay */}
         <div
           className={`fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ${
-            isModalOpen ? "opacity-100" : "opacity-0"
+            openModal ? "opacity-100" : "opacity-0"
           }`}
-          onClick={toggleModal}
+          onClick={() => setOpenModal(false)}
         ></div>
 
         {/* Modal box */}
         <div
-          className={`relative p-4 w-full max-w-6xl bg-white rounded-lg shadow dark:bg-gray-700 transform transition-transform duration-300 ${
-            isModalOpen ? "scale-100" : "scale-75"
+          className={`relative p-4 w-full max-w-6xl bg-white rounded-lg shadow dark:bg-gray-700 transform transition-transform duration-300 h-[80vh] flex flex-col overflow-y-scroll ${
+            openModal ? "scale-100" : "scale-75"
           }`}
         >
+          <span
+            onClick={handleCloseBtn}
+            className="flex justify-end cursor-pointer text-3xl"
+          >
+            <IoIosCloseCircle />
+          </span>
           {/* Modal content */}
-          <div className="relative bg-white rounded-lg shadow dark:bg-gray-700 max-h-[80vh] overflow-y-auto overflow-x-auto">
-            {/* Modal header */}
-            <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+          {children}
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Modal;
+
+{
+  /* <div className="relative bg-white rounded-lg shadow dark:bg-gray-700 max-h-[80vh] overflow-y-auto overflow-x-auto"> */
+}
+{
+  /* Modal header */
+}
+{
+  /* <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
               <button
                 type="button"
                 onClick={toggleModal}
@@ -87,18 +96,20 @@ const Modal = () => {
               </button>
             </div>
 
-            {/* Modal body */}
             <div className="p-6">
               <h1 className="text-center text-4xl font-bold my-5">
                 Add Course
               </h1>
               <div className="border bg-[#e0f2fe] mb-20 rounded-lg max-w-full mx-auto p-8 overflow-x-auto">
                 <form
-                  // onSubmit={handleSubmit(handleAddCourse)}
-                  className="grid grid-cols-1 md:grid-cols-2 gap-10 min-w-[600px]" // ensure enough width for horizontal scrolling
-                >
-                  {/* Title */}
-                  <div className="form-control">
+                  className="grid grid-cols-1 md:grid-cols-2 gap-10 min-w-[600px]"
+                > */
+}
+{
+  /* Title */
+}
+{
+  /* <div className="form-control">
                     <label className="label">
                       <span className="label-text font-semibold text-xl text-gray-600">
                         Course Title
@@ -110,10 +121,14 @@ const Modal = () => {
                       className="text-left w-full rounded py-3 px-5 mt-3 text-sm"
                       required
                     />
-                  </div>
+                  </div> */
+}
 
-                  {/* Price */}
-                  <div className="form-control">
+{
+  /* Price */
+}
+{
+  /* <div className="form-control">
                     <label className="label">
                       <span className="label-text font-semibold text-xl text-gray-600">
                         Price
@@ -125,10 +140,14 @@ const Modal = () => {
                       className="text-left w-full rounded py-3 px-5 mt-3 text-sm"
                       required
                     />
-                  </div>
+                  </div> */
+}
 
-                  {/* Select Category */}
-                  <div className="form-control">
+{
+  /* Select Category */
+}
+{
+  /* <div className="form-control">
                     <label className="label">
                       <span className="label-text font-semibold text-xl text-gray-600">
                         Select Category
@@ -140,10 +159,14 @@ const Modal = () => {
                       placeholder="Select category"
                       required
                     />
-                  </div>
+                  </div> */
+}
 
-                  {/* Select Duration */}
-                  <div className="form-control">
+{
+  /* Select Duration */
+}
+{
+  /* <div className="form-control">
                     <label className="label">
                       <span className="label-text font-semibold text-xl text-gray-600">
                         Select Duration
@@ -155,10 +178,14 @@ const Modal = () => {
                       placeholder="Select duration"
                       required
                     />
-                  </div>
+                  </div> */
+}
 
-                  {/* Short Description */}
-                  <div className="form-control">
+{
+  /* Short Description */
+}
+{
+  /* <div className="form-control">
                     <label className="label">
                       <span className="label-text font-semibold text-xl text-gray-600">
                         Short Description
@@ -169,10 +196,14 @@ const Modal = () => {
                       className="w-full rounded p-2 mt-3"
                       rows="2"
                     ></textarea>
-                  </div>
+                  </div> */
+}
 
-                  {/* Choice Image */}
-                  <div className="form-control">
+{
+  /* Choice Image */
+}
+{
+  /* <div className="form-control">
                     <label className="label">
                       <span className="label-text font-semibold text-xl text-gray-600">
                         Choice Image
@@ -184,10 +215,14 @@ const Modal = () => {
                       className="w-full rounded p-4 mt-3 bg-white"
                       required
                     />
-                  </div>
+                  </div> */
+}
 
-                  {/* Description */}
-                  <div className="form-control md:col-span-2">
+{
+  /* Description */
+}
+{
+  /* <div className="form-control md:col-span-2">
                     <label className="label">
                       <span className="label-text font-semibold text-xl text-gray-600">
                         Description
@@ -198,25 +233,25 @@ const Modal = () => {
                       className="w-full rounded p-5 mt-3"
                       rows="4"
                     ></textarea>
-                  </div>
+                  </div> */
+}
 
-                  {/* Submit button */}
-                  <div className="form-control mt-5 w-[200px]">
+{
+  /* Submit button */
+}
+{
+  /* <div className="form-control mt-5 w-[200px]">
                     <button
                       type="submit"
                       className="px-7 py-3 text-xl font-bold text-white bg-[#49BBBD] rounded-lg hover:bg-emerald-500"
                     >
                       Add Course
                     </button>
-                  </div>
-                </form>
+                  </div> */
+}
+{
+  /* </form>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default Modal;
+          </div> */
+}

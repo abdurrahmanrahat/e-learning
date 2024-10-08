@@ -119,15 +119,6 @@ export default function DashboardLayout() {
                       </span>
                     </DashboardActiveLink>
                   </li>
-
-                  <li className="">
-                    <DashboardActiveLink to="/dashboard/instructor/add-module">
-                      <span className="flex items-center gap-3 rounded py-3 px-6 transition-colors duration-300">
-                        <PiUsersThreeDuotone className="block text-[18px]" />
-                        <span className="block text-[17px]">Add Module</span>
-                      </span>
-                    </DashboardActiveLink>
-                  </li>
                 </>
               )}
 

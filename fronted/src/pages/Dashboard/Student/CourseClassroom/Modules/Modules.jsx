@@ -11,10 +11,6 @@ export default function Modules({
     activeVideoIndex
 }) {
 
-    console.log(activeModuleIndex);
-
-
-
   return (
     <div className="custom-scrollbar h-[80vh] overflow-y-scroll flex flex-col gap-4">
       <div className="flex flex-col py-4 rounded-2xl">
@@ -25,7 +21,7 @@ export default function Modules({
           >
             <div
               onClick={() =>
-                handleActiveModuleIndex(moduleIndex, item.description)
+                handleActiveModuleIndex(moduleIndex, item)
               }
               className={`flex flex-col gap-1 justify-start text-xl font-medium cursor-pointer border-b-[2px] border-b-[#D1D7DC] p-4 hove:bg-[#F7F9FA] ${
                 activeModuleIndex === moduleIndex ? "bg-[#F7F9FA]" : ""

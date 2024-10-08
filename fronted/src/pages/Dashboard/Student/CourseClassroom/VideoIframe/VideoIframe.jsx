@@ -2,25 +2,27 @@ import Button from "../../../../../components/Ui/Button";
 import Tabs from "../../../../../components/Ui/Tabs";
 import ReactPlayer from 'react-player/youtube'
 
-export default function VideoIframe({ description, contents }) {
+export default function VideoIframe({ additionalInfo, content }) {
   const tabsItem = [
     {
-      content: <p>{description}</p>,
+      content: <p>{additionalInfo?.description}</p>,
     },
     {
-      content: <p>This is notes</p>,
+      content: <p>{additionalInfo?.notes}</p>,
     },
     {
-      content: <p>This is resources</p>,
+      content: <p>{additionalInfo?.resources}</p>,
     },
   ];
+
+  console.log(content)
 
   return (
     <div className="w-full lg:w-[65%] xl:w-[65%] border-r-[2px] border-r-[#D1D7DC]">
       {/* video content */}
       <div className="w-full h-[40vh] lg:h-[70vh] xl:h-[70vh] flex flex-col items-end gap-4">
         <ReactPlayer
-          url={`${contents?.contentLink}`} // The video URL
+          url={`${content?.contentLink}`} // The video URL
           playing={true}
           controls={true}
           width="100%"

@@ -1,17 +1,16 @@
-import PageBanner from "../../Ui/PageBanner";
-import { SHAREDImages } from "../../../image-data/shared";
+import { useEffect, useState } from "react";
+import PageBanner from "../../components/Ui/PageBanner";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { RiContactsLine } from "react-icons/ri";
 import { LuBookUp } from "react-icons/lu";
+import { SHAREDImages } from "../../image-data/shared";
 
-const BlogPage = () => {
+export default function Blogs() {
   const [blogPosts, setBlogPosts] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('JavaScript');
+  const [selectedCategory, setSelectedCategory] = useState("JavaScript");
   const [filteredPosts, setFilteredPosts] = useState([]);
- 
-  
+
   useEffect(() => {
     const fetchPosts = async () => {
       const response = await fetch("/blogCategory.json");
@@ -23,10 +22,11 @@ const BlogPage = () => {
   }, []);
 
   useEffect(() => {
-    const filtered = blogPosts.filter(post => post.categoryName === selectedCategory);
+    const filtered = blogPosts.filter(
+      (post) => post.categoryName === selectedCategory
+    );
     setFilteredPosts(filtered);
   }, [selectedCategory, blogPosts]);
-
 
   // blog latest category
   const [blogs, setBlogs] = useState();
@@ -36,6 +36,7 @@ const BlogPage = () => {
       .then((data) => setBlogs(data));
   }, []);
   console.log(blogs);
+
   return (
     <div>
       <PageBanner image={SHAREDImages.banner_2}>
@@ -45,15 +46,16 @@ const BlogPage = () => {
               type="text"
               name="searchKeyword"
               id="searchKeyword"
-          //     value={searchTerm}
-          // onChange={(e) => setSearchTerm(e.target.value)}
+              //     value={searchTerm}
+              // onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search your favorite course"
               className="w-[80%] px-6 py-3 border-none focus:outline-none focus:border-[#49BBBD] border-[#D9D9D9] placeholder:text-[#9D9B9B] placeholder:text-base placeholder:font-light outline-none rounded-l-xl"
             />
 
             <button
-            // onClick={handleSearch}
-            className="bg-primary hover:bg-hover transition-all duration-300 px-12 py-3 rounded-xl text-white cursor-pointer w-[20%]">
+              // onClick={handleSearch}
+              className="bg-primary hover:bg-hover transition-all duration-300 px-12 py-3 rounded-xl text-white cursor-pointer w-[20%]"
+            >
               Search
             </button>
           </div>
@@ -64,50 +66,66 @@ const BlogPage = () => {
         <h2 className="text-2xl font-bold mb-5">Reading blog list</h2>
         {/* Reading blog list */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7 ">
-        <div className="relative">
-              <img className="rounded-xl" src='https://i.ibb.co.com/S6jsqZ9/Rectangle-34-3.png' alt="" />
-              <div className="absolute top-1/2 left-[90px] ">
-                <button
-                onClick={() => setSelectedCategory('JavaScript')}
-                  className="bg-white font-bold rounded-xl px-6  py-3 drop-shadow-lg opacity-80"
-                >
-                  JavaScript
-                </button>
-              </div>
-        </div>
-        <div className="relative">
-              <img className="rounded-xl" src='https://i.ibb.co.com/LDywJqH/Rectangle-34-1.png' alt="" />
-              <div className="absolute top-1/2 left-[90px] ">
-                <button
-                onClick={() => setSelectedCategory('React')}
-                  className="bg-white font-bold rounded-xl px-6  py-3 drop-shadow-lg opacity-80"
-                >
-                  React
-                </button>
-              </div>
-        </div>
-        <div className="relative">
-              <img className="rounded-xl" src='https://i.ibb.co.com/SKwf9j6/Rectangle-34-2.png' alt="" />
-              <div className="absolute top-1/2 left-[90px] ">
-                <button
-                onClick={() => setSelectedCategory('PHP')}
-                  className="bg-white font-bold rounded-xl px-6  py-3 drop-shadow-lg opacity-80"
-                >
-                 PHP
-                </button>
-              </div>
-        </div>
-        <div className="relative">
-              <img className="rounded-xl" src='https://i.ibb.co.com/VYcJZLc/Group-43.png' alt="" />
-              <div className="absolute top-1/2 left-[90px] ">
-                <button
-                onClick={() => setSelectedCategory('UX/UI')}
-                  className="bg-white font-bold rounded-xl px-6  py-3 drop-shadow-lg opacity-80"
-                >
-                  UX/UI
-                </button>
-              </div>
-        </div>
+          <div className="relative">
+            <img
+              className="rounded-xl"
+              src="https://i.ibb.co.com/S6jsqZ9/Rectangle-34-3.png"
+              alt=""
+            />
+            <div className="absolute top-1/2 left-[90px] ">
+              <button
+                onClick={() => setSelectedCategory("JavaScript")}
+                className="bg-white font-bold rounded-xl px-6  py-3 drop-shadow-lg opacity-80"
+              >
+                JavaScript
+              </button>
+            </div>
+          </div>
+          <div className="relative">
+            <img
+              className="rounded-xl"
+              src="https://i.ibb.co.com/LDywJqH/Rectangle-34-1.png"
+              alt=""
+            />
+            <div className="absolute top-1/2 left-[90px] ">
+              <button
+                onClick={() => setSelectedCategory("React")}
+                className="bg-white font-bold rounded-xl px-6  py-3 drop-shadow-lg opacity-80"
+              >
+                React
+              </button>
+            </div>
+          </div>
+          <div className="relative">
+            <img
+              className="rounded-xl"
+              src="https://i.ibb.co.com/SKwf9j6/Rectangle-34-2.png"
+              alt=""
+            />
+            <div className="absolute top-1/2 left-[90px] ">
+              <button
+                onClick={() => setSelectedCategory("PHP")}
+                className="bg-white font-bold rounded-xl px-6  py-3 drop-shadow-lg opacity-80"
+              >
+                PHP
+              </button>
+            </div>
+          </div>
+          <div className="relative">
+            <img
+              className="rounded-xl"
+              src="https://i.ibb.co.com/VYcJZLc/Group-43.png"
+              alt=""
+            />
+            <div className="absolute top-1/2 left-[90px] ">
+              <button
+                onClick={() => setSelectedCategory("UX/UI")}
+                className="bg-white font-bold rounded-xl px-6  py-3 drop-shadow-lg opacity-80"
+              >
+                UX/UI
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -119,9 +137,12 @@ const BlogPage = () => {
             id="postContainer"
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-12 lg:gap-y-10 gap-x-4 gap-y-5"
           >
-{filteredPosts.length > 0 ? (
-          filteredPosts.map((post, index) => (
-            <div key={index} className="drop-shadow-xl bg-[#f8fafc] border h-[560px]">
+            {filteredPosts.length > 0 ? (
+              filteredPosts.map((post, index) => (
+                <div
+                  key={index}
+                  className="drop-shadow-xl bg-[#f8fafc] border h-[560px]"
+                >
                   <img className="w-full h-[260px]" src={post.img} alt="" />
                   <div className="mx-5 pt-2 pb-10">
                     <h2 className="text-xl font-bold mt-4 mb-6">
@@ -146,10 +167,10 @@ const BlogPage = () => {
                     </div>
                   </div>
                 </div>
-          ))
-        ) : (
-          <p>No posts found for this category or search term.</p>
-        )}
+              ))
+            ) : (
+              <p>No posts found for this category or search term.</p>
+            )}
           </div>
         </div>
       </div>
@@ -182,6 +203,4 @@ const BlogPage = () => {
       </div>
     </div>
   );
-};
-
-export default BlogPage;
+}

@@ -4,6 +4,8 @@ import Progress from "../../../../components/Dashboard/Student/CourseClassroom/P
 import Search from "./Search/Search";
 import Modules from "./Modules/Modules";
 import VideoIframe from "./VideoIframe/VideoIframe";
+import useCourseModules from "../../../../Hooks/api/useCourseModules";
+import { useParams } from "react-router-dom";
 
 const modules = [
   {
@@ -112,17 +114,23 @@ const modules = [
 
 
 export default function CourseClassroom() {
+  const {id} = useParams();
+  const {courseModules} = useCourseModules(id);
   const [activeModuleIndex, setActiveModuleIndex] = useState(null);
   const [activeVideoIndex, setActiveVideoIndex] = useState(null);
   const [watchedVideos, setWatchedVideos] = useState({});
-  const [description, setDescription] = useState("This is description");
-  const [contents, setContents] = useState({contentLink: 'https://www.youtube.com/watch?v=hJECxP0qlFQ'});
+  const [additionalInfo, setAdditionalInfo] = useState(courseModules[0]);
+  const [content, setContent] = useState(courseModules[0]?.content[0]);
 
-  const handleActiveModuleIndex = (moduleIndex, description) => {
+  const handleActiveModuleIndex = (moduleIndex, item) => {
     setActiveModuleIndex(
       activeModuleIndex === moduleIndex ? null : moduleIndex
     );
-    setDescription(description);
+    setAdditionalInfo({
+      description: item?.description,
+      notes: item?.notes,
+      resources: item?.resources
+    });
   };
 
 
@@ -138,7 +146,7 @@ export default function CourseClassroom() {
       }
       return prevWatched;
     });
-    setContents(item);
+    setContent(item);
     setActiveVideoIndex(activeVideoIndex === videoIndex ? null : videoIndex);
   };
 
@@ -163,7 +171,7 @@ export default function CourseClassroom() {
   const courseProgressPercentage =
     totalVideosCount > 0 ? (watchedVideosCount / totalVideosCount) * 100 : 0;
 
-  console.log(description);
+  console.log(courseModules[0]?.content[0]);
 
   return (
     <div className="flex flex-col gap-0 w-full">
@@ -173,7 +181,7 @@ export default function CourseClassroom() {
           <span className="cursor-pointer text-2xl hover:scale-[1.2] transition-all duration-500 ease-in-out">
             <FaCircleArrowLeft />
           </span>
-          <span>{contents?.title}</span>
+          <span>{content?.title}</span>
         </div>
         {/* progress bar */}
         <Progress
@@ -185,7 +193,7 @@ export default function CourseClassroom() {
 
       <div className="w-full flex flex-col lg:flex-row xl:flex-row justify-center items-start">
         {/* video */}
-        <VideoIframe description={description} contents={contents} />
+        <VideoIframe additionalInfo={additionalInfo} content={content} />
 
         <div className="w-full lg:w-[35%] xl:w-[35%] flex flex-col gap-4">
           {/* search */}
@@ -197,7 +205,7 @@ export default function CourseClassroom() {
             activeModuleIndex={activeModuleIndex}
             handleVideoWatch={handleVideoWatch}
             watchedVideos={watchedVideos}
-            modules={modules}
+            modules={courseModules}
             activeVideoIndex={activeVideoIndex}
           />
         </div>
