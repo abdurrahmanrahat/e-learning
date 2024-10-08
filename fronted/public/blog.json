@@ -1,0 +1,20 @@
+[
+    {
+        "image":"https://kinforce.net/learen/wp-content/uploads/2023/01/group-of-students-doing-online-research-in-library-PSTLNGR.jpg",
+        "title":"JavaScript for Kids: Code Your Own Games and Apps",
+        "category":"JavaScript",
+        "admin":"admin.learning"
+    },
+    {
+        "image":"https://kinforce.net/learen/wp-content/uploads/2023/01/group-of-students-in-college-QNDYF3A.jpg",
+        "title":"Ultimate Web Designer & Web Developer Course",
+        "category":"Web Design",
+        "admin":"admin.learning"
+    },
+    {
+        "image":"https://kinforce.net/learen/wp-content/uploads/2023/01/group-of-students-studying-in-library-MU8H8V2.jpg",
+        "title":"Running a Web Development Business: The Complete Guide",
+        "category":"Development",
+        "admin":"admin.learning"
+    }
+]

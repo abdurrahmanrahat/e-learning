@@ -26,6 +26,8 @@ import Home from "../pages/Home/Home";
 import InstructorDetails from "../pages/InstructorDetails/InstructorDetails";
 import Instructors from "../pages/Instructors/Instructors";
 import RoleChange from "../pages/RoleChange/RoleChange";
+import BlogPage from "../components/Blog/BlogPage/BlogPage";
+import BlogDetails from "../components/Blog/BlogDetails/BlogDetails";
 
 const router = createBrowserRouter([
   {
@@ -76,6 +78,16 @@ const router = createBrowserRouter([
       {
         path: "charts",
         element: <Charts />,
+      },
+      {
+        path: "blog-page",
+        element: <BlogPage></BlogPage>,
+      },
+      {
+        path: "blog-details/:id",
+        element: <BlogDetails/>,
+        loader:()=>fetch('/blogCategory.json')
+        
       },
     ],
   },

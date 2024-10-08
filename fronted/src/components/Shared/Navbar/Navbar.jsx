@@ -87,6 +87,13 @@ export default function Navbar() {
                 </ActiveLink>
               </li>
               <li className="flex items-stretch">
+                <ActiveLink to={"blog-page"}>
+                  <span className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-primary lg:px-4">
+                    Blog
+                  </span>
+                </ActiveLink>
+              </li>
+              <li className="flex items-stretch">
                 <ActiveLink to={"about-us"}>
                   <span className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-primary lg:px-4">
                     About
