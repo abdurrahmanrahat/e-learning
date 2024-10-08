@@ -4,8 +4,6 @@ import useAxios from "../useAxios";
 export const useCourses = (query) => {
     const [courses, setCourses] = useState();
     const apiHandler = useAxios();
-<<<<<<< HEAD
-=======
     const isInitialLoad = useRef(true);
 
     const fetchCourses = useCallback(async () => {
@@ -16,7 +14,6 @@ export const useCourses = (query) => {
             console.error('Error fetching courses:', error.message);
         }
     }, [apiHandler, query.page, query.limit, query.category, query.duration, query.searchTerm]);
->>>>>>> e3911f0cde7b6abfb6536cd0c1a186b694ec1163
 
     useEffect(() => {
         // Fetch courses on initial load

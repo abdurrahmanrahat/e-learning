@@ -1,6 +1,6 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import PageBanner from "../../Ui/PageBanner";
-import { useUser } from "../../../Hooks/api/useUser";
+import useUser from "../../../Hooks/api/useUser";
 const BlogDetails = () => {
     const {user}=useUser()
   const blogs=useLoaderData();

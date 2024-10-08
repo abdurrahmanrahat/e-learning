@@ -159,29 +159,7 @@ export default function DashboardLayout() {
                 <DashboardActiveLink to="/dashboard/admin/all-blogs">
                   <span className="flex items-center gap-3 rounded py-3 px-6 transition-colors duration-300">
                     <IoListSharp className="block text-[18px]" />
-<<<<<<< HEAD
-                    <span className="block text-[17px]">All Courses</span>
-                  </span>
-                </DashboardActiveLink>
-              </li>
-
-              <li className="">
-                <DashboardActiveLink to="/dashboard/admin/enrolled-courses">
-                  <span className="flex items-center gap-3 rounded py-3 px-6 transition-colors duration-300">
-                    <IoListSharp className="block text-[18px]" />
-                    <span className="block text-[17px]">Enrolled Courses</span>
-                  </span>
-                </DashboardActiveLink>
-              </li>
-
-              <li className="">
-                <DashboardActiveLink to="/dashboard/admin/users-management">
-                  <span className="flex items-center gap-3 rounded py-3 px-6 transition-colors duration-300">
-                    <PiUsersThreeDuotone className="block text-[18px]" />
-                    <span className="block text-[17px]">User Management</span>
-=======
                     <span className="block text-[17px]">All Blogs</span>
->>>>>>> e3911f0cde7b6abfb6536cd0c1a186b694ec1163
                   </span>
                 </DashboardActiveLink>
               </li>

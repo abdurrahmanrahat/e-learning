@@ -227,11 +227,7 @@ const Registration = () => {
 
         <div className="flex justify-end">
           <input
-<<<<<<< HEAD
-            className="bg-[#49BBBD] px-12 py-4 w-fit  rounded-xl text-white cursor-pointer"
-=======
             className="inline-flex items-center justify-center gap-2 rounded px-8 py-3 text-[15px] font-medium tracking-wide text-white shadow-md transition duration-300 bg-primary hover:bg-hover hover:shadow-sm cursor-pointer"
->>>>>>> e3911f0cde7b6abfb6536cd0c1a186b694ec1163
             type="submit"
             value="Register"
           />
