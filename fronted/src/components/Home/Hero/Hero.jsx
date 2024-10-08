@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { FaChalkboardTeacher, FaPlayCircle } from "react-icons/fa";
+import { FaChalkboardTeacher } from "react-icons/fa";
 import { HiOutlineDesktopComputer } from "react-icons/hi";
 import { MdCancel } from "react-icons/md";
 import { RiProgress3Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { HOMEImages } from "../../../image-data/home";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const Hero = () => {
   const [clickedPlayBtn, setClickedPlayBtn] = useState(false);
@@ -70,12 +71,11 @@ const Hero = () => {
               </Link>
               <button
                 onClick={() => setClickedPlayBtn(!clickedPlayBtn)}
-                className="flex justify-center items-center gap-4 rounded-xl px-8 h-14 text-xl hover:scale-[1.2] transition-all duration-500 ease-in-out"
+                className="flex justify-center items-center gap-0 rounded-xl h-14 text-xl hover:scale-[1.2] transition-all duration-500 ease-in-out"
               >
-                <span className="text-primary text-2xl">
-                  <FaPlayCircle />
+                <span className="text-5xl">
+                <DotLottieReact src="https://lottie.host/c24c8296-4e89-470f-b0a0-5e312962b5dc/CWuzQnZgzz.lottie" loop autoplay />
                 </span>
-                <span>Watch Video</span>
               </button>
             </div>
           </div>
