@@ -3,8 +3,8 @@ import { useState } from "react";
 import Select from "react-select";
 import toast from "react-hot-toast";
 import axios from "axios";
-import useAxios from "../../../../Hooks/useAxios";
-import { useNavigate } from "react-router-dom";
+// import useAxios from "../../../../Hooks/useAxios";
+// import { useNavigate } from "react-router-dom";
 import PrimaryTitle from "../../../../components/Ui/PrimaryTitle";
 import Rating from "../../../../components/Ui/Rating";
 import { LuPlus } from "react-icons/lu";
@@ -27,8 +27,8 @@ const TableCourseCard = ({ course, idx }) => {
     setAddModalOpen(!addModalOpen);
   };
 
-  const apiHandler = useAxios();
-  const navigate = useNavigate();
+  // const apiHandler = useAxios();
+  // const navigate = useNavigate();
 
   // const { _id, title, category, image, instructorImg, instructorName, instructorEmail, price, description, bigDescription, courseDuration, totalRatings, averageRatings, isDeleted, createdAt, updatedAt, __v } = course || {};
 
@@ -50,17 +50,14 @@ const TableCourseCard = ({ course, idx }) => {
   const [module, setModule] = useState("");
   const handleAddModule = (data) => {
     const addModule = {
-        title: data?.title,
-        moduleName: data?.module_name,
-        videoLink: data?.video_link,
-        videoDuration: data?.video_duration,
-        description: data?.description,
+      title: data?.title,
+      moduleName: data?.module_name,
+      videoLink: data?.video_link,
+      videoDuration: data?.video_duration,
+      description: data?.description,
     };
     console.log(data);
-
   };
-  
-  
 
   // Form fields state
   const [courseTitle, setCourseTitle] = useState("");
@@ -161,7 +158,7 @@ const TableCourseCard = ({ course, idx }) => {
         {idx + 1}
       </td>
 
-      <td className=" text-sm transition duration-300 border-slate-200">
+      <td className="text-sm transition duration-300 border-slate-200">
         <img
           className="w-[80px] h-[60px] rounded-lg "
           src={course?.image}
@@ -460,9 +457,7 @@ const TableCourseCard = ({ course, idx }) => {
                   Course Module create by Instructors
                 </h1>
                 <div>
-                  <form
-                  onSubmit={handleSubmit(handleAddModule)}
-                  >
+                  <form onSubmit={handleSubmit(handleAddModule)}>
                     <div className="flex flex-col md:flex-row lg:flex-row items-center gap-5 mb-5">
                       {/* title  */}
                       <div className="space-y-2 w-full lg:w-1/2 xl:w-1/2">
@@ -480,8 +475,10 @@ const TableCourseCard = ({ course, idx }) => {
                           {...register("title", { required: true })}
                         />
                         {errors.title && (
-                    <span className="text-red-600">This field is required</span>
-                  )}
+                          <span className="text-red-600">
+                            This field is required
+                          </span>
+                        )}
                       </div>
                       {/* module name  */}
                       <div className="space-y-2 w-full lg:w-1/2 xl:w-1/2">
@@ -492,28 +489,29 @@ const TableCourseCard = ({ course, idx }) => {
                           Module Name
                         </label>
                         <div className="flex items-center w-full ">
-                        <Select
-                      options={selectModule}
-                      value={selectModule.find(
-                        (option) => option.value === module
-                      )}
-                      onChange={(option) =>setModule(option.value)}
-                      className="text-left  rounded-s-lg py-[3px] w-[37%] px-2 mt-2  border border-r-0 border-[#4bc0c0]"
-                      placeholder="Select"
-                      required
-                    />
-                        <input
-                          type="text"
-                          name="module_name"
-                          placeholder="Module name"
-                          className="text-left  rounded-r-lg py-3 w-[63%] mt-2 text-sm border border-l-0 pl-1 border-[#4bc0c0]"
-
-                          {...register("module_name", { required: true })}
-                        />
+                          <Select
+                            options={selectModule}
+                            value={selectModule.find(
+                              (option) => option.value === module
+                            )}
+                            onChange={(option) => setModule(option.value)}
+                            className="text-left  rounded-s-lg py-[3px] w-[37%] px-2 mt-2  border border-r-0 border-[#4bc0c0]"
+                            placeholder="Select"
+                            required
+                          />
+                          <input
+                            type="text"
+                            name="module_name"
+                            placeholder="Module name"
+                            className="text-left  rounded-r-lg py-3 w-[63%] mt-2 text-sm border border-l-0 pl-1 border-[#4bc0c0]"
+                            {...register("module_name", { required: true })}
+                          />
                         </div>
                         {errors.module_name && (
-                    <span className="text-red-600">This field is required</span>
-                  )}
+                          <span className="text-red-600">
+                            This field is required
+                          </span>
+                        )}
                       </div>
                     </div>
                     <div className="flex flex-col md:flex-row lg:flex-row items-center gap-5 mb-5">
@@ -533,8 +531,10 @@ const TableCourseCard = ({ course, idx }) => {
                           {...register("video_link", { required: true })}
                         />
                         {errors.video_link && (
-                    <span className="text-red-600">This field is required</span>
-                  )}
+                          <span className="text-red-600">
+                            This field is required
+                          </span>
+                        )}
                       </div>
                       {/* video duration  */}
                       <div className="space-y-2 w-full lg:w-1/2 xl:w-1/2">
@@ -552,8 +552,10 @@ const TableCourseCard = ({ course, idx }) => {
                           {...register("video_duration", { required: true })}
                         />
                         {errors.video_duration && (
-                    <span className="text-red-600">This field is required</span>
-                  )}
+                          <span className="text-red-600">
+                            This field is required
+                          </span>
+                        )}
                       </div>
                     </div>
                     <div className="flex flex-col md:flex-row lg:flex-row items-center gap-5 mb-5">
@@ -573,8 +575,10 @@ const TableCourseCard = ({ course, idx }) => {
                           {...register("notes", { required: true })}
                         />
                         {errors.notes && (
-                    <span className="text-red-600">This field is required</span>
-                  )}
+                          <span className="text-red-600">
+                            This field is required
+                          </span>
+                        )}
                       </div>
                       {/* resource  */}
                       <div className="space-y-2 w-full lg:w-1/2 xl:w-1/2">
@@ -592,8 +596,10 @@ const TableCourseCard = ({ course, idx }) => {
                           {...register("resource", { required: true })}
                         />
                         {errors.resource && (
-                    <span className="text-red-600">This field is required</span>
-                  )}
+                          <span className="text-red-600">
+                            This field is required
+                          </span>
+                        )}
                       </div>
                     </div>
                     {/*  description */}
@@ -608,10 +614,15 @@ const TableCourseCard = ({ course, idx }) => {
                         {...register("description", { required: true })}
                       ></textarea>
                       {errors.description && (
-                    <span className="text-red-600">This field is required</span>
-                  )}
+                        <span className="text-red-600">
+                          This field is required
+                        </span>
+                      )}
                     </div>
-                    <button type="submit" className="rounded border hover:bg-white hover:text-black px-4 py-2 font-bold mt-10 bg-[#4bc0c0] border-[#4bc0c0] text-white text-xl">
+                    <button
+                      type="submit"
+                      className="rounded border hover:bg-white hover:text-black px-4 py-2 font-bold mt-10 bg-[#4bc0c0] border-[#4bc0c0] text-white text-xl"
+                    >
                       Publish
                     </button>
                   </form>

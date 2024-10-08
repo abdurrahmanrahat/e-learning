@@ -1,9 +1,24 @@
 import PrimaryTitle from "../../../../components/Ui/PrimaryTitle";
 import { useUser } from "../../../../Hooks/api/useUser";
+import { useState } from "react";
+import { FaUserEdit } from "react-icons/fa";
 
 const UsersManagement = () => {
-
   const { users } = useUser();
+  const [editingUserId, setEditingUserId] = useState(null);
+  const [selectedRole, setSelectedRole] = useState("");
+
+  // Handle the change of the role
+  const handleRoleChange = (userId, newRole) => {
+    // Update the role in the state
+    const updatedUsers = users.map(user =>
+      user._id === userId ? { ...user, role: newRole } : user
+    );
+    // Call your update API here to persist the changes (if required)
+    // e.g., updateUserRole(userId, newRole);
+
+    setEditingUserId(null);  // Close the dropdown after selecting the role
+  };
 
   return (
     <div className="p-6 bg-[#F4F6FB] rounded-lg shadow-md">
@@ -15,7 +30,7 @@ const UsersManagement = () => {
         />
       </div>
 
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto rounded">
         <table className="min-w-full table-auto">
           <thead>
             <tr className="bg-[#49BBBD] text-white">
@@ -25,6 +40,7 @@ const UsersManagement = () => {
               <th className="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wide">Email</th>
               <th className="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wide">Gender</th>
               <th className="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wide">Role</th>
+              <th className="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wide">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -48,12 +64,32 @@ const UsersManagement = () => {
                   {user?.gender}
                 </td>
                 <td className="px-6 py-4 text-sm">
-                  <span className={`px-4 py-1 text-xs font-semibold rounded-full 
-                    ${user?.role === 'admin' ? 'bg-emerald-100 text-emerald-500' :
-                      user?.role === 'instructor' ? 'bg-indigo-100 text-indigo-500' :
-                        'bg-yellow-100 text-yellow-500'}`}>
-                    {user?.role}
-                  </span>
+                  {editingUserId === user?._id ? (
+                    <select
+                      value={selectedRole}
+                      onChange={(e) => setSelectedRole(e.target.value)}
+                      onBlur={() => handleRoleChange(user?._id, selectedRole)}
+                      className="px-2 py-1 border border-gray-300 rounded"
+                    >
+                      <option value="admin">Admin</option>
+                      <option value="instructor">Instructor</option>
+                      <option value="student">Student</option>
+                    </select>
+                  ) : (
+                    <span
+                      className={`px-4 py-1 text-xs font-semibold rounded-full 
+                        ${user?.role === 'admin' ? 'bg-emerald-100 text-emerald-500' :
+                          user?.role === 'instructor' ? 'bg-indigo-100 text-indigo-500' :
+                            'bg-yellow-100 text-yellow-500'}`}
+                    >
+                      {user?.role}
+                    </span>
+                  )}
+                </td>
+                <td className="px-6 py-4 text-sm text-[#2F327D]">
+                  <button onClick={() => setEditingUserId(user?._id)}>
+                    <FaUserEdit className="text-xl text-[#49BBBD] hover:text-[#3A9A9A] transition duration-200" />
+                  </button>
                 </td>
               </tr>
             ))}

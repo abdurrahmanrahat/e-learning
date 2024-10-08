@@ -21,7 +21,9 @@ import Authentication from "../pages/Authentication/Authentication";
 import StudentProfile from "../pages/Dashboard/Profile/StudentProfile/StudentProfile";
 import EnrolledCourses from "../pages/Dashboard/Student/EnrolledCourses/EnrolledCourses";
 import InstructorsProfile from "../pages/Dashboard/Profile/IstructorProfile/InstructorsProfile";
-import AddModule from "../pages/Dashboard/AddModule/AddModule";
+import CourseClassroom from "../pages/Dashboard/Student/CourseClassroom/CourseClassroom";
+import BlogPage from "../components/Blog/BlogPage/BlogPage";
+import BlogDetails from "../components/Blog/BlogDetails/BlogDetails";
 
 
 const router = createBrowserRouter([
@@ -74,6 +76,16 @@ const router = createBrowserRouter([
         path: "charts",
         element: <Charts/>,
       },
+      {
+        path: "blog-page",
+        element: <BlogPage></BlogPage>,
+      },
+      {
+        path: "blog-details/:id",
+        element: <BlogDetails/>,
+        loader:()=>fetch('/blogCategory.json')
+        
+      },
     ],
   },
   {
@@ -100,10 +112,7 @@ const router = createBrowserRouter([
         path: "users-management",
         element: <UsersManagement />,
       },
-      {
-        path: "add-module",
-        element: <AddModule/>,
-      },
+      
       {
         path: "student-profile",
         element: <StudentProfile></StudentProfile>,
@@ -111,6 +120,10 @@ const router = createBrowserRouter([
       {
         path: "enrolled-courses",
         element: <EnrolledCourses/>,
+      },
+      {
+        path: "course-classroom/:id",
+        element: <CourseClassroom/>,
       },
       {
         path: "instructor-profile",

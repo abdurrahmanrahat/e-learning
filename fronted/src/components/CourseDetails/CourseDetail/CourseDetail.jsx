@@ -15,7 +15,7 @@ const CourseDetail = () => {
   const { course } = useCourses(null, id);
   const { user } = useUser();
   const navigate = useNavigate();
-  // console.log(id)
+  console.log(user);
 
   const tabs = ["Overview", "Reviews", "Description"];
   const tabsItem = [
@@ -32,9 +32,11 @@ const CourseDetail = () => {
 
   const handleEnrollBtn = () => {
     if (!user) {
-      toast.error('Please login before enrollment!');
+      toast.error("Please login before enrollment!");
+    } else if (user?.role !== "student") {
+      toast.error("You are not enrolled this");
     } else {
-      navigate(`/checkout/${course?.data._id}`)
+      navigate(`/checkout/${course?.data._id}`);
     }
   };
 
@@ -70,15 +72,16 @@ const CourseDetail = () => {
               >
                 11 hour left at this price
               </h2>
-                <button onClick={handleEnrollBtn}
-                  className={`text-xl font-bold text-center w-full lg:w-full md:w-[50%] rounded-xl py-3 ${
-                    user
-                      ? "bg-[#49BBBD] text-white hover:bg-emerald-600"
-                      : "bg-gray-400 text-gray-700 cursor-not-allowed"
-                  }`}
-                >
-                  Enroll Now
-                </button>
+              <button
+                onClick={handleEnrollBtn}
+                className={`text-xl font-bold text-center w-full lg:w-full md:w-[50%] rounded-xl py-3 ${
+                  !user || user?.role !== "student"
+                    ? "bg-gray-400 text-gray-700 cursor-not-allowed"
+                    : "bg-[#49BBBD] text-white hover:bg-emerald-600"
+                }`}
+              >
+                Enroll Now
+              </button>
             </div>
             <div className="mb-10 mt-10">
               <img

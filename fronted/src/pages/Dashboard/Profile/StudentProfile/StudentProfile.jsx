@@ -94,7 +94,6 @@ const StudentProfile = () => {
       </div>
         </div>
       </div>
-
       <>
         {/*<!-- Component: tab --> */}
         <section className="max-w-full flex flex-col lg:flex-row gap-y-10 lg:gap-y-0" aria-multiselectable="false ">
