@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import PageBanner from "../../components/Ui/PageBanner";
-import { FaArrowRightLong } from "react-icons/fa6";
-import { Link } from "react-router-dom";
-import { RiContactsLine } from "react-icons/ri";
-import { LuBookUp } from "react-icons/lu";
 import { SHAREDImages } from "../../image-data/shared";
+import BlogCategory from "../../components/Blogs/BlogCategory/BlogCategory";
+import BlogCategoryCard from "../../components/Ui/BlogCategoryCard";
+import LatestBlog from "../../components/Blogs/LatestBlog/LatestBlog";
+
 
 export default function Blogs() {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -28,6 +28,7 @@ export default function Blogs() {
     setFilteredPosts(filtered);
   }, [selectedCategory, blogPosts]);
 
+  console.log(filteredPosts);
   // blog latest category
   const [blogs, setBlogs] = useState();
   useEffect(() => {
@@ -61,113 +62,23 @@ export default function Blogs() {
           </div>
         </div>
       </PageBanner>
-      {/* blog category  */}
-      <div className="container-class mt-20 mb-10">
-        <h2 className="text-2xl font-bold mb-5">Reading blog list</h2>
-        {/* Reading blog list */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7 ">
-          <div className="relative">
-            <img
-              className="rounded-xl"
-              src="https://i.ibb.co.com/S6jsqZ9/Rectangle-34-3.png"
-              alt=""
-            />
-            <div className="absolute top-1/2 left-[90px] ">
-              <button
-                onClick={() => setSelectedCategory("JavaScript")}
-                className="bg-white font-bold rounded-xl px-6  py-3 drop-shadow-lg opacity-80"
-              >
-                JavaScript
-              </button>
-            </div>
-          </div>
-          <div className="relative">
-            <img
-              className="rounded-xl"
-              src="https://i.ibb.co.com/LDywJqH/Rectangle-34-1.png"
-              alt=""
-            />
-            <div className="absolute top-1/2 left-[90px] ">
-              <button
-                onClick={() => setSelectedCategory("React")}
-                className="bg-white font-bold rounded-xl px-6  py-3 drop-shadow-lg opacity-80"
-              >
-                React
-              </button>
-            </div>
-          </div>
-          <div className="relative">
-            <img
-              className="rounded-xl"
-              src="https://i.ibb.co.com/SKwf9j6/Rectangle-34-2.png"
-              alt=""
-            />
-            <div className="absolute top-1/2 left-[90px] ">
-              <button
-                onClick={() => setSelectedCategory("PHP")}
-                className="bg-white font-bold rounded-xl px-6  py-3 drop-shadow-lg opacity-80"
-              >
-                PHP
-              </button>
-            </div>
-          </div>
-          <div className="relative">
-            <img
-              className="rounded-xl"
-              src="https://i.ibb.co.com/VYcJZLc/Group-43.png"
-              alt=""
-            />
-            <div className="absolute top-1/2 left-[90px] ">
-              <button
-                onClick={() => setSelectedCategory("UX/UI")}
-                className="bg-white font-bold rounded-xl px-6  py-3 drop-shadow-lg opacity-80"
-              >
-                UX/UI
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* category section  */}
+      <BlogCategory setSelectedCategory={setSelectedCategory}></BlogCategory>
 
       {/* show blog category */}
-      <div className="bg-[#f0fdfa] lg:p-10">
+      <div className="bg-[#f0fdfa] lg:py-20">
         <div className="container-class">
           <h2 className="text-2xl font-bold mb-5">Related Blog </h2>
           <div
             id="postContainer"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-12 lg:gap-y-10 gap-x-4 gap-y-5"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-10 lg:gap-y-20 gap-x-4 gap-y-5"
           >
             {filteredPosts.length > 0 ? (
-              filteredPosts.map((post, index) => (
-                <div
-                  key={index}
-                  className="drop-shadow-xl bg-[#f8fafc] border h-[560px]"
-                >
-                  <img className="w-full h-[260px]" src={post.img} alt="" />
-                  <div className="mx-5 pt-2 pb-10">
-                    <h2 className="text-xl font-bold mt-4 mb-6">
-                      {post.title}
-                    </h2>
-                    <p>{post.shortDescription}</p>
-                    <div className="flex items-center justify-between mt-4">
-                      <p className=" text-xl">
-                        #{" "}
-                        <span className="text-[#4bc0c0] font-bold">
-                          {post.categoryName}
-                        </span>
-                      </p>
-                      <Link to={`/blog-details/${post.id}`}>
-                        <button className="hover:text-[#4bc0c0] flex items-center gap-2">
-                          See Details{" "}
-                          <span>
-                            <FaArrowRightLong className="text-[#4bc0c0]" />
-                          </span>
-                        </button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              ))
+              filteredPosts.map((post, index) =>
+              <div key={index} >
+                <BlogCategoryCard post={post}></BlogCategoryCard>
+              </div>
+              )
             ) : (
               <p>No posts found for this category or search term.</p>
             )}
@@ -178,27 +89,8 @@ export default function Blogs() {
       {/* latest blog  */}
       <div className="container-class my-20">
         <h2 className="text-2xl font-bold mb-5">Latest blog</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-10">
-          {blogs?.map((item, index) => (
-            <Link key={index}>
-              <div className="drop-shadow-xl bg-[#f8fafc] border">
-                <img src={item.image} alt="" />
-                <div className="mx-5 pt-2 pb-10">
-                  <h2 className="text-xl font-bold mt-4 mb-6">{item.title}</h2>
-                  <div className="flex items-center gap-6">
-                    <p className="flex items-center gap-2 text-gray-500">
-                      <RiContactsLine className="text-[#4bc0c0] text-xl font-bold" />{" "}
-                      {item.admin}
-                    </p>
-                    <p className="flex items-center gap-2 text-gray-500">
-                      <LuBookUp className="text-[#4bc0c0] text-xl font-bold" />{" "}
-                      {item.category}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-20">
+          {blogs?.map((item, index) =><LatestBlog key={index} item={item}></LatestBlog>)}
         </div>
       </div>
     </div>
