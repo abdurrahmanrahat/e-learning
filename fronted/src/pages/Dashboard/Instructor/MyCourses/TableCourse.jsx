@@ -1,12 +1,5 @@
 import { useState } from "react";
 import Rating from "../../../../components/Ui/Rating";
-<<<<<<< HEAD
-import { MdDeleteForever } from "react-icons/md";
-import MyCourseModalForUpdate from "./MyCourseModalForUpdate";
-import MyCourseModalForAddModule from "./MyCourseModalForAddModule";
-
-const TableCourse = ({ course, idx }) => {
-=======
 import Modal from "../../../../components/Ui/Modal";
 import Button from "../../../../components/Ui/Button";
 import NewModuleForm from "./NewModuleForm";
@@ -15,7 +8,6 @@ import ExistingModuleForm from "./ExistingModuleForm";
 const TableCourse = ({ course, idx }) => {
   const [openModal, setOpenModal] = useState(false);
   const [moduleType, setModuleType] = useState("");
->>>>>>> 39d7e661924e6413d0715fc6e0b991ecb1fdc7ac
 
   return (
     <>
@@ -53,30 +45,6 @@ const TableCourse = ({ course, idx }) => {
               ({course?.totalRatings})
             </span>
           </span>
-<<<<<<< HEAD
-        </span>
-      </td>
-
-      {/* button for edit */}
-      <td className=" px-6 py-3 text-sm transition duration-300 border-slate-200 flex space-x-2">
-
-        {/* Modal for updating course */}
-        <div>
-          <MyCourseModalForUpdate />
-        </div>
-
-        {/* button for add module */}
-        <div>
-          <MyCourseModalForAddModule />
-        </div>
-
-        {/* button for delete */}
-        <button className="text-2xl font-bold bg-red-500 p-2 text-white rounded-lg hover:bg-red-700 transition duration-200">
-          <MdDeleteForever />
-        </button>
-      </td>
-    </tr>
-=======
         </td>
         <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200">
           <span
@@ -89,18 +57,17 @@ const TableCourse = ({ course, idx }) => {
       </tr>
       {openModal && (
         <Modal openModal={openModal} setOpenModal={setOpenModal} setModuleType={setModuleType}>
-          {moduleType === "existing" && <ExistingModuleForm courseId={course._id}/>}
-          {moduleType === "new" && <NewModuleForm courseId={course._id}/>}
+          {moduleType === "existing" && <ExistingModuleForm courseId={course._id} />}
+          {moduleType === "new" && <NewModuleForm courseId={course._id} />}
           {moduleType === "" && (
             <div className="w-[60%] mx-auto h-full flex justify-center items-center gap-10">
-              <Button handler={()=> setModuleType('new')} bgBtn>New Module</Button>
-              <Button handler={()=> setModuleType('existing')} outlineBtn>Existing Module</Button>
+              <Button handler={() => setModuleType('new')} bgBtn>New Module</Button>
+              <Button handler={() => setModuleType('existing')} outlineBtn>Existing Module</Button>
             </div>
           )}
         </Modal>
       )}
     </>
->>>>>>> 39d7e661924e6413d0715fc6e0b991ecb1fdc7ac
   );
 };
 

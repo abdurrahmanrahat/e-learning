@@ -2,20 +2,17 @@ import { useState } from "react";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { HiOutlineDesktopComputer } from "react-icons/hi";
 import { MdCancel } from "react-icons/md";
-<<<<<<< HEAD
-import Button from "../../Ui/Button";
-=======
 import { RiProgress3Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { HOMEImages } from "../../../image-data/home";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
->>>>>>> 39d7e661924e6413d0715fc6e0b991ecb1fdc7ac
+import Button from "../../Ui/Button";
 
 const Hero = () => {
   const [clickedPlayBtn, setClickedPlayBtn] = useState(false);
 
   return (
-    <>
+    <div className="">
       {clickedPlayBtn && (
         <div
           className={`fixed inset-0 z-50 flex justify-center items-center transition-opacity duration-300 ${
@@ -77,7 +74,7 @@ const Hero = () => {
                 onClick={() => setClickedPlayBtn(!clickedPlayBtn)}
                 className="flex justify-center items-center gap-0 rounded-xl h-14 text-xl hover:scale-[1.2] transition-all duration-500 ease-in-out"
               >
-                <span className="text-5xl">
+                <span className="text-3xl">
                 <DotLottieReact src="https://lottie.host/c24c8296-4e89-470f-b0a0-5e312962b5dc/CWuzQnZgzz.lottie" loop autoplay />
                 </span>
               </button>
@@ -123,7 +120,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
