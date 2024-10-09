@@ -45,7 +45,7 @@ const instructorData = [
 
 export default function Instructors() {
   return (
-    <div className="w-full">
+    <div className="w-full" id="Instructors">
       <PageBanner image={SHAREDImages.banner_1}><h2 className="text-5xl">Instructors</h2></PageBanner>
 
       <div className="py-16 container-class px-10">

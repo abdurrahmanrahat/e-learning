@@ -53,8 +53,10 @@ const About = () => {
   const query = {page: 1, limit: 3, category: '', duration: '', searchTerm: ''};
   const {courses} = useCourses(query);
 console.log(courses)
+
+
   return (
-    <div>
+    <div id="About">
       <PageBanner image={SHAREDImages.banner_1}>
         <h1 className="text-5xl">About Us</h1>
       </PageBanner>

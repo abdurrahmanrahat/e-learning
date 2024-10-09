@@ -5,19 +5,22 @@ import { FaInstagramSquare } from "react-icons/fa";
 import { FaAngleUp } from "react-icons/fa6";
 import { FaAngleDown } from "react-icons/fa6";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
+// footer elements is statics
 const footerElements = [
   {
     label: "Product",
-    element: ["Overview", "Features", "Category", "Courses", "Tutors"],
+    element: ["Features", "Category", "Courses", "Instructors", "Blogs"],
   },
   {
     label: "Company",
-    element: ["About", "Careers", "News"],
+    element: ["About", "Careers"],
   },
   {
     label: "Legal",
-    element: ["Terms", "Privacy", "Cookies", "Contact"],
+    element: ["Terms", "Privacy", "Cookies"],
   },
   {
     label: "Social",
@@ -27,9 +30,47 @@ const footerElements = [
 
 const Footer = () => {
   const [activeIndex, setActiveIndex] = useState(null);
+  const navigate = useNavigate();
 
   const handleLinksMenu = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
+  };
+
+  // handle navigate footer links with section and page ways
+  const handleNavigation = (item) => {
+    const isHomeSection = item === "Features" || item === "Category";
+    const isAbout = item === "About";
+    const isComingSoonLinks =
+      item === "Terms" ||
+      item === "Privacy" ||
+      item === "Cookies" ||
+      item === "Twitter" ||
+      item === "Instagram";
+
+    if (isComingSoonLinks) {
+      toast.error(`${item} links coming soon...`);
+      return;
+    }
+    if (isHomeSection) {
+      if (location.pathname === "/") {
+        const element = document.getElementById(item);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      } else {
+        navigate("/");
+        setTimeout(() => {
+          const element = document.getElementById(item);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+          }
+        }, 100);
+      }
+    } else if (isAbout) {
+      navigate("/about-us");
+    } else {
+      navigate(`/${item}`);
+    }
   };
 
   return (
@@ -47,15 +88,18 @@ const Footer = () => {
           {/* large device */}
           <div className="w-full lg:w-[60%] xl:w-[60%] flex justify-between gap-10 text-white">
             {footerElements?.map((item, index) => (
-              <div className="hidden lg:flex xl:flex flex-col gap-4" key={index}>
+              <div
+                className="hidden lg:flex xl:flex flex-col gap-4"
+                key={index}
+              >
                 <h4 className="text-[#98A2B3]">{item.label}</h4>
                 <ul className="flex flex-col gap-4">
                   {item?.element.map((item, index) => (
                     <li
-                      className="text-[#EAECF0] cursor-pointer hover:underline transition-all duration-300 ease-in-out"
+                      onClick={() => handleNavigation(item)}
                       key={index}
-                    >
-                      {item}
+                      className="text-[#EAECF0] cursor-pointer hover:underline transition-all duration-300 ease-in-out"
+                    >{item}
                     </li>
                   ))}
                 </ul>
@@ -83,7 +127,9 @@ const Footer = () => {
                   {activeIndex === index && (
                     <ul className="flex flex-col gap-4 text-lg">
                       {item.element.map((item, index) => (
-                        <li className="cursor-pointer" key={index}>{item}</li>
+                        <li className="cursor-pointer" key={index}>
+                          {item}
+                        </li>
                       ))}
                     </ul>
                   )}
@@ -98,18 +144,29 @@ const Footer = () => {
             <span>© 2022 Ed-Circle. All rights reserved.</span>
           </div>
           <div className="flex gap-4 text-[#98A2B3] text-3xl">
-            <span>
-              <FaSquareXTwitter />
-            </span>
-            <span>
-              <FaLinkedin />
-            </span>
-            <span>
-              <FaFacebook />
-            </span>
-            <span>
-              <FaInstagramSquare />
-            </span>
+            <a href="/">
+              <span>
+                <FaSquareXTwitter />
+              </span>
+            </a>
+            <a href="https://www.linkedin.com/in/mdhasankha" target="_blank">
+              <span>
+                <FaLinkedin />
+              </span>
+            </a>
+            <a
+              href="https://www.facebook.com/profile.php?id=100063140996982"
+              target="_blank"
+            >
+              <span>
+                <FaFacebook />
+              </span>
+            </a>
+            <a href="/">
+              <span>
+                <FaInstagramSquare />
+              </span>
+            </a>
           </div>
         </div>
       </div>

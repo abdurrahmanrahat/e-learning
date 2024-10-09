@@ -38,7 +38,7 @@ export default function Blogs() {
   console.log(blogs);
 
   return (
-    <div>
+    <div id="Blogs">
       <PageBanner image={SHAREDImages.banner_2}>
         <div className="w-full lg:w-[60%] xl:w-[60%] h-full flex flex-col justify-center gap-10 px-4">
           <div className="w-full bg-white p-2 rounded-xl focus:outline-none focus:border-[#49BBBD] border border-[#D9D9D9] text-[#000] flex">

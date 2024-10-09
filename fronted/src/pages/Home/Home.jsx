@@ -17,7 +17,7 @@ const Home = () => {
         <Success />
       </div>
 
-      <div className="pb-24 container-class">
+      <div className="pb-24 container-class" id="Category">
        <OurCategory/>
       </div>
 
@@ -25,7 +25,7 @@ const Home = () => {
         <BrainWave />
       </div>
 
-      <div className="pb-24 container-class">
+      <div className="pb-24 container-class " id="Features">
         <Features />
       </div>
 

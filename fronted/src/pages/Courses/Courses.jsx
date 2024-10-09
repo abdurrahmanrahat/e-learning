@@ -65,7 +65,7 @@ const Courses = () => {
   };
 
   return (
-    <div className="">
+    <div id="Courses">
       {/* courses banner  */}
       <PageBanner image={SHAREDImages.banner_2}>
         <div className="w-full lg:w-[60%] xl:w-[60%] h-full flex flex-col justify-center gap-10 px-4">
