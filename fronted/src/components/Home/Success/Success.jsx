@@ -31,7 +31,7 @@ export default function Success() {
         headingPart2={"Success"}
         style={"text-center"}
         subtext={
-          "Ornare id fames interdum porttitor nulla turpis etiam. Diam vitae sollicitudin at nec nam et pharetra gravida. Adipiscing a quis ultrices eu ornare tristique vel nisl orci."
+          "Empowering learners to reach new heights. Together, we achieve success through knowledge at BrainWave."
         }
       />
       <div className="flex flex-col lg:flex-row gap-10 justify-between items-center">

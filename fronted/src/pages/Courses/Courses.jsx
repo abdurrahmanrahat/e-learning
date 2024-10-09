@@ -10,23 +10,30 @@ import { SHAREDImages } from "../../image-data/shared";
 import OfferCourse from "./OfferCourse/OfferCourse";
 import { useCourses } from "../../Hooks/api/useCourses";
 import Loader from "../../components/Ui/Loader";
+import { useLocation } from "react-router-dom";
+
+// set navigate query system
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
 
 const Courses = () => {
+  const query = useQuery();
   const [page, setPage] = useState(1);
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState(query.get('category') || "");
   const [duration, setDuration] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const limit = 9;
 
-  let query = {};
+  let courseQuery = {
+    page,
+    limit,
+    category,
+    duration,
+    searchTerm
+  };
 
-  query.page = page;
-  query.limit = limit;
-  query.category = category;
-  query.duration = duration;
-  query.searchTerm = searchTerm;
-
-  const { courses, } = useCourses(query);
+  const { courses } = useCourses(courseQuery);
   // console.log(courses);
 
   if (!courses) return( <div className="w-full flex justify-center items-center my-20"><Loader/></div>)
