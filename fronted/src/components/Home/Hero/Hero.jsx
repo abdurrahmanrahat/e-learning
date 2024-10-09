@@ -6,6 +6,7 @@ import { RiProgress3Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { HOMEImages } from "../../../image-data/home";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import Button from "../../Ui/Button";
 
 const Hero = () => {
   const [clickedPlayBtn, setClickedPlayBtn] = useState(false);
@@ -65,16 +66,16 @@ const Hero = () => {
             </div>
             <div className="flex items-center gap-4">
               <Link to="/authentication">
-                <button className="inline-flex h-14 items-center justify-center gap-2 rounded-xl  px-8 text-sm font-medium tracking-wide text-white shadow-md transition duration-300 bg-primary hover:bg-hover hover:shadow-sm">
+                <Button bgBtn={true}>
                   Start Now
-                </button>
+                </Button>
               </Link>
               <button
                 onClick={() => setClickedPlayBtn(!clickedPlayBtn)}
-                className="flex justify-center items-center gap-0 rounded-xl h-14 text-xl hover:scale-[1.2] transition-all duration-500 ease-in-out"
+                className="flex justify-center items-center gap-0 rounded-xl h-14 hover:scale-[1.2] transition-all duration-500 ease-in-out"
               >
-                <span className="text-5xl">
-                <DotLottieReact src="https://lottie.host/c24c8296-4e89-470f-b0a0-5e312962b5dc/CWuzQnZgzz.lottie" loop autoplay />
+                <span className="w-44">
+                <DotLottieReact src="https://lottie.host/c24c8296-4e89-470f-b0a0-5e312962b5dc/CWuzQnZgzz.lottie" loop autoplay style={{ width: "100%", height: "100%" }}/>
                 </span>
               </button>
             </div>
