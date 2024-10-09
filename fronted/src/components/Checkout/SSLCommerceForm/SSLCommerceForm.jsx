@@ -140,7 +140,7 @@ export default function SSLCommerceForm({ onSubmit }) {
                 Select Country
               </option>
               {countries?.map((item, index) => (
-                <option  key={index} value={item}>
+                <option key={index} value={item}>
                   {item}
                 </option>
               ))}

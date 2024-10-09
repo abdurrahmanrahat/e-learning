@@ -1,19 +1,16 @@
-import Button from "../../../../components/Ui/Button";
 import PrimaryTitle from "../../../../components/Ui/PrimaryTitle";
-import ProgressBar from "../../../../components/Ui/ProgressBar";
-import { useCourses } from "../../../../Hooks/api/useCourses";
-import { Link } from "react-router-dom";
+import useEnrolledCoursesByEmail from "../../../../Hooks/api/useEnrolledCoursesByEmail";
+import useUser from "../../../../Hooks/api/useUser";
+import EnrolledCourseCard from "../../../../components/Ui/EnrolledCourseCard";
 
 export default function EnrolledCourses() {
-  const query = {
-    page: 1,
-    limit: 3,
-    category: "",
-    duration: "",
-    searchTerm: "",
-  };
-  const { courses } = useCourses(query);
+  const {user} = useUser();
+  const enrolledCourses = useEnrolledCoursesByEmail(user?.email);
 
+<<<<<<< HEAD
+=======
+  console.log(enrolledCourses);
+>>>>>>> 39d7e661924e6413d0715fc6e0b991ecb1fdc7ac
 
   return (
     <div className="p-6">
@@ -23,6 +20,7 @@ export default function EnrolledCourses() {
         style={"text-start"}
       />
       <div className="w-full grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-x-10 gap-y-20 my-12">
+<<<<<<< HEAD
         {courses?.data.map((item) => (
           <div
             key={item._id}
@@ -62,6 +60,10 @@ export default function EnrolledCourses() {
               </div>
             </div>
           </div>
+=======
+      {enrolledCourses?.data?.map((item) => (
+          <EnrolledCourseCard key={item._id} enrolledCourse={item}/>
+>>>>>>> 39d7e661924e6413d0715fc6e0b991ecb1fdc7ac
         ))}
       </div>
     </div>

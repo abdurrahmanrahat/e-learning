@@ -17,17 +17,20 @@ const createEnrolledCourseIntoDB = async (
 };
 
 const getAllEnrolledCoursesFromDB = async () => {
-  const result = await EnrolledCourse.find();
+  const result = await EnrolledCourse.find().populate('course');
   return result;
 };
 
 const getSingleEnrolledCourseFromDB = async (enrolledCourseId: string) => {
-  const result = await EnrolledCourse.findById(enrolledCourseId);
+  const result =
+    await EnrolledCourse.findById(enrolledCourseId).populate('course');
   return result;
 };
 
 const getEnrolledCoursesByEmailFromDB = async (studentEmail: string) => {
-  const result = await EnrolledCourse.find({ studentEmail: studentEmail });
+  const result = await EnrolledCourse.find({
+    studentEmail: studentEmail,
+  }).populate('course');
   return result;
 };
 

@@ -1,10 +1,10 @@
 import PrimaryTitle from "../../../../components/Ui/PrimaryTitle";
 import { useCoursesByEmail } from "../../../../Hooks/api/useCoursesByEmail";
-import { getUser } from "../../../../utils/getUser";
+import useUser from "../../../../Hooks/api/useUser";
 import TableCourse from "./TableCourse";
 
 const MyCourses = () => {
-  const user = getUser();
+  const {user} = useUser();
 
   const courses = useCoursesByEmail(user?.email);
 
@@ -38,7 +38,9 @@ const MyCourses = () => {
               <th className="px-6 py-3 text-left text-sm font-semibold">
                 Duration
               </th>
-              <th className="px-6 py-3 text-left text-sm font-semibold"></th>
+              <th className="px-6 py-3 text-left text-sm font-semibold">
+                Action
+              </th>
             </tr>
           </thead>
           <tbody>
