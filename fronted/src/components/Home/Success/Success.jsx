@@ -18,7 +18,7 @@ export default function Success() {
   const allCourses = courses?.data;
 
   // Dynamic "Years of experience"
-  const startingYear = 2024;
+  const startingYear = 2023;
   const currentYear = new Date().getFullYear();
   const yearsOfExperience = currentYear - startingYear;
 
@@ -42,7 +42,7 @@ export default function Success() {
     },
     {
       title: "Years of experience",
-      value: yearsOfExperience,
+      value: yearsOfExperience + '+',
     },
   ];
 
