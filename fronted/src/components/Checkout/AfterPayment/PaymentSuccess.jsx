@@ -1,11 +1,11 @@
+import axios from "axios";
+import jsPDF from "jspdf";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FaCheckCircle } from "react-icons/fa";
-import { useParams, Link } from "react-router-dom";
-import jsPDF from "jspdf";
-import useAxios from "../../../Hooks/useAxios";
-import axios from "axios";
+import { Link, useParams } from "react-router-dom";
 import useDateFormatter from "../../../Hooks/getValues/useDateFormatter";
+import useAxios from "../../../Hooks/useAxios";
 
 export default function PaymentSuccess() {
   const { trans_id } = useParams();
@@ -16,9 +16,7 @@ export default function PaymentSuccess() {
   useEffect(() => {
     const getReceipt = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:5000/payment-history/${trans_id}`
-        );
+        const res = await axios.get(`/payment/payment-history/${trans_id}`);
         console.log(res.data);
         setPaymentReceipt(res.data);
         return res.data; // Return the receipt data for the next function
@@ -42,7 +40,7 @@ export default function PaymentSuccess() {
           "/enrolled-courses/create-enrolled-course",
           data
         );
-        if(res){
+        if (res) {
           toast.success("Course Enrolled Successfully");
         }
       } catch (err) {

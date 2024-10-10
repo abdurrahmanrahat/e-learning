@@ -13,7 +13,6 @@ const authorDetailsSchema = new Schema({
   authorEmail: {
     type: String,
     required: [true, 'Author Email is required.'],
-    unique: true,
   },
 });
 
