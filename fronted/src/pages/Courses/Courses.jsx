@@ -101,14 +101,14 @@ const Courses = () => {
           </div>
 
           {/* pagination part */}
-          <div className="w-full">
+          <div className="w-full mt-10">
             <ReactPaginate
               breakLabel="..."
-              nextLabel="next >"
+              nextLabel={"Next >"}
               onPageChange={handlePageClick}
               pageRangeDisplayed={2}
               pageCount={courses?.pageCount}
-              previousLabel="< previous"
+              previousLabel="< Previous"
               renderOnZeroPageCount={null}
               marginPagesDisplayed={2}
               containerClassName="pagination justify-content-center"
