@@ -46,7 +46,7 @@ export default function CheckoutForm({ course }) {
 
 
     apiHandler
-      .post("http://localhost:5000/paymentGateway/sslCommerce", paymentInfo)
+      .post("/payment/sslCommerce", paymentInfo)
       .then((res) => {
         console.log("payment:", res);
         // toast.success(`${res.data.redirect_url}`);

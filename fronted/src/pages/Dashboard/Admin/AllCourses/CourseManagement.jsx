@@ -3,7 +3,7 @@ import PrimaryTitle from "../../../../components/Ui/PrimaryTitle";
 import { useCourses } from "../../../../Hooks/api/useCourses";
 import WebsiteTitle from "../../../../components/Ui/WebsiteTitle";
 
-const AllCourses = () => {
+const CourseManagement = () => {
   const query = {
     page: 1,
     limit: 9,
@@ -59,4 +59,4 @@ const AllCourses = () => {
   );
 };
 
-export default AllCourses;
+export default CourseManagement;

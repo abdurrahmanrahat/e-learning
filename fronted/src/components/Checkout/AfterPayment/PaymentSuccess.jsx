@@ -4,7 +4,6 @@ import { FaCheckCircle } from "react-icons/fa";
 import { useParams, Link } from "react-router-dom";
 import jsPDF from "jspdf";
 import useAxios from "../../../Hooks/useAxios";
-import axios from "axios";
 import useDateFormatter from "../../../Hooks/getValues/useDateFormatter";
 
 export default function PaymentSuccess() {
@@ -16,8 +15,7 @@ export default function PaymentSuccess() {
   useEffect(() => {
     const getReceipt = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:5000/payment-history/${trans_id}`
+        const res = await apiHandler.get(`/payment/payment-history/${trans_id}`
         );
         console.log(res.data);
         setPaymentReceipt(res.data);

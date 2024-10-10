@@ -135,7 +135,10 @@
         "image":"https://kinforce.net/learen/wp-content/uploads/2023/01/group-of-students-studying-in-library-MU8H8V2.jpg",
         "title":"Running a Web Development Business: The Complete Guide",
         "category":"Development",
-        "admin":"admin.learning"
+        "authorName" : "",
+        "authorImage" : "",
+        "authorEmail": "",
+        "description": ""
     },
     {
         "image":"https://kinforce.net/learen/wp-content/uploads/2023/01/group-of-students-studying-in-library-MU8H8V2.jpg",
