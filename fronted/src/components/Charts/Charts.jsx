@@ -5,13 +5,13 @@ import PieCharts from "./PieCharts/PieCharts";
 const Charts = () => {
 
   const { user } = useUser();
-  
+
   //   pie charts
   const data = [
-    { name: "Course Completion", value: 400 },
-    { name: "Course Progress", value: 300 },
-    { name: "Resources", value: 300 },
-    { name: "Student Satisfaction", value: 200 },
+    { name: "Course Completion", value: 100 },
+    { name: "Course Progress", value: 100 },
+    { name: "Resources", value: 100 },
+    { name: "Student Satisfaction", value: 100 },
   ];
   const colors = ["#0088FE", "#00C49F", "#FFBB28", "#22c55e"];
 
@@ -43,11 +43,12 @@ const Charts = () => {
   };
 
   return (
+
     <div className="max-w-7xl mx-auto my-20">
       <div className="">
         <div className=" flex items-center justify-center">
           {
-            user?.role === 'admin' &&
+            user?.role === 'instructor' &&
             <div>
               <h2 className="text-2xl font-bold  text-gray-600 lg:text-start text-center">Course Duration</h2>
               <LineChart chartData={lineCharts1} chartOptions={optionsLineChart} />
@@ -56,9 +57,9 @@ const Charts = () => {
         </div>
         <div className=" ">
           {
-            user?.role === "instructor" &&
+            user?.role === "student" &&
             <div>
-              <h2 className="text-2xl font-bold lg:text-end text-center text-gray-600">
+              <h2 className="text-2xl font-bold text-center text-gray-600">
                 Student Analysis
               </h2>
               <PieCharts data={data} colors={colors} />
@@ -68,7 +69,7 @@ const Charts = () => {
       </div>
       <div>
         {
-          user?.role === 'student' &&
+          user?.role === 'admin' &&
           <div className="mt-16 mx-5 lg:mx-0">
             <h2 className="text-2xl font-bold  text-gray-600 ">
               Instructor Analytics
