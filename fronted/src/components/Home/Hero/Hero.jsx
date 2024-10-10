@@ -12,7 +12,7 @@ const Hero = () => {
   const [clickedPlayBtn, setClickedPlayBtn] = useState(false);
 
   return (
-    <>
+    <div className="">
       {clickedPlayBtn && (
         <div
           className={`fixed inset-0 z-50 flex justify-center items-center transition-opacity duration-300 ${
@@ -120,7 +120,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

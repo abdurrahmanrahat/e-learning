@@ -11,9 +11,8 @@ import 'swiper/css/navigation';
 import './TestimonialsForHome.css'
 
 // import required modules
-import { Pagination } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
 import Rating from "../../Rating";
-import PrimaryTitle from "../../PrimaryTitle";
 
 const TestimonialsForHome = () => {
 
@@ -34,14 +33,18 @@ const TestimonialsForHome = () => {
 
       return (
             <div className="py-8 mt-10 lg:mt-20">
-                  <h2 className='text-center text-[28px] font-medium mb-10 text-[#2F327D]'>What our happy student <br/> <span className="text-[#00CBB8]">says about us!!</span></h2>
+                  <h2 className='text-center text-[28px] font-medium mb-10 text-[#2F327D]'>What our happy student <br /> <span className="text-[#00CBB8]">says about us!!</span></h2>
                   <Swiper
                         slidesPerView={3}
                         spaceBetween={30}
+                        autoplay={{
+                              delay: 3000,
+                              disableOnInteraction: true,
+                        }}
                         pagination={{
                               clickable: true,
                         }}
-                        modules={[Pagination]}
+                        modules={[Pagination, Autoplay]}
                         breakpoints={{
                               320: {
                                     slidesPerView: 1,

@@ -4,6 +4,7 @@ import axios from "axios";
 import BlogTableRow from "./BlogTableRow";
 import toast from "react-hot-toast";
 import WebsiteTitle from "../../../components/Ui/WebsiteTitle";
+import Button from "../../../components/Ui/Button";
 
 const AllBlogs = () => {
   const [blogs, setBlogs] = useState([]);
@@ -97,16 +98,11 @@ const AllBlogs = () => {
           />
           {/* Add new blog button start from here */}
           <div>
-            <div className="flex justify-end">
-              <button
-                onClick={toggleModal}
-                className="px-4 py-2 bg-[#49BBBD] text-white rounded-lg mt-4"
-              >
-                Add New Blog
-              </button>
+            <div onClick={toggleModal} className="w-fit">
+              <Button bgBtn>Add New Blog</Button>
             </div>
 
-            {/* Modal for adding/updating blog */}
+            {/* Modal for adding blog */}
             <div
               className={`fixed inset-0 z-50 flex justify-center items-center transition-opacity duration-300 ${
                 isModalOpen ? "opacity-100 visible" : "opacity-0 invisible"
@@ -247,13 +243,8 @@ const AllBlogs = () => {
                         ></textarea>
                       </div>
 
-                      <div className="form-control md:col-span-2">
-                        <button
-                          type="submit"
-                          className="px-4 py-3 bg-[#49BBBD] text-white font-semibold rounded-lg"
-                        >
-                          Add Blog
-                        </button>
+                      <div className="form-control w-fit">
+                        <Button bgBtn>Add Blog</Button>
                       </div>
                     </form>
                   </div>

@@ -8,7 +8,6 @@ const MyCourses = () => {
   const { user } = useUser();
 
   const courses = useCoursesByEmail(user?.email);
-  console.log(courses);
 
   return (
     <WebsiteTitle title={'My-Courses'}>
