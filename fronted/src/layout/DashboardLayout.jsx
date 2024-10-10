@@ -61,7 +61,7 @@ export default function DashboardLayout() {
               {user?.role === "admin" && (
                 <>
                   <li className="">
-                    <DashboardActiveLink to="/dashboard/admin">
+                    <DashboardActiveLink to="/dashboard/admin/charts">
                       <span className="flex items-center gap-3 rounded py-3 px-6  transition-colors duration-300 ">
                         <RxDashboard className="block text-[18px]" />
                         <span className="block text-[17px]">Dashboard</span>
@@ -94,7 +94,7 @@ export default function DashboardLayout() {
               {user?.role === "instructor" && (
                 <>
                   <li className="">
-                    <DashboardActiveLink to="/dashboard/instructor">
+                    <DashboardActiveLink to="/dashboard/instructor/charts">
                       <span className="flex items-center gap-3 rounded py-3 px-6  transition-colors duration-300 ">
                         <RxDashboard className="block text-[18px]" />
                         <span className="block text-[17px]">Dashboard</span>
@@ -125,7 +125,7 @@ export default function DashboardLayout() {
               {user?.role === "student" && (
                 <>
                   <li className="">
-                    <DashboardActiveLink to="/dashboard/student">
+                    <DashboardActiveLink to="/dashboard/student/charts">
                       <span className="flex items-center gap-3 rounded py-3 px-6  transition-colors duration-300 ">
                         <RxDashboard className="block text-[18px]" />
                         <span className="block text-[17px]">Dashboard</span>

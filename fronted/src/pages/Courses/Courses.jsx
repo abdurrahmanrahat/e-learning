@@ -101,14 +101,14 @@ const Courses = () => {
           </div>
 
           {/* pagination part */}
-          <div className="w-full">
+          <div className="w-full mt-10">
             <ReactPaginate
               breakLabel="..."
-              nextLabel="next >"
+              nextLabel={"Next >"}
               onPageChange={handlePageClick}
               pageRangeDisplayed={2}
               pageCount={courses?.pageCount}
-              previousLabel="< previous"
+              previousLabel="< Previous"
               renderOnZeroPageCount={null}
               marginPagesDisplayed={2}
               containerClassName="pagination justify-content-center"
@@ -130,50 +130,54 @@ const Courses = () => {
  items-center lg:gap-32 rounded-3xl"
           >
             <div className="w-full lg:w-[40%] mt-5 lg:mt-0 flex items-center justify-center">
-              <div className="">
-                <h2 className="text-[30px] font-bold mb-7 ">
+              <div className="flex flex-col gap-10">
+                <h2 className="text-[30px] font-bold">
                   Know about learning <br /> learning platform
                 </h2>
-                <div className="flex items-center gap-3">
-                  <button
-                    className="bg-[#55EFC4] p-3 rounded-full
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center gap-3">
+                    <button
+                      className="bg-[#55EFC4] p-3 rounded-full
 "
-                  ></button>
-                  <h2 className="text-[18px] font-semibold text-gray-500">
-                    Free E-book, video & consolation
-                  </h2>
-                </div>
-                <div className="flex items-center gap-3">
-                  <button
-                    className="bg-[#55EFC4] p-3 rounded-full
+                    ></button>
+                    <h2 className="text-[18px] font-semibold text-gray-500">
+                      Free E-book, video & consolation
+                    </h2>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <button
+                      className="bg-[#55EFC4] p-3 rounded-full
 "
-                  ></button>
-                  <h2 className="text-[18px] font-semibold text-gray-500 py-3">
-                    Top instructors from around world
-                  </h2>
-                </div>
-                <div className="flex items-center gap-3">
-                  <button
-                    className="bg-[#55EFC4] p-3 rounded-full
+                    ></button>
+                    <h2 className="text-[18px] font-semibold text-gray-500 py-3">
+                      Top instructors from around world
+                    </h2>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <button
+                      className="bg-[#55EFC4] p-3 rounded-full
 "
-                  ></button>
-                  <h2 className="text-[18px] font-semibold text-gray-500">
-                    Top courses from your team
-                  </h2>
+                    ></button>
+                    <h2 className="text-[18px] font-semibold text-gray-500">
+                      Top courses from your team
+                    </h2>
+                  </div>
                 </div>
                 <Link
                   to={
                     (user?.role === "student" &&
                       "/dashboard/student/enrolled-courses") ||
                     (user?.role === "instructor" &&
-                      "/dashboard/instructor/my-courses") ||
-                    (user?.role === "admin" && "/dashboard/admin/all-courses")
+                      "/dashboard/instructor/add-course") ||
+                    (user?.role === "admin" &&
+                      "/dashboard/admin/all-courses") ||
+                    (!user && "/authentication")
                   }
                 >
                   <Button bgBtn={true}>
-                    {(user?.role === "student" && "Start learning now") ||
-                      (user?.role === "instructor" && "Publish Your Course") ||
-                      (user?.role === "admin" && "See All The courses")}
+                    {(user?.role === "instructor" && "Publish Your Course") ||
+                      (user?.role === "admin" && "See All The courses") ||
+                      "Start learning now"}
                   </Button>
                 </Link>
               </div>

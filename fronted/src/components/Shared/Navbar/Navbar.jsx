@@ -207,7 +207,7 @@ export default function Navbar() {
                         {/* dropdown links */}
                         <ul className="px-6">
                           <li className="flex items-stretch">
-                            <ActiveLink to={`/dashboard/${user?.role}`}>
+                            <ActiveLink to={`/dashboard/${user?.role}/charts`}>
                               <span className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-primary lg:px-4">
                                 <span>
                                   <RxDashboard className="block text-[18px]" />
