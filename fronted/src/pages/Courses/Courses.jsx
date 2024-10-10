@@ -168,14 +168,14 @@ const Courses = () => {
                     (user?.role === "student" &&
                       "/dashboard/student/enrolled-courses") ||
                     (user?.role === "instructor" &&
-                      "/dashboard/instructor/add-course") ||
+                      "/dashboard/instructor/my-courses") ||
                     (user?.role === "admin" &&
                       "/dashboard/admin/all-courses") ||
                     (!user && "/authentication")
                   }
                 >
                   <Button bgBtn={true}>
-                    {(user?.role === "instructor" && "Publish Your Course") ||
+                    {(user?.role === "instructor" && "Your Courses") ||
                       (user?.role === "admin" && "See All The courses") ||
                       "Start learning now"}
                   </Button>

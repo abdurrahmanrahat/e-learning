@@ -1,4 +1,3 @@
-import Button from "../../Ui/Button";
 
 const category = [
   "All Courses",
@@ -49,13 +48,11 @@ export default function Functionality({
           onChange={handleSearch}
         />
         <div className="w-[20%]">
-          <Button
-            type={"submit"}
-            style={"w-full rounded-xl hover:scale-[1.1]"}
-            bgBtn={true}
+          <button
+            className={`inline-flex w-full h-12 px-4 items-center justify-center gap-2 whitespace-nowrap rounded-r-xl text-sm font-medium tracking-wide  text-[#FFF] bg-primary`}
           >
             Search
-          </Button>
+          </button>
         </div>
       </div>
 

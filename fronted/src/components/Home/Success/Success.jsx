@@ -18,7 +18,7 @@ export default function Success() {
   const allCourses = courses?.data;
 
   // Dynamic "Years of experience"
-  const startingYear = 2024;
+  const startingYear = 2023;
   const currentYear = new Date().getFullYear();
   const yearsOfExperience = currentYear - startingYear;
 
@@ -42,13 +42,13 @@ export default function Success() {
     },
     {
       title: "Years of experience",
-      value: yearsOfExperience,
+      value: yearsOfExperience + '+',
     },
   ];
 
 
   return (
-    <div className=" flex flex-col gap-10 px-10">
+    <div className=" flex flex-col gap-10">
       <PrimaryTitle
         headingPart1={"Our"}
         headingPart2={"Success"}

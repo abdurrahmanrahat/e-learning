@@ -1,6 +1,7 @@
 import InstructorCard from "../../components/Ui/InstructorCard";
 import PageBanner from "../../components/Ui/PageBanner";
 import PrimaryTitle from "../../components/Ui/PrimaryTitle";
+import TestimonialsForHome from "../../components/Ui/Testimonials/TestimonialsForHome/TestimonialsForHome";
 import WebsiteTitle from "../../components/Ui/WebsiteTitle";
 import { INSTRUCTORImages } from "../../image-data/Instructors";
 import { SHAREDImages } from "../../image-data/shared";
@@ -68,6 +69,10 @@ export default function Instructors() {
             ))}
           </div>
         </div>
+
+        <div className="pb-12 container-class">
+        <TestimonialsForHome />
+      </div>
       </div>
     </WebsiteTitle>
   );

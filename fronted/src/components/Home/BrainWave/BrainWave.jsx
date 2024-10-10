@@ -3,10 +3,10 @@ import PrimaryTitle from "../../Ui/PrimaryTitle";
 
 export default function BrainWave() {
   return (
-    <div className="flex flex-col gap-24 px-10">
+    <div className="flex flex-col gap-10 lg:gap-24 xl:gap-24">
       {/* what is brain web  */}
 
-      <div className="flex flex-col lg:flex-row items-center gap-10">
+      <div className="flex flex-col lg:flex-row items-center gap-16">
         <div className="w-full lg:w-1/2">
           <PrimaryTitle
             headingPart1={"What is"}
@@ -32,15 +32,15 @@ export default function BrainWave() {
       </div>
       {/* Mission And Vission */}
       <div className="flex flex-col lg:flex-row items-center gap-10">
-        <div className="flex flex-col-reverse lg:flex-row justify-between items-center">
+        <div className="flex flex-col-reverse lg:flex-row justify-between items-center gap-16">
           <div className="relative w-full lg:w-1/2 p-4">
             <div className="absolute top-0 right-0 h-[100px] w-[100px] bg-[#23BDEE] rounded-xl z-[-1]"></div>
             <div className="absolute bottom-0 left-0 h-[150px] w-[150px] bg-[#33EFA0] rounded-xl z-[-1]"></div>
             <figure>
-              <img className="w-full" src="https://i.ibb.co.com/VJMKM9s/122864.jpg" alt="" />
+              <img className="w-full rounded-xl" src="https://i.ibb.co.com/VJMKM9s/122864.jpg" alt="" />
             </figure>
           </div>
-          <div className="lg:w-[40%] mt-8 lg:mt-0">
+          <div className="lg:w-1/2 mt-8 lg:mt-0">
             <PrimaryTitle
               headingPart1={"Our"}
               headingPart2={"Mission & Vision"}
