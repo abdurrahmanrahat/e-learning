@@ -73,6 +73,8 @@ const About = () => {
         </PageBanner>
 
         <div className="lg:my-20 my-10 ">
+
+          {/* What is brainWave */}
           <div className="container-class">
             <BrainWave />
           </div>

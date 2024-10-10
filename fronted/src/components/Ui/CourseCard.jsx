@@ -68,7 +68,7 @@ const CourseCard = ({ course }) => {
           </p>
           <div className="flex gap-1 justify-start items-center text-[#6E7697] mb-6">
             <Rating value={rating} />
-            <span className="text-sm text-[#969696]">(0)</span>
+            <span className="text-sm text-[#969696]">{rating ? `(${rating})` : '(0)'}</span>
           </div>
         </div>
         {/* author */}

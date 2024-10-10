@@ -1,11 +1,11 @@
 import { IoMdCamera } from "react-icons/io";
 
 import { useEffect, useRef, useState } from "react";
-import MyProfile from "./MyProfile";
-import SocialLink from "./SocialLink";
-import BasicInfo from "./BasicInfo";
 import useUser from "../../../../Hooks/api/useUser";
 import WebsiteTitle from "../../../../components/Ui/WebsiteTitle";
+import MyProfile from "../../../../components/Profile/MyProfile";
+import BasicInfo from "../../../../components/Profile/BasicInfo";
+import SocialLink from "../../../../components/Profile/SocialLink";
 
 const Profile = () => {
   const {user}=useUser();
