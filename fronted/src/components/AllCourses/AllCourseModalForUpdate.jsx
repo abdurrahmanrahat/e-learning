@@ -1,9 +1,9 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { MdModeEdit } from "react-icons/md";
-import PrimaryTitle from "../../../../components/Ui/PrimaryTitle";
 import Select from "react-select";
 import axios from "axios";
+import PrimaryTitle from "../Ui/PrimaryTitle";
 
 
 const AllCourseModalForUpdate = () => {
