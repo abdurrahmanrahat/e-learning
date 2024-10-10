@@ -48,7 +48,7 @@ export default function Success() {
 
 
   return (
-    <div className=" flex flex-col gap-10 px-10">
+    <div className=" flex flex-col gap-10">
       <PrimaryTitle
         headingPart1={"Our"}
         headingPart2={"Success"}
