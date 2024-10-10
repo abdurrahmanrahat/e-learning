@@ -25,11 +25,11 @@ const CourseCard = ({ course }) => {
       <div className="group p-6 shadow-myCustomShadow rounded-xl flex flex-col justify-between h-[500px]">
         {" "}
         {/* card image */}
-        <figure className="overflow-hidden relative mb-5 h-[50%]">
+        <figure className="overflow-hidden relative mb-5 h-[45%]">
           {image && (
             <img
               onLoad={() => setImageLoading(true)}
-              className="w-full h-full object-cover rounded group-hover:scale-[1.1] transition-all duration-500 ease-in-out"
+              className="w-full object-cover rounded group-hover:scale-[1.1] transition-all duration-500 ease-in-out"
               src={image}
               alt="course"
             />
@@ -49,7 +49,7 @@ const CourseCard = ({ course }) => {
           </div>
         </figure>
         {/* card body */}
-        <div className="flex-1 flex flex-col justify-between">
+        <div className="flex-1 flex flex-col justify-between h-[45%]">
           {" "}
           {/* Ensure the body takes up available space */}
           <span className="text-[#00CBB8] text-sm font-semibold mb-3 flex items-center gap-2">
@@ -63,7 +63,7 @@ const CourseCard = ({ course }) => {
           </div>
           <p className="mb-3 text-[#6E7697] line-clamp-3">
             {description?.length > 80
-              ? description.slice(0, 78) + "..."
+              ? description.slice(0, 50) + "..."
               : description}
           </p>
           <div className="flex gap-1 justify-start items-center text-[#6E7697] mb-6">
@@ -72,7 +72,7 @@ const CourseCard = ({ course }) => {
           </div>
         </div>
         {/* author */}
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center h-[10%]">
           <div className="flex items-center gap-2">
             <img
               className="w-12 h-12 rounded-full"
