@@ -9,7 +9,7 @@ export const useCourses = (query) => {
     const fetchCourses = useCallback(async () => {
         try {
             const response = await apiHandler.get(`/courses?page=${query?.page || 1}&limit=${query?.limit || 10}&category=${query?.category || ''}&courseDuration=${query?.duration || ''}&searchTerm=${query?.searchTerm || ''}`);
-            setCourses(response?.data?.data || []);   
+            setCourses(response?.data?.data || []);
         } catch (error) {
             console.error('Error fetching courses:', error.message);
         }
@@ -17,11 +17,11 @@ export const useCourses = (query) => {
 
     useEffect(() => {
         // Fetch courses on initial load
-        if (isInitialLoad.current) {
-            fetchCourses();
-            isInitialLoad.current = false; // Mark the initial load as complete
-            return;
-        }
+            if (isInitialLoad.current) {
+                fetchCourses();
+                isInitialLoad.current = false; // Mark the initial load as complete
+                return;
+            }
 
         // Fetch courses when query params change
         if (query.category || query.duration || query.searchTerm || query.page || query.limit) {
@@ -29,6 +29,5 @@ export const useCourses = (query) => {
         }
     }, [fetchCourses, query.page, query.limit, query.category, query.duration, query.searchTerm]);
 
-
-    return { courses, fetchCourses}
+    return { courses, fetchCourses }
 }

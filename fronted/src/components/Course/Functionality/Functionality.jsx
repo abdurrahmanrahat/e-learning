@@ -1,3 +1,5 @@
+import Button from "../../Ui/Button";
+
 const category = [
   "All Courses",
   "Digital Technology",
@@ -24,15 +26,19 @@ const duration = [
   "12 Months",
 ];
 
+// TODO: Search bar fixed 
 export default function Functionality({
   handleSelectCategory,
   handleSelectDuration,
   handleSearch,
   categoryInputValue,
-  durationInputValue
+  durationInputValue,
 }) {
+  const handleReload = (e) => {
+    e.preventDefault();
+  };
   return (
-    <form className="space-y-8 py-10">
+    <form onSubmit={handleReload} className="space-y-8 py-10">
       <div className="w-full bg-white p-2 rounded-xl focus:outline-none focus:border-[#49BBBD] border border-[#D9D9D9] text-[#000] flex">
         <input
           type="text"
@@ -40,9 +46,17 @@ export default function Functionality({
           id="searchKeyword"
           placeholder="Search your favorite course"
           className="w-[80%] px-6 py-3 border-none focus:outline-none focus:border-[#49BBBD] border-[#D9D9D9] placeholder:text-[#9D9B9B] placeholder:text-base placeholder:font-light outline-none rounded-l-xl"
-          onChange={(e) => handleSearch(e)}
+          onChange={handleSearch}
         />
-
+        <div className="w-[20%]">
+          <Button
+            type={"submit"}
+            style={"w-full rounded-xl hover:scale-[1.1]"}
+            bgBtn={true}
+          >
+            Search
+          </Button>
+        </div>
       </div>
 
       <div className="w-full flex justify-center lg:flex-nowrap xl:flex-nowrap flex-wrap gap-10">

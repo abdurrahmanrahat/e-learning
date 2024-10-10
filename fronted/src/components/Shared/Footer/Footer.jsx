@@ -16,7 +16,7 @@ const footerElements = [
   },
   {
     label: "Company",
-    element: ["About", "Careers"],
+    element: ["About", "Careers", "Developers"],
   },
   {
     label: "Legal",
@@ -40,6 +40,7 @@ const Footer = () => {
   const handleNavigation = (item) => {
     const isHomeSection = item === "Features" || item === "Category";
     const isAbout = item === "About";
+    const isDevelopers = item === "Developers";
     const isComingSoonLinks =
       item === "Terms" ||
       item === "Privacy" ||
@@ -66,9 +67,20 @@ const Footer = () => {
           }
         }, 100);
       }
-    } else if (isAbout) {
+    } 
+    else if (isAbout) {
       navigate("/about-us");
-    } else {
+    }
+    else if(isDevelopers){
+      navigate(`/about-us#${item}`);
+      setTimeout(() => {
+        const element = document.getElementById(item);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
+     else {
       navigate(`/${item}`);
     }
   };

@@ -5,6 +5,7 @@ import MyProfile from "./MyProfile";
 import SocialLink from "./SocialLink";
 import BasicInfo from "./BasicInfo";
 import useUser from "../../../../Hooks/api/useUser";
+import WebsiteTitle from "../../../../components/Ui/WebsiteTitle";
 
 const Profile = () => {
   const {user}=useUser();
@@ -65,7 +66,7 @@ const Profile = () => {
   });
 
   return (
-    <div>
+    <WebsiteTitle title={'Profile'}>
       <div className="relative mb-80 lg:mb-40 md:mb-40">
         <img src="https://i.ibb.co.com/5k16J00/header-setting.png" alt="" />
         <div className="absolute lg:top-[75px] lg:left-12 md:top-12">
@@ -223,7 +224,7 @@ const Profile = () => {
         </section>
         {/*<!-- End Basic lg sized tab --> */}
       </>
-    </div>
+    </WebsiteTitle>
   );
 };
 
