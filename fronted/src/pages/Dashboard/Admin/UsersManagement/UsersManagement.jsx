@@ -30,30 +30,30 @@ const UsersManagement = () => {
         </div>
 
         {/* User table */}
-        <div className="custom-scrollbar h-[80vh] overflow-y-scroll overflow-x-auto rounded">
+        <div className="custom-scrollbar h-[80vh] overflow-y-auto overflow-x-auto rounded">
           <table className="min-w-full table-auto">
             {/* Table headers */}
             <thead className="sticky top-0">
               <tr className="bg-[#49BBBD] text-white">
-                <th className="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wide">
+                <th className="px-6 py-6 text-left text-sm font-semibold uppercase tracking-wide">
                   #
                 </th>
-                <th className="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wide">
+                <th className="px-6 py-6 text-left text-sm font-semibold uppercase tracking-wide">
                   Image
                 </th>
-                <th className="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wide">
+                <th className="px-6 py-6 text-left text-sm font-semibold uppercase tracking-wide">
                   Name
                 </th>
-                <th className="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wide">
+                <th className="px-6 py-6 text-left text-sm font-semibold uppercase tracking-wide">
                   Email
                 </th>
-                <th className="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wide">
+                <th className="px-6 py-6 text-left text-sm font-semibold uppercase tracking-wide">
                   Gender
                 </th>
-                <th className="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wide">
+                <th className="px-6 py-6 text-left text-sm font-semibold uppercase tracking-wide">
                   Role
                 </th>
-                <th className="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wide">
+                <th className="px-6 py-6 text-left text-sm font-semibold uppercase tracking-wide">
                   Actions
                 </th>
               </tr>

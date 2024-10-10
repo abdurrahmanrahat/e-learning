@@ -20,27 +20,27 @@ const MyCourses = () => {
           />
         </div>
 
-        <div className="custom-scrollbar h-[80vh] overflow-y-scroll overflow-x-auto bg-white rounded">
+        <div className="custom-scrollbar h-[80vh] overflow-y-auto overflow-x-auto bg-white rounded">
           <table className="min-w-full table-auto">
             <thead className="sticky top-0">
               <tr className="bg-primary text-white">
-                <th className="px-6 py-3 text-left text-sm font-semibold">#</th>
-                <th className="px-6 py-3 text-left text-sm font-semibold">
+                <th className="px-6 py-6 text-left text-sm font-semibold">#</th>
+                <th className="px-6 py-6 text-left text-sm font-semibold">
                   Image
                 </th>
-                <th className="px-6 py-3 text-left text-sm font-semibold">
+                <th className="px-6 py-6 text-left text-sm font-semibold">
                   Title & Category
                 </th>
-                <th className="px-6 py-3 text-left text-sm font-semibold">
+                <th className="px-6 py-6 text-left text-sm font-semibold">
                   Instructor
                 </th>
-                <th className="px-6 py-3 text-left text-sm font-semibold">
+                <th className="px-6 py-6 text-left text-sm font-semibold">
                   Price
                 </th>
-                <th className="px-6 py-3 text-left text-sm font-semibold">
+                <th className="px-6 py-6 text-left text-sm font-semibold">
                   Duration
                 </th>
-                <th className="px-6 py-3 text-left text-sm font-semibold">
+                <th className="px-6 py-6 text-left text-sm font-semibold">
                   Action
                 </th>
               </tr>
