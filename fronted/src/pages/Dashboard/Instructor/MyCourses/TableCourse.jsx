@@ -57,12 +57,12 @@ const TableCourse = ({ course, idx }) => {
       </tr>
       {openModal && (
         <Modal openModal={openModal} setOpenModal={setOpenModal} setModuleType={setModuleType}>
-          {moduleType === "existing" && <ExistingModuleForm courseId={course._id}/>}
-          {moduleType === "new" && <NewModuleForm courseId={course._id}/>}
+          {moduleType === "existing" && <ExistingModuleForm courseId={course._id} />}
+          {moduleType === "new" && <NewModuleForm courseId={course._id} />}
           {moduleType === "" && (
             <div className="w-[60%] mx-auto h-full flex justify-center items-center gap-10">
-              <Button handler={()=> setModuleType('new')} bgBtn>New Module</Button>
-              <Button handler={()=> setModuleType('existing')} outlineBtn>Existing Module</Button>
+              <Button handler={() => setModuleType('new')} bgBtn>New Module</Button>
+              <Button handler={() => setModuleType('existing')} outlineBtn>Existing Module</Button>
             </div>
           )}
         </Modal>

@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter} from "react-router-dom";
 import App from "../App";
 import Charts from "../components/Charts/Charts";
 import PaymentFailed from "../components/Checkout/AfterPayment/PaymentFailed";
@@ -75,10 +75,6 @@ const router = createBrowserRouter([
         element: <RoleChange />,
       },
       {
-        path: "charts",
-        element: <Charts />,
-      },
-      {
         path: "blogs",
         element: <Blogs/>,
       },
@@ -118,6 +114,10 @@ const router = createBrowserRouter([
         path: "profile",
         element: <Profile/>,
       },
+      {
+        path: "charts",
+        element: <Charts />,
+      },
     ],
   },
   {
@@ -140,6 +140,10 @@ const router = createBrowserRouter([
         path: "profile",
         element: <Profile/>,
       },
+      {
+        path: "charts",
+        element: <Charts />,
+      },
     ],
   },
   {
@@ -161,6 +165,10 @@ const router = createBrowserRouter([
       {
         path: "profile",
         element: <Profile/>,
+      },
+      {
+        path: "charts",
+        element: <Charts />,
       },
     ],
   },

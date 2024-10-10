@@ -20,7 +20,7 @@ const features_1 = [
 
 export default function Features() {
   return (
-    <div className="flex flex-col gap-16 px-10">
+    <div className="flex flex-col gap-16">
       <PrimaryTitle
         headingPart1={"Our"}
         headingPart2={"Features"}

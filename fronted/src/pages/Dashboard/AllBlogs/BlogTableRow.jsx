@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import { MdDeleteForever, MdModeEdit } from "react-icons/md";
 import PrimaryTitle from "../../../components/Ui/PrimaryTitle";
 import axios from "axios";
+import Button from "../../../components/Ui/Button";
 
 const BlogTableRow = ({ blog, idx }) => {
 
@@ -241,13 +242,10 @@ const BlogTableRow = ({ blog, idx }) => {
                                                                   ></textarea>
                                                             </div>
 
-                                                            <div className="form-control md:col-span-2">
-                                                                  <button
-                                                                        type="submit"
-                                                                        className="px-4 py-3 bg-[#49BBBD] text-white font-semibold rounded-lg"
-                                                                  >
+                                                            <div className="form-control w-fit">
+                                                                  <Button bgBtn>
                                                                         Update Blog
-                                                                  </button>
+                                                                  </Button>
                                                             </div>
                                                       </form>
                                                 </div>

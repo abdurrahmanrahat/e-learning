@@ -6,11 +6,11 @@ export default function InstructorCard({ item }) {
   const { id, name, image, title, ratings, numOfCourses, about } = item;
 
   return (
-    <div className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200">
+    <div className="group overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200 cursor-pointer">
       {/*  <!-- Image --> */}
       <div className="w-full flex justify-center items-center">
-        <figure>
-          <img src={image} alt={name} className="w-full" />
+        <figure className="rounded-xl">
+          <img src={image} alt={name} className="w-full rounded-xl group-hover:scale-[1.1] transition-all duration-500 ease-in-out" />
         </figure>
       </div>
       {/*  <!-- Body--> */}
@@ -25,9 +25,9 @@ export default function InstructorCard({ item }) {
         <p className="text-center">{about.slice(0, 110)} . . .</p>
       </div>
       {/*  <!-- Action base sized link button --> */}
-      <div className="flex justify-between items-center gap-2 p-6 pt-0">
+      <div className="flex justify-between items-center gap-2 p-6 pt-0 text-md">
         <div className="flex gap-2 items-center justify-center">
-          <span>
+          <span className="text-primary text-xl">
             <FaCirclePlay />
           </span>
           <span>{numOfCourses} Courses</span>
