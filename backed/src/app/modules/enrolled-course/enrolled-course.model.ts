@@ -14,6 +14,7 @@ const enrolledCourseSchema = new Schema<TEnrolledCourse>(
     },
     studentEmail: {
       type: String,
+      unique: true,
       required: [true, 'StudentEmail is required'],
     },
     completedPercentage: {
