@@ -98,7 +98,7 @@ const AddCourse = () => {
   };
 
   return (
-    <div className="bg-[#FFF] w-full lg:w-11/12 xl:w-11/12 lg:shadow-myCustomShadow xl:shadow-myCustomShadow py-6 px-0 lg:px-6 xl:px-6 rounded-xl">
+    <div className="bg-[#FFF] w-11/12 shadow-myCustomShadow p-10 rounded-2xl mx-auto my-10">
       <PrimaryTitle
         headingPart1={"Add"}
         headingPart2={"Course"}

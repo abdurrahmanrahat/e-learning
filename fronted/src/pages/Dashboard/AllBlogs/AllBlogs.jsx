@@ -87,6 +87,8 @@ const AllBlogs = () => {
     fetchBlogs();
   }, []);
 
+  console.log(blogs)
+
   return (
     <WebsiteTitle title={'All-Blogs'}>
       <div className="p-6 bg-[#F4F6FB] rounded-lg shadow-md">
@@ -256,24 +258,24 @@ const AllBlogs = () => {
         </div>
 
         {/* Blog Table */}
-        <div className="custom-scrollbar h-[80vh] overflow-y-scroll overflow-x-auto bg-white rounded-lg shadow">
+        <div className="custom-scrollbar h-[80vh] overflow-y-auto overflow-x-auto bg-white rounded-lg shadow">
           <table className="table-auto w-full">
             <thead className="sticky top-0">
               <tr className="bg-primary text-white">
-                <th className="px-6 py-3 text-left text-sm font-semibold">#</th>
-                <th className="px-6 py-3 text-left text-sm font-semibold">
+                <th className="px-6 py-6 text-left text-sm font-semibold">#</th>
+                <th className="px-6 py-6 text-left text-sm font-semibold">
                   Image
                 </th>
-                <th className="px-6 py-3 text-left text-sm font-semibold">
+                <th className="px-6 py-6 text-left text-sm font-semibold">
                   Title
                 </th>
-                <th className="px-6 py-3 text-left text-sm font-semibold">
+                <th className="px-6 py-6 text-left text-sm font-semibold">
                   Author
                 </th>
-                <th className="px-6 py-3 text-left text-sm font-semibold">
+                <th className="px-6 py-6 text-left text-sm font-semibold">
                   Publish Date
                 </th>
-                <th className="px-6 py-3 text-left text-sm font-semibold"></th>
+                <th className="px-6 py-6 text-left text-sm font-semibold"></th>
               </tr>
             </thead>
             <tbody>
