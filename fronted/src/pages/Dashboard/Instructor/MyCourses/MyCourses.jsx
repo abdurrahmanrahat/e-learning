@@ -7,7 +7,6 @@ const MyCourses = () => {
   const {user} = useUser();
 
   const courses = useCoursesByEmail(user?.email);
-  console.log(courses);
 
   return (
     <div className="p-6 bg-[#F4F6FB] rounded-lg shadow-md">

@@ -32,7 +32,7 @@ export default function BrainWave() {
       </div>
       {/* Mission And Vission */}
       <div className="flex flex-col lg:flex-row items-center gap-10">
-        <div className="flex flex-col lg:flex-row justify-between items-center">
+        <div className="flex flex-col-reverse lg:flex-row justify-between items-center">
           <div className="relative w-full lg:w-1/2 p-4">
             <div className="absolute top-0 right-0 h-[100px] w-[100px] bg-[#23BDEE] rounded-xl z-[-1]"></div>
             <div className="absolute bottom-0 left-0 h-[150px] w-[150px] bg-[#33EFA0] rounded-xl z-[-1]"></div>
