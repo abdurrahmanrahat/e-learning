@@ -4,6 +4,7 @@ import { SHAREDImages } from "../../image-data/shared";
 import BlogCategory from "../../components/Blogs/BlogCategory/BlogCategory";
 import BlogCategoryCard from "../../components/Ui/BlogCategoryCard";
 import LatestBlog from "../../components/Blogs/LatestBlog/LatestBlog";
+import PrimaryTitle from "../../components/Ui/PrimaryTitle";
 
 
 export default function Blogs() {
@@ -66,12 +67,13 @@ export default function Blogs() {
       <BlogCategory setSelectedCategory={setSelectedCategory}></BlogCategory>
 
       {/* show blog category */}
-      <div className="bg-[#f0fdfa] lg:py-20">
+      <div className="bg-[#f0fdfa] lg:py-16">
         <div className="container-class">
-          <h2 className="text-2xl font-bold mb-5">Related Blog </h2>
+          {/* <h2 className="text-2xl font-bold mb-5">Related Blog </h2> */}
+          <PrimaryTitle headingPart1={"Explore"} headingPart2={"Our Blog"}  />
           <div
             id="postContainer"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-10 lg:gap-y-20 gap-x-4 gap-y-5"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-10 lg:gap-y-20 gap-x-4 gap-y-5 mt-6"
           >
             {filteredPosts.length > 0 ? (
               filteredPosts.map((post, index) =>
@@ -87,9 +89,10 @@ export default function Blogs() {
       </div>
 
       {/* latest blog  */}
-      <div className="container-class my-20">
-        <h2 className="text-2xl font-bold mb-5">Latest blog</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-20">
+      <div className="container-class mb-20 mt-10">
+        {/* <h2 className="text-2xl font-bold mb-5">Latest blog</h2> */}
+        <PrimaryTitle headingPart1={"Latest"} headingPart2={"Blog"}  />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-20 mt-6">
           {blogs?.map((item, index) =><LatestBlog key={index} item={item}></LatestBlog>)}
         </div>
       </div>

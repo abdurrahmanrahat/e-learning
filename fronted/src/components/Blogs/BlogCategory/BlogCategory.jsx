@@ -1,12 +1,11 @@
 
-const BlogCategory = ({setSelectedCategory}) => {
+import PrimaryTitle from "../../Ui/PrimaryTitle";
 
-    return (
-       
-      <div className="container-class mt-20 mb-10">
-      <h2 className="text-2xl font-bold mb-5">Reading blog list</h2>
-      {/* Reading blog list */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7 ">
+const BlogCategory = ({ setSelectedCategory }) => {
+  return (
+    <div className="container-class mt-20 mb-10">
+      <PrimaryTitle headingPart1={"Category"} headingPart2={""} />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7 mt-6">
         <div className="relative">
           <img
             className="rounded-xl"
@@ -69,7 +68,7 @@ const BlogCategory = ({setSelectedCategory}) => {
         </div>
       </div>
     </div>
-    );
+  );
 };
 
 export default BlogCategory;
