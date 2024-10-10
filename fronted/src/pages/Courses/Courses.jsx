@@ -29,6 +29,8 @@ const Courses = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const limit = 9;
 
+  console.log(category)
+
   let courseQuery = {
     page,
     limit,
@@ -91,8 +93,8 @@ const Courses = () => {
         </PageBanner>
 
         {/* courses map section  */}
-        <div className="container-class px-10 flex flex-col gap-10 pt-10">
-          <PrimaryTitle headingPart1={"All"} headingPart2={"Courses"} />
+        <div className="container-class px-10 flex flex-col gap-10 py-10">
+          <PrimaryTitle headingPart1={`${category}` || "All"} headingPart2={"Courses"} />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-10 lg:gap-y-20">
             {courses?.data?.map((item) => (
