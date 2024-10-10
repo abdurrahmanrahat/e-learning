@@ -91,17 +91,17 @@ const Courses = () => {
         </PageBanner>
 
         {/* courses map section  */}
-        <div className="container-class px-10 flex flex-col gap-10 py-10">
+        <div className="container-class px-10 flex flex-col gap-10 pt-10">
           <PrimaryTitle headingPart1={"All"} headingPart2={"Courses"} />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-10 lg:gap-y-20">
             {courses?.data?.map((item) => (
               <CourseCard course={item} key={item._id}></CourseCard>
             ))}
           </div>
 
           {/* pagination part */}
-          <div className="w-full mt-10">
+          <div className="w-full lg:mt-10">
             <ReactPaginate
               breakLabel="..."
               nextLabel={"Next >"}
@@ -124,7 +124,7 @@ const Courses = () => {
         </div>
 
         {/* Know about learning learning platform section  */}
-        <div className="lg:max-w-7xl mx-auto  lg:my-20 my-20 md:px-5 lg:px-0 ">
+        <div className="lg:max-w-7xl mx-auto  lg:my-20 my-16 md:px-5 lg:px-0 ">
           <div
             className="flex flex-col lg:flex-row md:flex-row lg:py-10 md:py-10 bg-[#e0f2fe]
  items-center lg:gap-32 rounded-3xl"

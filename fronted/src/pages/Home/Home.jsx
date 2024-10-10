@@ -14,27 +14,27 @@ const Home = () => {
         <Hero />
       </div>
 
-      <div className="py-24 container-class">
+      <div className="py-14 lg:py-24 container-class">
         <Success />
       </div>
 
-      <div className="pb-24 container-class" id="Category">
+      <div className="pb-14 lg:pb-24 container-class" id="Category">
         <OurCategory />
       </div>
 
-      <div className="pb-24 container-class">
+      <div className="pb-14 lg:pb-24 container-class">
         <BrainWave />
       </div>
 
-      <div className="pb-24 container-class " id="Features">
+      <div className="pb-14 lg:pb-24 container-class " id="Features">
         <Features />
       </div>
 
-      <div className="pb-24 container-class">
+      <div className="pb-14 lg:pb-24 container-class">
         <TestimonialsForHome />
       </div>
 
-      <div className="pb-24 container-class">
+      <div className="pb-14 lg:pb-24 container-class">
         <LatestBlogs />
       </div>
     </WebsiteTitle>

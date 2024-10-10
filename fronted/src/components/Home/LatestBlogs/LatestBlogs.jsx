@@ -26,7 +26,7 @@ const LatestBlogs = () => {
   ];
 
   return (
-    <div className="mt-10">
+    <div className="">
       {/* title section */}
       <div className="flex flex-col justify-center items-center gap-0 text-center">
         <h2 className="text-[28px] font-medium leading-[50px]">
