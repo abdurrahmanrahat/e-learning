@@ -5,10 +5,11 @@ import LatestBlogs from "../../components/Home/LatestBlogs/LatestBlogs";
 import OurCategory from "../../components/Home/OurCategory/OurCategory";
 import Success from "../../components/Home/Success/Success";
 import TestimonialsForHome from "../../components/Ui/Testimonials/TestimonialsForHome/TestimonialsForHome";
+import WebsiteTitle from "../../components/Ui/WebsiteTitle";
 
 const Home = () => {
   return (
-    <div className="">
+    <WebsiteTitle title={'Home'}>
       <div className="bg-[#F6F7FB]">
         <Hero />
       </div>
@@ -17,15 +18,15 @@ const Home = () => {
         <Success />
       </div>
 
-      <div className="pb-24 container-class">
-       <OurCategory/>
+      <div className="pb-24 container-class" id="Category">
+        <OurCategory />
       </div>
 
       <div className="pb-24 container-class">
         <BrainWave />
       </div>
 
-      <div className="pb-24 container-class">
+      <div className="pb-24 container-class " id="Features">
         <Features />
       </div>
 
@@ -36,7 +37,7 @@ const Home = () => {
       <div className="pb-24 container-class">
         <LatestBlogs />
       </div>
-    </div>
+    </WebsiteTitle>
   );
 };
 

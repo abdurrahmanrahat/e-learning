@@ -54,7 +54,7 @@ export default function Success() {
         headingPart2={"Success"}
         style={"text-center"}
         subtext={
-          "Ornare id fames interdum porttitor nulla turpis etiam. Diam vitae sollicitudin at nec nam et pharetra gravida. Adipiscing a quis ultrices eu ornare tristique vel nisl orci."
+          "Empowering learners to reach new heights. Together, we achieve success through knowledge at BrainWave."
         }
       />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 justify-between items-center">
