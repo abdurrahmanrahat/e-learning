@@ -57,7 +57,7 @@ export default function Instructors() {
           <h2 className="text-5xl">Instructors</h2>
         </PageBanner>
 
-        <div className="py-16 container-class px-10">
+        <div className="pt-16 container-class">
           <PrimaryTitle
             headingPart1={"Our Expert"}
             headingPart2={"Instructors"}
