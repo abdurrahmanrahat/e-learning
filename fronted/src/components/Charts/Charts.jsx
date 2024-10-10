@@ -1,9 +1,11 @@
-
-
+import useUser from "../../Hooks/api/useUser";
 import BerCharts from "./BerChart/BerCharts";
 import LineChart from "./LineChart/LineChart";
 import PieCharts from "./PieCharts/PieCharts";
 const Charts = () => {
+
+  const { user } = useUser();
+  
   //   pie charts
   const data = [
     { name: "Course Completion", value: 400 },
@@ -26,7 +28,7 @@ const Charts = () => {
       },
     ],
   };
-  
+
   const optionsLineChart = {
     responsive: true,
     plugins: {
@@ -42,27 +44,38 @@ const Charts = () => {
 
   return (
     <div className="max-w-7xl mx-auto my-20">
-      <div className="flex lg:flex-row flex-col lg:mx-0 gap-5">
-        <div className="w-full lg:w-[50%] flex items-center justify-center">
-          <div>
-          <h2 className="text-2xl font-bold  text-gray-600 lg:text-start text-center">Course Duration</h2>
-          <LineChart chartData={lineCharts1} chartOptions={optionsLineChart} />
-          </div>
+      <div className="">
+        <div className=" flex items-center justify-center">
+          {
+            user?.role === 'admin' &&
+            <div>
+              <h2 className="text-2xl font-bold  text-gray-600 lg:text-start text-center">Course Duration</h2>
+              <LineChart chartData={lineCharts1} chartOptions={optionsLineChart} />
+            </div>
+          }
         </div>
-        <div className="w-full lg:w-[50%] ">
-          <div>
-          <h2 className="text-2xl font-bold lg:text-end text-center text-gray-600">
-            Student Analysis
-          </h2>
-          <PieCharts data={data} colors={colors} />
-          </div>
+        <div className=" ">
+          {
+            user?.role === "instructor" &&
+            <div>
+              <h2 className="text-2xl font-bold lg:text-end text-center text-gray-600">
+                Student Analysis
+              </h2>
+              <PieCharts data={data} colors={colors} />
+            </div>
+          }
         </div>
       </div>
-      <div className="mt-16 mx-5 lg:mx-0">
-        <h2 className="text-2xl font-bold  text-gray-600 ">
-          Instructor Analytics
-        </h2>
-       <BerCharts></BerCharts>
+      <div>
+        {
+          user?.role === 'student' &&
+          <div className="mt-16 mx-5 lg:mx-0">
+            <h2 className="text-2xl font-bold  text-gray-600 ">
+              Instructor Analytics
+            </h2>
+            <BerCharts></BerCharts>
+          </div>
+        }
       </div>
     </div>
   );
