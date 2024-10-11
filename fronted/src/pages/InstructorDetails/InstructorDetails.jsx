@@ -88,9 +88,6 @@ export default function InstructorDetails() {
     fetchReviews();
   }, []);
 
-  // console.log(`courses`, instructCourses);
-  // console.log(`reviews`, reviews);
-
   const tabs = ["About", "Courses", "Reviews"];
   const tabItems = [
     {

@@ -11,7 +11,6 @@ import Authentication from "../pages/Authentication/Authentication";
 import Checkout from "../pages/Checkout/Checkout";
 import Courses from "../pages/Courses/Courses";
 import AdminDashboardHome from "../pages/Dashboard/Admin/AdminDashboardHome/AdminDashboardHome";
-import AllCourses from "../pages/Dashboard/Admin/AllCourses/AllCourses";
 import UsersManagement from "../pages/Dashboard/Admin/UsersManagement/UsersManagement";
 import AllBlogs from "../pages/Dashboard/AllBlogs/AllBlogs";
 import AddCourse from "../pages/Dashboard/Instructor/AddCourse/AddCourse";
@@ -26,9 +25,12 @@ import Instructors from "../pages/Instructors/Instructors";
 import RoleChange from "../pages/RoleChange/RoleChange";
 import Blogs from "../pages/Blogs/Blogs";
 import BlogDetails from "../pages/BlogDetails/BlogDetails";
-import Profile from "../pages/Dashboard/Profile/Profile/Profile";
+import Profile from "../pages/Dashboard/Profile/Profile";
+import MyBlogs from "../pages/Dashboard/Instructor/MyBlogs/MyBlogs";
+import CourseManagement from "../pages/Dashboard/Admin/AllCourses/CourseManagement";
 
 const router = createBrowserRouter([
+  // Basic routes
   {
     path: "/",
     element: <App></App>,
@@ -86,10 +88,12 @@ const router = createBrowserRouter([
       },
     ],
   },
+  // authentication routes
   {
     path: "authentication",
     element: <Authentication />,
   },
+  // admin routes
   {
     path: "/dashboard/admin/",
     element: <DashboardLayout />,
@@ -99,15 +103,15 @@ const router = createBrowserRouter([
         element: <AdminDashboardHome />,
       },
       {
-        path: "all-courses",
-        element: <AllCourses />,
+        path: "course-management",
+        element: <CourseManagement />,
       },
       {
         path: "users-management",
         element: <UsersManagement />,
       },
       {
-        path: "all-blogs",
+        path: "blog-management",
         element: <AllBlogs />,
       },
       {
@@ -120,6 +124,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+  // instructor routes
   {
     path: "/dashboard/instructor/",
     element: <DashboardLayout />,
@@ -137,6 +142,10 @@ const router = createBrowserRouter([
         element: <MyCourses />,
       },
       {
+        path: "my-blogs",
+        element: <MyBlogs />,
+      },
+      {
         path: "profile",
         element: <Profile/>,
       },
@@ -146,6 +155,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+  // student routes
   {
     path: "/dashboard/student/",
     element: <DashboardLayout />,

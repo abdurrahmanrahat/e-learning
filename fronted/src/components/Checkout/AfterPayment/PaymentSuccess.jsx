@@ -1,4 +1,3 @@
-import axios from "axios";
 import jsPDF from "jspdf";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -16,7 +15,8 @@ export default function PaymentSuccess() {
   useEffect(() => {
     const getReceipt = async () => {
       try {
-        const res = await axios.get(`/payment/payment-history/${trans_id}`);
+        const res = await apiHandler.get(`/payment/payment-history/${trans_id}`
+        );
         console.log(res.data);
         setPaymentReceipt(res.data);
         return res.data; // Return the receipt data for the next function
