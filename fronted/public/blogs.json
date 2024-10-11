@@ -1,392 +1,324 @@
 [
       {
-            "_id": "1",
-            "title": "The Future of Web Development in 2024",
-            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-            "shortDescription": "Web development is constantly evolving, and 2024 brings new trends that will shape the industry for years to come.",
-            "description": "In 2024, web development continues to evolve with technologies like AI integration, WebAssembly, and faster frameworks gaining popularity. Developers are focusing on improving user experience, website performance, and security. Tools like Next.js, Svelte, and frameworks like Tailwind CSS are becoming essential. Web3, decentralized apps, and blockchain technology are also becoming more integral in the development space. As the internet expands, so does the potential of web development, making it a promising field for future tech innovations.",
+            "id": 1,
+            "title": "Understanding JavaScript Promises",
+            "image": "https://i.ibb.co.com/mJ0Yjf3/pexels-photo-17771092.webp",
+            "categoryName": "JavaScript",
+            "shortDescription": "Learn how JavaScript promises work and how to use them for asynchronous programming.",
+            "bigDescription": "JavaScript promises are a powerful way to handle asynchronous operations. In this article, we will explore what promises are, how they work, and how to use them effectively in your code. You will learn about the different states of a promise, chaining promises, and error handling. By the end of this article, you will have a solid understanding of how to leverage promises to write cleaner and more efficient asynchronous JavaScript code.",
             "author": {
                   "name": "John Doe",
-                  "profile_image": "https://via.placeholder.com/150x150.png?text=John+Doe",
-                  "bio": "John is a seasoned web developer with over 10 years of experience, specializing in JavaScript frameworks and cutting-edge web technologies."
+                  "profileImage": "https://randomuser.me/api/portraits/men/1.jpg"
             },
-            "published_date": "2024-01-15"
+            "publishDate": "2024-10-01",
+            "rating": 4.5
       },
       {
-            "_id": "2",
-            "title": "How to Build a Responsive Website",
-            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-            "shortDescription": "Learn the fundamentals of responsive web design and how to build websites that adapt to any screen size.",
-            "description": "Responsive web design is a crucial skill for any web developer. In this blog, we will explore the importance of flexible layouts, media queries, and mobile-first design. You’ll learn how to use modern CSS frameworks like Bootstrap and Tailwind CSS to create responsive websites that look great on both desktop and mobile devices. We’ll also cover tips for optimizing images and performance for different screen sizes, ensuring your site provides a smooth user experience no matter the device.",
+            "id": 2,
+            "title": "Async/Await: A Modern Approach to Asynchronous JavaScript",
+            "image": "https://i.ibb.co.com/mJ0Yjf3/pexels-photo-17771092.webp",
+            "categoryName": "JavaScript",
+            "shortDescription": "Discover how async/await simplifies asynchronous code in JavaScript.",
+            "bigDescription": "Async/await is a modern syntax for working with asynchronous JavaScript, making your code easier to read and maintain. In this article, we will cover the basics of async functions, how to use await for promise resolution, and the advantages of this approach over traditional callback methods. You'll also learn how to handle errors gracefully in async functions. By the end, you'll be ready to implement async/await in your own projects.",
             "author": {
                   "name": "Jane Smith",
-                  "profile_image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-                  "bio": "Jane is a front-end developer with a passion for creating intuitive and visually appealing web interfaces, focusing on responsive design and accessibility."
+                  "profileImage": "https://randomuser.me/api/portraits/women/1.jpg"
             },
-            "published_date": "2024-02-10"
+            "publishDate": "2024-10-02",
+            "rating": 4.7
       },
       {
-            "_id": "3",
-            "title": "The Rise of AI in Web Development",
-            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-            "shortDescription": "Artificial Intelligence is transforming how websites are built, maintained, and optimized for users.",
-            "description": "Artificial Intelligence is revolutionizing the web development industry. From AI-powered design tools to chatbots and automated testing, the possibilities are endless. In this blog, we’ll look at the tools and techniques that use AI to streamline development processes, improve user experiences, and enhance website personalization. We’ll also explore future AI trends that are likely to shape the future of web development, including machine learning algorithms for better SEO optimization, automated code generation, and AI-driven content creation.",
+            "id": 3,
+            "title": "JavaScript ES6 Features: What You Need to Know",
+            "image": "https://i.ibb.co.com/mJ0Yjf3/pexels-photo-17771092.webp",
+            "categoryName": "JavaScript",
+            "shortDescription": "Explore the new features introduced in ES6 and how to use them in your code.",
+            "bigDescription": "ECMAScript 6 (ES6) introduced a host of new features to JavaScript that enhance the language's capabilities. This article will walk you through the most important ES6 features, including arrow functions, classes, template literals, destructuring, and modules. You will see how these features can simplify your code and improve its readability. By the end of this article, you will be equipped to leverage ES6 features in your own JavaScript projects.",
+            "author": {
+                  "name": "Emily Johnson",
+                  "profileImage": "https://randomuser.me/api/portraits/women/2.jpg"
+            },
+            "publishDate": "2024-10-03",
+            "rating": 4.6
+      },
+      {
+            "id": 4,
+            "title": "The Ultimate Guide to JavaScript Closures",
+            "image": "https://i.ibb.co.com/mJ0Yjf3/pexels-photo-17771092.webp",
+            "categoryName": "JavaScript",
+            "shortDescription": "Understand closures in JavaScript and how they can be used for data encapsulation.",
+            "bigDescription": "Closures are a fundamental concept in JavaScript that allow functions to maintain access to their outer scope even after that scope has finished executing. In this comprehensive guide, we will explore what closures are, how they work, and their practical applications in real-world coding scenarios. You'll learn how closures can be used for data privacy, function factories, and more. By the end of this article, you'll have a deep understanding of closures and how to apply them effectively.",
             "author": {
                   "name": "Michael Brown",
-                  "profile_image": "https://via.placeholder.com/150x150.png?text=Michael+Brown",
-                  "bio": "Michael is an AI enthusiast and web developer who loves exploring the intersection of machine learning and web technologies."
+                  "profileImage": "https://randomuser.me/api/portraits/men/2.jpg"
             },
-            "published_date": "2024-03-05"
+            "publishDate": "2024-10-04",
+            "rating": 4.8
       },
       {
-            "_id": "4",
-            "title": "Top CSS Frameworks for 2024",
-            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-            "shortDescription": "Discover the best CSS frameworks to speed up your development process and create beautiful designs.",
-            "description": "CSS frameworks have come a long way, providing developers with pre-built classes and styles to create responsive and modern websites. In this blog, we’ll cover the top CSS frameworks to watch out for in 2024, including Bootstrap 5, Tailwind CSS, Bulma, and Materialize. Each framework has its pros and cons, but all of them provide significant value by speeding up development, ensuring cross-browser compatibility, and offering design flexibility. Whether you’re a seasoned developer or a beginner, these frameworks are essential tools for any web project.",
+            "id": 5,
+            "title": "JavaScript Array Methods: A Complete Overview",
+            "image": "https://i.ibb.co.com/mJ0Yjf3/pexels-photo-17771092.webp",
+            "categoryName": "JavaScript",
+            "shortDescription": "Learn about essential array methods in JavaScript and how to use them effectively.",
+            "bigDescription": "Arrays are a core data structure in JavaScript, and mastering array methods is crucial for any developer. In this article, we will cover essential array methods such as forEach, map, filter, reduce, and more. You will learn how to manipulate arrays, perform operations, and handle data efficiently. Practical examples will illustrate each method's use case, helping you apply these techniques in your projects. By the end of this article, you will be confident in using JavaScript array methods to enhance your coding skills.",
             "author": {
-                  "name": "Sarah Lee",
-                  "profile_image": "https://via.placeholder.com/150x150.png?text=Sarah+Lee",
-                  "bio": "Sarah is a creative web designer and front-end developer who loves using CSS frameworks to bring ideas to life."
+                  "name": "Lisa White",
+                  "profileImage": "https://randomuser.me/api/portraits/women/3.jpg"
             },
-            "published_date": "2024-04-20"
+            "publishDate": "2024-10-05",
+            "rating": 4.4
       },
       {
-            "_id": "4",
-            "title": "Top CSS Frameworks for 2024",
-            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-            "shortDescription": "Discover the best CSS frameworks to speed up your development process and create beautiful designs.",
-            "description": "CSS frameworks have come a long way, providing developers with pre-built classes and styles to create responsive and modern websites. In this blog, we’ll cover the top CSS frameworks to watch out for in 2024, including Bootstrap 5, Tailwind CSS, Bulma, and Materialize. Each framework has its pros and cons, but all of them provide significant value by speeding up development, ensuring cross-browser compatibility, and offering design flexibility. Whether you’re a seasoned developer or a beginner, these frameworks are essential tools for any web project.",
+            "id": 6,
+            "title": "JavaScript Error Handling: Best Practices",
+            "image": "https://i.ibb.co.com/mJ0Yjf3/pexels-photo-17771092.webp",
+            "categoryName": "JavaScript",
+            "shortDescription": "Discover best practices for handling errors in JavaScript applications.",
+            "bigDescription": "Error handling is a critical aspect of building robust JavaScript applications. In this article, we will explore best practices for handling errors effectively. You will learn about try/catch statements, throwing custom errors, and using promise rejections. We will also discuss strategies for logging errors and providing user-friendly error messages. By the end of this article, you will have the tools to implement effective error handling in your JavaScript applications.",
             "author": {
-                  "name": "Sarah Lee",
-                  "profile_image": "https://via.placeholder.com/150x150.png?text=Sarah+Lee",
-                  "bio": "Sarah is a creative web designer and front-end developer who loves using CSS frameworks to bring ideas to life."
+                  "name": "David Wilson",
+                  "profileImage": "https://randomuser.me/api/portraits/men/3.jpg"
             },
-            "published_date": "2024-04-20"
+            "publishDate": "2024-10-06",
+            "rating": 4.3
       },
       {
-            "_id": "4",
-            "title": "Top CSS Frameworks for 2024",
-            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-            "shortDescription": "Discover the best CSS frameworks to speed up your development process and create beautiful designs.",
-            "description": "CSS frameworks have come a long way, providing developers with pre-built classes and styles to create responsive and modern websites. In this blog, we’ll cover the top CSS frameworks to watch out for in 2024, including Bootstrap 5, Tailwind CSS, Bulma, and Materialize. Each framework has its pros and cons, but all of them provide significant value by speeding up development, ensuring cross-browser compatibility, and offering design flexibility. Whether you’re a seasoned developer or a beginner, these frameworks are essential tools for any web project.",
+            "id": 7,
+            "title": "Debugging JavaScript: Tools and Techniques",
+            "image": "https://i.ibb.co.com/mJ0Yjf3/pexels-photo-17771092.webp",
+            "categoryName": "JavaScript",
+            "shortDescription": "Debugging is an essential skill for developers. This article introduces tools and techniques for effectively debugging JavaScript code.",
+            "bigDescription": "Debugging is an inevitable part of the development process, and mastering it is essential for every programmer. This article introduces you to various tools and techniques for effectively debugging JavaScript code. You’ll learn how to use browser developer tools to inspect elements, monitor network requests, and analyze performance issues. We’ll cover the console object and how to use console.log, console.error, and other methods for outputting debugging information. Additionally, we’ll discuss strategies like breakpoints, stepping through code, and using the debugger statement to pause execution. By the end of this article, you’ll be equipped with the knowledge and skills to troubleshoot issues in your JavaScript applications efficiently.",
             "author": {
-                  "name": "Sarah Lee",
-                  "profile_image": "https://via.placeholder.com/150x150.png?text=Sarah+Lee",
-                  "bio": "Sarah is a creative web designer and front-end developer who loves using CSS frameworks to bring ideas to life."
+                  "name": "Laura Martinez",
+                  "profileImage": "https://randomuser.me/api/portraits/women/4.jpg"
             },
-            "published_date": "2024-04-20"
+            "publishDate": "2024-10-07",
+            "rating": 4.6
       },
       {
-            "_id": "4",
-            "title": "Top CSS Frameworks for 2024",
-            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-            "shortDescription": "Discover the best CSS frameworks to speed up your development process and create beautiful designs.",
-            "description": "CSS frameworks have come a long way, providing developers with pre-built classes and styles to create responsive and modern websites. In this blog, we’ll cover the top CSS frameworks to watch out for in 2024, including Bootstrap 5, Tailwind CSS, Bulma, and Materialize. Each framework has its pros and cons, but all of them provide significant value by speeding up development, ensuring cross-browser compatibility, and offering design flexibility. Whether you’re a seasoned developer or a beginner, these frameworks are essential tools for any web project.",
+            "id": 8,
+            "title": "Fetching Data with JavaScript: A Guide to Using Fetch",
+            "image": "https://i.ibb.co.com/mJ0Yjf3/pexels-photo-17771092.webp",
+            "categoryName": "JavaScript",
+            "shortDescription": "Learn how to fetch data from APIs using the Fetch API in JavaScript.",
+            "bigDescription": "Fetching data from APIs is a common requirement in modern web applications. In this article, we will explore how to use the Fetch API to request data from servers. You’ll learn how to make GET and POST requests, handle responses, and manage errors. We’ll also discuss how to work with JSON data and how to integrate API calls into your JavaScript applications. By the end of this article, you will be able to confidently fetch and manipulate data from APIs using JavaScript.",
             "author": {
-                  "name": "Sarah Lee",
-                  "profile_image": "https://via.placeholder.com/150x150.png?text=Sarah+Lee",
-                  "bio": "Sarah is a creative web designer and front-end developer who loves using CSS frameworks to bring ideas to life."
+                  "name": "Kevin Thompson",
+                  "profileImage": "https://randomuser.me/api/portraits/men/4.jpg"
             },
-            "published_date": "2024-04-20"
+            "publishDate": "2024-10-08",
+            "rating": 4.9
       },
       {
-            "_id": "4",
-            "title": "Top CSS Frameworks for 2024",
-            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-            "shortDescription": "Discover the best CSS frameworks to speed up your development process and create beautiful designs.",
-            "description": "CSS frameworks have come a long way, providing developers with pre-built classes and styles to create responsive and modern websites. In this blog, we’ll cover the top CSS frameworks to watch out for in 2024, including Bootstrap 5, Tailwind CSS, Bulma, and Materialize. Each framework has its pros and cons, but all of them provide significant value by speeding up development, ensuring cross-browser compatibility, and offering design flexibility. Whether you’re a seasoned developer or a beginner, these frameworks are essential tools for any web project.",
+            "id": 9,
+            "title": "JavaScript Modules: The Future of Code Organization",
+            "image": "https://i.ibb.co.com/mJ0Yjf3/pexels-photo-17771092.webp",
+            "categoryName": "JavaScript",
+            "shortDescription": "Explore how to use modules in JavaScript for better code organization and reusability.",
+            "bigDescription": "Modules are a powerful way to organize and encapsulate your JavaScript code. In this article, we’ll explore how to create and use modules in JavaScript, including the different types of modules, such as ES6 modules and CommonJS. You’ll learn how to export and import functions, objects, and variables, and how to manage dependencies in your projects. By the end of this article, you’ll have a strong understanding of how to utilize modules for better code organization and reusability.",
             "author": {
-                  "name": "Sarah Lee",
-                  "profile_image": "https://via.placeholder.com/150x150.png?text=Sarah+Lee",
-                  "bio": "Sarah is a creative web designer and front-end developer who loves using CSS frameworks to bring ideas to life."
+                  "name": "Samantha Green",
+                  "profileImage": "https://randomuser.me/api/portraits/women/5.jpg"
             },
-            "published_date": "2024-04-20"
+            "publishDate": "2024-10-09",
+            "rating": 4.5
       },
       {
-            "_id": "4",
-            "title": "Top CSS Frameworks for 2024",
-            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-            "shortDescription": "Discover the best CSS frameworks to speed up your development process and create beautiful designs.",
-            "description": "CSS frameworks have come a long way, providing developers with pre-built classes and styles to create responsive and modern websites. In this blog, we’ll cover the top CSS frameworks to watch out for in 2024, including Bootstrap 5, Tailwind CSS, Bulma, and Materialize. Each framework has its pros and cons, but all of them provide significant value by speeding up development, ensuring cross-browser compatibility, and offering design flexibility. Whether you’re a seasoned developer or a beginner, these frameworks are essential tools for any web project.",
+            "id": 10,
+            "title": "Building Responsive Web Applications with JavaScript",
+            "image": "https://i.ibb.co.com/mJ0Yjf3/pexels-photo-17771092.webp",
+            "categoryName": "JavaScript",
+            "shortDescription": "Learn how to build responsive web applications using JavaScript techniques.",
+            "bigDescription": "In today's mobile-first world, building responsive web applications is crucial. This article will guide you through the process of creating responsive designs using JavaScript. You’ll learn about media queries, flexible layouts, and how to handle different screen sizes. We’ll also discuss how to use JavaScript to manipulate the DOM for responsive behavior and improve user experience. By the end of this article, you’ll be equipped with the skills to create responsive web applications that look great on any device.",
             "author": {
-                  "name": "Sarah Lee",
-                  "profile_image": "https://via.placeholder.com/150x150.png?text=Sarah+Lee",
-                  "bio": "Sarah is a creative web designer and front-end developer who loves using CSS frameworks to bring ideas to life."
+                  "name": "Robert Williams",
+                  "profileImage": "https://randomuser.me/api/portraits/men/5.jpg"
             },
-            "published_date": "2024-04-20"
+            "publishDate": "2024-10-10",
+            "rating": 4.7
       },
       {
-            "_id": "4",
-            "title": "Top CSS Frameworks for 2024",
-            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-            "shortDescription": "Discover the best CSS frameworks to speed up your development process and create beautiful designs.",
-            "description": "CSS frameworks have come a long way, providing developers with pre-built classes and styles to create responsive and modern websites. In this blog, we’ll cover the top CSS frameworks to watch out for in 2024, including Bootstrap 5, Tailwind CSS, Bulma, and Materialize. Each framework has its pros and cons, but all of them provide significant value by speeding up development, ensuring cross-browser compatibility, and offering design flexibility. Whether you’re a seasoned developer or a beginner, these frameworks are essential tools for any web project.",
+            "id": 11,
+            "title": "React Router: Navigating in React Applications",
+            "image": "https://i.ibb.co.com/qkjHLdW/download-23.jpg",
+            "categoryName": "React",
+            "shortDescription": "React Router is a popular library for managing navigation in React applications. Learn how to set up routes, manage URL parameters, and create a seamless user experience.",
+            "bigDescription": "React Router is an essential library for creating single-page applications (SPAs) with React. It allows you to define routes that render specific components based on the current URL, enabling navigation without reloading the page. This article walks you through setting up React Router, defining routes, and managing URL parameters. You’ll learn how to create nested routes, handle dynamic routing, and use the Link component to navigate between pages. We’ll also cover route guards, redirecting users based on authentication status, and how to handle 404 pages for unmatched routes. React Router helps you create a seamless navigation experience for users, making it a must-have tool for any React developer building SPAs. By the end, you’ll have the knowledge to integrate React Router into your projects and create rich, navigable applications.",
             "author": {
-                  "name": "Sarah Lee",
-                  "profile_image": "https://via.placeholder.com/150x150.png?text=Sarah+Lee",
-                  "bio": "Sarah is a creative web designer and front-end developer who loves using CSS frameworks to bring ideas to life."
+                  "name": "John Doe",
+                  "profileImage": "https://randomuser.me/api/portraits/men/5.jpg"
             },
-            "published_date": "2024-04-20"
+            "publishDate": "2024-10-01",
+            "rating": 4.5
       },
       {
-            "_id": "4",
-            "title": "Top CSS Frameworks for 2024",
-            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-            "shortDescription": "Discover the best CSS frameworks to speed up your development process and create beautiful designs.",
-            "description": "CSS frameworks have come a long way, providing developers with pre-built classes and styles to create responsive and modern websites. In this blog, we’ll cover the top CSS frameworks to watch out for in 2024, including Bootstrap 5, Tailwind CSS, Bulma, and Materialize. Each framework has its pros and cons, but all of them provide significant value by speeding up development, ensuring cross-browser compatibility, and offering design flexibility. Whether you’re a seasoned developer or a beginner, these frameworks are essential tools for any web project.",
+            "id": 12,
+            "title": "State Management in React: Redux vs Context API",
+            "image": "https://i.ibb.co.com/qkjHLdW/download-24.jpg",
+            "categoryName": "React",
+            "shortDescription": "Learn about the differences between Redux and Context API for managing state in React applications. Which one should you use?",
+            "bigDescription": "State management is a critical part of any React application. Redux has been the go-to solution for managing complex state, offering a predictable state container that works well for large-scale applications. On the other hand, React's Context API is a simpler, built-in solution that works best for smaller or medium-sized apps. In this article, we'll explore the key differences between Redux and Context API, when to use each one, and how they fit into the React ecosystem. You'll also learn about performance considerations, scalability, and ease of integration, helping you make an informed decision when choosing the right state management tool for your project.",
             "author": {
-                  "name": "Sarah Lee",
-                  "profile_image": "https://via.placeholder.com/150x150.png?text=Sarah+Lee",
-                  "bio": "Sarah is a creative web designer and front-end developer who loves using CSS frameworks to bring ideas to life."
+                  "name": "John Doe",
+                  "profileImage": "https://randomuser.me/api/portraits/men/5.jpg"
             },
-            "published_date": "2024-04-20"
+            "publishDate": "2024-09-25",
+            "rating": 4.8
       },
       {
-            "_id": "4",
-            "title": "Top CSS Frameworks for 2024",
-            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-            "shortDescription": "Discover the best CSS frameworks to speed up your development process and create beautiful designs.",
-            "description": "CSS frameworks have come a long way, providing developers with pre-built classes and styles to create responsive and modern websites. In this blog, we’ll cover the top CSS frameworks to watch out for in 2024, including Bootstrap 5, Tailwind CSS, Bulma, and Materialize. Each framework has its pros and cons, but all of them provide significant value by speeding up development, ensuring cross-browser compatibility, and offering design flexibility. Whether you’re a seasoned developer or a beginner, these frameworks are essential tools for any web project.",
+            "id": 13,
+            "title": "React Hooks: A Deep Dive",
+            "image": "https://i.ibb.co.com/qkjHLdW/download-25.jpg",
+            "categoryName": "React",
+            "shortDescription": "Explore the world of React Hooks, including useState, useEffect, and custom hooks. Hooks have revolutionized the way we build components in React.",
+            "bigDescription": "React Hooks introduced a new, more functional way to build components in React. Instead of managing state and lifecycle methods in class components, Hooks allow you to handle everything in functional components. In this article, we’ll take a deep dive into popular hooks like useState, useEffect, and useReducer. You'll also learn how to create your own custom hooks to encapsulate reusable logic, making your components cleaner and easier to manage. By the end, you'll understand how to use Hooks to write cleaner, more efficient React code while avoiding pitfalls and common mistakes.",
             "author": {
-                  "name": "Sarah Lee",
-                  "profile_image": "https://via.placeholder.com/150x150.png?text=Sarah+Lee",
-                  "bio": "Sarah is a creative web designer and front-end developer who loves using CSS frameworks to bring ideas to life."
+                  "name": "John Doe",
+                  "profileImage": "https://randomuser.me/api/portraits/men/5.jpg"
             },
-            "published_date": "2024-04-20"
+            "publishDate": "2024-09-18",
+            "rating": 4.7
       },
       {
-            "_id": "4",
-            "title": "Top CSS Frameworks for 2024",
-            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-            "shortDescription": "Discover the best CSS frameworks to speed up your development process and create beautiful designs.",
-            "description": "CSS frameworks have come a long way, providing developers with pre-built classes and styles to create responsive and modern websites. In this blog, we’ll cover the top CSS frameworks to watch out for in 2024, including Bootstrap 5, Tailwind CSS, Bulma, and Materialize. Each framework has its pros and cons, but all of them provide significant value by speeding up development, ensuring cross-browser compatibility, and offering design flexibility. Whether you’re a seasoned developer or a beginner, these frameworks are essential tools for any web project.",
+            "id": 14,
+            "title": "Building Forms in React: Best Practices",
+            "image": "https://i.ibb.co.com/qkjHLdW/download-26.jpg",
+            "categoryName": "React",
+            "shortDescription": "Forms are a crucial part of any web application. Learn best practices for building accessible and user-friendly forms in React.",
+            "bigDescription": "Forms are one of the most important elements in any web application, and building them in React can sometimes be tricky. This article covers best practices for creating forms in React, from handling form state and validation to improving accessibility and user experience. You'll learn about controlled vs uncontrolled components, the use of libraries like Formik and React Hook Form, and techniques for managing complex form data. By the end of this guide, you'll be able to build clean, maintainable forms that not only look great but also perform well in your React applications.",
             "author": {
-                  "name": "Sarah Lee",
-                  "profile_image": "https://via.placeholder.com/150x150.png?text=Sarah+Lee",
-                  "bio": "Sarah is a creative web designer and front-end developer who loves using CSS frameworks to bring ideas to life."
+                  "name": "John Doe",
+                  "profileImage": "https://randomuser.me/api/portraits/men/5.jpg"
             },
-            "published_date": "2024-04-20"
+            "publishDate": "2024-09-10",
+            "rating": 4.6
       },
       {
-            "_id": "4",
-            "title": "Top CSS Frameworks for 2024",
-            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-            "shortDescription": "Discover the best CSS frameworks to speed up your development process and create beautiful designs.",
-            "description": "CSS frameworks have come a long way, providing developers with pre-built classes and styles to create responsive and modern websites. In this blog, we’ll cover the top CSS frameworks to watch out for in 2024, including Bootstrap 5, Tailwind CSS, Bulma, and Materialize. Each framework has its pros and cons, but all of them provide significant value by speeding up development, ensuring cross-browser compatibility, and offering design flexibility. Whether you’re a seasoned developer or a beginner, these frameworks are essential tools for any web project.",
+            "id": 15,
+            "title": "Working with PHP Sessions and Cookies",
+            "image": "https://media.istockphoto.com/id/1163891445/photo/nerd-with-glasses-hacking-websites.jpg?s=612x612&w=0&k=20&c=l_Lw9ueLbB1bdivD1rKehSgcB7hCwQp0LMzz6Oygg8k=",
+            "categoryName": "PHP",
+            "shortDescription": "Sessions and cookies are essential for maintaining user state in PHP applications. This article explains how to use both to create login systems, track user preferences, and more.",
+            "bigDescription": "In web development, maintaining user state across multiple pages is crucial for creating personalized and interactive experiences. PHP offers two primary ways to manage state: sessions and cookies. This article explains how to use sessions to store information on the server about a user’s activity and preferences, and cookies to store small amounts of data on the client’s browser. You’ll learn how to create a user login system using sessions, track preferences like language settings, and implement logout functionality. We’ll also discuss the advantages and disadvantages of using sessions versus cookies and best practices for securing session data. By mastering sessions and cookies, you’ll be able to create PHP applications that deliver tailored experiences to your users while keeping their data secure.",
             "author": {
-                  "name": "Sarah Lee",
-                  "profile_image": "https://via.placeholder.com/150x150.png?text=Sarah+Lee",
-                  "bio": "Sarah is a creative web designer and front-end developer who loves using CSS frameworks to bring ideas to life."
+                  "name": "Chris Lee",
+                  "profileImage": "https://randomuser.me/api/portraits/men/5.jpg"
             },
-            "published_date": "2024-04-20"
+            "publishDate": "2024-10-05",
+            "rating": 4.4
       },
       {
-            "_id": "4",
-            "title": "Top CSS Frameworks for 2024",
-            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-            "shortDescription": "Discover the best CSS frameworks to speed up your development process and create beautiful designs.",
-            "description": "CSS frameworks have come a long way, providing developers with pre-built classes and styles to create responsive and modern websites. In this blog, we’ll cover the top CSS frameworks to watch out for in 2024, including Bootstrap 5, Tailwind CSS, Bulma, and Materialize. Each framework has its pros and cons, but all of them provide significant value by speeding up development, ensuring cross-browser compatibility, and offering design flexibility. Whether you’re a seasoned developer or a beginner, these frameworks are essential tools for any web project.",
+            "id": 16,
+            "title": "Object-Oriented Programming in PHP",
+            "image": "https://media.istockphoto.com/id/951091216/photo/going-into-full-on-work-mode.jpg?s=612x612&w=0&k=20&c=yyx1Pcs0APgO7Fv8alD8auju941SYpgMgtIVStInJJA=",
+            "categoryName": "PHP",
+            "shortDescription": "Object-oriented programming (OOP) is a powerful paradigm in PHP. Learn how to create classes, objects, and methods to structure your PHP code more effectively.",
+            "bigDescription": "Object-oriented programming (OOP) is a fundamental concept in modern programming languages, and PHP fully supports it. This article introduces OOP principles in PHP, helping you understand how to create and work with classes, objects, methods, and properties. You’ll learn about the advantages of using OOP, such as code reusability, scalability, and improved organization. We’ll explore concepts like inheritance, where one class can inherit the properties and methods of another, and encapsulation, which protects the internal state of objects from outside interference. Additionally, you’ll discover how to use constructors, destructors, and interfaces in your PHP code. By the end of this article, you’ll be able to apply OOP principles in your PHP projects, leading to cleaner, more maintainable code.",
             "author": {
-                  "name": "Sarah Lee",
-                  "profile_image": "https://via.placeholder.com/150x150.png?text=Sarah+Lee",
-                  "bio": "Sarah is a creative web designer and front-end developer who loves using CSS frameworks to bring ideas to life."
+                  "name": "Sarah Wilson",
+                  "profileImage": "https://randomuser.me/api/portraits/women/6.jpg"
             },
-            "published_date": "2024-04-20"
+            "publishDate": "2024-10-06",
+            "rating": 4.6
       },
       {
-            "_id": "4",
-            "title": "Top CSS Frameworks for 2024",
-            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-            "shortDescription": "Discover the best CSS frameworks to speed up your development process and create beautiful designs.",
-            "description": "CSS frameworks have come a long way, providing developers with pre-built classes and styles to create responsive and modern websites. In this blog, we’ll cover the top CSS frameworks to watch out for in 2024, including Bootstrap 5, Tailwind CSS, Bulma, and Materialize. Each framework has its pros and cons, but all of them provide significant value by speeding up development, ensuring cross-browser compatibility, and offering design flexibility. Whether you’re a seasoned developer or a beginner, these frameworks are essential tools for any web project.",
+            "id": 17,
+            "title": "Error Handling and Debugging in PHP",
+            "image": "https://media.istockphoto.com/id/1553415062/photo/businessman-thinking-and-laptop-search-engine-hologram-for-information-global-seo-and-iot.jpg?s=612x612&w=0&k=20&c=4PCJoMHs7Z1cwF73-AdBZYFxl7WkCgFnAKx8iDNh2bY=",
+            "categoryName": "PHP",
+            "shortDescription": "Error handling is crucial for building reliable PHP applications. This article covers PHP’s error handling mechanisms, including try-catch blocks, custom error handlers, and logging.",
+            "bigDescription": "Error handling is a critical aspect of building robust PHP applications. This article explains how to manage errors and exceptions in PHP, ensuring that your applications run smoothly even when things go wrong. You’ll learn about PHP’s built-in error reporting levels and how to configure them for development and production environments. We’ll also cover using try-catch blocks to handle exceptions gracefully, allowing your application to recover from unexpected issues without crashing. Additionally, we’ll discuss how to create custom error handlers and log errors to a file for later analysis. By mastering PHP’s error handling and debugging tools, you’ll be able to identify and fix issues more efficiently, ultimately delivering a more reliable application.",
             "author": {
-                  "name": "Sarah Lee",
-                  "profile_image": "https://via.placeholder.com/150x150.png?text=Sarah+Lee",
-                  "bio": "Sarah is a creative web designer and front-end developer who loves using CSS frameworks to bring ideas to life."
+                  "name": "John Doe",
+                  "profileImage": "https://randomuser.me/api/portraits/men/7.jpg"
             },
-            "published_date": "2024-04-20"
+            "publishDate": "2024-09-15",
+            "rating": 4.5
       },
       {
-            "_id": "4",
-            "title": "Top CSS Frameworks for 2024",
-            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-            "shortDescription": "Discover the best CSS frameworks to speed up your development process and create beautiful designs.",
-            "description": "CSS frameworks have come a long way, providing developers with pre-built classes and styles to create responsive and modern websites. In this blog, we’ll cover the top CSS frameworks to watch out for in 2024, including Bootstrap 5, Tailwind CSS, Bulma, and Materialize. Each framework has its pros and cons, but all of them provide significant value by speeding up development, ensuring cross-browser compatibility, and offering design flexibility. Whether you’re a seasoned developer or a beginner, these frameworks are essential tools for any web project.",
+            "id": 18,
+            "title": "PHP Security Best Practices",
+            "image": "https://cdn.pixabay.com/photo/2024/02/16/12/12/ai-generated-8577448_640.png",
+            "categoryName": "PHP",
+            "shortDescription": "Security is a top priority in web development. This article covers PHP security best practices, including input validation, SQL injection prevention, and password hashing.",
+            "bigDescription": "Security is a major concern in PHP development, as web applications are frequently targeted by malicious users. In this article, we’ll explore the most important PHP security best practices to help you protect your application and its users. You’ll learn about common vulnerabilities such as SQL injection, cross-site scripting (XSS), and cross-site request forgery (CSRF), and how to defend against them by validating and sanitizing user input. We’ll also cover the importance of using prepared statements when interacting with databases, securely hashing passwords with PHP’s password_hash function, and using HTTPS to encrypt data in transit. By implementing these security measures, you can safeguard your PHP application from common attacks and ensure that sensitive user data is protected.",
             "author": {
-                  "name": "Sarah Lee",
-                  "profile_image": "https://via.placeholder.com/150x150.png?text=Sarah+Lee",
-                  "bio": "Sarah is a creative web designer and front-end developer who loves using CSS frameworks to bring ideas to life."
+                  "name": "Jane Smith",
+                  "profileImage": "https://randomuser.me/api/portraits/women/8.jpg"
             },
-            "published_date": "2024-04-20"
+            "publishDate": "2024-09-20",
+            "rating": 4.8
       },
       {
-            "_id": "4",
-            "title": "Top CSS Frameworks for 2024",
-            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-            "shortDescription": "Discover the best CSS frameworks to speed up your development process and create beautiful designs.",
-            "description": "CSS frameworks have come a long way, providing developers with pre-built classes and styles to create responsive and modern websites. In this blog, we’ll cover the top CSS frameworks to watch out for in 2024, including Bootstrap 5, Tailwind CSS, Bulma, and Materialize. Each framework has its pros and cons, but all of them provide significant value by speeding up development, ensuring cross-browser compatibility, and offering design flexibility. Whether you’re a seasoned developer or a beginner, these frameworks are essential tools for any web project.",
+            "id": 19,
+            "title": "The Fundamentals of UX Design",
+            "image": "https://i.ibb.co.com/mJ0Yjf3/pexels-photo-17771092.webp",
+            "categoryName": "UX/UI",
+            "shortDescription": "Understanding the fundamentals of UX design is essential for creating user-friendly products. This article explores the core principles of user experience design, including usability, accessibility, and user-centered design.",
+            "bigDescription": "User Experience (UX) design is all about ensuring that the user’s interaction with a product, service, or system is as intuitive and enjoyable as possible. This article introduces the fundamentals of UX design, focusing on key principles such as usability, accessibility, and user-centered design. You'll learn why usability is critical for user satisfaction, how to create accessible interfaces for users with different abilities, and the importance of conducting user research to inform your design decisions. We’ll also discuss the role of wireframing, prototyping, and usability testing in the UX design process. By the end of this article, you’ll have a clear understanding of how to create products that not only look good but are also functional and easy to use, ensuring a positive experience for your users.",
             "author": {
-                  "name": "Sarah Lee",
-                  "profile_image": "https://via.placeholder.com/150x150.png?text=Sarah+Lee",
-                  "bio": "Sarah is a creative web designer and front-end developer who loves using CSS frameworks to bring ideas to life."
+                  "name": "Emily Johnson",
+                  "profileImage": "https://randomuser.me/api/portraits/women/9.jpg"
             },
-            "published_date": "2024-04-20"
+            "publishDate": "2024-09-25",
+            "rating": 4.7
       },
       {
-            "_id": "4",
-            "title": "Top CSS Frameworks for 2024",
-            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-            "shortDescription": "Discover the best CSS frameworks to speed up your development process and create beautiful designs.",
-            "description": "CSS frameworks have come a long way, providing developers with pre-built classes and styles to create responsive and modern websites. In this blog, we’ll cover the top CSS frameworks to watch out for in 2024, including Bootstrap 5, Tailwind CSS, Bulma, and Materialize. Each framework has its pros and cons, but all of them provide significant value by speeding up development, ensuring cross-browser compatibility, and offering design flexibility. Whether you’re a seasoned developer or a beginner, these frameworks are essential tools for any web project.",
+            "id": 20,
+            "title": "Design Thinking: A Problem-Solving Framework",
+            "image": "https://i.ibb.co.com/r2cZSRY/pexels-photo-7156099.webp",
+            "categoryName": "UX/UI",
+            "shortDescription": "Design thinking is a user-centered approach to solving complex problems. Learn the five stages of design thinking and how this methodology can be applied to UX design projects.",
+            "bigDescription": "Design thinking is a problem-solving framework that focuses on understanding users, challenging assumptions, and redefining problems in an attempt to identify alternative strategies and solutions. This article explores the five stages of design thinking: empathize, define, ideate, prototype, and test. We’ll explain how these stages can be applied to UX design to create innovative solutions that prioritize the needs of users. You’ll learn how to conduct user research during the empathize stage, define key user problems, brainstorm potential solutions, and create prototypes to test your ideas. By applying design thinking to your UX projects, you’ll be able to develop user-centered products that address real-world issues and provide meaningful solutions.",
             "author": {
-                  "name": "Sarah Lee",
-                  "profile_image": "https://via.placeholder.com/150x150.png?text=Sarah+Lee",
-                  "bio": "Sarah is a creative web designer and front-end developer who loves using CSS frameworks to bring ideas to life."
+                  "name": "Michael Brown",
+                  "profileImage": "https://randomuser.me/api/portraits/men/10.jpg"
             },
-            "published_date": "2024-04-20"
+            "publishDate": "2024-09-30",
+            "rating": 4.6
       },
       {
-            "_id": "4",
-            "title": "Top CSS Frameworks for 2024",
-            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-            "shortDescription": "Discover the best CSS frameworks to speed up your development process and create beautiful designs.",
-            "description": "CSS frameworks have come a long way, providing developers with pre-built classes and styles to create responsive and modern websites. In this blog, we’ll cover the top CSS frameworks to watch out for in 2024, including Bootstrap 5, Tailwind CSS, Bulma, and Materialize. Each framework has its pros and cons, but all of them provide significant value by speeding up development, ensuring cross-browser compatibility, and offering design flexibility. Whether you’re a seasoned developer or a beginner, these frameworks are essential tools for any web project.",
+            "id": 21,
+            "title": "The Importance of Accessibility in UX Design",
+            "image": "https://i.ibb.co.com/s5WRpY0/pexels-photo-7156101.webp",
+            "categoryName": "UX/UI",
+            "shortDescription": "Accessibility is a critical aspect of UX design. Learn why designing for accessibility is important, and how to ensure your products can be used by people of all abilities.",
+            "bigDescription": "Accessibility ensures that your digital products can be used by people with a wide range of abilities and disabilities, making it a critical aspect of UX design. In this article, we’ll discuss the importance of designing for accessibility and how to make sure that your websites, applications, and interfaces are inclusive. You’ll learn about key accessibility principles, such as creating content that can be easily navigated by users with screen readers, designing for colorblind users, and ensuring that interactive elements like forms are accessible to users with motor disabilities. By incorporating accessibility into your UX design process, you’ll not only create better experiences for users with disabilities but also improve the overall usability of your product for all users.",
             "author": {
-                  "name": "Sarah Lee",
-                  "profile_image": "https://via.placeholder.com/150x150.png?text=Sarah+Lee",
-                  "bio": "Sarah is a creative web designer and front-end developer who loves using CSS frameworks to bring ideas to life."
+                  "name": "Laura Thomas",
+                  "profileImage": "https://randomuser.me/api/portraits/women/11.jpg"
             },
-            "published_date": "2024-04-20"
+            "publishDate": "2024-10-05",
+            "rating": 4.9
       },
       {
-            "_id": "4",
-            "title": "Top CSS Frameworks for 2024",
-            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-            "shortDescription": "Discover the best CSS frameworks to speed up your development process and create beautiful designs.",
-            "description": "CSS frameworks have come a long way, providing developers with pre-built classes and styles to create responsive and modern websites. In this blog, we’ll cover the top CSS frameworks to watch out for in 2024, including Bootstrap 5, Tailwind CSS, Bulma, and Materialize. Each framework has its pros and cons, but all of them provide significant value by speeding up development, ensuring cross-browser compatibility, and offering design flexibility. Whether you’re a seasoned developer or a beginner, these frameworks are essential tools for any web project.",
+            "id": 22,
+            "title": "Prototyping and Wireframing in UX/UI Design",
+            "image": "https://i.ibb.co.com/ww7Vb8X/pexels-photo-6834798.jpg",
+            "categoryName": "UX/UI",
+            "shortDescription": "Prototyping and wireframing are essential steps in the UX/UI design process. Learn how these tools can help you visualize and test your designs before they go into development.",
+            "bigDescription": "Prototyping and wireframing are critical components of the UX/UI design process, allowing designers to visualize and test their ideas before moving into the development phase. This article explores the differences between wireframes—simple, low-fidelity layouts that outline the basic structure of a page—and prototypes, which are more interactive and provide a closer representation of the final product. We’ll guide you through the process of creating wireframes to define the layout and functionality of your design, followed by building prototypes to test user flows and interactions. You'll learn about popular tools for wireframing and prototyping, as well as best practices for gathering user feedback to refine your designs. By mastering these techniques, you’ll be able to iterate quickly and ensure that your final product meets user needs and expectations.",
             "author": {
-                  "name": "Sarah Lee",
-                  "profile_image": "https://via.placeholder.com/150x150.png?text=Sarah+Lee",
-                  "bio": "Sarah is a creative web designer and front-end developer who loves using CSS frameworks to bring ideas to life."
+                  "name": "Daniel Martinez",
+                  "profileImage": "https://randomuser.me/api/portraits/men/1.jpg"
             },
-            "published_date": "2024-04-20"
+            "publishDate": "2024-10-05",
+            "rating": 4.7
       },
       {
-            "_id": "4",
-            "title": "Top CSS Frameworks for 2024",
-            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-            "shortDescription": "Discover the best CSS frameworks to speed up your development process and create beautiful designs.",
-            "description": "CSS frameworks have come a long way, providing developers with pre-built classes and styles to create responsive and modern websites. In this blog, we’ll cover the top CSS frameworks to watch out for in 2024, including Bootstrap 5, Tailwind CSS, Bulma, and Materialize. Each framework has its pros and cons, but all of them provide significant value by speeding up development, ensuring cross-browser compatibility, and offering design flexibility. Whether you’re a seasoned developer or a beginner, these frameworks are essential tools for any web project.",
+            "id": 23,
+            "title": "User Research Methods for UX Design",
+            "image": "https://i.ibb.co.com/jWQmtKL/pexels-photo-5186379.jpg",
+            "categoryName": "UX/UI",
+            "shortDescription": "User research is a cornerstone of UX design. Explore various research methods such as interviews, surveys, and usability testing to gain insights into user needs and behaviors.",
+            "bigDescription": "User research is an essential part of the UX design process, helping designers understand user needs, behaviors, and pain points. This article covers a range of user research methods, including qualitative techniques like interviews and focus groups, as well as quantitative methods like surveys and analytics. We’ll discuss the advantages and limitations of each approach, providing tips on how to conduct effective research that informs your design decisions. Additionally, we’ll explore usability testing as a way to evaluate the effectiveness of your designs, gathering feedback from real users to identify areas for improvement. By incorporating user research into your design process, you can create more targeted and effective solutions that truly resonate with your audience.",
             "author": {
-                  "name": "Sarah Lee",
-                  "profile_image": "https://via.placeholder.com/150x150.png?text=Sarah+Lee",
-                  "bio": "Sarah is a creative web designer and front-end developer who loves using CSS frameworks to bring ideas to life."
+                  "name": "Olivia Wilson",
+                  "profileImage": "https://randomuser.me/api/portraits/men/1.jpg"
             },
-            "published_date": "2024-04-20"
-      },
-      {
-            "_id": "4",
-            "title": "Top CSS Frameworks for 2024",
-            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-            "shortDescription": "Discover the best CSS frameworks to speed up your development process and create beautiful designs.",
-            "description": "CSS frameworks have come a long way, providing developers with pre-built classes and styles to create responsive and modern websites. In this blog, we’ll cover the top CSS frameworks to watch out for in 2024, including Bootstrap 5, Tailwind CSS, Bulma, and Materialize. Each framework has its pros and cons, but all of them provide significant value by speeding up development, ensuring cross-browser compatibility, and offering design flexibility. Whether you’re a seasoned developer or a beginner, these frameworks are essential tools for any web project.",
-            "author": {
-                  "name": "Sarah Lee",
-                  "profile_image": "https://via.placeholder.com/150x150.png?text=Sarah+Lee",
-                  "bio": "Sarah is a creative web designer and front-end developer who loves using CSS frameworks to bring ideas to life."
-            },
-            "published_date": "2024-04-20"
-      },
-      {
-            "_id": "4",
-            "title": "Top CSS Frameworks for 2024",
-            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-            "shortDescription": "Discover the best CSS frameworks to speed up your development process and create beautiful designs.",
-            "description": "CSS frameworks have come a long way, providing developers with pre-built classes and styles to create responsive and modern websites. In this blog, we’ll cover the top CSS frameworks to watch out for in 2024, including Bootstrap 5, Tailwind CSS, Bulma, and Materialize. Each framework has its pros and cons, but all of them provide significant value by speeding up development, ensuring cross-browser compatibility, and offering design flexibility. Whether you’re a seasoned developer or a beginner, these frameworks are essential tools for any web project.",
-            "author": {
-                  "name": "Sarah Lee",
-                  "profile_image": "https://via.placeholder.com/150x150.png?text=Sarah+Lee",
-                  "bio": "Sarah is a creative web designer and front-end developer who loves using CSS frameworks to bring ideas to life."
-            },
-            "published_date": "2024-04-20"
-      },
-      {
-            "_id": "4",
-            "title": "Top CSS Frameworks for 2024",
-            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-            "shortDescription": "Discover the best CSS frameworks to speed up your development process and create beautiful designs.",
-            "description": "CSS frameworks have come a long way, providing developers with pre-built classes and styles to create responsive and modern websites. In this blog, we’ll cover the top CSS frameworks to watch out for in 2024, including Bootstrap 5, Tailwind CSS, Bulma, and Materialize. Each framework has its pros and cons, but all of them provide significant value by speeding up development, ensuring cross-browser compatibility, and offering design flexibility. Whether you’re a seasoned developer or a beginner, these frameworks are essential tools for any web project.",
-            "author": {
-                  "name": "Sarah Lee",
-                  "profile_image": "https://via.placeholder.com/150x150.png?text=Sarah+Lee",
-                  "bio": "Sarah is a creative web designer and front-end developer who loves using CSS frameworks to bring ideas to life."
-            },
-            "published_date": "2024-04-20"
-      },
-      {
-            "_id": "4",
-            "title": "Top CSS Frameworks for 2024",
-            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-            "shortDescription": "Discover the best CSS frameworks to speed up your development process and create beautiful designs.",
-            "description": "CSS frameworks have come a long way, providing developers with pre-built classes and styles to create responsive and modern websites. In this blog, we’ll cover the top CSS frameworks to watch out for in 2024, including Bootstrap 5, Tailwind CSS, Bulma, and Materialize. Each framework has its pros and cons, but all of them provide significant value by speeding up development, ensuring cross-browser compatibility, and offering design flexibility. Whether you’re a seasoned developer or a beginner, these frameworks are essential tools for any web project.",
-            "author": {
-                  "name": "Sarah Lee",
-                  "profile_image": "https://via.placeholder.com/150x150.png?text=Sarah+Lee",
-                  "bio": "Sarah is a creative web designer and front-end developer who loves using CSS frameworks to bring ideas to life."
-            },
-            "published_date": "2024-04-20"
-      },
-      {
-            "_id": "4",
-            "title": "Top CSS Frameworks for 2024",
-            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-            "shortDescription": "Discover the best CSS frameworks to speed up your development process and create beautiful designs.",
-            "description": "CSS frameworks have come a long way, providing developers with pre-built classes and styles to create responsive and modern websites. In this blog, we’ll cover the top CSS frameworks to watch out for in 2024, including Bootstrap 5, Tailwind CSS, Bulma, and Materialize. Each framework has its pros and cons, but all of them provide significant value by speeding up development, ensuring cross-browser compatibility, and offering design flexibility. Whether you’re a seasoned developer or a beginner, these frameworks are essential tools for any web project.",
-            "author": {
-                  "name": "Sarah Lee",
-                  "profile_image": "https://via.placeholder.com/150x150.png?text=Sarah+Lee",
-                  "bio": "Sarah is a creative web designer and front-end developer who loves using CSS frameworks to bring ideas to life."
-            },
-            "published_date": "2024-04-20"
-      },
-      {
-            "_id": "4",
-            "title": "Top CSS Frameworks for 2024",
-            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-            "shortDescription": "Discover the best CSS frameworks to speed up your development process and create beautiful designs.",
-            "description": "CSS frameworks have come a long way, providing developers with pre-built classes and styles to create responsive and modern websites. In this blog, we’ll cover the top CSS frameworks to watch out for in 2024, including Bootstrap 5, Tailwind CSS, Bulma, and Materialize. Each framework has its pros and cons, but all of them provide significant value by speeding up development, ensuring cross-browser compatibility, and offering design flexibility. Whether you’re a seasoned developer or a beginner, these frameworks are essential tools for any web project.",
-            "author": {
-                  "name": "Sarah Lee",
-                  "profile_image": "https://via.placeholder.com/150x150.png?text=Sarah+Lee",
-                  "bio": "Sarah is a creative web designer and front-end developer who loves using CSS frameworks to bring ideas to life."
-            },
-            "published_date": "2024-04-20"
-      },
-      {
-            "_id": "4",
-            "title": "Top CSS Frameworks for 2024",
-            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-            "shortDescription": "Discover the best CSS frameworks to speed up your development process and create beautiful designs.",
-            "description": "CSS frameworks have come a long way, providing developers with pre-built classes and styles to create responsive and modern websites. In this blog, we’ll cover the top CSS frameworks to watch out for in 2024, including Bootstrap 5, Tailwind CSS, Bulma, and Materialize. Each framework has its pros and cons, but all of them provide significant value by speeding up development, ensuring cross-browser compatibility, and offering design flexibility. Whether you’re a seasoned developer or a beginner, these frameworks are essential tools for any web project.",
-            "author": {
-                  "name": "Sarah Lee",
-                  "profile_image": "https://via.placeholder.com/150x150.png?text=Sarah+Lee",
-                  "bio": "Sarah is a creative web designer and front-end developer who loves using CSS frameworks to bring ideas to life."
-            },
-            "published_date": "2024-04-20"
-      },
-      {
-            "_id": "4",
-            "title": "Top CSS Frameworks for 2024",
-            "image": "https://i.ibb.co.com/SxkmFFf/2150040413.jpg",
-            "shortDescription": "Discover the best CSS frameworks to speed up your development process and create beautiful designs.",
-            "description": "CSS frameworks have come a long way, providing developers with pre-built classes and styles to create responsive and modern websites. In this blog, we’ll cover the top CSS frameworks to watch out for in 2024, including Bootstrap 5, Tailwind CSS, Bulma, and Materialize. Each framework has its pros and cons, but all of them provide significant value by speeding up development, ensuring cross-browser compatibility, and offering design flexibility. Whether you’re a seasoned developer or a beginner, these frameworks are essential tools for any web project.",
-            "author": {
-                  "name": "Sarah Lee",
-                  "profile_image": "https://via.placeholder.com/150x150.png?text=Sarah+Lee",
-                  "bio": "Sarah is a creative web designer and front-end developer who loves using CSS frameworks to bring ideas to life."
-            },
-            "published_date": "2024-04-20"
+            "publishDate": "2024-10-10",
+            "rating": 4.9
       }
 ]
