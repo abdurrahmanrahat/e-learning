@@ -43,7 +43,11 @@ const LatestBlog = ({ blogs }) => {
                         ))}
                   </div>
             </div>
-      );
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default LatestBlog;

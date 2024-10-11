@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ObjectId } from 'mongodb';
 import SSLCommerzPayment from 'sslcommerz-lts';
 import config from '../../config';
@@ -11,13 +12,13 @@ const is_live = false; // Set to true for live mode
 // Create a new payment and initiate SSLCommerz
 const createPaymentIntoDB = async (orderInfo: TPaymentOrder) => {
   const trans_id = new ObjectId().toString();
-  
+
   const data = {
     total_amount: orderInfo?.amount,
     currency: `${orderInfo?.currency}`,
     tran_id: `${trans_id}`,
-    success_url: `http://localhost:5000/payment/success/${trans_id}`,
-    fail_url: `http://localhost:5000/payment/failed/${trans_id}`,
+    success_url: `https://e-learning-backed.vercel.app/api/v1/payment/success/${trans_id}`,
+    fail_url: `https://e-learning-backed.vercel.app/api/v1/payment/failed/${trans_id}`,
     cancel_url: 'http://localhost:3030/cancel',
     ipn_url: 'http://localhost:3030/ipn',
     shipping_method: 'Courier',
@@ -43,7 +44,7 @@ const createPaymentIntoDB = async (orderInfo: TPaymentOrder) => {
     ship_country: 'Bangladesh',
   };
 
-  const sslcz = SSLCommerzPayment(
+  const sslcz = new (SSLCommerzPayment as any)(
     store_id as string,
     store_passwd as string,
     is_live,
@@ -52,7 +53,7 @@ const createPaymentIntoDB = async (orderInfo: TPaymentOrder) => {
 
   // Store payment info in the database with a pending status
   const paymentInfo = {
-    ...orderInfo,
+    orderInfo,
     transactionId: trans_id,
     payment_status: false,
     currency: data.currency,
