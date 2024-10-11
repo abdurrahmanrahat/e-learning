@@ -1,37 +1,20 @@
 import { useEffect, useState } from "react";
 import CategoryBlogCard from "./CategoryBlogCard";
+import BlogCard from "../../Ui/BlogCard";
 
-const ShowBlogByCategories = () => {
+const ShowBlogByCategories = ({ blogs }) => {
 
-      const [blogPosts, setBlogPosts] = useState([]);
       const [selectedCategory, setSelectedCategory] = useState("JavaScript");
-      const [filteredPosts, setFilteredPosts] = useState([]);
+      const [filteredBlogs, setFilteredBlogs] = useState([]);
+
 
       useEffect(() => {
-            const fetchPosts = async () => {
-                  const response = await fetch("/blogCategory.json");
-                  const data = await response.json();
-                  setBlogPosts(data);
-            };
-
-            fetchPosts();
-      }, []);
-
-      useEffect(() => {
-            const filtered = blogPosts.filter(
+            const filtered = blogs?.filter(
                   (post) => post.categoryName === selectedCategory
             );
-            setFilteredPosts(filtered);
-      }, [selectedCategory, blogPosts]);
+            setFilteredBlogs(filtered);
+      }, [blogs, selectedCategory]);
 
-      // blog latest category
-      const [blogs, setBlogs] = useState();
-      useEffect(() => {
-            fetch("/blog.json")
-                  .then((res) => res.json())
-                  .then((data) => setBlogs(data));
-      }, []);
-      console.log(blogs);
 
       return (
             <div>
@@ -111,7 +94,7 @@ const ShowBlogByCategories = () => {
                   </div>
 
                   {/* show blog category */}
-                  <div className="bg-[#f0fdfa] lg:p-10">
+                  <div className="lg:p-10">
                         <div className="container-class">
                               <div className="flex flex-col gap-2 mb-5">
                                     <h2 className={`text-[34px] font-medium`}>
@@ -120,14 +103,13 @@ const ShowBlogByCategories = () => {
                                     </h2>
                               </div>
                               <div
-                                    id="postContainer"
                                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-12 lg:gap-y-10 gap-x-4 gap-y-5"
                               >
-                                    {filteredPosts.length > 0 ? (
-                                          filteredPosts.map((post, index) => (
-                                                <CategoryBlogCard
+                                    {filteredBlogs?.length > 0 ? (
+                                          filteredBlogs?.map((blog, index) => (
+                                                <BlogCard
                                                       key={index}
-                                                      post={post}
+                                                      blog={blog}
                                                       index={index}
                                                 />
                                           ))
