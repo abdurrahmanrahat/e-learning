@@ -3,9 +3,13 @@ import { SHAREDImages } from "../../image-data/shared";
 import WebsiteTitle from "../../components/Ui/WebsiteTitle";
 import ShowBlogByCategories from "../../components/Blogs/ShowBlogByCategories/ShowBlogByCategories";
 import LatestBlog from "../../components/Blogs/LatestBlog";
+import { useBlogs } from "../../Hooks/api/useBlogs";
 
 export default function Blogs() {
- 
+
+  const { blogs } = useBlogs();
+  // console.log('All Blogs', blogs);
+
 
   return (
     <WebsiteTitle title={'Blogs'}>
@@ -37,12 +41,12 @@ export default function Blogs() {
 
         {/* Show Blog by categories */}
         <div>
-          <ShowBlogByCategories />
+          <ShowBlogByCategories blogs={blogs} />
         </div>
 
         {/* latest blog  */}
         <div>
-          <LatestBlog />
+          <LatestBlog blogs={blogs} />
         </div>
 
 
