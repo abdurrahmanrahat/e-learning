@@ -7,13 +7,12 @@ import PrimaryTitle from "../../components/Ui/PrimaryTitle";
 import "../../css/coursesBgImg.css";
 import "../../css/pagination.css";
 import { SHAREDImages } from "../../image-data/shared";
-import OfferCourse from "./OfferCourse/OfferCourse";
+import OfferCourse from "../../components/Courses/OfferCourse/OfferCourse";
 import { useCourses } from "../../Hooks/api/useCourses";
 import Loader from "../../components/Ui/Loader";
-import { Link, useLocation } from "react-router-dom";
-import Button from "../../components/Ui/Button";
-import useUser from "../../Hooks/api/useUser";
+import { useLocation } from "react-router-dom";
 import WebsiteTitle from "../../components/Ui/WebsiteTitle";
+import KnowAboutLearning from "../../components/Courses/KnowAboutLearning";
 
 // set navigate query system
 function useQuery() {
@@ -40,8 +39,6 @@ const Courses = () => {
   };
 
   const { courses } = useCourses(courseQuery);
-  const { user } = useUser();
-  // console.log(courses);
 
   if (!courses)
     return (
@@ -96,14 +93,14 @@ const Courses = () => {
         <div className="container-class px-10 flex flex-col gap-10 py-10">
           <PrimaryTitle headingPart1={`${category}` || "All"} headingPart2={"Courses"} />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-10 lg:gap-y-20">
             {courses?.data?.map((item) => (
               <CourseCard course={item} key={item._id}></CourseCard>
             ))}
           </div>
 
           {/* pagination part */}
-          <div className="w-full mt-10">
+          <div className="w-full lg:mt-10">
             <ReactPaginate
               breakLabel="..."
               nextLabel={"Next >"}
@@ -126,72 +123,8 @@ const Courses = () => {
         </div>
 
         {/* Know about learning learning platform section  */}
-        <div className="lg:max-w-7xl mx-auto  lg:my-20 my-20 md:px-5 lg:px-0 ">
-          <div
-            className="flex flex-col lg:flex-row md:flex-row lg:py-10 md:py-10 bg-[#e0f2fe]
- items-center lg:gap-32 rounded-3xl"
-          >
-            <div className="w-full lg:w-[40%] mt-5 lg:mt-0 flex items-center justify-center">
-              <div className="flex flex-col gap-10">
-                <h2 className="text-[30px] font-bold">
-                  Know about learning <br /> learning platform
-                </h2>
-                <div className="flex flex-col gap-2">
-                  <div className="flex items-center gap-3">
-                    <button
-                      className="bg-[#55EFC4] p-3 rounded-full
-"
-                    ></button>
-                    <h2 className="text-[18px] font-semibold text-gray-500">
-                      Free E-book, video & consolation
-                    </h2>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <button
-                      className="bg-[#55EFC4] p-3 rounded-full
-"
-                    ></button>
-                    <h2 className="text-[18px] font-semibold text-gray-500 py-3">
-                      Top instructors from around world
-                    </h2>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <button
-                      className="bg-[#55EFC4] p-3 rounded-full
-"
-                    ></button>
-                    <h2 className="text-[18px] font-semibold text-gray-500">
-                      Top courses from your team
-                    </h2>
-                  </div>
-                </div>
-                <Link
-                  to={
-                    (user?.role === "student" &&
-                      "/dashboard/student/enrolled-courses") ||
-                    (user?.role === "instructor" &&
-                      "/dashboard/instructor/add-course") ||
-                    (user?.role === "admin" &&
-                      "/dashboard/admin/all-courses") ||
-                    (!user && "/authentication")
-                  }
-                >
-                  <Button bgBtn={true}>
-                    {(user?.role === "instructor" && "Publish Your Course") ||
-                      (user?.role === "admin" && "See All The courses") ||
-                      "Start learning now"}
-                  </Button>
-                </Link>
-              </div>
-            </div>
-            <div className="w-full flex items-center justify-center lg:w-[50%] ">
-              <img
-                className="w-[650px] mt-10"
-                src="https://i.ibb.co.com/Hh0VX58/Group-71.png"
-                alt=""
-              />
-            </div>
-          </div>
+        <div className="lg:max-w-7xl mx-auto  my-16 md:px-5 lg:px-0">
+          <KnowAboutLearning />
         </div>
 
         {/* Top Education offers and deals are listed here */}

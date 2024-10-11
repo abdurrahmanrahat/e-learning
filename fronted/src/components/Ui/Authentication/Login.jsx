@@ -5,6 +5,7 @@ import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import useAxios from "../../../Hooks/useAxios";
 import { setUserInfo } from "../../../utils/setUserInfo";
+import GoogleAuthWrapper from "./GoogleAuthWrapper";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -126,6 +127,12 @@ const Login = () => {
           />
         </div>
       </form>
+
+      {/* google login */}
+      <div>
+        <h2 className="text-center my-4 font-medium">OR</h2>
+        <GoogleAuthWrapper />
+      </div>
     </div>
   );
 };

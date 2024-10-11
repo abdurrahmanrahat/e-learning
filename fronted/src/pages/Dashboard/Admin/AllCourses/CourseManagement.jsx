@@ -1,7 +1,7 @@
-import TableCourseCard from "./TableCourseCard";
 import PrimaryTitle from "../../../../components/Ui/PrimaryTitle";
 import { useCourses } from "../../../../Hooks/api/useCourses";
 import WebsiteTitle from "../../../../components/Ui/WebsiteTitle";
+import TableCourseCard from "../../../../components/AllCourses/TableCourseCard";
 
 const CourseManagement = () => {
   const query = {

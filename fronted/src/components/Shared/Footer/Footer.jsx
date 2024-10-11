@@ -12,11 +12,11 @@ import toast from "react-hot-toast";
 const footerElements = [
   {
     label: "Product",
-    element: ["Features", "Category", "Courses", "Instructors", "Blogs"],
+    element: ["Features", "Category", "Courses", "Instructors"],
   },
   {
     label: "Company",
-    element: ["About", "Careers", "Developers"],
+    element: ["About", "Careers", "Developers", "Blogs"],
   },
   {
     label: "Legal",
@@ -67,11 +67,11 @@ const Footer = () => {
           }
         }, 100);
       }
-    } 
+    }
     else if (isAbout) {
       navigate("/about-us");
     }
-    else if(isDevelopers){
+    else if (isDevelopers) {
       navigate(`/about-us#${item}`);
       setTimeout(() => {
         const element = document.getElementById(item);
@@ -80,7 +80,7 @@ const Footer = () => {
         }
       }, 100);
     }
-     else {
+    else {
       navigate(`/${item}`);
     }
   };

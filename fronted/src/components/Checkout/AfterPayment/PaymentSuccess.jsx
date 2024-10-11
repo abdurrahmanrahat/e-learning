@@ -1,10 +1,10 @@
+import jsPDF from "jspdf";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FaCheckCircle } from "react-icons/fa";
-import { useParams, Link } from "react-router-dom";
-import jsPDF from "jspdf";
-import useAxios from "../../../Hooks/useAxios";
+import { Link, useParams } from "react-router-dom";
 import useDateFormatter from "../../../Hooks/getValues/useDateFormatter";
+import useAxios from "../../../Hooks/useAxios";
 
 export default function PaymentSuccess() {
   const { trans_id } = useParams();
@@ -40,7 +40,7 @@ export default function PaymentSuccess() {
           "/enrolled-courses/create-enrolled-course",
           data
         );
-        if(res){
+        if (res) {
           toast.success("Course Enrolled Successfully");
         }
       } catch (err) {

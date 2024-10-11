@@ -32,11 +32,11 @@ const TestimonialsForHome = () => {
       }, []);
 
       return (
-            <div className="py-8 mt-10 lg:mt-20">
+            <div className="py-8">
                   <h2 className='text-center text-[28px] font-medium mb-10 text-[#2F327D]'>What our happy student <br /> <span className="text-[#00CBB8]">says about us!!</span></h2>
                   <Swiper
                         slidesPerView={3}
-                        spaceBetween={30}
+                        spaceBetween={40}
                         autoplay={{
                               delay: 3000,
                               disableOnInteraction: true,

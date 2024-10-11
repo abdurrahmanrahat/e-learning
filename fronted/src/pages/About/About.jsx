@@ -73,19 +73,21 @@ const About = () => {
         </PageBanner>
 
         <div className="lg:my-20 my-10 ">
-          <div className="container-class md:p-4">
+
+          {/* What is brainWave */}
+          <div className="container-class">
             <BrainWave />
           </div>
 
           {/* popular courses */}
-          <div className="my-10 lg:my-20 container-class md:p-4">
+          <div className="my-10 lg:my-20 container-class">
             <PrimaryTitle
               headingPart1={"Our Popular"}
               headingPart2={"Course"}
               style={"text-center"}
               subtext={"Most Popular Course Of This Week"}
             />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 py-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 py-10">
               {courses?.data.map((item) => (
                 <CourseCard key={item?.id} course={item}></CourseCard>
               ))}
@@ -96,7 +98,7 @@ const About = () => {
           <Testimonials />
 
           {/* Popular Instructors */}
-          <div className="my-10 lg:my-20 container-class md:p-4">
+          <div className="my-10 lg:my-20 container-class">
             <PrimaryTitle
               headingPart1={"Most Popular"}
               headingPart2={"Instructors"}

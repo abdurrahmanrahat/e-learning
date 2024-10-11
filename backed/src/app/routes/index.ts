@@ -1,5 +1,6 @@
 import express from 'express';
 import { AuthRoutes } from '../modules/auth/auth.route';
+import { BlogRoutes } from '../modules/blog/blog.route';
 import { CourseRoutes } from '../modules/course/course.route';
 import { EnrolledCourseRoutes } from '../modules/enrolled-course/enrolled-course.route';
 import { PaymentRoutes } from '../modules/payment/payment.route';
@@ -29,6 +30,10 @@ const moduleRoutes = [
   {
     path: '/payment',
     route: PaymentRoutes,
+  },
+  {
+    path: '/blogs',
+    route: BlogRoutes,
   },
 ];
 
