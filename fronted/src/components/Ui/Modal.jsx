@@ -23,7 +23,7 @@ const Modal = ({ children, setOpenModal, openModal, setModuleType }) => {
   // handle close button
   const handleCloseBtn = () => {
     setOpenModal(false);
-    setModuleType("");
+    setModuleType("empty");
   };
 
   return (

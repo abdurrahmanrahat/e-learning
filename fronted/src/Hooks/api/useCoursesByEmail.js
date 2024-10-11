@@ -2,24 +2,22 @@ import { useEffect, useState } from "react";
 import useAxios from "../useAxios";
 
 export const useCoursesByEmail = (email) => {
-    const [courses, setCourses] = useState(null);
+    const [courses, setCourses] = useState([]);
     const apiHandler = useAxios();
 
-    useEffect(() => {
+    const fetchCourses = async () => {
         if (!email) return;
+        try {
+            const res = await apiHandler.get(`/courses/email/${email}`);
+            setCourses(res?.data?.data || []);
+        } catch (error) {
+            console.log("Error fetching courses:", error);
+        }
+    };
 
-        const fetchCourses = async () => {
-            try {
-                const res = await apiHandler.get(`/courses/email/${email}`);
-                setCourses(res?.data?.data || []);
-            } catch (error) {
-                console.log("Error fetching courses:", error);
-            }
-        };
-
-        fetchCourses();
-
+    useEffect(() => {
+        if(email) fetchCourses();
     }, [email, apiHandler]);
 
-    return courses;
+    return {courses, fetchCourses};
 };

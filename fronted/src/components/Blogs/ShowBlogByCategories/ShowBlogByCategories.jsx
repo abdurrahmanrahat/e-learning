@@ -1,16 +1,7 @@
-import { useEffect, useState } from "react";
 import BlogCard from "../../Ui/BlogCard";
 
 const ShowBlogByCategories = ({ blogs }) => {
-  const [selectedCategory, setSelectedCategory] = useState("JavaScript");
-  const [filteredBlogs, setFilteredBlogs] = useState([]);
 
-  useEffect(() => {
-    const filtered = blogs?.filter(
-      (post) => post.categoryName === selectedCategory
-    );
-    setFilteredBlogs(filtered);
-  }, [blogs, selectedCategory]);
 
   return (
     <div>

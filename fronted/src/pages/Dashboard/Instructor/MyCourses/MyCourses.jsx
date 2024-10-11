@@ -6,8 +6,7 @@ import TableCourse from "./TableCourse";
 
 const MyCourses = () => {
   const { user } = useUser();
-
-  const courses = useCoursesByEmail(user?.email);
+  const {courses, fetchCourses} = useCoursesByEmail(user?.email);
 
   return (
     <WebsiteTitle title={'My-Courses'}>
@@ -32,13 +31,13 @@ const MyCourses = () => {
                   Title & Category
                 </th>
                 <th className="px-6 py-6 text-left text-sm font-semibold">
-                  Instructor
-                </th>
-                <th className="px-6 py-6 text-left text-sm font-semibold">
                   Price
                 </th>
                 <th className="px-6 py-6 text-left text-sm font-semibold">
-                  Duration
+                  Rating
+                </th>
+                <th className="px-6 py-6 text-left text-sm font-semibold">
+                  Status
                 </th>
                 <th className="px-6 py-6 text-left text-sm font-semibold">
                   Action
@@ -46,8 +45,8 @@ const MyCourses = () => {
               </tr>
             </thead>
             <tbody>
-              {courses?.map((course, idx) => (
-                <TableCourse key={course?._id} course={course} idx={idx} />
+              {courses?.map((course, index) => (
+                <TableCourse key={index} course={course} index={index} fetchCourses={fetchCourses} />
               ))}
             </tbody>
           </table>

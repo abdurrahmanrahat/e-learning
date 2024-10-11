@@ -1,20 +1,18 @@
 import PageBanner from "../../components/Ui/PageBanner";
 import { SHAREDImages } from "../../image-data/shared";
 import WebsiteTitle from "../../components/Ui/WebsiteTitle";
-import ShowBlogByCategories from "../../components/Blogs/ShowBlogByCategories/ShowBlogByCategories";
+// import ShowBlogByCategories from "../../components/Blogs/ShowBlogByCategories/ShowBlogByCategories";
 import LatestBlog from "../../components/Blogs/LatestBlog";
 import { useBlogs } from "../../Hooks/api/useBlogs";
+import BlogCard from "../../components/Ui/BlogCard";
 
 export default function Blogs() {
-
   const { blogs } = useBlogs();
-  // console.log('All Blogs', blogs);
 
-
+  console.log(blogs);
   return (
-    <WebsiteTitle title={'Blogs'}>
+    <WebsiteTitle title={"Blogs"}>
       <div id="Blogs">
-
         {/* banner */}
         <PageBanner image={SHAREDImages.banner_2}>
           <div className="w-full lg:w-[60%] xl:w-[60%] h-full flex flex-col justify-center gap-10 px-4">
@@ -39,17 +37,22 @@ export default function Blogs() {
           </div>
         </PageBanner>
 
-        {/* Show Blog by categories */}
-        <div>
-          <ShowBlogByCategories blogs={blogs} />
+        {/* blogs */}
+        <div className="grid grid-cols-3">
+          {blogs?.map((item) => (
+            <BlogCard key={item._id} item={item} />
+          ))}
         </div>
+
+        {/* Show Blog by categories */}
+        {/* <div>
+          <ShowBlogByCategories blogs={blogs} />
+        </div> */}
 
         {/* latest blog  */}
         <div>
           <LatestBlog blogs={blogs} />
         </div>
-
-
       </div>
     </WebsiteTitle>
   );
