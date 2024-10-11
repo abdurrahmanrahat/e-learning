@@ -19,7 +19,7 @@ export default function DashboardLayout() {
   return (
     <>
       {/* Mobile trigger */}
-      <div className="py-4 flex justify-between items-center px-[4%] shadow-myCustomShadow lg:hidden">
+      <div className="flex justify-between items-center p-[4%] shadow-myCustomShadow lg:hidden">
         <button onClick={handleNavToggle}>
           {isSideNavOpen ? (
             <RxCross2 className="text-[24px]" />
@@ -101,6 +101,14 @@ export default function DashboardLayout() {
                       <span className="flex items-center gap-3 rounded py-3 px-6 transition-colors duration-300">
                         <IoListSharp className="block text-[18px]" />
                         <span className="block text-[17px]">My Blogs</span>
+                      </span>
+                    </DashboardActiveLink>
+                  </li>
+                  <li className="">
+                    <DashboardActiveLink to="/dashboard/instructor/add-blog">
+                      <span className="flex items-center gap-3 rounded py-3 px-6 transition-colors duration-300">
+                        <IoListSharp className="block text-[18px]" />
+                        <span className="block text-[17px]">Add Blog</span>
                       </span>
                     </DashboardActiveLink>
                   </li>

@@ -28,6 +28,7 @@ import BlogDetails from "../pages/BlogDetails/BlogDetails";
 import Profile from "../pages/Dashboard/Profile/Profile";
 import MyBlogs from "../pages/Dashboard/Instructor/MyBlogs/MyBlogs";
 import CourseManagement from "../pages/Dashboard/Admin/AllCourses/CourseManagement";
+import AddBlog from "../pages/Dashboard/Instructor/AddBlog/AddBlog";
 
 const router = createBrowserRouter([
   // Basic routes
@@ -144,6 +145,10 @@ const router = createBrowserRouter([
       {
         path: "my-blogs",
         element: <MyBlogs />,
+      },
+      {
+        path: "add-blog",
+        element: <AddBlog />,
       },
       {
         path: "profile",
