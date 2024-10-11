@@ -16,7 +16,7 @@ export default function useBlogsByEmail(email) {
   };
 
   useEffect(() => {
-      fetchInstructorBlogs();
+    if(email) fetchInstructorBlogs();
   }, [apiHandler, email]);
 
   return { instructorBlogs, fetchInstructorBlogs };

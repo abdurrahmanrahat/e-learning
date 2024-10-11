@@ -8,12 +8,16 @@ import { FaTrash } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import { IoMdAdd } from "react-icons/io";
 import EditCourseForm from "./EditCourseForm";
+import useAxios from "../../../../Hooks/useAxios";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
-const TableCourse = ({ course, index, blog, fetchCourses}) => {
+const TableCourse = ({ course, index, fetchCourses }) => {
   const [openModal, setOpenModal] = useState(false);
   const [openModuleModal, setOpenModuleModal] = useState(false);
   const [moduleType, setModuleType] = useState("empty");
   const [editBtn, setEditBtn] = useState(false);
+  const apiHandler = useAxios();
 
   // handle edit button
   const handleEditBtn = () => {
@@ -21,15 +25,42 @@ const TableCourse = ({ course, index, blog, fetchCourses}) => {
     setEditBtn(true);
     setOpenModuleModal(false);
   };
-
+  
   // handle add button
   const handleAddBtn = () => {
     setOpenModal(true);
     setOpenModuleModal(true);
     setEditBtn(false);
-  }
+  };
 
-  console.log('moduelType',moduleType, 'openModal', openModal, 'openModuleModal', openModuleModal, 'editBtn', editBtn)
+  // handleDeleteBtn
+  const handleDeleteBtn = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        apiHandler
+          .delete(`/courses/${course?._id}`)
+          .then((res) => {
+            if (res) {
+              toast.success("Course delete successfully");
+              setOpenModal(false);
+              fetchCourses();
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+            toast.error(err?.message || "Please try again.");
+          });
+      }
+    });
+  };
 
   return (
     <>
@@ -41,22 +72,22 @@ const TableCourse = ({ course, index, blog, fetchCourses}) => {
         <td className="text-sm transition duration-300 border-slate-200">
           <img
             className="w-[80px] h-[60px] rounded-lg "
-            src={course?.image || blog?.image}
+            src={course?.image}
             alt=""
           />
         </td>
 
         <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200 overflow-hidden w-52">
           <p className="text-[#2F327D] font-medium">
-            {course?.title || blog?.title}
+            {course?.title}
           </p>
           <span className="text-slate-500">
-            {course?.category || blog?.category}
+            {course?.category}
           </span>
         </td>
 
         <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200">
-          ${course?.price || blog?.author_details?.authorName}
+          ${course?.price}
         </td>
 
         <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200">
@@ -67,7 +98,7 @@ const TableCourse = ({ course, index, blog, fetchCourses}) => {
                 ({course?.totalRatings})
               </span>
             </span>
-          ) || blog?.author_details?.authorEmail}
+          )}
         </td>
 
         <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200">
@@ -87,7 +118,10 @@ const TableCourse = ({ course, index, blog, fetchCourses}) => {
             >
               <FaEdit />
             </span>
-            <span className="cursor-pointer text-[#fff] bg-red-500 p-3 rounded-md hover:scale-[1.1] transition-all duration-300 ease-in-out text-xl">
+            <span
+              onClick={handleDeleteBtn}
+              className="cursor-pointer text-[#fff] bg-red-500 p-3 rounded-md hover:scale-[1.1] transition-all duration-300 ease-in-out text-xl"
+            >
               <FaTrash />
             </span>
           </div>
@@ -117,11 +151,12 @@ const TableCourse = ({ course, index, blog, fetchCourses}) => {
         </Modal>
       )}
       {editBtn && (
-        <Modal
-          openModal={openModal}
-          setOpenModal={setOpenModal}
-        >
-          <EditCourseForm setOpenModal={setOpenModal} courseId={course?._id} fetchCourses={fetchCourses}/>
+        <Modal openModal={openModal} setOpenModal={setOpenModal}>
+          <EditCourseForm
+            setOpenModal={setOpenModal}
+            courseId={course?._id}
+            fetchCourses={fetchCourses}
+          />
         </Modal>
       )}
     </>

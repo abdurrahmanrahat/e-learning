@@ -2,13 +2,13 @@ import PrimaryTitle from "../../../../components/Ui/PrimaryTitle";
 import WebsiteTitle from "../../../../components/Ui/WebsiteTitle";
 import useBlogsByEmail from "../../../../Hooks/api/useBlogsByEmail";
 import useUser from "../../../../Hooks/api/useUser";
-import TableCourse from "../MyCourses/TableCourse";
+import TableBlogs from "./TableBlogs";
 
 export default function MyBlogs() {
   const { user } = useUser();
-  const { instructorBlogs} = useBlogsByEmail(user?.email);
+  const { instructorBlogs, fetchInstructorBlogs } = useBlogsByEmail(user?.email);
 
-  console.log(instructorBlogs);
+  // console.log(instructorBlogs);
   return (
     <WebsiteTitle title={"My-Blogs"}>
       <div className="p-6 bg-[#F4F6FB] rounded-lg shadow-md">
@@ -35,10 +35,10 @@ export default function MyBlogs() {
                   Author
                 </th>
                 <th className="px-6 py-6 text-left text-sm font-semibold">
-                  Price
+                  Ratting
                 </th>
                 <th className="px-6 py-6 text-left text-sm font-semibold">
-                  Duration
+                  Status
                 </th>
                 <th className="px-6 py-6 text-left text-sm font-semibold">
                   Action
@@ -47,7 +47,7 @@ export default function MyBlogs() {
             </thead>
             <tbody>
               {instructorBlogs?.map((blog, index) => (
-                <TableCourse key={index} blog={blog} index={index} />
+                <TableBlogs key={index} blog={blog} index={index} fetchInstructorBlogs={fetchInstructorBlogs}/>
               ))}
             </tbody>
           </table>
