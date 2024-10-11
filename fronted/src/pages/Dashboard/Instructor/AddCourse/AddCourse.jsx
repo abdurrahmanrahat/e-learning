@@ -6,6 +6,7 @@ import { FaPlus } from "react-icons/fa6";
 import PrimaryTitle from "../../../../components/Ui/PrimaryTitle";
 import useAxios from "../../../../Hooks/useAxios";
 import useUser from "../../../../Hooks/api/useUser";
+import RichTextEditor from "../../../../components/Ui/RichTextEditor";
 
 // category data
 const category = [
@@ -43,6 +44,8 @@ const AddCourse = () => {
   } = useForm();
   const [uploading, setUploading] = useState(false);
   const [imageUrl, setImageUrl] = useState(null);
+  const [description, setDescription] = useState("");
+  const [sortDes, setSortDes] = useState("");
 
   // Handle image upload to ImageBB
   const handleImageUpload = async (e) => {
@@ -68,6 +71,11 @@ const AddCourse = () => {
     }
   };
 
+  // handle description
+  const handleEditorChange = (content) => {
+    setDescription(content);
+    setSortDes(content);
+  }
   const handleAddCourse = async (data) => {
     const newCourse = {
       instructorName: user?.name,
@@ -76,8 +84,8 @@ const AddCourse = () => {
       title: data?.title,
       price: Number(data?.price),
       image: imageUrl,
-      description: data?.shortDescription,
-      bigDescription: data?.description,
+      description: sortDes,
+      bigDescription: description,
       courseDuration: data?.duration,
       category: data?.category,
     };
@@ -221,61 +229,13 @@ const AddCourse = () => {
             <label className="text-[#5B5B5B] font-semibold">
               Short Description
             </label>
-            <textarea
-              type="text"
-              placeholder="Short description here.."
-              className="w-full px-6 py-3 border focus:outline-none focus:border-[#49BBBD] border-[#D9D9D9] placeholder:text-[#9D9B9B] placeholder:text-base placeholder:font-light outline-none rounded-xl h-[75px]"
-              {...register("shortDescription", {
-                required: "Short Description is required",
-                validate: (value) => {
-                  const wordCount = value
-                    .trim()
-                    .split(/\s+/)
-                    .filter((word) => word.length > 0).length;
-                  if (wordCount < 30) {
-                    return "Description must be at least 30 words.";
-                  }
-                  if (wordCount > 40) {
-                    return "Description cannot exceed 40 words.";
-                  }
-                  return true;
-                },
-              })}
-            ></textarea>
-            {errors.shortDescription && (
-              <span className="text-red-600">
-                {errors.shortDescription.message}
-              </span>
-            )}
+            <RichTextEditor hight={200} handleEditorChange={handleEditorChange}/>
           </div>
 
           {/* description */}
           <div className="space-y-2">
             <label className="text-[#5B5B5B] font-semibold">Description</label>
-            <textarea
-              type="text"
-              placeholder="Your description"
-              className="w-full px-6 py-3 border focus:outline-none focus:border-[#49BBBD] border-[#D9D9D9] placeholder:text-[#9D9B9B] placeholder:text-base placeholder:font-light outline-none rounded-xl h-[150px]"
-              {...register("description", {
-                required: "Description is required",
-                validate: (value) => {
-                  const wordCount = value
-                    .trim()
-                    .split(/\s+/)
-                    .filter((word) => word.length > 0).length;
-                  if (wordCount < 250) {
-                    return "Description must be at least 250 words.";
-                  }
-                  if (wordCount > 300) {
-                    return "Description cannot exceed 300 words.";
-                  }
-                  return true;
-                },
-              })}
-            ></textarea>
-            {errors.description && (
-              <span className="text-red-600">{errors.description.message}</span>
-            )}
+            <RichTextEditor hight={250} handleEditorChange={handleEditorChange}/>
           </div>
 
           {/* button */}

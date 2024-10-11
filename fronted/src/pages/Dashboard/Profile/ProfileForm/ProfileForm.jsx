@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { FaRegSave } from "react-icons/fa";
 import useUser from "../../../../Hooks/api/useUser";
 import Button from "../../../../components/Ui/Button";
+import RichTextEditor from "../../../../components/Ui/RichTextEditor";
 
 const countries = [
   "Bangladesh",
@@ -16,7 +17,11 @@ const countries = [
   "Brazil",
 ];
 
-export default function ProfileForm({ handleProfileEdit }) {
+export default function ProfileForm({
+  setBioDescription,
+  setIntro,
+  handleProfileEdit,
+}) {
   const { user } = useUser();
   const {
     register,
@@ -28,6 +33,12 @@ export default function ProfileForm({ handleProfileEdit }) {
       email: user?.email || "",
     },
   });
+
+  // handle text editor
+  const handleEditorChange = (content) => {
+    setBioDescription(content);
+    setIntro(content);
+  };
 
   return (
     <form
@@ -63,7 +74,7 @@ export default function ProfileForm({ handleProfileEdit }) {
               type="email"
               placeholder="Your Email"
               name="email"
-              defaultValue={user?.email}
+              value={user?.email}
               readOnly
               className="w-full px-6 py-3 border focus:outline-none focus:border-[#49BBBD] border-[#D9D9D9] placeholder:text-[#9D9B9B] placeholder:text-base placeholder:font-light outline-none rounded-xl"
               {...register("email", { required: true })}
@@ -225,71 +236,37 @@ export default function ProfileForm({ handleProfileEdit }) {
           <label className="text-[#5B5B5B] font-semibold">
             Intro Description
           </label>
-          <textarea
-            type="text"
-            name="intro"
-            placeholder="Short description here.."
-            className="w-full px-6 py-3 border focus:outline-none focus:border-[#49BBBD] border-[#D9D9D9] placeholder:text-[#9D9B9B] placeholder:text-base placeholder:font-light outline-none rounded-xl h-[75px]"
-            {...register("intro", {
-              required: "Intro Description is required",
-              validate: (value) => {
-                const wordCount = value
-                  .trim()
-                  .split(/\s+/)
-                  .filter((word) => word.length > 0).length;
-                if (wordCount < 30) {
-                  return "Intro Description must be at least 30 words.";
-                }
-                if (wordCount > 40) {
-                  return "Intro Description cannot exceed 40 words.";
-                }
-                return true;
-              },
-            })}
-          ></textarea>
+          <RichTextEditor
+            hight={200}
+            initialValue={"bioDescription"}
+            handleEditorChange={handleEditorChange}
+          />
           {errors.intro && (
-            <span className="text-red-600">
-              {errors.intro.message}
-            </span>
+            <span className="text-red-600">{errors.intro.message}</span>
           )}
         </div>
 
         {/* description */}
         <div className="space-y-2">
-          <label className="text-[#5B5B5B] font-semibold">Bio Description</label>
-          <textarea
-            type="text"
-            name="bioDescription"
-            placeholder="Your description"
-            className="w-full px-6 py-3 border focus:outline-none focus:border-[#49BBBD] border-[#D9D9D9] placeholder:text-[#9D9B9B] placeholder:text-base placeholder:font-light outline-none rounded-xl h-[150px]"
-            {...register("bioDescription", {
-              required: "Bio Description is required",
-              validate: (value) => {
-                const wordCount = value
-                  .trim()
-                  .split(/\s+/)
-                  .filter((word) => word.length > 0).length;
-                if (wordCount < 250) {
-                  return "Bio Description must be at least 250 words.";
-                }
-                if (wordCount > 300) {
-                  return "Bio Description cannot exceed 300 words.";
-                }
-                return true;
-              },
-            })}
-          ></textarea>
+          <label className="text-[#5B5B5B] font-semibold">
+            Bio Description
+          </label>
+          <RichTextEditor
+            hight={250}
+            initialValue={"bioDescription"}
+            handleEditorChange={handleEditorChange}
+          />
+
           {errors.bioDescription && (
-            <span className="text-red-600">{errors.bioDescription.message}</span>
+            <span className="text-red-600">
+              {errors.bioDescription.message}
+            </span>
           )}
         </div>
 
         {/* button */}
         <div className="space-y-2 flex justify-center lg:justify-start xl:justify-start">
-          <Button
-          bgBtn={true}
-            type={'submit'}
-          >
+          <Button bgBtn={true} type={"submit"}>
             <span>
               <FaRegSave />
             </span>

@@ -22,7 +22,7 @@ const LatestBlog = () => {
         </h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-10">
-        {blogs?.map((item, index) => (
+        {blogs?.slice(0, 3)?.map((item, index) => (
           <Link key={index}>
             <div className="drop-shadow-xl bg-[#f8fafc] border">
               <img src={item.image} alt="" />

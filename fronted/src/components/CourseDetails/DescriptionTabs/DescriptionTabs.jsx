@@ -1,8 +1,9 @@
-const DescriptionTabs = ({value}) => {
+const DescriptionTabs = ({ value }) => {
   return (
-    <div>
-      {value}
-    </div>
+    <div
+      className="description-content prose leading-loose"
+      dangerouslySetInnerHTML={{ __html: value }}
+    ></div>
   );
 };
 
