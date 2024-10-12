@@ -25,4 +25,9 @@ router.get(
   EnrolledCourseControllers.getEnrolledCourseById,
 );
 
+router.patch(
+  '/:enrolledCourseId',
+  EnrolledCourseControllers.updateEnrolledCourse,
+);
+
 export const EnrolledCourseRoutes = router;
