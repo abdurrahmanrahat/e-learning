@@ -31,7 +31,7 @@ export default function EditBlogForm({ blogId, setOpenModal ,fetchInstructorBlog
   const [uploading, setUploading] = useState(false);
   const [imageUrl, setImageUrl] = useState(null);
   const [description, setDescription] = useState("");
-  //   const [sortDes, setSortDes] = useState("");
+    // const [sortDes, setSortDes] = useState("");
   const apiHandler = useAxios();
   const {
     register,
