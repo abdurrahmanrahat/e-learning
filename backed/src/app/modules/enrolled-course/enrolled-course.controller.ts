@@ -56,9 +56,29 @@ const getEnrolledCourseByEmail = catchAsync(async (req, res) => {
   });
 });
 
+const updateEnrolledCourse = catchAsync(async (req, res) => {
+  const { enrolledCourseId } = req.params;
+  const { moduleIndex, videoIndex, percentage } = req.body;
+
+  const result = await EnrolledCourseServices.updateEnrolledCourseIntoDB(
+    enrolledCourseId,
+    moduleIndex,
+    videoIndex,
+    percentage,
+  );
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Update enrolled Courses fetched successfully',
+    data: result,
+  });
+});
+
 export const EnrolledCourseControllers = {
   createEnrolledCourse,
   getAllEnrolledCourses,
   getEnrolledCourseById,
   getEnrolledCourseByEmail,
+  updateEnrolledCourse,
 };

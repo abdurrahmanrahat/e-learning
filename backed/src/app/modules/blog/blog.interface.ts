@@ -9,6 +9,7 @@ export type TBlog = {
   title: string;
   category: string;
   description: string;
+  shortDescription: string;
   date?: Date;
   author_details: TAuthorDetails;
 };

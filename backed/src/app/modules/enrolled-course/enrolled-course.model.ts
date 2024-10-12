@@ -17,9 +17,14 @@ const enrolledCourseSchema = new Schema<TEnrolledCourse>(
       unique: true,
       required: [true, 'StudentEmail is required'],
     },
-    completedPercentage: {
-      type: Number,
-      default: 0,
+    complete: {
+      watchedVideos: [
+        {
+          moduleIndex: { type: Number },
+          videos: { type: [Number] },
+        },
+      ],
+      percentage: { type: Number, default: 0 },
     },
   },
   {

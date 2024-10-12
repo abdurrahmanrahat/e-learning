@@ -8,6 +8,7 @@ export type TUser = {
   gender: 'male' | 'female' | 'others';
   password: string;
   role?: 'student' | 'instructor' | 'admin';
+  // additional: {};
   isDeleted: boolean;
 };
 

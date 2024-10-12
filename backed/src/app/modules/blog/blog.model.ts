@@ -34,6 +34,10 @@ const blogSchema = new Schema<TBlog>(
       type: String,
       required: [true, 'Description is required.'],
     },
+    shortDescription: {
+      type: String,
+      required: [true, 'Short description is required.'],
+    },
     date: {
       type: Date,
       default: Date.now,
