@@ -6,7 +6,7 @@ import NewModuleForm from "./NewModuleForm";
 import ExistingModuleForm from "./ExistingModuleForm";
 import { FaTrash } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
-import { IoMdAdd } from "react-icons/io";
+import { CgPlayListAdd } from "react-icons/cg";
 import EditCourseForm from "./EditCourseForm";
 import useAxios from "../../../../Hooks/useAxios";
 import toast from "react-hot-toast";
@@ -110,7 +110,7 @@ const TableCourse = ({ course, index, fetchCourses }) => {
               onClick={handleAddBtn}
               className="cursor-pointer text-[#fff] bg-[#101828] p-3 rounded-md hover:scale-[1.1] transition-all duration-300 ease-in-out text-xl"
             >
-              <IoMdAdd />
+              <CgPlayListAdd />
             </span>
             <span
               onClick={handleEditBtn}

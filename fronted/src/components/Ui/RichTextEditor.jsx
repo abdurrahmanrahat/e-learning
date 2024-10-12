@@ -3,7 +3,7 @@ import { Editor } from "@tinymce/tinymce-react";
 export default function RichTextEditor({ initialValue, handleEditorChange, hight }) {
   return (
     <Editor
-      apiKey="y16ul3279ajbpmdmf9shx84wb83po9tl7hinan8ukh4v411c" // Replace with your TinyMCE API key
+      apiKey={process.env.RICHTEXTEDITOR_API} // Replace with your TinyMCE API key
       initialValue={`<p>${initialValue ? initialValue : ""}</p>`}
       init={{
         height: hight,

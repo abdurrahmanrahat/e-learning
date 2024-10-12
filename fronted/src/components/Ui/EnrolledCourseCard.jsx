@@ -33,7 +33,7 @@ export default function EnrolledCourseCard({enrolledCourse}) {
         <div className="flex justify-between gap-8 lg:gap-16 xl:gap-16 items-center">
           <Link
             className="w-full"
-            to={`/dashboard/student/course-classroom/${course._id}`}
+            to={`/dashboard/student/course-classroom/${course._id}/${enrolledCourse._id}`}
           >
             <Button bgBtn>Continue</Button>
           </Link>

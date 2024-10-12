@@ -26,7 +26,7 @@ const Registration = () => {
   // Initialize Cloudinary
   const cloudinary = new Cloudinary({
     cloud: {
-      cloudName: "dxxisvcbd",
+      cloudName: process.env.CLOUDNAME,
     },
   });
 
@@ -39,11 +39,10 @@ const Registration = () => {
     formData.append("file", imageFile);
     formData.append("upload_preset", "brainwave");
 
-    // `https://api.imgbb.com/1/upload?key=4fcfecc8f4191aba98fe10068a124924`,
     try {
       setUploading(true);
       const res = await axios.post(
-        "https://api.cloudinary.com/v1_1/dxxisvcbd/image/upload",
+        `https://api.cloudinary.com/v1_1/${process.env.CLOUDNAME}/image/upload`,
         formData,
         {
           headers: {

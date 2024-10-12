@@ -3,10 +3,14 @@ import Modal from "../../../../components/Ui/Modal";
 import EditBlogForm from "./EditBlogForm";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Rating from "../../../../components/Ui/Rating";
+import Swal from "sweetalert2";
+import useAxios from "../../../../Hooks/useAxios";
+import toast from "react-hot-toast";
 
 export default function TableBlogs({ blog, index, fetchInstructorBlogs }) {
   const [openModal, setOpenModal] = useState(false);
   const [blogBtn, setBlogBtn] = useState(false);
+  const apiHandler = useAxios();
 
   // handle edit btn
   const handleEditBtn = () => {
@@ -16,7 +20,30 @@ export default function TableBlogs({ blog, index, fetchInstructorBlogs }) {
 
   //   handleDeleteBtn
   const handleDeleteBtn = () => {
-    console.log('delete')
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        apiHandler
+          .delete(`/blogs/${blog?._id}`)
+          .then((res) => {
+            if (res) {
+              toast.success("Blog delete successfully");
+              fetchInstructorBlogs();
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+            toast.error(err?.message || "Please try again.");
+          });
+      }
+    });
   };
 
   return (
@@ -76,7 +103,11 @@ export default function TableBlogs({ blog, index, fetchInstructorBlogs }) {
       </tr>
       {blogBtn && (
         <Modal openModal={openModal} setOpenModal={setOpenModal}>
-          <EditBlogForm fetchInstructorBlogs={fetchInstructorBlogs} blogId={blog?._id} setOpenModal={setOpenModal}/>
+          <EditBlogForm
+            fetchInstructorBlogs={fetchInstructorBlogs}
+            blogId={blog?._id}
+            setOpenModal={setOpenModal}
+          />
         </Modal>
       )}
     </>
