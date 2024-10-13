@@ -104,7 +104,7 @@ const TableCourse = ({ course, index, fetchCourses }) => {
         <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200">
           Active
         </td>
-        <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200 flex justify-start items-center">
+        <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200">
           <div className="flex gap-4 justify-center items-center">
             <span
               onClick={handleAddBtn}

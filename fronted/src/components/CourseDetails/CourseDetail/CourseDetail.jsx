@@ -15,7 +15,7 @@ const CourseDetail = () => {
   const { course } = useCourse(id);
   const { user } = useUser();
   const navigate = useNavigate();
-  // console.log(course);
+  console.log(course);
 
   const tabs = ["Overview", "Reviews", "Description"];
   const tabsItem = [
@@ -26,9 +26,10 @@ const CourseDetail = () => {
       content: <ReviewTabs />,
     },
     {
-      content: <DescriptionTabs value={course?.data?.bigDescription} />,
+      content: <DescriptionTabs value={course?.bigDescription} />,
     },
   ];
+
 
   const handleEnrollBtn = () => {
     if (!user) {

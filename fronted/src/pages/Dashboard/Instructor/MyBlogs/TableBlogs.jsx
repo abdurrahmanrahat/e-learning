@@ -71,20 +71,22 @@ export default function TableBlogs({ blog, index, fetchInstructorBlogs }) {
         </td>
 
         <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200">
-          {(
-            <span className="flex gap-1 justify-start items-center text-[#6E7697] mb-6">
-              <Rating value={blog?.totalRatings || 0} />
-              <span className="text-sm text-[#969696]">
-                ({blog?.totalRatings || 0})
+          <div className="flex justify-center items-center">
+            {(
+              <span className="flex gap-1 justify-start items-center text-[#6E7697] mb-6">
+                <Rating value={blog?.totalRatings || 0} />
+                <span className="text-sm text-[#969696]">
+                  ({blog?.totalRatings || 0})
+                </span>
               </span>
-            </span>
-          ) || blog?.author_details?.authorEmail}
+            ) || blog?.author_details?.authorEmail}
+          </div>
         </td>
 
         <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200">
           Active
         </td>
-        <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200 flex justify-start items-center">
+        <td className="h-12 px-6 py-3 text-sm transition duration-300 border-slate-200">
           <div className="flex gap-4 justify-center items-center">
             <span
               onClick={handleEditBtn}

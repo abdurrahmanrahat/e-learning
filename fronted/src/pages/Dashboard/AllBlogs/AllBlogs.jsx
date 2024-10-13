@@ -1,26 +1,11 @@
 import PrimaryTitle from "../../../components/Ui/PrimaryTitle";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import WebsiteTitle from "../../../components/Ui/WebsiteTitle";
 import AddNewBlogs from "../../../components/AllBlogs/AddNewBlogs";
 import BlogTableRow from "../../../components/AllBlogs/BlogTableRow/BlogTableRow";
+import { useBlogs } from "../../../Hooks/api/useBlogs";
 
 const AllBlogs = () => {
-  const [blogs, setBlogs] = useState([]);
-
-  // Function to fetch blogs
-  const fetchBlogs = async () => {
-    try {
-      const response = await axios.get("/blogs.json");
-      setBlogs(response?.data);
-    } catch (error) {
-      console.log("Fetch error:", error.message);
-    }
-  };
-
-  useEffect(() => {
-    fetchBlogs();
-  }, []);
+  const {blogs} = useBlogs();
 
   console.log(blogs)
 

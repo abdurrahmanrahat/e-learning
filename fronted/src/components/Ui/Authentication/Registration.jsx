@@ -14,6 +14,7 @@ const Registration = () => {
   const [uploading, setUploading] = useState(false);
   const [imageUrl, setImageUrl] = useState(null);
 
+  console.log()
   const {
     register,
     handleSubmit,
@@ -26,7 +27,7 @@ const Registration = () => {
   // Initialize Cloudinary
   const cloudinary = new Cloudinary({
     cloud: {
-      cloudName: process.env.CLOUDNAME,
+      cloudName: `${import.meta.env.VITE_CLOUDNAME}`,
     },
   });
 
@@ -42,7 +43,7 @@ const Registration = () => {
     try {
       setUploading(true);
       const res = await axios.post(
-        `https://api.cloudinary.com/v1_1/${process.env.CLOUDNAME}/image/upload`,
+        `https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUDNAME}/image/upload`,
         formData,
         {
           headers: {

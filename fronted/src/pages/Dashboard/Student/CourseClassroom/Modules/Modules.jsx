@@ -3,12 +3,11 @@ import { FiYoutube } from "react-icons/fi";
 
 
 export default function Modules({
-    handleActiveModuleIndex,
-    activeModuleIndex,
-    handleVideoWatch,
-    watchedVideos,
-    modules,
-    activeVideoIndex
+  modules,
+  handleActiveModuleIndex,
+  activeModuleIndex,
+  activeVideoIndex,
+  handleVideoIndex
 }) {
 
   return (
@@ -21,7 +20,7 @@ export default function Modules({
           >
             <div
               onClick={() =>
-                handleActiveModuleIndex(moduleIndex, item)
+                handleActiveModuleIndex(moduleIndex)
               }
               className={`flex flex-col gap-1 justify-start text-xl font-medium cursor-pointer border-b-[2px] border-b-[#D1D7DC] p-4 hove:bg-[#F7F9FA] ${
                 activeModuleIndex === moduleIndex ? "bg-[#F7F9FA]" : ""
@@ -50,17 +49,17 @@ export default function Modules({
                     }`}
                     key={videoIndex}
                     onClick={() =>
-                      handleVideoWatch(moduleIndex, videoIndex, item)
+                      handleVideoIndex(videoIndex)
                     }
                   >
                     <div className="flex gap-2 text-xl">
-                      {watchedVideos[`module-${moduleIndex}`]?.includes(
+                      {/* {watchedVideos[`module-${moduleIndex}`]?.includes(
                         videoIndex
                       ) ? (
                         <FaCheckCircle />
                       ) : (
                         <FaLock />
-                      )}
+                      )} */}
                     </div>
                     <div className="flex flex-col gap-2 text-lg">
                       <span>{item.title}</span>

@@ -84,8 +84,6 @@ const router = createBrowserRouter([
       {
         path: "blog-details/:id",
         element: <BlogDetails/>,
-        loader:()=>fetch('/blogCategory.json')
-        
       },
     ],
   },

@@ -70,6 +70,8 @@ const AddCourse = () => {
       setUploading(false);
     }
   };
+  console.log(description)
+  console.log(sortDes)
 
   // handle description
   const handleEditorChange = (content) => {

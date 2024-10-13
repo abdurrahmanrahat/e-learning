@@ -40,6 +40,7 @@ export default function AddBlog() {
   });
   const [uploading, setUploading] = useState(false);
   const [imageUrl, setImageUrl] = useState(null);
+  const [sortDescription, setSortDescription] = useState("");
   const [description, setDescription] = useState("");
 
   // Handle image upload to ImageBB
@@ -69,6 +70,7 @@ export default function AddBlog() {
   // handle description
   const handleEditorChange = (content) => {
     setDescription(content);
+    setSortDescription(content)
   };
   const handleAddCourse = async (data) => {
     const newBlog = {
@@ -76,6 +78,7 @@ export default function AddBlog() {
       title: data?.title,
       category: data?.category,
       description: description,
+      shortDescription: sortDescription,
       author_details: {
         authorName: user?.name,
         authorImage: user?.photoUrl,
@@ -207,6 +210,14 @@ export default function AddBlog() {
             </div>
           </div>
 
+          {/* description */}
+          <div className="space-y-2">
+            <label className="text-[#5B5B5B] font-semibold">Sort Description</label>
+            <RichTextEditor
+              hight={250}
+              handleEditorChange={handleEditorChange}
+            />
+          </div>
           {/* description */}
           <div className="space-y-2">
             <label className="text-[#5B5B5B] font-semibold">Description</label>

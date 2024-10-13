@@ -1,6 +1,7 @@
 import { LuBookUp } from "react-icons/lu";
 import { RiContactsLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import PrimaryTitle from "../Ui/PrimaryTitle";
 
 const LatestBlog = ({ blogs }) => {
   // Limit to the first 9 blogs
@@ -8,13 +9,8 @@ const LatestBlog = ({ blogs }) => {
 
   return (
     <Link>
-      <div className="container-class my-20">
-        <div className="flex flex-col gap-2 mb-5">
-          <h2 className="text-[34px] font-medium">
-            <span className="text-[#00CBB8]">Latest</span>{" "}
-            <span className="text-[#101828]">Blogs</span>
-          </h2>
-        </div>
+      <div className="flex flex-col gap-6">
+        <PrimaryTitle headingPart1={"Latest"} headingPart2={"Blogs"} />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-10">
           {limitedBlogs?.map((blog, index) => (
             <Link key={index}>
