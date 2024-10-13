@@ -37,6 +37,7 @@ const updateCourseValidationSchema = z.object({
     courseDuration: z.string().optional(),
     totalRatings: z.number().min(0).default(0).optional(),
     averageRatings: z.number().min(0).max(5).default(0).optional(),
+    // status: z.enum(['pending', 'approved', 'rejected']).optional(),
     isDeleted: z.boolean().optional(),
   }),
 });

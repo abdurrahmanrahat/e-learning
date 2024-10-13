@@ -48,33 +48,45 @@ const updateEnrolledCourseIntoDB = async (
     throw new AppError(httpStatus.NOT_FOUND, 'Enrolled course not found');
   }
 
-  const watchedVideos = enrolledCourse.complete?.watchedVideos || [];
+  // const watchedVideos = enrolledCourse.complete?.watchedVideos || [];
 
-  const existingModuleVideos = watchedVideos.find(
-    (entry) => entry.moduleIndex === moduleIndex,
-  );
+  // const existingModuleVideos = watchedVideos.find(
+  //   (entry) => entry.moduleIndex === moduleIndex,
+  // );
 
-  if (existingModuleVideos) {
-    if (!existingModuleVideos.videos.includes(videoIndex)) {
-      existingModuleVideos.videos.push(videoIndex);
-    }
-  } else {
-    watchedVideos.push({
-      moduleIndex: moduleIndex,
-      videos: [videoIndex],
-    });
-  }
+  // if (existingModuleVideos) {
+  //   if (!existingModuleVideos.videos.includes(videoIndex)) {
+  //     existingModuleVideos.videos.push(videoIndex);
+  //   }
+  // } else {
+  //   watchedVideos.push({
+  //     moduleIndex: moduleIndex,
+  //     videos: [videoIndex],
+  //   });
+  // }
 
-  // Prepare the complete object to update
-  const completeUpdate = {
-    watchedVideos,
-    percentage,
-  };
+  // // Prepare the complete object to update
+  // const completeUpdate = {
+  //   watchedVideos,
+  //   percentage,
+  // };
 
-  // Update the enrolled course in the database using findByIdAndUpdate
+  // // Update the enrolled course in the database using findByIdAndUpdate
+  // const updatedCourse = await EnrolledCourse.findByIdAndUpdate(
+  //   enrolledCourseId,
+  //   { complete: completeUpdate },
+  //   { new: true },
+  // );
+
   const updatedCourse = await EnrolledCourse.findByIdAndUpdate(
     enrolledCourseId,
-    { complete: completeUpdate },
+    {
+      complete: {
+        moduleIndex,
+        videoIndex,
+        percentage,
+      },
+    },
     { new: true },
   );
 

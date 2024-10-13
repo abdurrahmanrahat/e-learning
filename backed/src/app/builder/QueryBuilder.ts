@@ -73,6 +73,7 @@ export class QueryBuilder<T> {
 
   filter() {
     const queryObj = { ...this.query };
+    // queryObj.status = 'approved';
 
     const excludeFields = ['searchTerm', 'page', 'limit', 'sortBy', 'fields'];
 

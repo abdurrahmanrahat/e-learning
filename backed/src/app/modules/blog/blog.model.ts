@@ -46,6 +46,11 @@ const blogSchema = new Schema<TBlog>(
       type: authorDetailsSchema,
       required: [true, 'Author details are required.'],
     },
+    status: {
+      type: String,
+      enum: ['pending', 'approved', 'rejected'],
+      default: 'pending',
+    },
   },
   {
     timestamps: true,

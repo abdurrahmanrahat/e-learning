@@ -38,6 +38,7 @@ const updateBlogValidationSchema = z.object({
       .min(1, 'Short description is required.')
       .optional(),
     author_details: updateAuthorDetailsSchema.optional(),
+    status: z.enum(['pending', 'approved', 'rejected']).optional(),
   }),
 });
 

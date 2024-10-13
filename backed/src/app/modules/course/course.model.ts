@@ -56,6 +56,11 @@ const courseSchema = new Schema<TCourse>(
       type: Number,
       default: 0,
     },
+    // status: {
+    //   type: String,
+    //   enum: ['pending', 'approved', 'rejected'],
+    //   default: 'pending',
+    // },
     isDeleted: {
       type: Boolean,
       default: false,
