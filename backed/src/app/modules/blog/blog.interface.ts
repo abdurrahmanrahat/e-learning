@@ -12,4 +12,5 @@ export type TBlog = {
   shortDescription: string;
   date?: Date;
   author_details: TAuthorDetails;
+  status?: 'pending' | 'approved' | 'rejected';
 };
