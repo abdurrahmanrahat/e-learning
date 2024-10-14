@@ -3,7 +3,7 @@ import Search from "./Search/Search";
 import VideoIframe from "./VideoIframe/VideoIframe";
 import useCourseModules from "../../../../Hooks/api/useCourseModules";
 import { useParams } from "react-router-dom";
-import useEnrolledCourseById from "../../../../Hooks/api/useEnrolledCourseById";
+// import useEnrolledCourseById from "../../../../Hooks/api/useEnrolledCourseById";
 import { useEffect, useState } from "react";
 import Modules from "./Modules/Modules";
 import Progress from "../../../../components/Dashboard/Student/CourseClassroom/Progress/Progress";
@@ -11,35 +11,40 @@ import useAxios from "../../../../Hooks/useAxios";
 
 export default function CourseClassroom() {
   const { courseId, enrolledCourseId } = useParams();
-  const { enrolledCourse } = useEnrolledCourseById(enrolledCourseId);
+  // const { enrolledCourse } = useEnrolledCourseById(enrolledCourseId);
   const { courseModules } = useCourseModules(courseId);
   const [activeModuleIndex, setActiveModuleIndex] = useState(null);
-  const [activeVideoIndex, setActiveVideoIndex] = useState(null);
+  const [activeVideoIndex, setActiveVideoIndex] = useState(0);
   const [courseProgress, setCourseProgress] = useState(0);
   const apiHandler = useAxios();
 
+  // console.log(courseModules[activeModuleIndex]);
+
   // handleActiveModuleIndex
   const handleActiveModuleIndex = (moduleIndex) => {
-    setActiveModuleIndex(moduleIndex);
+    if (activeModuleIndex === moduleIndex) {
+      setActiveModuleIndex(null); // Close the active module if clicked again
+    } else {
+      setActiveModuleIndex(moduleIndex); // Open the clicked module
+    }
   };
   // handle videoIndex
   const handleVideoIndex = (videoIndex) => {
     setActiveVideoIndex(videoIndex);
-    const saveProgress = async () => {
-      await apiHandler
-        .patch(`/enrolled-courses/${enrolledCourseId}`, {
-          moduleIndex: activeModuleIndex,
-          videoIndex: activeVideoIndex,
-          percentage: courseProgress,
-        })
-        .then((res) => {
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err.message);
-        });
-    };
-    saveProgress();
+    console.log(activeModuleIndex, activeVideoIndex, courseProgress);
+    apiHandler
+      .patch(`/enrolled-courses/${enrolledCourseId}`, {
+        moduleIndex: activeModuleIndex,
+        videoIndex: activeVideoIndex,
+        percentage: courseProgress,
+      })
+      .then((res) => {
+        console.log(res.data.data.complete.percentage);
+        // setCourseProgress(res.data.data.complete.percentage);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
 
   // total videos
@@ -47,18 +52,22 @@ export default function CourseClassroom() {
     return total + module?.content?.length;
   }, 0);
 
-  // completed total videos number
   const calculateTotalCompletedVideos = () => {
     let totalCompletedVideos = 0;
 
-    // If either index is null, return 0 immediately
-    if (activeModuleIndex === null || activeVideoIndex === null) {
+    // If either index is null or undefined, return 0 immediately
+    if (
+      activeModuleIndex === null ||
+      activeVideoIndex === null ||
+      activeModuleIndex === undefined ||
+      activeVideoIndex === undefined
+    ) {
       return totalCompletedVideos; // returns 0
     }
 
     // 1. Sum the total videos of all previous modules
     for (let i = 0; i < activeModuleIndex; i++) {
-      totalCompletedVideos += courseModules[i].videos.length;
+      totalCompletedVideos += courseModules[i]?.videos?.length || 0; // Safe access with fallback
     }
 
     // 2. Add the completed videos in the current module up to the given videoIndex
@@ -84,7 +93,7 @@ export default function CourseClassroom() {
     setCourseProgress(newPercentage);
   }, [totalCompletedVideos, totalVideos]);
 
-  console.log(courseProgress);
+  // console.log(courseProgress);
 
   return (
     <div className="flex flex-col gap-0 w-full">
@@ -94,7 +103,9 @@ export default function CourseClassroom() {
           <span className="cursor-pointer text-2xl hover:scale-[1.2] transition-all duration-500 ease-in-out">
             <FaCircleArrowLeft />
           </span>
-          {/* <span>{content?.title}</span> */}
+          <span>
+            {courseModules[activeModuleIndex || 0]?.content[activeVideoIndex || 0]?.title}
+          </span>
         </div>
         {/* progress bar */}
         <Progress
@@ -106,7 +117,12 @@ export default function CourseClassroom() {
 
       <div className="w-full flex flex-col lg:flex-row xl:flex-row justify-center items-start">
         {/* video */}
-        <VideoIframe additionalInfo={"pending"} content={"pending"} />
+        <VideoIframe
+          content={courseModules}
+          activeVideoIndex={activeVideoIndex}
+          activeModuleIndex={activeModuleIndex}
+          setActiveVideoIndex={setActiveVideoIndex}
+        />
 
         <div className="w-full lg:w-[35%] xl:w-[35%] flex flex-col gap-4">
           {/* search */}

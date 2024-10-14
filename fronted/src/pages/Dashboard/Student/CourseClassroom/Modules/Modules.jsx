@@ -1,15 +1,13 @@
-import { FaAngleDown, FaAngleUp, FaCheckCircle, FaLock } from "react-icons/fa";
+import { FaAngleDown, FaAngleUp} from "react-icons/fa";
 import { FiYoutube } from "react-icons/fi";
-
 
 export default function Modules({
   modules,
   handleActiveModuleIndex,
   activeModuleIndex,
   activeVideoIndex,
-  handleVideoIndex
+  handleVideoIndex,
 }) {
-
   return (
     <div className="custom-scrollbar h-[80vh] overflow-y-scroll flex flex-col gap-4">
       <div className="flex flex-col py-4 rounded-2xl">
@@ -19,10 +17,8 @@ export default function Modules({
             className="flex flex-col bg-[#FFF] rounded-2xl text-[#2d2421]"
           >
             <div
-              onClick={() =>
-                handleActiveModuleIndex(moduleIndex)
-              }
-              className={`flex flex-col gap-1 justify-start text-xl font-medium cursor-pointer border-b-[2px] border-b-[#D1D7DC] p-4 hove:bg-[#F7F9FA] ${
+              onClick={() => handleActiveModuleIndex(moduleIndex)}
+              className={`flex flex-col gap-1 justify-start text-xl font-medium cursor-pointer border-b-[2px] border-b-[#D1D7DC] p-4 hover:bg-[#F7F9FA] ${
                 activeModuleIndex === moduleIndex ? "bg-[#F7F9FA]" : ""
               }`}
             >
@@ -30,11 +26,11 @@ export default function Modules({
                 <span>{item.moduleName}</span>
                 {activeModuleIndex === moduleIndex ? (
                   <span className="text-2xl">
-                    <FaAngleUp />
+                    <FaAngleDown /> {/* Expanded state */}
                   </span>
                 ) : (
                   <span className="text-2xl">
-                    <FaAngleDown />
+                    <FaAngleUp /> {/* Collapsed state */}
                   </span>
                 )}
               </div>
@@ -45,12 +41,10 @@ export default function Modules({
                 {item?.content.map((item, videoIndex) => (
                   <li
                     className={`py-4 px-4 cursor-pointer flex gap-4 items-center hover:bg-[#D1D7DC] transition-all duration-300 ease-in-out ${
-                        activeVideoIndex === videoIndex  ? "bg-[#D1D7DC]" : ""
+                      activeVideoIndex === videoIndex ? "bg-[#D1D7DC]" : ""
                     }`}
                     key={videoIndex}
-                    onClick={() =>
-                      handleVideoIndex(videoIndex)
-                    }
+                    onClick={() => handleVideoIndex(videoIndex)}
                   >
                     <div className="flex gap-2 text-xl">
                       {/* {watchedVideos[`module-${moduleIndex}`]?.includes(

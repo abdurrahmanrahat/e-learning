@@ -15,8 +15,8 @@ export default function Progress({
       </div>
       <span className="w-[60%]">
         <ProgressBar
-          value={`${completionPercentage}`}
-          width={`${completionPercentage}`}
+          value={completionPercentage}
+          width={completionPercentage}
         />
       </span>
     </div>

@@ -39,7 +39,7 @@ export default function Blogs() {
           </div>
         </PageBanner>
 
-        <div className="container-class">
+        <div className="container-class flex flex-col gap-10">
           {/* blog categories */}
           <div className="my-10">
             <BlogCategory />

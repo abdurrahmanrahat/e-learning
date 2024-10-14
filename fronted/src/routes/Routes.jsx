@@ -58,7 +58,7 @@ const router = createBrowserRouter([
         element: <Instructors />,
       },
       {
-        path: "instructor-details/:id",
+        path: "instructor-details/:email",
         element: <InstructorDetails />,
       },
       {

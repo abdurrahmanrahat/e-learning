@@ -78,6 +78,7 @@ const AddCourse = () => {
     setDescription(content);
     setSortDes(content);
   }
+  console.log(description);
   const handleAddCourse = async (data) => {
     const newCourse = {
       instructorName: user?.name,
@@ -91,7 +92,6 @@ const AddCourse = () => {
       courseDuration: data?.duration,
       category: data?.category,
     };
-    console.log(newCourse);
 
     apiHandler
       .post("/courses/create-course", newCourse)

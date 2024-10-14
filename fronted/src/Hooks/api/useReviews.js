@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import useAxios from "../useAxios";
 
-export default function useReviews(id) {
+export default function useReviews(courseId) {
     const [reviews, setReviews] = useState();
     const apiHandler = useAxios();
 
     const fetchReviews = () => {
-        apiHandler.get(`/courses/${id}/reviews`)
+        apiHandler.get(`/courses/${courseId}/reviews`)
             .then(res => {
                 console.log(res);
                 setReviews(res.data.data);
@@ -19,8 +19,8 @@ export default function useReviews(id) {
     }
 
     useEffect(() => {
-       if(id) fetchReviews();
-    }, [id])
+       if(courseId) fetchReviews();
+    }, [courseId])
 
     return { reviews, fetchReviews }
 }

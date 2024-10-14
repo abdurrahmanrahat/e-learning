@@ -43,11 +43,11 @@ const CourseDetail = () => {
 
   return (
     <div className="">
-      <PageBanner image={course?.data?.image}>
+      <PageBanner image={course?.image}>
         <div className="hidden lg:flex xl:flex justify-end items-end lg:w-[1240px] xl:w-[1240px] h-full">
           <img
             className="w-[330px] border-[16px] h-[220px] rounded-2xl"
-            src={course?.data?.image}
+            src={course?.image}
             alt=""
           />
         </div>
