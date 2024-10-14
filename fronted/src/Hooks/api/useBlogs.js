@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import useAxios from "../useAxios";
 
 export const useBlogs = () => {
       const [blogs, setBlogs] = useState([]);
+      const apiHandler = useAxios();
 
       const fetchBlogs = async () => {
             try {
-                  const response = await axios.get("/blogs.json");
-                  setBlogs(response?.data || []);
+                  const res = await apiHandler.get("/blogs");
+                  console.log(res)
+                  setBlogs(res?.data?.data || []);
             } catch (error) {
                   console.log(error?.message);
             }
@@ -15,7 +17,7 @@ export const useBlogs = () => {
 
       useEffect(() => {
             fetchBlogs();
-      }, [])
+      }, [apiHandler])
 
       return { blogs, fetchBlogs }
 }

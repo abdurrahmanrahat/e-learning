@@ -28,6 +28,7 @@ import BlogDetails from "../pages/BlogDetails/BlogDetails";
 import Profile from "../pages/Dashboard/Profile/Profile";
 import MyBlogs from "../pages/Dashboard/Instructor/MyBlogs/MyBlogs";
 import CourseManagement from "../pages/Dashboard/Admin/AllCourses/CourseManagement";
+import AddBlog from "../pages/Dashboard/Instructor/AddBlog/AddBlog";
 
 const router = createBrowserRouter([
   // Basic routes
@@ -57,7 +58,7 @@ const router = createBrowserRouter([
         element: <Instructors />,
       },
       {
-        path: "instructor-details/:id",
+        path: "instructor-details/:email",
         element: <InstructorDetails />,
       },
       {
@@ -83,8 +84,6 @@ const router = createBrowserRouter([
       {
         path: "blog-details/:id",
         element: <BlogDetails/>,
-        loader:()=>fetch('/blogCategory.json')
-        
       },
     ],
   },
@@ -146,6 +145,10 @@ const router = createBrowserRouter([
         element: <MyBlogs />,
       },
       {
+        path: "add-blog",
+        element: <AddBlog />,
+      },
+      {
         path: "profile",
         element: <Profile/>,
       },
@@ -169,7 +172,7 @@ const router = createBrowserRouter([
         element: <EnrolledCourses />,
       },
       {
-        path: "course-classroom/:id",
+        path: "course-classroom/:courseId/:enrolledCourseId",
         element: <CourseClassroom />,
       },
       {

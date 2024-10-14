@@ -44,7 +44,12 @@ const CourseManagement = () => {
                 <th className="px-6 py-6 text-left text-sm font-semibold">
                   Duration
                 </th>
-                <th className="px-6 py-6 text-left text-sm font-semibold"></th>
+                <th className="px-6 py-6 text-left text-sm font-semibold">
+                  Status
+                </th>
+                <th className="px-6 py-6 text-left text-sm font-semibold">
+                  Action
+                </th>
               </tr>
             </thead>
             <tbody>

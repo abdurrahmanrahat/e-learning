@@ -12,6 +12,8 @@ import ProfileForm from "./ProfileForm/ProfileForm";
 export default function Profile() {
   const { user } = useUser();
   const [openModal, setOpenModal] = useState(false);
+  const [bioDescription, setBioDescription] = useState("");
+  const [intro, setIntro] = useState("");
 
   const handleProfileEdit = (data) => {
     console.log(data);
@@ -64,9 +66,13 @@ export default function Profile() {
         </div>
       </div>
       {openModal && (
-          <Modal setOpenModal={setOpenModal} openModal={openModal}>
-            <ProfileForm handleProfileEdit={handleProfileEdit} />
-          </Modal>
+        <Modal setOpenModal={setOpenModal} openModal={openModal}>
+          <ProfileForm
+            handleProfileEdit={handleProfileEdit}
+            setBioDescription={setBioDescription}
+            setIntro={setIntro}
+          />
+        </Modal>
       )}
     </WebsiteTitle>
   );

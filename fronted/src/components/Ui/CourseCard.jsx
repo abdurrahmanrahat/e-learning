@@ -61,14 +61,15 @@ const CourseCard = ({ course }) => {
               {title?.length > 20 ? title.slice(0, 20) + "..." : title}
             </h2>
           </div>
-          <p className="mb-3 text-[#6E7697] line-clamp-3">
-            {description?.length > 80
-              ? description.slice(0, 50) + "..."
-              : description}
-          </p>
+          <p
+            className="description-content prose leading-loose mb-3 text-[#6E7697] line-clamp-3"
+            dangerouslySetInnerHTML={{ __html: description }}
+          ></p>
           <div className="flex gap-1 justify-start items-center text-[#6E7697] mb-6">
             <Rating value={rating} />
-            <span className="text-sm text-[#969696]">{rating ? `(${rating})` : '(0)'}</span>
+            <span className="text-sm text-[#969696]">
+              {rating ? `(${rating})` : "(0)"}
+            </span>
           </div>
         </div>
         {/* author */}

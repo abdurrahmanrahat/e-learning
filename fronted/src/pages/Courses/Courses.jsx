@@ -39,6 +39,7 @@ const Courses = () => {
   };
 
   const { courses } = useCourses(courseQuery);
+  // console.log(courses)
 
   if (!courses)
     return (

@@ -219,7 +219,7 @@ export default function Navbar() {
                           {/* Dropdown Content */}
                           {user?.role === 'instructor' ?
                             <li className="flex items-stretch">
-                              <ActiveLink to={`/dashboard/${user?.role}/courses`}>
+                              <ActiveLink to={`/dashboard/${user?.role}/my-courses`}>
                                 <span className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-primary lg:px-4">
                                   <span>
                                     <IoListSharp className="block text-[18px]" />

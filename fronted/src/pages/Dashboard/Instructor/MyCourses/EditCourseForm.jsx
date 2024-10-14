@@ -1,14 +1,16 @@
-import axios from "axios";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
+import RichTextEditor from "../../../../components/Ui/RichTextEditor";
+import { FaEdit } from "react-icons/fa";
+import { useState } from "react";
+import axios from "axios";
 import toast from "react-hot-toast";
-import { FaPlus } from "react-icons/fa6";
-import PrimaryTitle from "../../../../components/Ui/PrimaryTitle";
 import useAxios from "../../../../Hooks/useAxios";
 import useUser from "../../../../Hooks/api/useUser";
-import RichTextEditor from "../../../../components/Ui/RichTextEditor";
+import useCourse from "../../../../Hooks/api/useCourse";
+import PrimaryTitle from "../../../../components/Ui/PrimaryTitle";
+import Button from "../../../../components/Ui/Button";
 
-// category data
+// category
 const category = [
   "Digital Technology",
   "programming",
@@ -33,19 +35,28 @@ const duration = [
   "12 Months",
 ];
 
-const AddCourse = () => {
+export default function EditCourseForm({ setOpenModal, courseId, fetchCourses}) {
   const { user } = useUser();
-  const apiHandler = useAxios();
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
+  const { course} = useCourse(courseId);
   const [uploading, setUploading] = useState(false);
   const [imageUrl, setImageUrl] = useState(null);
   const [description, setDescription] = useState("");
   const [sortDes, setSortDes] = useState("");
+  const apiHandler = useAxios();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      title: course?.title,
+      price: course?.price,
+      description: course?.description,
+      bigDescription: course?.bigDescription,
+      courseDuration: course?.duration,
+      category: course?.category,
+    },
+  });
 
   // Handle image upload to ImageBB
   const handleImageUpload = async (e) => {
@@ -70,52 +81,53 @@ const AddCourse = () => {
       setUploading(false);
     }
   };
-  console.log(description)
-  console.log(sortDes)
 
   // handle description
   const handleEditorChange = (content) => {
     setDescription(content);
     setSortDes(content);
-  }
-  console.log(description);
-  const handleAddCourse = async (data) => {
-    const newCourse = {
+  };
+  // console.log(course)
+  //   handle form
+  const handleEditCourse = (data) => {
+    const editInfo = {
       instructorName: user?.name,
       instructorEmail: user?.email,
       instructorImg: user?.photoUrl,
       title: data?.title,
       price: Number(data?.price),
-      image: imageUrl,
+      image: imageUrl || course?.image,
       description: sortDes,
       bigDescription: description,
       courseDuration: data?.duration,
       category: data?.category,
     };
+    console.log(editInfo);
 
     apiHandler
-      .post("/courses/create-course", newCourse)
+      .patch(`/courses/${courseId}`, editInfo)
       .then((res) => {
         if (res) {
-          toast.success("Course Added successfully");
-          reset();
+          toast.success("Course Update successfully");
+          setOpenModal(false);
+          fetchCourses();
         }
       })
       .catch((err) => {
         console.log(err);
         toast.error(err?.message || "Please try again.");
-      });
+      })
   };
 
   return (
-    <div className="bg-[#FFF] w-11/12 shadow-myCustomShadow p-10 rounded-2xl mx-auto my-10">
+    <div>
       <PrimaryTitle
-        headingPart1={"Add"}
+        headingPart1={"Update"}
         headingPart2={"Course"}
         style={"text-center"}
       />
       <form
-        onSubmit={handleSubmit(handleAddCourse)}
+        onSubmit={handleSubmit(handleEditCourse)}
         className="space-y-8 py-10 "
       >
         <div className="space-y-8">
@@ -129,6 +141,7 @@ const AddCourse = () => {
                 type="text"
                 name="title"
                 placeholder="Course title"
+                defaultValue={course?.title}
                 className="w-full px-6 py-3 border focus:outline-none focus:border-[#49BBBD] border-[#D9D9D9] placeholder:text-[#9D9B9B] placeholder:text-base placeholder:font-light outline-none rounded-xl"
                 {...register("title", { required: true })}
               />
@@ -147,6 +160,7 @@ const AddCourse = () => {
                 placeholder="Course price"
                 name="price"
                 step="any"
+                defaultValue={course?.price}
                 className="w-full px-6 py-3 border focus:outline-none focus:border-[#49BBBD] border-[#D9D9D9] placeholder:text-[#9D9B9B] placeholder:text-base placeholder:font-light outline-none rounded-xl"
                 {...register("price", { required: true })}
               />
@@ -162,11 +176,12 @@ const AddCourse = () => {
               <select
                 name="category"
                 id="category"
+                defaultValue={course?.category}
                 className="w-full px-6 py-3 border focus:outline-none focus:border-[#49BBBD] border-[#D9D9D9] placeholder:text-[#9D9B9B] placeholder:text-base placeholder:font-light outline-none rounded-xl"
                 {...register("category", { required: true })}
               >
                 {/* Disabled placeholder option */}
-                <option value="" disabled selected hidden>
+                <option value="" disabled hidden>
                   Select Category
                 </option>
                 {category?.map((item, index) => (
@@ -188,11 +203,12 @@ const AddCourse = () => {
               <select
                 placeholder="Course Duration"
                 name="duration"
+                defaultValue={course?.duration}
                 className="w-full px-6 py-3 border focus:outline-none focus:border-[#49BBBD] border-[#D9D9D9] placeholder:text-[#9D9B9B] placeholder:text-base placeholder:font-light outline-none rounded-xl"
                 {...register("duration", { required: true })}
               >
                 {/* Disabled placeholder option */}
-                <option value="" disabled selected hidden>
+                <option value="" disabled hidden>
                   Course duration
                 </option>
                 {duration?.map((item, index) => (
@@ -220,7 +236,7 @@ const AddCourse = () => {
               {uploading && (
                 <p className="text-green-600">Uploading image...</p>
               )}
-              {errors.photoUrl && (
+              {errors.photo && (
                 <span className="text-red-600">This field is required</span>
               )}
             </div>
@@ -231,31 +247,34 @@ const AddCourse = () => {
             <label className="text-[#5B5B5B] font-semibold">
               Short Description
             </label>
-            <RichTextEditor hight={200} handleEditorChange={handleEditorChange}/>
+            <RichTextEditor
+              initialValue={course?.description}
+              hight={200}
+              handleEditorChange={handleEditorChange}
+            />
           </div>
 
           {/* description */}
           <div className="space-y-2">
             <label className="text-[#5B5B5B] font-semibold">Description</label>
-            <RichTextEditor hight={250} handleEditorChange={handleEditorChange}/>
+            <RichTextEditor
+              initialValue={course?.bigDescription}
+              hight={250}
+              handleEditorChange={handleEditorChange}
+            />
           </div>
 
           {/* button */}
           <div className="space-y-2 flex justify-center lg:justify-start xl:justify-start">
-            <button
-              type="submit"
-              className="bg-[#49BBBD] px-12 py-4 rounded-xl text-white cursor-pointer flex justify-center items-center gap-2 uppercase w-full lg:w-0 xl:w-0"
-            >
-              <span>
-                <FaPlus />
+            <Button bgBtn={true} type="submit">
+              <span className="text-xl">
+                <FaEdit />
               </span>
-              <span>Add</span>
-            </button>
+              <span>Update</span>
+            </Button>
           </div>
         </div>
       </form>
     </div>
   );
-};
-
-export default AddCourse;
+}

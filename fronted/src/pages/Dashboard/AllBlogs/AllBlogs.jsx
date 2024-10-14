@@ -1,31 +1,15 @@
 import PrimaryTitle from "../../../components/Ui/PrimaryTitle";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import WebsiteTitle from "../../../components/Ui/WebsiteTitle";
-import AddNewBlogs from "../../../components/AllBlogs/AddNewBlogs";
 import BlogTableRow from "../../../components/AllBlogs/BlogTableRow/BlogTableRow";
+import { useBlogs } from "../../../Hooks/api/useBlogs";
 
 const AllBlogs = () => {
-  const [blogs, setBlogs] = useState([]);
+  const { blogs, fetchBlogs } = useBlogs();
 
-  // Function to fetch blogs
-  const fetchBlogs = async () => {
-    try {
-      const response = await axios.get("/blogs.json");
-      setBlogs(response?.data);
-    } catch (error) {
-      console.log("Fetch error:", error.message);
-    }
-  };
-
-  useEffect(() => {
-    fetchBlogs();
-  }, []);
-
-  console.log(blogs)
+  console.log(blogs);
 
   return (
-    <WebsiteTitle title={'All-Blogs'}>
+    <WebsiteTitle title={"All-Blogs"}>
       <div className="p-6 bg-[#F4F6FB] rounded-lg shadow-md">
         <div className="mb-6">
           <PrimaryTitle
@@ -33,8 +17,6 @@ const AllBlogs = () => {
             headingPart2={"Blogs"}
             style={"text-center text-4xl font-semibold text-[#2F327D]"}
           />
-          {/* Add new blog button start from here */}
-          <AddNewBlogs />
         </div>
 
         {/* Blog Table */}
@@ -42,7 +24,7 @@ const AllBlogs = () => {
           <table className="table-auto w-full">
             <thead className="sticky top-0">
               <tr className="bg-primary text-white">
-                <th className="px-6 py-6 text-left text-sm font-semibold">#</th>
+                <th className="px-6 py-6 text-left text-sm font-semibold">#ID</th>
                 <th className="px-6 py-6 text-left text-sm font-semibold">
                   Image
                 </th>
@@ -55,12 +37,18 @@ const AllBlogs = () => {
                 <th className="px-6 py-6 text-left text-sm font-semibold">
                   Publish Date
                 </th>
+                <th className="px-6 py-6 text-left text-sm font-semibold">
+                  Status
+                </th>
+                <th className="px-6 py-6 text-left text-sm font-semibold">
+                  Action
+                </th>
                 <th className="px-6 py-6 text-left text-sm font-semibold"></th>
               </tr>
             </thead>
             <tbody>
               {blogs?.map((blog, idx) => (
-                <BlogTableRow key={blog._id} blog={blog} idx={idx} />
+                <BlogTableRow key={blog._id} blog={blog} fetchBlogs={fetchBlogs} idx={idx} />
               ))}
             </tbody>
           </table>

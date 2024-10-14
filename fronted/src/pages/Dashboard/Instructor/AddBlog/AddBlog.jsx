@@ -1,12 +1,13 @@
-import axios from "axios";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { FaPlus } from "react-icons/fa6";
 import PrimaryTitle from "../../../../components/Ui/PrimaryTitle";
+import RichTextEditor from "../../../../components/Ui/RichTextEditor";
+import { FaPlus } from "react-icons/fa6";
+import Button from "../../../../components/Ui/Button";
 import useAxios from "../../../../Hooks/useAxios";
 import useUser from "../../../../Hooks/api/useUser";
-import RichTextEditor from "../../../../components/Ui/RichTextEditor";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
+import axios from "axios";
 
 // category data
 const category = [
@@ -23,17 +24,7 @@ const category = [
   "Health & Fitness",
 ];
 
-// duration data
-const duration = [
-  "1 Months",
-  "2 Months",
-  "3 Months",
-  "6 Months",
-  "9 Months",
-  "12 Months",
-];
-
-const AddCourse = () => {
+export default function AddBlog() {
   const { user } = useUser();
   const apiHandler = useAxios();
   const {
@@ -41,11 +32,16 @@ const AddCourse = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      name: user?.name || "",
+      email: user?.email || "",
+    },
+  });
   const [uploading, setUploading] = useState(false);
   const [imageUrl, setImageUrl] = useState(null);
+  const [sortDescription, setSortDescription] = useState("");
   const [description, setDescription] = useState("");
-  const [sortDes, setSortDes] = useState("");
 
   // Handle image upload to ImageBB
   const handleImageUpload = async (e) => {
@@ -70,34 +66,32 @@ const AddCourse = () => {
       setUploading(false);
     }
   };
-  console.log(description)
-  console.log(sortDes)
 
   // handle description
   const handleEditorChange = (content) => {
     setDescription(content);
-    setSortDes(content);
-  }
-  console.log(description);
+    setSortDescription(content)
+  };
   const handleAddCourse = async (data) => {
-    const newCourse = {
-      instructorName: user?.name,
-      instructorEmail: user?.email,
-      instructorImg: user?.photoUrl,
-      title: data?.title,
-      price: Number(data?.price),
+    const newBlog = {
       image: imageUrl,
-      description: sortDes,
-      bigDescription: description,
-      courseDuration: data?.duration,
+      title: data?.title,
       category: data?.category,
+      description: description,
+      shortDescription: sortDescription,
+      author_details: {
+        authorName: user?.name,
+        authorImage: user?.photoUrl,
+        authorEmail: user?.email,
+      },
     };
+    console.log(newBlog);
 
     apiHandler
-      .post("/courses/create-course", newCourse)
+      .post("/blogs/create-blog", newBlog)
       .then((res) => {
         if (res) {
-          toast.success("Course Added successfully");
+          toast.success("Blog Added successfully");
           reset();
         }
       })
@@ -111,7 +105,7 @@ const AddCourse = () => {
     <div className="bg-[#FFF] w-11/12 shadow-myCustomShadow p-10 rounded-2xl mx-auto my-10">
       <PrimaryTitle
         headingPart1={"Add"}
-        headingPart2={"Course"}
+        headingPart2={"Blog"}
         style={"text-center"}
       />
       <form
@@ -120,35 +114,36 @@ const AddCourse = () => {
       >
         <div className="space-y-8">
           <div className="w-full flex flex-col lg:flex-row xl:flex-row gap-4 items-center space-y-6 lg:space-y-0 xl:space-y-0">
-            {/* title  */}
+            {/* name  */}
             <div className="space-y-2 w-full lg:w-1/2 xl:w-1/2">
-              <label className="text-[#5B5B5B] font-semibold" htmlFor="title">
-                Course Title
+              <label className="text-[#5B5B5B] font-semibold" htmlFor="name">
+                Name
               </label>
               <input
                 type="text"
-                name="title"
-                placeholder="Course title"
+                name="name"
+                placeholder="Your Name"
+                value={user?.name}
+                readOnly
                 className="w-full px-6 py-3 border focus:outline-none focus:border-[#49BBBD] border-[#D9D9D9] placeholder:text-[#9D9B9B] placeholder:text-base placeholder:font-light outline-none rounded-xl"
-                {...register("title", { required: true })}
+                {...register("name", { required: false })}
               />
-              {errors.title && (
+              {errors.name && (
                 <span className="text-red-600">This field is required</span>
               )}
             </div>
 
             {/* price  */}
             <div className="space-y-2 w-full lg:w-1/2 xl:w-1/2">
-              <label className="text-[#5B5B5B] font-semibold">
-                Course Price
-              </label>
+              <label className="text-[#5B5B5B] font-semibold">Email</label>
               <input
-                type="number"
-                placeholder="Course price"
-                name="price"
-                step="any"
+                type="email"
+                placeholder="Your Email"
+                name="email"
+                value={user?.email}
+                readOnly
                 className="w-full px-6 py-3 border focus:outline-none focus:border-[#49BBBD] border-[#D9D9D9] placeholder:text-[#9D9B9B] placeholder:text-base placeholder:font-light outline-none rounded-xl"
-                {...register("price", { required: true })}
+                {...register("email", { required: false })}
               />
               {errors.price && (
                 <span className="text-red-600">This field is required</span>
@@ -182,26 +177,15 @@ const AddCourse = () => {
 
             <div className="space-y-2">
               {/* select Duration */}
-              <label className="text-[#5B5B5B] font-semibold">
-                Course Duration
-              </label>
-              <select
-                placeholder="Course Duration"
-                name="duration"
+              <label className="text-[#5B5B5B] font-semibold">Blog Title</label>
+              <input
+                type="text"
+                placeholder="Blog Title"
+                name="title"
                 className="w-full px-6 py-3 border focus:outline-none focus:border-[#49BBBD] border-[#D9D9D9] placeholder:text-[#9D9B9B] placeholder:text-base placeholder:font-light outline-none rounded-xl"
-                {...register("duration", { required: true })}
-              >
-                {/* Disabled placeholder option */}
-                <option value="" disabled selected hidden>
-                  Course duration
-                </option>
-                {duration?.map((item, index) => (
-                  <option key={index} value={item}>
-                    {item}
-                  </option>
-                ))}
-              </select>
-              {errors.duration && (
+                {...register("title", { required: false })}
+              />
+              {errors.title && (
                 <span className="text-red-600">This field is required</span>
               )}
             </div>
@@ -226,36 +210,34 @@ const AddCourse = () => {
             </div>
           </div>
 
-          {/* sort description */}
+          {/* description */}
           <div className="space-y-2">
-            <label className="text-[#5B5B5B] font-semibold">
-              Short Description
-            </label>
-            <RichTextEditor hight={200} handleEditorChange={handleEditorChange}/>
+            <label className="text-[#5B5B5B] font-semibold">Sort Description</label>
+            <RichTextEditor
+              hight={250}
+              handleEditorChange={handleEditorChange}
+            />
           </div>
-
           {/* description */}
           <div className="space-y-2">
             <label className="text-[#5B5B5B] font-semibold">Description</label>
-            <RichTextEditor hight={250} handleEditorChange={handleEditorChange}/>
+            <RichTextEditor
+              hight={250}
+              handleEditorChange={handleEditorChange}
+            />
           </div>
 
           {/* button */}
           <div className="space-y-2 flex justify-center lg:justify-start xl:justify-start">
-            <button
-              type="submit"
-              className="bg-[#49BBBD] px-12 py-4 rounded-xl text-white cursor-pointer flex justify-center items-center gap-2 uppercase w-full lg:w-0 xl:w-0"
-            >
+            <Button bgBtn={true} type="submit">
               <span>
                 <FaPlus />
               </span>
               <span>Add</span>
-            </button>
+            </Button>
           </div>
         </div>
       </form>
     </div>
   );
-};
-
-export default AddCourse;
+}
