@@ -135,7 +135,7 @@ export default function Navbar() {
                   </ActiveLink>
                 </li>
                 <li className="flex items-stretch">
-                  <ActiveLink to={"blogs"}>
+                  <ActiveLink to={"/blogs"}>
                     <span className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-primary lg:px-4">
                       Blogs
                     </span>

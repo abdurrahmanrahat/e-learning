@@ -60,9 +60,9 @@ const Charts = () => {
       </div>
       <div className="mt-16 mx-5 lg:mx-0">
         <h2 className="text-2xl font-bold  text-gray-600 ">
-          Instructor Analytics
+          Admin Analytics
         </h2>
-       <BerCharts></BerCharts>
+        <BerCharts></BerCharts>
       </div>
     </div>
   );

@@ -3,6 +3,8 @@ import PageBanner from "../../components/Ui/PageBanner";
 import { SHAREDImages } from "../../image-data/shared";
 import WebsiteTitle from "../../components/Ui/WebsiteTitle";
 import { Link } from "react-router-dom";
+import { LuBookUp } from "react-icons/lu";
+import { RiContactsLine } from "react-icons/ri";
 
 export default function Blogs() {
   const [blogPosts, setBlogPosts] = useState([]);
