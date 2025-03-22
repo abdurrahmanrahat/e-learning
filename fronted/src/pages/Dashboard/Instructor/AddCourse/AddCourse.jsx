@@ -4,9 +4,9 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { FaPlus } from "react-icons/fa6";
 import PrimaryTitle from "../../../../components/Ui/PrimaryTitle";
-import useAxios from "../../../../Hooks/useAxios";
-import useUser from "../../../../Hooks/api/useUser";
 import RichTextEditor from "../../../../components/Ui/RichTextEditor";
+import useUser from "../../../../Hooks/api/useUser";
+import useAxios from "../../../../Hooks/useAxios";
 
 // category data
 const category = [
@@ -59,7 +59,7 @@ const AddCourse = () => {
     try {
       setUploading(true);
       const res = await axios.post(
-        `https://api.imgbb.com/1/upload?key=4fcfecc8f4191aba98fe10068a124924`,
+        `https://api.imgbb.com/1/upload?key=a272d7fb3d5b5ee711a07f62d1b2c93f`,
         formData
       );
       setImageUrl(res.data.data.url);
@@ -70,14 +70,14 @@ const AddCourse = () => {
       setUploading(false);
     }
   };
-  console.log(description)
-  console.log(sortDes)
+  console.log(description);
+  console.log(sortDes);
 
   // handle description
   const handleEditorChange = (content) => {
     setDescription(content);
     setSortDes(content);
-  }
+  };
   console.log(description);
   const handleAddCourse = async (data) => {
     const newCourse = {
@@ -231,13 +231,19 @@ const AddCourse = () => {
             <label className="text-[#5B5B5B] font-semibold">
               Short Description
             </label>
-            <RichTextEditor hight={200} handleEditorChange={handleEditorChange}/>
+            <RichTextEditor
+              hight={200}
+              handleEditorChange={handleEditorChange}
+            />
           </div>
 
           {/* description */}
           <div className="space-y-2">
             <label className="text-[#5B5B5B] font-semibold">Description</label>
-            <RichTextEditor hight={250} handleEditorChange={handleEditorChange}/>
+            <RichTextEditor
+              hight={250}
+              handleEditorChange={handleEditorChange}
+            />
           </div>
 
           {/* button */}
