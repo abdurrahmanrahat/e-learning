@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom";
 import PageBanner from "../../components/Ui/PageBanner";
-import useUser from "../../Hooks/api/useUser";
 import useBlogById from "../../Hooks/api/useBlogById";
+import useUser from "../../Hooks/api/useUser";
 
 export default function BlogDetails() {
   const { user } = useUser();
   const { id } = useParams();
-  const {instructorBlog} = useBlogById(id);
+  const { instructorBlog } = useBlogById(id);
 
   return (
     <div>
@@ -18,10 +18,12 @@ export default function BlogDetails() {
           <h2 className="lg:text-3xl text-xl font-semibold text-gray-700 mt-10 mb-5 uppercase">
             {instructorBlog?.title}
           </h2>
-          <p className="text-gray-500 mb-10 text-lg">{instructorBlog?.bigDescription}</p>
+          <div
+            dangerouslySetInnerHTML={{ __html: instructorBlog?.description }}
+          />
         </div>
 
-        <div className="flex items-center gap-3 mb-10">
+        <div className="flex items-center gap-3 mb-10 mt-6">
           <img
             className="w-[80px] h-[80px] rounded-xl border"
             src={user?.photoUrl}
