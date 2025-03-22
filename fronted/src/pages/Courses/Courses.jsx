@@ -1,18 +1,18 @@
 import { useState } from "react";
 import ReactPaginate from "react-paginate";
+import { useLocation } from "react-router-dom";
 import Functionality from "../../components/Course/Functionality/Functionality";
+import KnowAboutLearning from "../../components/Courses/KnowAboutLearning";
+import OfferCourse from "../../components/Courses/OfferCourse/OfferCourse";
 import CourseCard from "../../components/Ui/CourseCard";
+import Loader from "../../components/Ui/Loader";
 import PageBanner from "../../components/Ui/PageBanner";
 import PrimaryTitle from "../../components/Ui/PrimaryTitle";
+import WebsiteTitle from "../../components/Ui/WebsiteTitle";
 import "../../css/coursesBgImg.css";
 import "../../css/pagination.css";
-import { SHAREDImages } from "../../image-data/shared";
-import OfferCourse from "../../components/Courses/OfferCourse/OfferCourse";
 import { useCourses } from "../../Hooks/api/useCourses";
-import Loader from "../../components/Ui/Loader";
-import { useLocation } from "react-router-dom";
-import WebsiteTitle from "../../components/Ui/WebsiteTitle";
-import KnowAboutLearning from "../../components/Courses/KnowAboutLearning";
+import { SHAREDImages } from "../../image-data/shared";
 
 // set navigate query system
 function useQuery() {
@@ -28,7 +28,7 @@ const Courses = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const limit = 9;
 
-  console.log(category)
+  console.log(category);
 
   let courseQuery = {
     page,
@@ -36,6 +36,7 @@ const Courses = () => {
     category,
     duration,
     searchTerm,
+    status: "approved",
   };
 
   const { courses } = useCourses(courseQuery);
@@ -92,7 +93,10 @@ const Courses = () => {
 
         {/* courses map section  */}
         <div className="container-class px-10 flex flex-col gap-10 py-10">
-          <PrimaryTitle headingPart1={`${category}` || "All"} headingPart2={"Courses"} />
+          <PrimaryTitle
+            headingPart1={`${category}` || "All"}
+            headingPart2={"Courses"}
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-10 lg:gap-y-20">
             {courses?.data?.map((item) => (
