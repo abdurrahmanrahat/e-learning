@@ -8,12 +8,12 @@ export const useCourses = (query) => {
 
     const fetchCourses = useCallback(async () => {
         try {
-            const response = await apiHandler.get(`/courses?page=${query?.page || 1}&limit=${query?.limit || 10}&category=${query?.category || ''}&courseDuration=${query?.duration || ''}&searchTerm=${query?.searchTerm || ''}`);
+            const response = await apiHandler.get(`/courses?page=${query?.page || 1}&limit=${query?.limit || 10}&category=${query?.category || ''}&courseDuration=${query?.duration || ''}&searchTerm=${query?.searchTerm || ''}&status=${query.status || ''}`);
             setCourses(response?.data?.data || []);
         } catch (error) {
             console.error('Error fetching courses:', error.message);
         }
-    }, [apiHandler, query.page, query.limit, query.category, query.duration, query.searchTerm]);
+    }, [apiHandler, query.page, query.limit, query.category, query.duration, query.searchTerm, query.status]);
 
     useEffect(() => {
         // Fetch courses on initial load

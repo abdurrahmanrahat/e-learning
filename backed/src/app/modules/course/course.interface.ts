@@ -12,6 +12,6 @@ export type TCourse = {
   totalRatings: number;
   averageRatings: number;
   totalStudents: number;
-  // status?: 'pending' | 'approved' | 'rejected';
+  status?: 'pending' | 'approved' | 'rejected';
   isDeleted?: boolean;
 };
