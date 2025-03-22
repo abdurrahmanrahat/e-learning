@@ -1,4 +1,3 @@
-
 const category = [
   "All Courses",
   "Digital Technology",
@@ -25,7 +24,7 @@ const duration = [
   "12 Months",
 ];
 
-// TODO: Search bar fixed 
+// TODO: Search bar fixed
 export default function Functionality({
   handleSelectCategory,
   handleSelectDuration,
@@ -44,16 +43,16 @@ export default function Functionality({
           name="searchKeyword"
           id="searchKeyword"
           placeholder="Search your favorite course"
-          className="w-[80%] px-6 py-3 border-none focus:outline-none focus:border-[#49BBBD] border-[#D9D9D9] placeholder:text-[#9D9B9B] placeholder:text-base placeholder:font-light outline-none rounded-l-xl"
+          className="w-[80%] px-6 py-2 border-none focus:outline-none focus:border-[#49BBBD] border-[#D9D9D9] placeholder:text-[#9D9B9B] placeholder:text-base placeholder:font-light outline-none rounded-l-xl"
           onChange={handleSearch}
         />
-        <div className="w-[20%]">
+        {/* <div className="w-[20%]">
           <button
             className={`inline-flex w-full h-12 px-4 items-center justify-center gap-2 whitespace-nowrap rounded-r-xl text-sm font-medium tracking-wide  text-[#FFF] bg-primary`}
           >
             Search
           </button>
-        </div>
+        </div> */}
       </div>
 
       <div className="w-full flex justify-center lg:flex-nowrap xl:flex-nowrap flex-wrap gap-10">
